@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "kinetic-1",
+      "description": "Abstract pink and blue flowing shapes",
+      "imageUrl": "https://images.unsplash.com/photo-1721549369164-2fd07f795ce4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWJzdHJhY3QlMjBzaGFwZXN8ZW58MHx8fHwxNzY5MDkwNjY5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract shapes"
+    },
+    {
+      "id": "kinetic-2",
+      "description": "Long exposure of light trails in a city at night",
+      "imageUrl": "https://images.unsplash.com/photo-1598566131386-0ed08f25a55f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxsaWdodCUyMHRyYWlsc3xlbnwwfHx8fDE3NjkwNjYzMDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "light trails"
+    },
+    {
+      "id": "kinetic-3",
+      "description": "A distorted, glitchy portrait of a person",
+      "imageUrl": "https://images.unsplash.com/photo-1741037306938-8d5bf2652415?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkaXN0b3J0ZWQlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjkxMTM0NjV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "distorted portrait"
+    },
+    {
+      "id": "kinetic-4",
+      "description": "Close-up of modern architectural lines creating abstract patterns",
+      "imageUrl": "https://images.unsplash.com/photo-1563107918-63a2d63a9670?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YXJjaGl0ZWN0dXJhbCUyMGxpbmVzfGVufDB8fHx8MTc2OTExMzQ2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "architectural lines"
+    }
+  ]
 }
