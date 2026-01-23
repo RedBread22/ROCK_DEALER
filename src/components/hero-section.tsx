@@ -5,16 +5,16 @@ import { InteractiveElement } from './interactive-element';
 
 export const HeroSection = () => {
   return (
-    <section className="relative flex h-screen min-h-[700px] w-full flex-col justify-center overflow-hidden">
+    <section id="home" className="relative flex h-screen min-h-[700px] w-full flex-col justify-center overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col">
           <AnimatedText 
-            text="KINETIC"
+            text="ROCK"
             el="h1"
             className="font-headline text-[10vw] leading-none md:text-[12vw] lg:text-[14vw]"
           />
           <AnimatedText 
-            text="FLOW"
+            text="DEALER"
             el="h1"
             className="self-end font-headline text-[10vw] leading-none md:text-[12vw] lg:text-[14vw]"
             stagger={0.05}
@@ -23,7 +23,7 @@ export const HeroSection = () => {
         <div className="mt-24">
           <InteractiveElement cursorType="text">
             <p className="max-w-md text-lg text-muted-foreground">
-              An ultra-kinetic experimental website where motion design meets high-end digital art.
+              Eine ultra-kinetische experimentelle Marken-Website, bei der Motion-Design auf High-End-Digital-Kunst trifft.
             </p>
           </InteractiveElement>
         </div>

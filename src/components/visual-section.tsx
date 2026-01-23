@@ -49,7 +49,7 @@ export const VisualSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[180vh] w-full bg-secondary">
+    <section id="products" className="relative min-h-[180vh] w-full bg-secondary">
       <div className="sticky top-0 h-screen overflow-hidden">
         <ParallaxImage id="kinetic-1" speed={-0.15} scrollY={scrollY} className="h-[120%] w-3/5" />
         <ParallaxImage id="kinetic-2" speed={-0.25} scrollY={scrollY} className="left-1/3 top-1/4 h-2/5 w-2/5" />

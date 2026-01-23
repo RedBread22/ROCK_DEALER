@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { CursorProvider } from '@/hooks/use-cursor';
+import { Header } from '@/components/header';
 
 export const metadata: Metadata = {
-  title: 'KineticFlow',
-  description: 'An ultra-kinetic experimental website.',
+  title: 'ROCK DEALER',
+  description: 'Eine ultra-kinetische experimentelle Marken-Website.',
 };
 
 export default function RootLayout({
@@ -14,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="de" className="dark">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -22,6 +23,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased lg:cursor-none">
         <CursorProvider>
+          <Header />
           {children}
           <Toaster />
         </CursorProvider>

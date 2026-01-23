@@ -9,12 +9,13 @@ export const CTASection = () => {
 
   return (
     <section
+      id="contact"
       ref={sectionRef}
       className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-background py-20"
     >
       <div className="relative z-10 flex flex-col items-center gap-12 text-center">
         <AnimatedText
-          text="Ready for the new wave?"
+          text="BEREIT FÜR DIE NÄCHSTE WELLE?"
           el="h2"
           className="font-headline text-6xl md:text-8xl lg:text-9xl"
         />
@@ -22,7 +23,7 @@ export const CTASection = () => {
           <button
             className="group relative rounded-full border border-primary bg-primary px-12 py-6 text-xl font-bold text-primary-foreground transition-colors duration-300 hover:bg-transparent hover:text-primary"
           >
-            <span className="relative z-10">LET'S CREATE</span>
+            <span className="relative z-10">KONTAKT AUFNEHMEN</span>
           </button>
         </InteractiveElement>
       </div>
