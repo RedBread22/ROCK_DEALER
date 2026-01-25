@@ -50,9 +50,9 @@ export const AnimatedText = ({
             "inline-block will-change-transform",
             isInView ? "animate-reveal-up" : "translate-y-full opacity-0"
           )}
-          style={{ animationDelay: `${(i * stagger).toFixed(3)}s` }}
+          style={{ animationDelay: `${(i * stagger).toFixed(3)}s`, whiteSpace: 'pre' }}
         >
-          {char === " " ? " " : char}
+          {char}
         </span>
       ))}
     </Wrapper>

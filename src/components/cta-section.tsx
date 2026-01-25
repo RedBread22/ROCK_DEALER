@@ -21,7 +21,7 @@ export const CTASection = () => {
         <AnimatedText
           text="Interesse an unseren Produkten?"
           el="h2"
-          className="font-headline text-center leading-tight text-[clamp(2.5rem,9vw,7rem)] max-w-[12ch] sm:max-w-[20ch]"
+          className="font-headline text-center leading-tight text-[clamp(2.5rem,9vw,7rem)] max-w-4xl"
         />
         <InteractiveElement cursorType="magnetic">
           <button
