@@ -11,7 +11,7 @@ export const HeroSection = () => {
           <AnimatedText 
             text="ROCK"
             el="h1"
-            className="font-headline text-[10vw] leading-none md:text-[12vw] lg:text-[14vw]"
+            className="font-headline text-primary text-[10vw] leading-none md:text-[12vw] lg:text-[14vw]"
           />
           <AnimatedText 
             text="DEALER"
