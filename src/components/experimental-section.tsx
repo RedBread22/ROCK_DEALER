@@ -1,6 +1,7 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useScrollProgress } from '@/hooks/use-scroll-progress';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { InteractiveElement } from './interactive-element';
@@ -36,15 +37,15 @@ export const ExperimentalSection = () => {
         </div>
         <div className="relative z-10 space-y-8">
           <h2 className="font-headline text-5xl md:text-7xl">
-            Breaking Grids.
+            Vielseitig einsetzbar.
           </h2>
           <p className="max-w-md text-lg text-muted-foreground">
-            We thrive on the unconventional. Design isn't just about fitting in; it's about standing out, creating memorable digital sculptures that defy expectations and invite interaction.
+            Ob modern, klassisch oder natürlich – unsere Materialien lassen sich flexibel einsetzen und passen sich unterschiedlichsten Projekten an. Von Wegen und Terrassen bis hin zu Beeten, Mauern und Akzenten im Garten.
           </p>
           <InteractiveElement cursorType="link">
-            <a href="#" className="inline-block text-xl font-bold text-primary hover:underline">
-              View our lab &rarr;
-            </a>
+            <Link href="/produkte" className="inline-block text-xl font-bold text-primary hover:underline">
+              Unsere Produkte ansehen →
+            </Link>
           </InteractiveElement>
         </div>
       </div>

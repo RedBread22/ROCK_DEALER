@@ -23,7 +23,7 @@ export const HeroSection = () => {
         <div className="mt-24">
           <InteractiveElement cursorType="text">
             <p className="max-w-md text-lg text-muted-foreground">
-              Eine ultra-kinetische experimentelle Marken-Website, bei der Motion-Design auf High-End-Digital-Kunst trifft.
+              Hochwertige Natursteine, Kies & Platten für Garten, Terrasse und Außenbereiche.
             </p>
           </InteractiveElement>
         </div>

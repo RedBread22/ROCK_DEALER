@@ -8,7 +8,7 @@ import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
   title: 'ROCK DEALER',
-  description: 'Eine ultra-kinetische experimentelle Marken-Website.',
+  description: 'Hochwertige Natursteine, Kies & Platten für Garten, Terrasse und Außenbereiche.',
 };
 
 export default function RootLayout({

@@ -6,7 +6,7 @@ import { AnimatedText } from '@/components/animated-text';
 
 export const metadata: Metadata = {
   title: 'Unsere Produkte | ROCK DEALER',
-  description: 'Steine, Platten & Kies – Ein Überblick über unser Sortiment.',
+  description: 'Steine, Platten & Kies – unser Sortiment im Überblick.',
 };
 
 export default function ProduktePage() {
@@ -20,7 +20,7 @@ export default function ProduktePage() {
             className="font-headline text-5xl md:text-7xl lg:text-8xl"
           />
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground md:text-xl">
-            Steine, Platten & Kies – Ein Überblick über unser Sortiment.
+            Steine, Platten & Kies – unser Sortiment im Überblick.
           </p>
         </div>
       </section>

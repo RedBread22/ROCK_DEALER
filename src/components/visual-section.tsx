@@ -57,9 +57,14 @@ export const VisualSection = () => {
 
         <div className="absolute inset-0 flex items-center justify-center">
           <InteractiveElement cursorType="text">
-            <h2 className="max-w-xl text-center font-headline text-5xl leading-tight md:text-7xl">
-              Visuals That Breathe and Bend
-            </h2>
+            <div className="max-w-xl text-center">
+              <h2 className="font-headline text-5xl leading-tight md:text-7xl">
+                Materialien mit Charakter
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Unsere Steine, Platten und Kiese überzeugen durch Struktur, Farbe und Beständigkeit – für Außenbereiche, die lange Freude machen.
+              </p>
+            </div>
           </InteractiveElement>
         </div>
       </div>

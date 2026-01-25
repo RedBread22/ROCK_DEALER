@@ -19,7 +19,7 @@ export const CTASection = () => {
     >
       <div className="relative z-10 flex flex-col items-center gap-12 text-center">
         <AnimatedText
-          text="BEREIT FÜR DIE NÄCHSTE WELLE?"
+          text="Interesse an unseren Produkten?"
           el="h2"
           className="font-headline text-[10vw] leading-tight sm:text-8xl md:text-9xl"
         />

@@ -54,11 +54,11 @@ export const ContactFormSection = () => {
         <div className="max-w-2xl mx-auto text-center">
           <AnimatedText
             el="h2"
-            text="Kontakt aufnehmen"
+            text="Unverbindliche Anfrage"
             className="font-headline text-5xl md:text-6xl text-primary"
           />
           <p className="mt-4 text-lg text-muted-foreground">
-            Sag uns kurz, was du brauchst – wir melden uns.
+            Beschreiben Sie kurz Ihr Projekt oder Ihre Wünsche – wir beraten Sie gerne.
           </p>
         </div>
 
@@ -69,7 +69,7 @@ export const ContactFormSection = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Ihr Name</FormLabel>
                   <FormControl>
                     <Input placeholder="Ihr Name" {...field} />
                   </FormControl>
@@ -82,7 +82,7 @@ export const ContactFormSection = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>E-Mail</FormLabel>
+                  <FormLabel>Ihre E-Mail-Adresse</FormLabel>
                   <FormControl>
                     <Input placeholder="ihre@email.com" {...field} />
                   </FormControl>
@@ -150,7 +150,7 @@ export const ContactFormSection = () => {
                 <FormItem>
                   <FormLabel>Nachricht</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Erzählen Sie uns von Ihrem Projekt..." rows={5} {...field} />
+                    <Textarea placeholder="Beschreiben Sie kurz Ihr Vorhaben (z. B. Garten, Terrasse, Weg, Fläche)." rows={5} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
