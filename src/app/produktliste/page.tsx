@@ -15,6 +15,28 @@ import {
 } from '@/components/ui/dialog';
 import { InteractiveElement } from '@/components/interactive-element';
 import Link from 'next/link';
+import { useToast } from '@/hooks/use-toast';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { AnimatedText } from '@/components/animated-text';
 
 const ProductCard = ({
   product,
@@ -57,12 +79,156 @@ const ProductCard = ({
   );
 };
 
+const ContactFormSection = () => {
+  const { toast } = useToast();
+  const formSchema = z.object({
+    name: z.string().min(2, { message: 'Name muss mindestens 2 Zeichen lang sein.' }),
+    email: z.string().email({ message: 'Bitte gib eine gültige E-Mail-Adresse ein.' }),
+    category: z.string().optional(),
+    message: z.string().min(10, { message: 'Nachricht muss mindestens 10 Zeichen lang sein.' }),
+  });
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
+    toast({
+      title: 'Anfrage gesendet!',
+      description: 'Vielen Dank! Wir werden uns in Kürze bei Ihnen melden.',
+    });
+    form.reset();
+  }
+
+  return (
+    <section id="product-contact" className="w-full py-24 sm:py-32 bg-background border-t border-border">
+      <div className="container mx-auto px-4">
+        <div className="max-w-2xl mx-auto text-center">
+          <AnimatedText
+            el="h2"
+            text="Kontakt aufnehmen"
+            className="font-headline text-5xl md:text-6xl text-primary"
+          />
+          <p className="mt-4 text-lg text-muted-foreground">
+            Sag uns kurz, was du brauchst – wir melden uns.
+          </p>
+        </div>
+
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="mt-16 max-w-2xl mx-auto space-y-8">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Ihr Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>E-Mail</FormLabel>
+                  <FormControl>
+                    <Input placeholder="ihre@email.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="category"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Interesse an Kategorie</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Kategorie auswählen (optional)" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {productCategories.map((category) => (
+                        <SelectItem key={category.id} value={category.name}>
+                          {category.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Nachricht</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="Erzählen Sie uns von Ihrem Projekt..." rows={5} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit" size="lg" className="w-full">
+              Anfrage senden
+            </Button>
+          </form>
+        </Form>
+      </div>
+    </section>
+  );
+};
+
+
+const useActiveCategoryOnScroll = (categoryIds: string[]) => {
+    const [activeCategory, setActiveCategory] = useState<string | null>(null);
+    
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveCategory(entry.target.id);
+                    }
+                });
+            },
+            { rootMargin: '-40% 0px -55% 0px' }
+        );
+
+        const elements = categoryIds.map(id => document.getElementById(id));
+        elements.forEach(elem => elem && observer.observe(elem));
+
+        return () => elements.forEach(elem => elem && observer.unobserve(elem));
+    }, [categoryIds]);
+
+    return activeCategory;
+};
+
 export default function ProduktlistePage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const categoryRefs = useRef<Record<string, HTMLElement | null>>({});
+  
+  const allCategoryIds = productCategories.map(c => c.id);
+  const activeCategory = useActiveCategoryOnScroll(allCategoryIds);
 
   const scrollToCategory = (id: string) => {
-    categoryRefs.current[id]?.scrollIntoView({
+    const element = document.getElementById(id);
+    element?.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
     });
@@ -72,7 +238,7 @@ export default function ProduktlistePage() {
     <>
       <main className="w-full bg-background">
         {/* Hero Section */}
-        <section className="relative flex min-h-[60vh] flex-col items-center justify-center overflow-hidden border-b py-20 text-center">
+        <section className="relative flex min-h-[60vh] flex-col items-center justify-center overflow-hidden border-b border-border py-20 text-center bg-background">
           <div className="container px-4">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -106,49 +272,60 @@ export default function ProduktlistePage() {
           </div>
         </section>
 
-        {/* Categories Overview */}
-        <section className="sticky top-24 z-20 hidden md:block bg-background/80 backdrop-blur-sm border-b">
-          <div className="container mx-auto flex justify-center gap-8 py-4">
+        {/* Categories Navigation */}
+        <div className="sticky top-24 z-20 bg-background/80 backdrop-blur-sm border-y border-border">
+          <div className="container mx-auto flex justify-center gap-2 md:gap-4 p-4">
             {productCategories.map((category) => (
               <InteractiveElement key={category.id} cursorType="link">
                 <button
                   onClick={() => scrollToCategory(category.id)}
-                  className="nav-link relative font-medium text-foreground transition-colors hover:text-primary"
+                  className={cn(
+                    "rounded-full px-4 py-2 md:px-6 md:py-3 font-headline text-sm md:text-base font-medium transition-all duration-300 transform",
+                    "hover:scale-105 hover:bg-primary/90",
+                    activeCategory === category.id
+                      ? "bg-primary text-primary-foreground scale-105 shadow-lg"
+                      : "bg-secondary text-secondary-foreground"
+                  )}
                 >
                   {category.name}
                 </button>
               </InteractiveElement>
             ))}
           </div>
-        </section>
+        </div>
 
         {/* Product Sections */}
-        <div className="container mx-auto px-4 py-16 sm:py-24">
-          <div className="flex flex-col gap-24">
-            {productCategories.map((category) => (
-              <section
-                key={category.id}
-                id={category.id}
-                ref={(el) => (categoryRefs.current[category.id] = el)}
-                className="scroll-mt-32"
-              >
-                <div className="mb-12 max-w-2xl">
-                  <h2 className="font-headline text-4xl text-primary md:text-5xl">{category.name}</h2>
-                  <p className="mt-4 text-lg text-muted-foreground">{category.description}</p>
+        <div className="flex flex-col">
+          {productCategories.map((category, index) => (
+            <section
+              key={category.id}
+              id={category.id}
+              className={cn(
+                "scroll-mt-24 py-24 sm:py-32",
+                index % 2 !== 0 ? 'bg-secondary' : 'bg-background'
+              )}
+            >
+                <div className="container mx-auto px-4">
+                  <div className="mb-12 max-w-3xl lg:mb-16">
+                    <h2 className="font-headline text-4xl text-primary md:text-5xl">{category.name}</h2>
+                    <p className="mt-4 text-lg text-muted-foreground">{category.description}</p>
+                  </div>
+                  <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-12">
+                    {category.products.map((product) => (
+                      <ProductCard
+                        key={product.name}
+                        product={product}
+                        onDetailsClick={() => setSelectedProduct(product)}
+                      />
+                    ))}
+                  </div>
                 </div>
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                  {category.products.map((product) => (
-                    <ProductCard
-                      key={product.name}
-                      product={product}
-                      onDetailsClick={() => setSelectedProduct(product)}
-                    />
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
+            </section>
+          ))}
         </div>
+        
+        <ContactFormSection />
+
       </main>
 
       <Dialog open={!!selectedProduct} onOpenChange={(isOpen) => !isOpen && setSelectedProduct(null)}>

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
-import { InteractiveElement } from '@/components/interactive-element';
+import { InteractiveElement } from './interactive-element';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -66,11 +66,14 @@ export const Header = () => {
     </>
   );
 
+  const isProductPage = pathname === '/produktliste';
+
   return (
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        hasScrolled ? 'bg-background/80 backdrop-blur-sm' : 'bg-transparent'
+        hasScrolled && 'bg-background/80 backdrop-blur-sm',
+        isProductPage && 'bg-background/80 backdrop-blur-sm border-b border-border'
       )}
     >
       <div className="container mx-auto flex h-24 items-center justify-between px-4">
