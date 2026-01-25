@@ -155,42 +155,44 @@ const ContactFormSection = () => {
                       Sie können eine oder mehrere Kategorien auswählen.
                     </FormDescription>
                   </div>
-                  {productCategories.map((item) => (
-                    <FormField
-                      key={item.id}
-                      control={form.control}
-                      name="categories"
-                      render={({ field }) => {
-                        return (
-                          <FormItem
-                            key={item.id}
-                            className="flex flex-row items-start space-x-3 space-y-0"
-                          >
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(item.name)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([
-                                        ...(field.value || []),
-                                        item.name,
-                                      ])
-                                    : field.onChange(
-                                        field.value?.filter(
-                                          (value) => value !== item.name
-                                        )
-                                      );
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              {item.name}
-                            </FormLabel>
-                          </FormItem>
-                        );
-                      }}
-                    />
-                  ))}
+                  <div className="flex flex-col space-y-2">
+                    {productCategories.map((item) => (
+                      <FormField
+                        key={item.id}
+                        control={form.control}
+                        name="categories"
+                        render={({ field }) => {
+                          return (
+                            <FormItem
+                              key={item.id}
+                              className="flex flex-row items-start space-x-3 space-y-0"
+                            >
+                              <FormControl>
+                                <Checkbox
+                                  checked={field.value?.includes(item.name)}
+                                  onCheckedChange={(checked) => {
+                                    return checked
+                                      ? field.onChange([
+                                          ...(field.value || []),
+                                          item.name,
+                                        ])
+                                      : field.onChange(
+                                          field.value?.filter(
+                                            (value) => value !== item.name
+                                          )
+                                        );
+                                  }}
+                                />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                {item.name}
+                              </FormLabel>
+                            </FormItem>
+                          );
+                        }}
+                      />
+                    ))}
+                  </div>
                   <FormMessage />
                 </FormItem>
               )}
@@ -220,18 +222,21 @@ const ContactFormSection = () => {
 
 
 const useActiveCategoryOnScroll = (categoryIds: string[]) => {
-    const [activeCategory, setActiveCategory] = useState<string | null>(null);
+    const [activeCategory, setActiveCategory] = useState<string | null>(categoryIds[0] ?? null);
     
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveCategory(entry.target.id);
-                    }
-                });
+                const intersectingEntry = entries.find((entry) => entry.isIntersecting);
+                if (intersectingEntry) {
+                    setActiveCategory(intersectingEntry.target.id);
+                }
             },
-            { rootMargin: '-40% 0px -55% 0px' }
+            { 
+                // The root margin is set to start observing 100px from the top, which is roughly the height of the sticky navbar.
+                // This ensures that as a section scrolls into view just below the navbar, it becomes active.
+                rootMargin: '-100px 0px -65% 0px' 
+            }
         );
 
         const elements = categoryIds.map(id => document.getElementById(id));
@@ -325,9 +330,7 @@ export default function ProduktlistePage() {
               id={category.id}
               className={cn(
                 "scroll-mt-24 py-24 sm:py-32",
-                index === 0 && 'bg-background',
-                index === 1 && 'bg-secondary',
-                index === 2 && 'bg-background'
+                index % 2 === 0 ? 'bg-background' : 'bg-secondary/20'
               )}
             >
                 <div className="container mx-auto px-4">
@@ -374,7 +377,7 @@ export default function ProduktlistePage() {
                 </DialogDescription>
                 <div className="mt-8">
                   <Link href="/#contact" passHref>
-                    <Button size="lg" className="w-full">
+                    <Button size="lg" className="w-full" onClick={() => setSelectedProduct(null)}>
                       Anfrage senden
                     </Button>
                   </Link>
