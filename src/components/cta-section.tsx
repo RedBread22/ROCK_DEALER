@@ -15,13 +15,13 @@ export const CTASection = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-background py-20"
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-background py-20 px-4"
     >
       <div className="relative z-10 flex flex-col items-center gap-12 text-center">
         <AnimatedText
           text="BEREIT FÜR DIE NÄCHSTE WELLE?"
           el="h2"
-          className="font-headline text-6xl md:text-8xl lg:text-9xl"
+          className="font-headline text-[10vw] leading-tight sm:text-8xl md:text-9xl"
         />
         <InteractiveElement cursorType="magnetic">
           <button

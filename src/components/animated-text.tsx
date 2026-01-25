@@ -52,7 +52,7 @@ export const AnimatedText = ({
           )}
           style={{ animationDelay: `${(i * stagger).toFixed(3)}s` }}
         >
-          {char === " " ? "\u00A0" : char}
+          {char === " " ? " " : char}
         </span>
       ))}
     </Wrapper>
