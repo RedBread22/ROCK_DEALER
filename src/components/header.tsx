@@ -6,16 +6,19 @@ import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
 import { InteractiveElement } from '@/components/interactive-element';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'Produktliste', href: '#products' },
-  { name: 'Kontakt', href: '#contact' },
+  { name: 'Home', href: '/' },
+  { name: 'Produktliste', href: '/produktliste' },
+  { name: 'Kontakt', href: '/#contact' },
 ];
 
 export const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,8 +29,23 @@ export const Header = () => {
   }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    const isHomePage = pathname === '/';
+    const isAnchorLink = href.startsWith('/#');
+
+    if (isHomePage && isAnchorLink) {
+      e.preventDefault();
+      const targetId = href.substring(2);
+      document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+    }
+    // For other cases, Next.js Link will handle navigation
+    setIsMenuOpen(false);
+  };
+  
+  const handleHomeLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+        e.preventDefault();
+        document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
+    }
     setIsMenuOpen(false);
   };
 
@@ -35,14 +53,14 @@ export const Header = () => {
     <>
       {navLinks.map((link, index) => (
         <InteractiveElement key={link.name} cursorType="magnetic">
-          <a
+          <Link
             href={link.href}
             onClick={(e) => handleLinkClick(e, link.href)}
             className={cn('nav-link relative px-2 py-1 font-medium text-foreground transition-colors hover:text-primary', className)}
             style={{ animationDelay: `${stagger + index * 0.1}s` }}
           >
             {link.name}
-          </a>
+          </Link>
         </InteractiveElement>
       ))}
     </>
@@ -57,9 +75,9 @@ export const Header = () => {
     >
       <div className="container mx-auto flex h-24 items-center justify-between px-4">
         <InteractiveElement cursorType="link">
-          <a href="#home" onClick={(e) => handleLinkClick(e, '#home')}>
+          <Link href="/" onClick={handleHomeLinkClick}>
             <Logo className="h-8 w-auto text-foreground transition-transform duration-300 hover:scale-105" />
-          </a>
+          </Link>
         </InteractiveElement>
 
         {/* Desktop Nav */}
@@ -80,9 +98,9 @@ export const Header = () => {
             <SheetContent side="left" className="w-full border-r-0 bg-background/95 p-0">
                 <div className="flex h-full flex-col">
                   <div className="flex h-24 shrink-0 items-center justify-between border-b border-border px-4">
-                     <a href="#home" onClick={(e) => handleLinkClick(e, '#home')}>
+                     <Link href="/" onClick={handleHomeLinkClick}>
                         <Logo className="h-8 w-auto text-foreground" />
-                     </a>
+                     </Link>
                      <InteractiveElement cursorType="magnetic">
                       <button onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
                           <X className="h-8 w-8 text-foreground" />

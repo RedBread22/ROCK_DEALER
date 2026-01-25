@@ -3,6 +3,8 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { CursorProvider } from '@/hooks/use-cursor';
 import { Header } from '@/components/header';
+import { CustomCursor } from '@/components/custom-cursor';
+import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
   title: 'ROCK DEALER',
@@ -23,8 +25,10 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased lg:cursor-none">
         <CursorProvider>
+          <CustomCursor />
           <Header />
           {children}
+          <Footer />
           <Toaster />
         </CursorProvider>
       </body>
