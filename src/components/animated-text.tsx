@@ -41,20 +41,53 @@ export const AnimatedText = ({
     return () => observer.disconnect();
   }, [once]);
 
+  let charIndex = 0;
+
   return (
     <Wrapper ref={ref} className={cn("overflow-hidden", className)} aria-label={text}>
-      {text.split('').map((char, i) => (
-        <span
-          key={i}
-          className={cn(
-            "inline-block will-change-transform",
-            isInView ? "animate-reveal-up" : "translate-y-full opacity-0"
-          )}
-          style={{ animationDelay: `${(i * stagger).toFixed(3)}s`, whiteSpace: 'pre' }}
-        >
-          {char}
-        </span>
-      ))}
+      {text.split(' ').map((word, i, arr) => {
+        const wordElement = (
+          <span key={i} className="inline-block"> {/* This prevents the word from breaking */}
+            {word.split('').map((char, j) => {
+              const delay = (charIndex + j) * stagger;
+              return (
+                <span
+                  key={j}
+                  className={cn(
+                    "inline-block will-change-transform",
+                    isInView ? "animate-reveal-up" : "translate-y-full opacity-0"
+                  )}
+                  style={{ animationDelay: `${delay.toFixed(3)}s` }}
+                >
+                  {char}
+                </span>
+              );
+            })}
+          </span>
+        );
+
+        charIndex += word.length;
+        
+        if (i < arr.length - 1) {
+          const spaceDelay = charIndex * stagger;
+          charIndex += 1;
+          return [
+            wordElement,
+            <span
+              key={`space-${i}`}
+              className={cn(
+                "inline-block will-change-transform",
+                isInView ? "animate-reveal-up" : "translate-y-full opacity-0"
+              )}
+              style={{ animationDelay: `${spaceDelay.toFixed(3)}s`, whiteSpace: 'pre' }}
+            >
+              {' '}
+            </span>
+          ];
+        }
+
+        return wordElement;
+      })}
     </Wrapper>
   );
 };
