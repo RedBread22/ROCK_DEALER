@@ -22,6 +22,7 @@ import * as z from 'zod';
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -29,13 +30,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
 import { AnimatedText } from '@/components/animated-text';
 
 const ProductCard = ({
@@ -84,7 +79,7 @@ const ContactFormSection = () => {
   const formSchema = z.object({
     name: z.string().min(2, { message: 'Name muss mindestens 2 Zeichen lang sein.' }),
     email: z.string().email({ message: 'Bitte gib eine gültige E-Mail-Adresse ein.' }),
-    category: z.string().optional(),
+    categories: z.array(z.string()).optional(),
     message: z.string().min(10, { message: 'Nachricht muss mindestens 10 Zeichen lang sein.' }),
   });
 
@@ -94,6 +89,7 @@ const ContactFormSection = () => {
       name: '',
       email: '',
       message: '',
+      categories: [],
     },
   });
 
@@ -107,7 +103,7 @@ const ContactFormSection = () => {
   }
 
   return (
-    <section id="product-contact" className="w-full py-24 sm:py-32 bg-background border-t border-border">
+    <section id="product-contact" className="w-full py-24 sm:py-32 bg-secondary/30 border-t border-border">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
           <AnimatedText
@@ -150,24 +146,51 @@ const ContactFormSection = () => {
             />
             <FormField
               control={form.control}
-              name="category"
-              render={({ field }) => (
+              name="categories"
+              render={() => (
                 <FormItem>
-                  <FormLabel>Interesse an Kategorie</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Kategorie auswählen (optional)" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {productCategories.map((category) => (
-                        <SelectItem key={category.id} value={category.name}>
-                          {category.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <div className="mb-4">
+                    <FormLabel>Interesse an Kategorien</FormLabel>
+                    <FormDescription>
+                      Sie können eine oder mehrere Kategorien auswählen.
+                    </FormDescription>
+                  </div>
+                  {productCategories.map((item) => (
+                    <FormField
+                      key={item.id}
+                      control={form.control}
+                      name="categories"
+                      render={({ field }) => {
+                        return (
+                          <FormItem
+                            key={item.id}
+                            className="flex flex-row items-start space-x-3 space-y-0"
+                          >
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(item.name)}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...(field.value || []),
+                                        item.name,
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) => value !== item.name
+                                        )
+                                      );
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              {item.name}
+                            </FormLabel>
+                          </FormItem>
+                        );
+                      }}
+                    />
+                  ))}
                   <FormMessage />
                 </FormItem>
               )}
@@ -273,17 +296,17 @@ export default function ProduktlistePage() {
         </section>
 
         {/* Categories Navigation */}
-        <div className="sticky top-24 z-20 bg-background/80 backdrop-blur-sm border-y border-border">
-          <div className="container mx-auto flex justify-center gap-2 md:gap-4 p-4">
+        <nav className="sticky top-24 z-20 border-y border-border bg-background/80 backdrop-blur-sm">
+          <div className="container mx-auto flex justify-center gap-2 p-4 md:gap-4">
             {productCategories.map((category) => (
               <InteractiveElement key={category.id} cursorType="link">
                 <button
                   onClick={() => scrollToCategory(category.id)}
                   className={cn(
-                    "rounded-full px-4 py-2 md:px-6 md:py-3 font-headline text-sm md:text-base font-medium transition-all duration-300 transform",
+                    "transform rounded-full px-4 py-2 font-headline text-sm font-medium transition-all duration-300 md:px-6 md:py-3 md:text-base",
                     "hover:scale-105 hover:bg-primary/90",
                     activeCategory === category.id
-                      ? "bg-primary text-primary-foreground scale-105 shadow-lg"
+                      ? "scale-105 bg-primary text-primary-foreground shadow-lg"
                       : "bg-secondary text-secondary-foreground"
                   )}
                 >
@@ -292,7 +315,7 @@ export default function ProduktlistePage() {
               </InteractiveElement>
             ))}
           </div>
-        </div>
+        </nav>
 
         {/* Product Sections */}
         <div className="flex flex-col">
@@ -302,7 +325,9 @@ export default function ProduktlistePage() {
               id={category.id}
               className={cn(
                 "scroll-mt-24 py-24 sm:py-32",
-                index % 2 !== 0 ? 'bg-secondary' : 'bg-background'
+                index === 0 && 'bg-background',
+                index === 1 && 'bg-secondary',
+                index === 2 && 'bg-background'
               )}
             >
                 <div className="container mx-auto px-4">
