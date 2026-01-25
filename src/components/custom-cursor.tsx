@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 export const CustomCursor = () => {
   const { cursorType } = useCursor();
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
