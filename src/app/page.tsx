@@ -5,6 +5,7 @@ import { PhilosophySection } from '@/components/philosophy-section';
 import { VisualSection } from '@/components/visual-section';
 import { ExperimentalSection } from '@/components/experimental-section';
 import { CTASection } from '@/components/cta-section';
+import { ContactFormSection } from '@/components/contact-form-section';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <VisualSection />
       <ExperimentalSection />
       <CTASection />
+      <ContactFormSection />
     </main>
   );
 }

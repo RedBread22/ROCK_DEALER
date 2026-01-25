@@ -7,6 +7,10 @@ import { InteractiveElement } from './interactive-element';
 export const CTASection = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
+  const handleContactClick = () => {
+    document.getElementById('product-contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section
       id="contact"
@@ -21,6 +25,7 @@ export const CTASection = () => {
         />
         <InteractiveElement cursorType="magnetic">
           <button
+            onClick={handleContactClick}
             className="group relative rounded-full border border-primary bg-primary px-12 py-6 text-xl font-bold text-primary-foreground transition-colors duration-300 hover:bg-transparent hover:text-primary"
           >
             <span className="relative z-10">KONTAKT AUFNEHMEN</span>
