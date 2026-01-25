@@ -33,7 +33,7 @@ export const Footer = () => {
             <Link href="/" onClick={(e) => handleLinkClick(e, '/')} className="nav-link relative font-medium">Home</Link>
           </InteractiveElement>
           <InteractiveElement cursorType="link">
-            <Link href="/produktliste" className="nav-link relative font-medium">Produktliste</Link>
+            <Link href="/produkte" className="nav-link relative font-medium">Unsere Produkte</Link>
           </InteractiveElement>
           <InteractiveElement cursorType="link">
             <Link href="/#contact" onClick={(e) => handleLinkClick(e, '/#contact')} className="nav-link relative font-medium">Kontakt</Link>

@@ -11,7 +11,7 @@ import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { name: 'Home', href: '/' },
-  { name: 'Produktliste', href: '/produktliste' },
+  { name: 'Unsere Produkte', href: '/produkte' },
   { name: 'Kontakt', href: '/#contact' },
 ];
 
@@ -66,14 +66,13 @@ export const Header = () => {
     </>
   );
 
-  const isProductPage = pathname === '/produktliste';
+  const isProductPage = pathname.startsWith('/produkte');
 
   return (
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        hasScrolled && 'bg-background/80 backdrop-blur-sm',
-        isProductPage && 'bg-background/80 backdrop-blur-sm border-b border-border'
+        (hasScrolled || isProductPage) && 'bg-background/80 backdrop-blur-sm border-b border-border'
       )}
     >
       <div className="container mx-auto flex h-24 items-center justify-between px-4">
