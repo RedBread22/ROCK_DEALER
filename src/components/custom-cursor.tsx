@@ -8,30 +8,38 @@ export const CustomCursor = () => {
   const { cursorType } = useCursor();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [visible, setVisible] = useState(true);
-  const [isClient, setIsClient] = useState(false);
+  const [isHoverDevice, setIsHoverDevice] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    const mediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
     
-    const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
+    if (mediaQuery.matches) {
+      setIsHoverDevice(true);
+      document.body.style.cursor = 'none';
 
-    const onMouseEnter = () => setVisible(true);
-    const onMouseLeave = () => setVisible(false);
+      const updatePosition = (e: MouseEvent) => {
+        setPosition({ x: e.clientX, y: e.clientY });
+      };
 
-    document.addEventListener('mousemove', updatePosition);
-    document.body.addEventListener('mouseenter', onMouseEnter);
-    document.body.addEventListener('mouseleave', onMouseLeave);
-    
-    return () => {
-      document.removeEventListener('mousemove', updatePosition);
-      document.body.removeEventListener('mouseenter', onMouseEnter);
-      document.body.removeEventListener('mouseleave', onMouseLeave);
-    };
+      const onMouseEnter = () => setVisible(true);
+      const onMouseLeave = () => setVisible(false);
+
+      document.addEventListener('mousemove', updatePosition);
+      document.body.addEventListener('mouseenter', onMouseEnter);
+      document.body.addEventListener('mouseleave', onMouseLeave);
+      
+      return () => {
+        document.body.style.cursor = 'auto';
+        document.removeEventListener('mousemove', updatePosition);
+        document.body.removeEventListener('mouseenter', onMouseEnter);
+        document.body.removeEventListener('mouseleave', onMouseLeave);
+      };
+    }
   }, []);
 
-  if (!isClient) return null;
+  if (!isHoverDevice) {
+    return null;
+  }
 
   const cursorSize = cursorType === 'text' ? 60 : cursorType === 'magnetic' ? 80 : 24;
 
