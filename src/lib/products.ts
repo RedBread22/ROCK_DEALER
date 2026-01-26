@@ -23,7 +23,7 @@ const findImage = (id: string) => {
 
 export const productCategories: ProductCategory[] = [
   {
-    id: 'kies',
+    id: 'kies-zierkies',
     name: 'Kies & Zierkies',
     description: 'Vielseitige und robuste Kiese für Wege, Beete und dekorative Flächen.',
     products: [

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default function KiesZierkiesPage() {
-    const category = productCategories.find(c => c.id === 'kies');
+    const category = productCategories.find(c => c.id === 'kies-zierkies');
     
     if (!category) {
         // In a real app, you'd redirect or show a 404 page.
