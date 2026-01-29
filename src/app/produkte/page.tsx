@@ -1,8 +1,8 @@
 import { type Metadata } from 'next';
 import { productCategories } from '@/lib/products';
-import { CategoryCard } from '@/components/category-card';
 import { ContactFormSection } from '@/components/contact-form-section';
 import { AnimatedText } from '@/components/animated-text';
+import { ContentCard } from '@/components/content-card';
 
 export const metadata: Metadata = {
   title: 'Unsere Produkte | ROCK DEALER',
@@ -20,7 +20,7 @@ export default function ProduktePage() {
             className="font-headline text-5xl md:text-7xl lg:text-8xl"
           />
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground md:text-xl">
-            Steine, Platten & Kies – unser Sortiment im Überblick.
+            Qualität und Vielfalt für Ihr Projekt. Entdecken Sie unser Sortiment an Natursteinen, Betonsteinen, Feinsteinzeug und mehr.
           </p>
         </div>
       </section>
@@ -29,7 +29,13 @@ export default function ProduktePage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3">
             {productCategories.map((category) => (
-              <CategoryCard key={category.id} category={category} />
+              <ContentCard 
+                key={category.id} 
+                title={category.name}
+                description={category.description}
+                image={category.image}
+                href={`/produkte/${category.id}`}
+              />
             ))}
           </div>
         </div>

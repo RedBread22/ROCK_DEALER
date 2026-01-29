@@ -25,76 +25,40 @@
       "imageHint": "stone pathway"
     },
     {
-      "id": "kies-1",
-      "description": "River gravel close-up",
-      "imageUrl": "https://images.unsplash.com/photo-1730919022714-f714541fb3de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cml2ZXIlMjBncmF2ZWx8ZW58MHx8fHwxNzY5MzcxNTY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "river gravel"
+      "id": "category-natursteine",
+      "description": "Assortment of natural stones",
+      "imageUrl": "https://images.unsplash.com/photo-1705575463786-474f9271b1e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxuYXR1cmFsJTIwc3RvbmV8ZW58MHx8fHwxNzY5NzIxMzc0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "natural stone"
     },
     {
-      "id": "kies-2",
-      "description": "White marble decorative gravel",
-      "imageUrl": "https://images.unsplash.com/photo-1674831310093-8d4ee292d77d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYXJibGUlMjBncmF2ZWx8ZW58MHx8fHwxNzY5MzcxNTY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "marble gravel"
+      "id": "category-betonsteine",
+      "description": "Concrete paving stones",
+      "imageUrl": "https://images.unsplash.com/photo-1519113753376-0098a7dcdc5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb25jcmV0ZSUyMHN0b25lfGVufDB8fHx8MTc2OTcyMTM3NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "concrete stone"
     },
     {
-      "id": "kies-3",
-      "description": "Round granite paving stones",
-      "imageUrl": "https://images.unsplash.com/photo-1663997943673-9c679560f5a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxncmFuaXRlJTIwc3RvbmVzfGVufDB8fHx8MTc2OTM3MTU2NHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "granite stones"
+      "id": "category-feinsteinzeug",
+      "description": "Porcelain stoneware tiles",
+      "imageUrl": "https://images.unsplash.com/photo-1709962701974-5ac5ccb4718b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwb3JjZWxhaW4lMjB0aWxlfGVufDB8fHx8MTc2OTcyMTM3NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "porcelain tile"
     },
     {
-      "id": "bruch-1",
-      "description": "Red marble chippings",
-      "imageUrl": "https://images.unsplash.com/photo-1723941082941-de838c0fbe90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxyZWQlMjBtYXJibGV8ZW58MHx8fHwxNzY5MzcxNTY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "red marble"
+      "id": "category-zierkies",
+      "description": "Decorative gravel",
+      "imageUrl": "https://images.unsplash.com/photo-1761984336746-8a91551b1a99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkZWNvcmF0aXZlJTIwZ3JhdmVsfGVufDB8fHx8MTc2OTcyMTM3NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "decorative gravel"
     },
     {
-      "id": "bruch-2",
-      "description": "Rose colored marble chippings",
-      "imageUrl": "https://images.unsplash.com/photo-1738664926431-7db0eecf2cbd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyb3NlJTIwbWFyYmxlfGVufDB8fHx8MTc2OTM3MTU2NHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "rose marble"
+      "id": "category-gartendeko",
+      "description": "Garden decoration made of stone",
+      "imageUrl": "https://images.unsplash.com/photo-1660324532842-52cbda1441c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxnYXJkZW4lMjBkZWNvcnxlbnwwfHx8fDE3Njk3MjEzNzV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "garden decor"
     },
     {
-      "id": "bruch-3",
-      "description": "Anthracite and white marble chippings",
-      "imageUrl": "https://images.unsplash.com/photo-1724918082801-0b51b2f6e879?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhbnRocmFjaXRlJTIwbWFyYmxlfGVufDB8fHx8MTc2OTM3MTU2NHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "anthracite marble"
-    },
-    {
-      "id": "naturstein-1",
-      "description": "Abstract grey stone texture",
-      "imageUrl": "https://images.unsplash.com/photo-1525468568166-6f2cd17c7ec9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxncmV5JTIwc3RvbmV8ZW58MHx8fHwxNzY5MzcxNTY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "grey stone"
-    },
-    {
-      "id": "naturstein-2",
-      "description": "Abstract beige stone texture",
-      "imageUrl": "https://images.unsplash.com/photo-1658915250017-bee8f8f0d9a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxiZWlnZSUyMHN0b25lfGVufDB8fHx8MTc2OTM3MTU2NHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "beige stone"
-    },
-    {
-      "id": "naturstein-3",
-      "description": "Abstract dark rough stone texture",
-      "imageUrl": "https://images.unsplash.com/photo-1680026548022-e76f693d0a62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkYXJrJTIwc3RvbmV8ZW58MHx8fHwxNzY5MzcxNTY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "dark stone"
-    },
-    {
-      "id": "naturstein-4",
-      "description": "Abstract gold gneiss texture",
-      "imageUrl": "https://images.unsplash.com/photo-1545873692-64145c8c42ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxnb2xkJTIwZ25laXNzfGVufDB8fHx8MTc2OTM3MTU2NHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "gold gneiss"
-    },
-    {
-      "id": "naturstein-5",
-      "description": "Abstract modak sandstone texture",
-      "imageUrl": "https://images.unsplash.com/photo-1605231590744-cbbbcce93fbb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzYW5kc3RvbmUlMjB0ZXh0dXJlfGVufDB8fHx8MTc2OTM3MTU2NHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "sandstone texture"
-    },
-    {
-      "id": "naturstein-6",
-      "description": "Abstract porphyry stone texture",
-      "imageUrl": "https://images.unsplash.com/photo-1758172797495-38cc1f085b44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwb3JwaHlyeSUyMHRleHR1cmV8ZW58MHx8fHwxNzY5MzcxNTY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "porphyry texture"
+      "id": "product-placeholder",
+      "description": "Placeholder image for a product",
+      "imageUrl": "https://images.unsplash.com/photo-1718670013939-954787e56385?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzdG9uZSUyMHByb2R1Y3R8ZW58MHx8fHwxNzY5NzIxMzc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "stone product"
     }
   ]
 }
