@@ -23,45 +23,84 @@ export default function ImpressumPage() {
       <section className="py-24 sm:py-32">
         <div className="container mx-auto px-4 max-w-3xl space-y-8 text-muted-foreground">
             <div>
-                <h2 className="text-2xl font-bold text-foreground mb-2">Angaben gemäß § 5 TMG</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Angaben gemäß § 5 ECG, § 14 UGB, § 63 GewO sowie Offenlegung gemäß § 25 MedienG</h2>
                 <p>
-                    Max Mustermann<br/>
-                    ROCK DEALER<br/>
-                    Kerschbaum 49<br/>
-                    8542 St. Peter im Sulmtal<br/>
+                    <strong>Medieninhaber & Diensteanbieter</strong><br/>
+                    Rock-Dealer e.U.<br/>
+                    Inhaber: Georg Reinhold Peter<br/>
+                    Kerschbaum 49, 8542 St. Peter im Sulmtal, Österreich
+                </p>
+                <p className="mt-4">
+                    <strong>Unternehmensgegenstand:</strong> Handel (Steinhandel)<br/>
+                    <strong>UID-Nr.:</strong> ATU67902166
                 </p>
             </div>
             
             <div>
-                <h2 className="text-2xl font-bold text-foreground mb-2">Kontakt</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Kontakt</h2>
                 <p>
-                    Telefon: +43 664 1000290<br/>
-                    E-Mail: office@rock-dealer.com
+                    <strong>Tel.:</strong> +43 664 1000290<br/>
+                    <strong>E-Mail:</strong> office@rock-dealer.com
                 </p>
             </div>
 
             <div>
-                <h2 className="text-2xl font-bold text-foreground mb-2">Umsatzsteuer-ID</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Mitgliedschaften</h2>
                 <p>
-                    Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:<br/>
-                    ATU12345678
+                    Mitglied der Wirtschaftskammer Österreich (WKO)
+                </p>
+            </div>
+            
+            <div>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Aufsichtsbehörde / Gewerbebehörde</h2>
+                <p>
+                    Bezirkshauptmannschaft Deutschlandsberg
                 </p>
             </div>
 
             <div>
-                <h2 className="text-2xl font-bold text-foreground mb-2">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Anwendbare Rechtsvorschriften</h2>
                 <p>
-                    Max Mustermann<br/>
-                    Anschrift wie oben
+                    Gewerbeordnung (GewO): abrufbar über das Rechtsinformationssystem des Bundes (RIS).
                 </p>
             </div>
 
             <div>
-                <h2 className="text-2xl font-bold text-foreground mb-2">Streitschlichtung</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Blattlinie (gemäß § 25 MedienG)</h2>
                 <p>
-                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a>.
-                    <br/>
-                    Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                    Information über das Unternehmen sowie Darstellung von Produkten/Leistungen und Kontaktmöglichkeit.
+                </p>
+            </div>
+
+            <div>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Online-Streitbeilegung / Verbraucherstreitbeilegung</h2>
+                <p>
+                    Verbraucher haben die Möglichkeit, Beschwerden an die Online-Streitbeilegungsplattform der EU zu richten:<br/>
+                    <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://ec.europa.eu/consumers/odr/</a>
+                </p>
+                 <p className="mt-4">
+                    Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                </p>
+            </div>
+
+            <div>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Haftung für Inhalte</h2>
+                <p>
+                    Wir erstellen die Inhalte dieser Website mit größtmöglicher Sorgfalt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir – soweit gesetzlich zulässig – keine Haftung.
+                </p>
+            </div>
+            
+            <div>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Haftung für Links</h2>
+                <p>
+                    Diese Website enthält Links zu externen Websites. Für deren Inhalte übernehmen wir keine Haftung. Bei Bekanntwerden rechtswidriger Inhalte werden betroffene Links umgehend entfernt.
+                </p>
+            </div>
+
+            <div>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Urheberrecht</h2>
+                <p>
+                    Die Inhalte dieser Website (Texte, Bilder, Grafiken) sind urheberrechtlich geschützt. Jede Verwendung bedarf der vorherigen Zustimmung, sofern nicht gesetzlich zulässig.
                 </p>
             </div>
         </div>
