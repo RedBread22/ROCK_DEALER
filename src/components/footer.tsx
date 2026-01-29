@@ -1,45 +1,75 @@
-"use client";
+'use client';
 
-import { Logo } from '@/components/logo';
 import Link from 'next/link';
 import { InteractiveElement } from './interactive-element';
-import { usePathname } from 'next/navigation';
 
 export const Footer = () => {
-    const pathname = usePathname();
-
-    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-        const isHomePage = pathname === '/';
-        const isAnchorLink = href.startsWith('/#');
-
-        if (isHomePage && isAnchorLink) {
-        e.preventDefault();
-        const targetId = href.substring(2);
-        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
-
   return (
-    <footer className="border-t border-border bg-background">
-      <div className="container mx-auto flex flex-col items-center justify-between gap-8 px-4 py-12 text-center md:flex-row md:text-left">
-        <InteractiveElement cursorType="link">
-          <Link href="/">
-            <Logo className="h-8 w-auto text-foreground transition-transform duration-300 hover:scale-105" />
-          </Link>
-        </InteractiveElement>
-        <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-          <InteractiveElement cursorType="link">
-            <Link href="/" onClick={(e) => handleLinkClick(e, '/')} className="nav-link relative font-medium">Home</Link>
-          </InteractiveElement>
-          <InteractiveElement cursorType="link">
-            <Link href="/produkte" className="nav-link relative font-medium">Unsere Produkte</Link>
-          </InteractiveElement>
-          <InteractiveElement cursorType="link">
-            <Link href="/#contact" onClick={(e) => handleLinkClick(e, '/#contact')} className="nav-link relative font-medium">Kontakt</Link>
-          </InteractiveElement>
-        </nav>
-        <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} ROCK DEALER. Alle Rechte vorbehalten.</p>
+    <footer className="border-t border-border bg-background text-foreground">
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 gap-12 text-center md:grid-cols-3 md:text-left">
+          
+          {/* Left: Contact */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="font-headline text-base uppercase tracking-widest text-primary">
+              Kontakt
+            </h3>
+            <div className="mt-6 space-y-2 text-muted-foreground">
+              <p>Mo - Fr: 07:00 - 17:00 Uhr</p>
+              <p>Kerschbaum 49</p>
+              <p>8542 St. Peter im Sulmtal</p>
+              <InteractiveElement cursorType="link">
+                <a href="mailto:office@rock-dealer.com" className="mt-4 block text-primary underline transition-colors hover:text-primary/80">
+                  office@rock-dealer.com
+                </a>
+              </InteractiveElement>
+              <InteractiveElement cursorType="link">
+                <a href="tel:+436641000290" className="block text-primary underline transition-colors hover:text-primary/80">
+                  +43 664 1000290
+                </a>
+              </InteractiveElement>
+            </div>
+          </div>
+
+          {/* Middle: Copyright (Order changes on mobile) */}
+          <div className="flex items-center justify-center order-last md:order-none">
+             <p className="text-sm text-muted-foreground">&copy; Rock-Dealer 2025</p>
+          </div>
+
+          {/* Right: Navigation */}
+          <div className="flex flex-col items-center md:items-end">
+            <h3 className="font-headline text-base uppercase tracking-widest text-primary">
+              Navigation
+            </h3>
+            <nav className="mt-6 space-y-2">
+              <InteractiveElement cursorType="link">
+                <Link href="/impressum" className="block text-primary underline transition-colors hover:text-primary/80">
+                  Impressum
+                </Link>
+              </InteractiveElement>
+              <InteractiveElement cursorType="link">
+                <Link href="/agb" className="block text-primary underline transition-colors hover:text-primary/80">
+                  AGB
+                </Link>
+              </InteractiveElement>
+               <InteractiveElement cursorType="link">
+                <Link href="/produkte/zierkies" className="block text-primary underline transition-colors hover:text-primary/80">
+                  Kies & Zierkies
+                </Link>
+              </InteractiveElement>
+               <InteractiveElement cursorType="link">
+                <Link href="/produkte/natursteine" className="block text-primary underline transition-colors hover:text-primary/80">
+                  Bruchstein
+                </Link>
+              </InteractiveElement>
+               <InteractiveElement cursorType="link">
+                <Link href="/produkte/feinsteinzeug" className="block text-primary underline transition-colors hover:text-primary/80">
+                   Natursteinplatten & Feinsteinzeug
+                </Link>
+              </InteractiveElement>
+            </nav>
+          </div>
+        </div>
       </div>
     </footer>
   );
