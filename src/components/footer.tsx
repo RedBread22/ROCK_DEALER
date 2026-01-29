@@ -39,7 +39,7 @@ export const Footer = () => {
             <Link href="/#contact" onClick={(e) => handleLinkClick(e, '/#contact')} className="nav-link relative font-medium">Kontakt</Link>
           </InteractiveElement>
         </nav>
-        <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} ROCK DEALER. Alle Rechte vorbehalten.</p>
+        <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} ROCK DEALER. Alle Rechte vorbehalten</p>
       </div>
     </footer>
   );
