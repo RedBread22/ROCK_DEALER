@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ImpressumPage() {
   return (
     <main className="bg-background">
-      <section className="relative flex min-h-[50vh] flex-col justify-center overflow-hidden border-b border-border py-20">
+      <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20">
         <div className="container px-4">
           <AnimatedText
             el="h1"
