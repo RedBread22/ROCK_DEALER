@@ -33,11 +33,11 @@ export const Footer = () => {
 
           {/* Middle: Copyright (Order changes on mobile) */}
           <div className="flex items-center justify-center order-last md:order-none">
-             <p className="text-sm text-muted-foreground">&copy; Rock-Dealer 2025</p>
+             <p className="text-sm text-muted-foreground">&copy; Rock-Dealer 2025.</p>
           </div>
 
           {/* Right: Navigation */}
-          <div className="flex flex-col items-center md:items-end">
+          <div className="flex flex-col items-center md:items-end md:text-right">
             <h3 className="font-headline text-base uppercase tracking-widest text-primary">
               Navigation
             </h3>
