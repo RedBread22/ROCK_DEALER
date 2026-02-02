@@ -59,6 +59,48 @@
       "description": "Placeholder image for a product",
       "imageUrl": "https://images.unsplash.com/photo-1718670013939-954787e56385?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzdG9uZSUyMHByb2R1Y3R8ZW58MHx8fHwxNzY5NzIxMzc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "stone product"
+    },
+    {
+      "id": "slider-1",
+      "description": "Impressionen Bild 1",
+      "imageUrl": "/images/SLIDER/1.jpg",
+      "imageHint": "stone garden"
+    },
+    {
+      "id": "slider-2",
+      "description": "Impressionen Bild 2",
+      "imageUrl": "/images/SLIDER/2.jpg",
+      "imageHint": "stone path"
+    },
+    {
+      "id": "slider-3",
+      "description": "Impressionen Bild 3",
+      "imageUrl": "/images/SLIDER/3.jpg",
+      "imageHint": "gravel detail"
+    },
+    {
+      "id": "slider-4",
+      "description": "Impressionen Bild 4",
+      "imageUrl": "/images/SLIDER/4.jpg",
+      "imageHint": "patio tiles"
+    },
+    {
+      "id": "slider-5",
+      "description": "Impressionen Bild 5",
+      "imageUrl": "/images/SLIDER/5.jpg",
+      "imageHint": "stone wall"
+    },
+    {
+      "id": "slider-6",
+      "description": "Impressionen Bild 6",
+      "imageUrl": "/images/SLIDER/6.jpg",
+      "imageHint": "decorative stones"
+    },
+    {
+      "id": "slider-7",
+      "description": "Impressionen Bild 7",
+      "imageUrl": "/images/SLIDER/7.jpg",
+      "imageHint": "garden steps"
     }
   ]
 }
