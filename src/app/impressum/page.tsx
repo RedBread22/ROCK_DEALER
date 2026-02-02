@@ -104,11 +104,14 @@ export default function ImpressumPage() {
                  <div>
                     <h2 className="text-2xl font-bold text-foreground mb-4">Bildnachweise</h2>
                     <p>
-                        Die auf dieser Website verwendeten Produkt- und Referenzbilder stammen – sofern nicht anders angegeben – von:
+                        Ein Teil der auf dieser Website verwendeten Produkt- und Referenzbilder stammt von:
                     </p>
                     <p className="mt-4">
                         © Theis-Böger Schiefer GmbH, Ringstraße 23, 55626 Bundenbach (Deutschland)<br/>
                         Verwendung mit freundlicher Genehmigung.
+                    </p>
+                    <p className="mt-4">
+                        Weitere Bilder stammen vom Betreiber selbst oder von anderen Rechteinhabern.
                     </p>
                 </div>
             </div>
