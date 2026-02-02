@@ -61,7 +61,7 @@ export const VisualSection = () => {
               <h2 className="font-headline text-5xl leading-tight md:text-7xl">
                 Materialien mit Charakter
               </h2>
-              <p className="mt-4 text-lg text-background">
+              <p className="mt-4 text-lg text-primary">
                 Unsere Steine, Platten und Kiese überzeugen durch Struktur, Farbe und Beständigkeit – für Außenbereiche, die lange Freude machen.
               </p>
             </div>
