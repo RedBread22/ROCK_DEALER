@@ -2,6 +2,7 @@
 import React from 'react';
 import { AnimatedText } from './animated-text';
 import { InteractiveElement } from './interactive-element';
+import { Button } from './ui/button';
 
 export const HeroSection = () => {
   return (
@@ -20,12 +21,29 @@ export const HeroSection = () => {
             stagger={0.05}
           />
         </div>
-        <div className="mt-24">
+        <div className="mt-24 max-w-md">
           <InteractiveElement cursorType="text">
-            <p className="max-w-md text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground">
               Hochwertige Natursteine, Kies & Platten für Garten, Terrasse und Außenbereiche.
             </p>
           </InteractiveElement>
+          
+          <div className="mt-8">
+            <InteractiveElement cursorType="link">
+                <a
+                  href="https://drive.google.com/file/d/122uFlw70h8tnXXydQKIhUctNTZ1PjPlB/view"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Katalog als PDF öffnen (externer Link)"
+                  className="inline-block"
+                >
+                  <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                    Katalog öffnen
+                  </Button>
+                </a>
+            </InteractiveElement>
+          </div>
+
         </div>
       </div>
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
