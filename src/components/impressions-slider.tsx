@@ -34,7 +34,7 @@ export const ImpressionsSlider = () => {
   const sliderImages = PlaceHolderImages.filter(img => sliderImageIds.includes(img.id));
 
   const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true, stopOnMouseEnter: true })
+    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })
   );
 
   React.useEffect(() => {
@@ -69,7 +69,7 @@ export const ImpressionsSlider = () => {
             text="Impressionen"
             className="font-headline text-5xl md:text-6xl text-primary"
           />
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="mt-4 text-lg text-primary">
             Einblicke in die Vielseitigkeit und Ästhetik unserer Materialien.
           </p>
         </div>
