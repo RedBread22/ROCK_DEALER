@@ -37,7 +37,7 @@ export const HeroSection = () => {
                   aria-label="Katalog als PDF öffnen (externer Link)"
                   className="inline-block"
                 >
-                  <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                  <Button size="lg" className="font-bold transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
                     Katalog öffnen
                   </Button>
                 </a>
