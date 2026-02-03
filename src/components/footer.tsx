@@ -53,18 +53,8 @@ export const Footer = () => {
                 </Link>
               </InteractiveElement>
                <InteractiveElement cursorType="link">
-                <Link href="/produkte/zierkies" className="block text-primary underline transition-colors hover:text-primary/80">
-                  Kies & Zierkies
-                </Link>
-              </InteractiveElement>
-               <InteractiveElement cursorType="link">
-                <Link href="/produkte/natursteine" className="block text-primary underline transition-colors hover:text-primary/80">
-                  Bruchstein
-                </Link>
-              </InteractiveElement>
-               <InteractiveElement cursorType="link">
                 <Link href="/produkte/feinsteinzeug" className="block text-primary underline transition-colors hover:text-primary/80">
-                   Natursteinplatten & Feinsteinzeug
+                   Natursteinplatten &amp; Feinsteinzeug
                 </Link>
               </InteractiveElement>
             </nav>
