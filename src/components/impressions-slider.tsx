@@ -34,7 +34,7 @@ export const ImpressionsSlider = () => {
   const sliderImages = PlaceHolderImages.filter(img => sliderImageIds.includes(img.id));
 
   const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })
+    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })
   );
 
   React.useEffect(() => {
