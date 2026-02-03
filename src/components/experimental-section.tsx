@@ -15,7 +15,7 @@ export const ExperimentalSection = () => {
   const xPos = (progress - 0.5) * -10;
 
   return (
-    <section ref={ref} className="relative min-h-[100vh] w-full overflow-hidden bg-secondary py-24">
+    <section ref={ref} className="relative min-h-[110vh] w-full overflow-hidden bg-secondary py-24">
       <div className="container mx-auto grid h-full grid-cols-1 items-center gap-12 md:grid-cols-2">
         <div className="relative h-[60vh] md:h-[80vh]">
           {image && (
