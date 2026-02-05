@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getCategoryById, getSubCategoryByIds, generatePlaceholderProducts, getGartendekoProducts, type Product } from '@/lib/products';
+import { productCategories, getCategoryById, getSubCategoryByIds, generatePlaceholderProducts, getGartendekoProducts, type Product } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { ContactFormSection } from '@/components/contact-form-section';
