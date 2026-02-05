@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { productCategories, getCategoryById, getSubCategoryByIds, generatePlaceholderProducts } from '@/lib/products';
+import { getCategoryById, getSubCategoryByIds, generatePlaceholderProducts, getGartendekoProducts, type Product } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { ContactFormSection } from '@/components/contact-form-section';
@@ -50,7 +50,20 @@ export default function SubCategoryPage({ params }: { params: { category: string
         { label: subCategory.name, href: `/produkte/${category.id}/${subCategory.id}` },
     ];
 
-    const products = generatePlaceholderProducts(8);
+    let products: Product[];
+
+    if (params.category === 'gartendeko') {
+        const gartendekoProducts = getGartendekoProducts(params.subcategory);
+        if (gartendekoProducts && gartendekoProducts.length > 0) {
+            products = gartendekoProducts;
+        } else {
+            // Fallback for subcategories without specific images, e.g., 'vulkanbrocken'
+            products = generatePlaceholderProducts(8);
+        }
+    } else {
+        // Default behavior for all other categories
+        products = generatePlaceholderProducts(8);
+    }
 
     return (
         <main className="bg-background">

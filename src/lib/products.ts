@@ -133,3 +133,36 @@ export const generatePlaceholderProducts = (count: number = 6): Product[] => {
     image: findImage('product-placeholder'),
   }));
 };
+
+const gartendekoImageCounts: Record<string, { count: number, path: string, name: string }> = {
+  herz: { count: 4, path: '/images/5. Gartendeko/1. Herz', name: 'Herz' },
+  figuren: { count: 3, path: '/images/5. Gartendeko/2. Figuren', name: 'Figur' },
+  findlinge: { count: 13, path: '/images/5. Gartendeko/3. Findlinge', name: 'Findling' },
+  brunnen: { count: 4, path: '/images/5. Gartendeko/5. Brunnen', name: 'Brunnen' },
+  'tische-baenke': { count: 3, path: '/images/5. Gartendeko/6. Tische  Bänke', name: 'Tisch / Bank' },
+  blumentrog: { count: 8, path: '/images/5. Gartendeko/7. Blumentrog', name: 'Blumentrog' },
+  vasen: { count: 4, path: '/images/5. Gartendeko/8. Vasen', name: 'Vase' },
+};
+
+export const getGartendekoProducts = (subCategoryId: string): Product[] | null => {
+  const imageInfo = gartendekoImageCounts[subCategoryId];
+  if (!imageInfo || imageInfo.count === 0) {
+    return null;
+  }
+
+  const products: Product[] = [];
+  for (let i = 1; i <= imageInfo.count; i++) {
+    const imageUrl = `${imageInfo.path}/${i}.jpg`;
+    products.push({
+      name: `${imageInfo.name} ${i}`,
+      description: `Jedes unserer Deko-Elemente ist ein einzigartiges Naturprodukt. Abmessungen, Farbe und Form können variieren.\n\nFür Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
+      image: {
+        id: `${subCategoryId}-${i}`,
+        description: `${imageInfo.name} ${i}`,
+        imageUrl: imageUrl,
+        imageHint: subCategoryId.replace('-', ' '),
+      },
+    });
+  }
+  return products;
+};
