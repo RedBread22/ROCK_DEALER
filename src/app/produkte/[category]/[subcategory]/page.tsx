@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { productCategories, getCategoryById, getSubCategoryByIds, generatePlaceholderProducts, getGartendekoProducts, type Product } from '@/lib/products';
+import { getCategoryById, getSubCategoryByIds, generatePlaceholderProducts, getGartendekoProducts, type Product, productCategories } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { ContactFormSection } from '@/components/contact-form-section';
@@ -82,7 +82,7 @@ export default function SubCategoryPage({ params }: { params: { category: string
             </section>
 
             <section className="py-24 sm:py-32">
-                <div className="container mx-auto px-4">
+                <div className="mx-auto max-w-7xl px-4">
                     <ProductGridWithModal products={products} />
                 </div>
             </section>
