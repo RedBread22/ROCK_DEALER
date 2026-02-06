@@ -27,7 +27,7 @@ export default function ProduktePage() {
 
       <section className="py-24 sm:py-32">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {productCategories.map((category) => (
               <ContentCard 
                 key={category.id} 
