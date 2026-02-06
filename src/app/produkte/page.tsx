@@ -14,7 +14,7 @@ export default function ProduktePage() {
   const bottomCategories = productCategories.slice(3);
 
   return (
-    <main className="bg-background">
+    <>
       <section className="relative flex min-h-[60vh] flex-col items-center justify-center overflow-hidden border-b border-border py-20 text-center">
         <div className="container px-4">
           <AnimatedText
@@ -63,6 +63,6 @@ export default function ProduktePage() {
       </section>
       
       <ContactFormSection />
-    </main>
+    </>
   );
 }

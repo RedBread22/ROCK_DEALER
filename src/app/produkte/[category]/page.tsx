@@ -46,7 +46,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
 
 
     return (
-        <main className="bg-background">
+        <>
             <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20">
                 <div className="container px-4">
                     <Breadcrumbs items={breadcrumbItems} className="mb-10" />
@@ -82,6 +82,6 @@ export default function CategoryPage({ params }: { params: { category: string } 
             </section>
             
             <ContactFormSection />
-        </main>
+        </>
     );
 }
