@@ -13,30 +13,24 @@ export const metadata: Metadata = {
 
 const highlightData = [
   {
-    id: 'natursteine',
-    title: 'NATURSTEINE',
-    description: 'Granit, Gneis, Porphyr & mehr – robuste Materialien für zeitlose Gestaltung.',
-    href: '/produkte/natursteine',
+    id: 'natursteine', // Keep id for image lookup
+    title: 'HOCHWERTIGE MATERIALIEN',
+    description: 'Auswahl an Naturstein, Betonstein & Feinsteinzeug – langlebig und zeitlos.',
   },
   {
     id: 'betonsteine',
-    title: 'BETONSTEINE',
-    description: 'Pflaster, Mauern, Palisaden – moderne Lösungen für Wege und Außenflächen.',
-    href: '/produkte/betonsteine',
+    title: 'REGIONAL & VERLÄSSLICH',
+    description: 'Beratung, Lieferung & Abholung – persönlicher Service aus der Region.',
   },
   {
     id: 'feinsteinzeug',
-    title: 'FEINSTEINZEUG',
-    description: 'Pflegeleicht, elegant und langlebig – Platten für Terrasse & Außenbereich.',
-    href: '/produkte/feinsteinzeug',
+    title: 'FÜR GARTEN & AUSSENBEREICH',
+    description: 'Von Platten bis Zierkies – vielseitig einsetzbar für jedes Projekt.',
   },
 ];
 
 export default function ProduktePage() {
   const allCategories = productCategories;
-  const gridTopCategories = allCategories.slice(0, 4);
-  const gridBottomCategories = allCategories.slice(4);
-
   const bannerImage = PlaceHolderImages.find(img => img.id === 'products-banner');
 
   return (
@@ -53,7 +47,6 @@ export default function ProduktePage() {
                         key={item.id}
                         title={item.title}
                         description={item.description}
-                        href={item.href}
                         image={image}
                     />
                 )
@@ -65,8 +58,8 @@ export default function ProduktePage() {
       <section className="py-16 sm:py-24 bg-secondary/30">
         <div className="container mx-auto px-4">
             <h2 className="text-3xl font-headline mb-12 text-center md:text-left">Alle Produktkategorien</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-              {gridTopCategories.map((category) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {allCategories.map((category) => (
                 <ContentCard
                   key={category.id}
                   title={category.name}
@@ -76,20 +69,6 @@ export default function ProduktePage() {
                 />
               ))}
             </div>
-             {gridBottomCategories.length > 0 && (
-              <div className="flex justify-center">
-                 {gridBottomCategories.map((category) => (
-                   <div key={category.id} className="w-full sm:w-1/2 lg:w-1/4">
-                    <ContentCard
-                      title={category.name}
-                      description={category.description}
-                      image={category.image}
-                      href={`/produkte/${category.id}`}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
         </div>
       </section>
 
