@@ -107,6 +107,24 @@
       "description": "Stone texture banner",
       "imageUrl": "/images/garden_4.png",
       "imageHint": "stone texture"
+    },
+    {
+      "id": "highlight-materials",
+      "description": "High-quality materials like natural stone",
+      "imageUrl": "/images/UNSERE-PRODUKTE/1.jpg",
+      "imageHint": "natural stone"
+    },
+    {
+      "id": "highlight-regional",
+      "description": "Regional and reliable service",
+      "imageUrl": "/images/UNSERE-PRODUKTE/2.jpg",
+      "imageHint": "stone delivery"
+    },
+    {
+      "id": "highlight-garden",
+      "description": "Stones for garden and outdoor areas",
+      "imageUrl": "/images/UNSERE-PRODUKTE/3.jpg",
+      "imageHint": "garden stones"
     }
   ]
 }

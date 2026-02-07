@@ -13,19 +13,19 @@ export const metadata: Metadata = {
 
 const highlightData = [
   {
-    id: 'natursteine', // Keep id for image lookup
+    id: 'usp1',
     title: 'HOCHWERTIGE MATERIALIEN',
-    description: 'Auswahl an Naturstein, Betonstein & Feinsteinzeug – langlebig und zeitlos.',
+    imageId: 'highlight-materials',
   },
   {
-    id: 'betonsteine',
+    id: 'usp2',
     title: 'REGIONAL & VERLÄSSLICH',
-    description: 'Beratung, Lieferung & Abholung – persönlicher Service aus der Region.',
+    imageId: 'highlight-regional',
   },
   {
-    id: 'feinsteinzeug',
+    id: 'usp3',
     title: 'FÜR GARTEN & AUSSENBEREICH',
-    description: 'Von Platten bis Zierkies – vielseitig einsetzbar für jedes Projekt.',
+    imageId: 'highlight-garden',
   },
 ];
 
@@ -39,14 +39,12 @@ export default function ProduktePage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {highlightData.map(item => {
-                const category = productCategories.find(cat => cat.id === item.id);
-                const image = category?.image;
+                const image = PlaceHolderImages.find(img => img.id === item.imageId);
                 if (!image) return null;
                 return (
                     <HighlightCard
                         key={item.id}
                         title={item.title}
-                        description={item.description}
                         image={image}
                     />
                 )
