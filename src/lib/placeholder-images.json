@@ -101,6 +101,12 @@
       "description": "Impressionen Bild 7",
       "imageUrl": "/images/SLIDER/7.jpg",
       "imageHint": "garden steps"
+    },
+    {
+      "id": "products-banner",
+      "description": "Stone texture banner",
+      "imageUrl": "/images/garden_4.png",
+      "imageHint": "stone texture"
     }
   ]
 }
