@@ -157,7 +157,11 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     randleisten: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten.jpg',
     betonplatten: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten.jpg',
     palisaden: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden.jpg',
-  }
+  },
+  zierkies: {
+    kantkorn: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn.jpg',
+    rundkorn: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn.jpg',
+  },
 };
 
 const allSubCategories: (SubCategory & { parentId: string })[] = productCategories
