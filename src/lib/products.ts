@@ -162,6 +162,16 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     kantkorn: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn.jpg',
     rundkorn: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn.jpg',
   },
+  gartendeko: {
+    herz: '/images/UNSERE-PRODUKTE/Gartendeko/Herz.jpg',
+    figuren: '/images/UNSERE-PRODUKTE/Gartendeko/Elefant.jpg',
+    findlinge: '/images/UNSERE-PRODUKTE/Gartendeko/Findlinge.jpg',
+    vulkanbrocken: '/images/UNSERE-PRODUKTE/Gartendeko/Vulkanbrocken.jpg',
+    brunnen: '/images/UNSERE-PRODUKTE/Gartendeko/Brunnen.jpg',
+    'tische-baenke': '/images/UNSERE-PRODUKTE/Gartendeko/Tische  Bänke.jpg',
+    blumentrog: '/images/UNSERE-PRODUKTE/Gartendeko/Blumentrog.jpg',
+    vasen: '/images/UNSERE-PRODUKTE/Gartendeko/Vasen.jpg',
+  }
 };
 
 const allSubCategories: (SubCategory & { parentId: string })[] = productCategories
