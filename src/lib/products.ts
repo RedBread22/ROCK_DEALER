@@ -3,6 +3,7 @@ import { type ImagePlaceholder, PlaceHolderImages } from './placeholder-images';
 export type Product = {
   name: string;
   description: string;
+  meta?: string;
   image: ImagePlaceholder;
 };
 
@@ -99,6 +100,43 @@ export const productCategories: ProductCategory[] = [
   },
 ];
 
+const subCategoryDescriptions: Record<string, Record<string, string>> = {
+  natursteine: {
+    granit: 'Robuster Naturstein für Terrassen, Wege und Stufen – frostfest, langlebig und pflegeleicht.',
+    travertin: 'Warmer Naturstein mit mediterraner Optik – ideal für Terrassen und elegante Außenflächen.',
+    schiefer: 'Markante Struktur und natürliche Spaltoptik – perfekt für moderne Akzente im Garten und an Mauern.',
+    sandstein: 'Natürliche Farbtöne und angenehme Haptik – vielseitig einsetzbar für Wege, Stufen und Terrassen.',
+    'brasil-quarzit': 'Extrem widerstandsfähig und edel in der Wirkung – ideal für stark beanspruchte Außenbereiche.',
+    'luserna-gneis': 'Klassischer Gneis mit hoher Festigkeit – beliebt für Platten, Stufen und langlebige Außenanlagen.',
+    'stainzer-gneis': 'Regionaler Charakterstein mit lebendiger Struktur – robust und vielseitig für Garten- und Hofbereiche.',
+    kanfanar: 'Heller Kalkstein-Look mit ruhiger Struktur – für stilvolle Terrassen und zeitlose Flächen.',
+    porphyr: 'Rutschfest und extrem wetterbeständig – optimal für Einfahrten, Wege und Pflasterflächen.',
+    basalt: 'Dunkler, dichter Naturstein mit moderner Wirkung – sehr belastbar und langlebig im Außenbereich.',
+    tuff: 'Leichter Naturstein mit warmen Erdtönen – ideal für dekorative Elemente und individuelle Akzente.',
+  },
+  betonsteine: {
+      pflastersteine: 'Vielseitige Pflastersteine aus Beton für moderne Wege, Einfahrten und Plätze.',
+      mauersteine: 'System-Mauersteine aus Beton für stabile und ästhetische Gartenmauern und Abgrenzungen.',
+      randleisten: 'Saubere und stabile Kantenabschlüsse für Beete und Pflasterflächen mit Beton-Randleisten.',
+      betonplatten: 'Großformatige Betonplatten für moderne, ruhige Terrassen- und Weggestaltungen.',
+      palisaden: 'Beton-Palisaden zum Abfangen von Hängen, als Einfassung oder zur dekorativen Gliederung.',
+  },
+  zierkies: {
+      rundkorn: 'Natürlich gerundeter Zierkies für pflegeleichte Flächen, Wege und dekorative Akzente.',
+      kantkorn: 'Gebrochener Ziersplitt für stabile, wasserdurchlässige Flächen und moderne Gartengestaltung.',
+  },
+  gartendeko: {
+      herz: 'Dekorative Herzen aus Naturstein als liebevolles und beständiges Symbol in Ihrem Garten.',
+      figuren: 'Handgefertigte Figuren aus Stein – einzigartige Kunstwerke und Blickfänge für den Außenbereich.',
+      findlinge: 'Charakterstarke Findlinge und Solitärsteine als natürliche Gestaltungselemente.',
+      vulkanbrocken: 'Poröse Vulkanbrocken für einzigartige, leichte und naturnahe Gartendekorationen.',
+      brunnen: 'Gartenbrunnen aus Naturstein – beruhigendes Wasserspiel und edler Mittelpunkt.',
+      'tische-baenke': 'Robuste und wetterfeste Tische und Bänke aus massivem Naturstein.',
+      blumentrog: 'Massive Blumentröge aus Naturstein – langlebig, stilvoll und für jede Pflanze geeignet.',
+      vasen: 'Elegante Steinvasen als zeitlose Dekoration für Eingangsbereiche, Terrassen und Gärten.',
+  }
+};
+
 const allSubCategories: (SubCategory & { parentId: string })[] = productCategories
   .filter((cat) => cat.subCategories)
   .flatMap((cat) =>
@@ -106,7 +144,7 @@ const allSubCategories: (SubCategory & { parentId: string })[] = productCategori
       ...sub,
       id: sub.id,
       name: sub.name,
-      description: `Entdecken Sie unsere Auswahl an ${sub.name}. Platzhalter-Text – Details folgen in Kürze.`,
+      description: subCategoryDescriptions[cat.id]?.[sub.id] || `Entdecken Sie unsere Auswahl an ${sub.name}.`,
       image: findImage(`product-placeholder`),
       parentId: cat.id,
     }))
@@ -129,7 +167,8 @@ export const getSubCategoriesByParentId = (parentId: string) => {
 export const generatePlaceholderProducts = (count: number = 6): Product[] => {
   return Array.from({ length: count }, (_, i) => ({
     name: `Produkt ${i + 1}`,
-    description: 'Platzhalterbeschreibung – Details zu diesem Produkt folgen in Kürze. Kontaktieren Sie uns für weitere Informationen.',
+    description: 'Details zu diesem Produkt folgen in Kürze. Kontaktieren Sie uns für weitere Informationen zu Verfügbarkeit und Preisen.',
+    meta: 'Frostfest & witterungsbeständig',
     image: findImage('product-placeholder'),
   }));
 };
@@ -156,6 +195,7 @@ export const getGartendekoProducts = (subCategoryId: string): Product[] | null =
     products.push({
       name: `${imageInfo.name} ${i}`,
       description: `Jedes unserer Deko-Elemente ist ein einzigartiges Naturprodukt. Abmessungen, Farbe und Form können variieren.\n\nFür Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
+      meta: 'Unikat aus Naturstein',
       image: {
         id: `${subCategoryId}-${i}`,
         description: `${imageInfo.name} ${i}`,

@@ -30,9 +30,11 @@ export const ProductCard = ({
         />
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="font-headline text-2xl font-bold">{product.name}</h3>
-        <p className="mt-2 flex-1 text-muted-foreground line-clamp-3">{product.description}</p>
-        <div className="mt-6">
+        <h3 className="text-lg font-semibold text-white">{product.name}</h3>
+        {product.meta && (
+          <p className="mt-1 text-xs text-white/60 line-clamp-1">{product.meta}</p>
+        )}
+        <div className="mt-auto pt-6">
           <Button
             variant="outline"
             onClick={onDetailsClick}
