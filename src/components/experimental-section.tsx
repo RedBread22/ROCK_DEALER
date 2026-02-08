@@ -13,25 +13,6 @@ export const ExperimentalSection = () => {
   return (
     <section className="relative min-h-[110vh] w-full overflow-hidden bg-secondary py-24">
       <div className="container mx-auto grid h-full grid-cols-1 items-center gap-12 md:grid-cols-2">
-        <div className="relative h-[60vh] md:h-[80vh]">
-          {image && (
-            <motion.div
-              initial={{ opacity: 0, x: -100, scale: 0.9 }}
-              whileInView={{ opacity: 1, x: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={image.imageUrl}
-                alt={image.description}
-                data-ai-hint={image.imageHint}
-                fill
-                className="object-cover shadow-2xl"
-              />
-            </motion.div>
-          )}
-        </div>
         <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -53,6 +34,25 @@ export const ExperimentalSection = () => {
               </Link>
             </InteractiveElement>
         </motion.div>
+        <div className="relative h-[60vh] md:h-[80vh]">
+          {image && (
+            <motion.div
+              initial={{ opacity: 0, x: 100, scale: 0.9 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={image.imageUrl}
+                alt={image.description}
+                data-ai-hint={image.imageHint}
+                fill
+                className="object-cover shadow-2xl"
+              />
+            </motion.div>
+          )}
+        </div>
       </div>
     </section>
   );
