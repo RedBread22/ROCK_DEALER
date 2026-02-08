@@ -10,9 +10,9 @@ export const ExperimentalSection = () => {
   const { ref, progress } = useScrollProgress<HTMLElement>();
   const image = PlaceHolderImages.find((img) => img.id === 'kinetic-3');
 
-  const rotation = (progress - 0.5) * -20;
-  const scale = 1 + (progress * 0.2);
-  const xPos = (progress - 0.5) * -10;
+  const scale = 0.9 + progress * 0.1;
+  const xPos = -20 + progress * 20;
+  const opacity = 0.5 + progress * 0.5;
 
   return (
     <section ref={ref} className="relative min-h-[110vh] w-full overflow-hidden bg-secondary py-24">
@@ -22,7 +22,8 @@ export const ExperimentalSection = () => {
             <div 
               className="absolute inset-0 will-change-transform" 
               style={{
-                transform: `translateX(${xPos}%) rotate(${rotation}deg) scale(${scale})`,
+                transform: `translateX(${xPos}%) scale(${scale})`,
+                opacity: opacity
               }}
             >
               <Image
