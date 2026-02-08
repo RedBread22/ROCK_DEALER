@@ -137,17 +137,47 @@ const subCategoryDescriptions: Record<string, Record<string, string>> = {
   }
 };
 
+const subCategoryImages: Record<string, Record<string, string>> = {
+  natursteine: {
+    basalt: '/images/UNSERE-PRODUKTE/Natursteine/Basalt.jpg',
+    'brasil-quarzit': '/images/UNSERE-PRODUKTE/Natursteine/Brasil. Quarzit.jpg',
+    granit: '/images/UNSERE-PRODUKTE/Natursteine/Granit.jpg',
+    'luserna-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis.jpg',
+    muschelkalk: '/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk.jpg',
+    porphyr: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr.jpg',
+    schiefer: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer.jpg',
+    sandstein: '/images/UNSERE-PRODUKTE/Natursteine/Sandstein.jpg',
+    'stainzer-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis.jpg',
+    travertin: '/images/UNSERE-PRODUKTE/Natursteine/Travertin.jpg',
+    tuff: '/images/UNSERE-PRODUKTE/Natursteine/Tuff.jpg',
+  },
+};
+
 const allSubCategories: (SubCategory & { parentId: string })[] = productCategories
   .filter((cat) => cat.subCategories)
   .flatMap((cat) =>
-    cat.subCategories!.map((sub) => ({
-      ...sub,
-      id: sub.id,
-      name: sub.name,
-      description: subCategoryDescriptions[cat.id]?.[sub.id] || `Entdecken Sie unsere Auswahl an ${sub.name}.`,
-      image: findImage(`product-placeholder`),
-      parentId: cat.id,
-    }))
+    cat.subCategories!.map((sub) => {
+      const imageUrl = subCategoryImages[cat.id]?.[sub.id];
+      const image: ImagePlaceholder = imageUrl
+        ? {
+            id: `${cat.id}-${sub.id}`,
+            description: `Bild für ${sub.name}`,
+            imageUrl: imageUrl,
+            imageHint: sub.name.toLowerCase().replace('.', ''),
+          }
+        : findImage('product-placeholder');
+
+      return {
+        ...sub,
+        id: sub.id,
+        name: sub.name,
+        description:
+          subCategoryDescriptions[cat.id]?.[sub.id] ||
+          `Entdecken Sie unsere Auswahl an ${sub.name}.`,
+        image: image,
+        parentId: cat.id,
+      };
+    })
   );
 
 export const getCategoryById = (id: string) => {
