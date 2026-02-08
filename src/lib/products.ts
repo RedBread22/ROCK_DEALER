@@ -151,6 +151,13 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     travertin: '/images/UNSERE-PRODUKTE/Natursteine/Travertin.jpg',
     tuff: '/images/UNSERE-PRODUKTE/Natursteine/Tuff.jpg',
   },
+  betonsteine: {
+    pflastersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine.jpg',
+    mauersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine.jpg',
+    randleisten: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten.jpg',
+    betonplatten: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten.jpg',
+    palisaden: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden.jpg',
+  }
 };
 
 const allSubCategories: (SubCategory & { parentId: string })[] = productCategories
