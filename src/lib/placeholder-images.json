@@ -27,31 +27,31 @@
     {
       "id": "category-natursteine",
       "description": "Assortment of natural stones",
-      "imageUrl": "https://images.unsplash.com/photo-1705575463786-474f9271b1e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxuYXR1cmFsJTIwc3RvbmV8ZW58MHx8fHwxNzY5NzIxMzc0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/UNSERE-PRODUKTE/Natursteine.jpg",
       "imageHint": "natural stone"
     },
     {
       "id": "category-betonsteine",
       "description": "Concrete paving stones",
-      "imageUrl": "https://images.unsplash.com/photo-1519113753376-0098a7dcdc5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb25jcmV0ZSUyMHN0b25lfGVufDB8fHx8MTc2OTcyMTM3NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/UNSERE-PRODUKTE/Betonsteine.jpg",
       "imageHint": "concrete stone"
     },
     {
       "id": "category-feinsteinzeug",
       "description": "Porcelain stoneware tiles",
-      "imageUrl": "https://images.unsplash.com/photo-1709962701974-5ac5ccb4718b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwb3JjZWxhaW4lMjB0aWxlfGVufDB8fHx8MTc2OTcyMTM3NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/UNSERE-PRODUKTE/Feinsteinzeug.JPG",
       "imageHint": "porcelain tile"
     },
     {
       "id": "category-zierkies",
       "description": "Decorative gravel",
-      "imageUrl": "https://images.unsplash.com/photo-1761984336746-8a91551b1a99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkZWNvcmF0aXZlJTIwZ3JhdmVsfGVufDB8fHx8MTc2OTcyMTM3NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/UNSERE-PRODUKTE/Zierkies.jpg",
       "imageHint": "decorative gravel"
     },
     {
       "id": "category-gartendeko",
       "description": "Garden decoration made of stone",
-      "imageUrl": "https://images.unsplash.com/photo-1660324532842-52cbda1441c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxnYXJkZW4lMjBkZWNvcnxlbnwwfHx8fDE3Njk3MjEzNzV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/UNSERE-PRODUKTE/Gartendeko.jpg",
       "imageHint": "garden decor"
     },
     {
