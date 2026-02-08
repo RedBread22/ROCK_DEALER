@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { InteractiveElement } from './interactive-element';
+import { Button } from '@/components/ui/button';
 
 export const ExperimentalSection = () => {
   const image = PlaceHolderImages.find((img) => img.id === 'kinetic-3');
@@ -45,8 +46,10 @@ export const ExperimentalSection = () => {
               Ob modern, klassisch oder natürlich – unsere Materialien lassen sich flexibel einsetzen und passen sich unterschiedlichsten Projekten an. Von Wegen und Terrassen bis zu Beeten, Mauern und Akzenten im Garten.
             </p>
             <InteractiveElement cursorType="link">
-              <Link href="/produkte" className="inline-block text-xl font-bold text-primary hover:underline">
-                Unsere Produkte ansehen →
+              <Link href="/produkte" passHref>
+                <Button size="lg" className="font-bold">
+                  Unsere Produkte ansehen
+                </Button>
               </Link>
             </InteractiveElement>
         </motion.div>
