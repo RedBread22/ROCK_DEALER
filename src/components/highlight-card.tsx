@@ -17,7 +17,7 @@ export const HighlightCard = ({ title, image }: HighlightCardProps) => {
       transition={{ duration: 0.6 }}
       className="h-full flex flex-col overflow-hidden rounded-lg bg-card border border-border text-card-foreground shadow-sm"
     >
-      <div className="relative aspect-[4/3] w-full">
+      <div className="relative aspect-[4/5] w-full">
         {image && (
           <Image
             src={image.imageUrl}
