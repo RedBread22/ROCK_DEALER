@@ -2,29 +2,24 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useScrollProgress } from '@/hooks/use-scroll-progress';
+import { motion } from 'framer-motion';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { InteractiveElement } from './interactive-element';
 
 export const ExperimentalSection = () => {
-  const { ref, progress } = useScrollProgress<HTMLElement>();
   const image = PlaceHolderImages.find((img) => img.id === 'kinetic-3');
 
-  const scale = 0.9 + progress * 0.1;
-  const xPos = -20 + progress * 20;
-  const opacity = 0.5 + progress * 0.5;
-
   return (
-    <section ref={ref} className="relative min-h-[110vh] w-full overflow-hidden bg-secondary py-24">
+    <section className="relative min-h-[110vh] w-full overflow-hidden bg-secondary py-24">
       <div className="container mx-auto grid h-full grid-cols-1 items-center gap-12 md:grid-cols-2">
         <div className="relative h-[60vh] md:h-[80vh]">
           {image && (
-            <div 
-              className="absolute inset-0 will-change-transform" 
-              style={{
-                transform: `translateX(${xPos}%) scale(${scale})`,
-                opacity: opacity
-              }}
+            <motion.div
+              initial={{ opacity: 0, x: -100, scale: 0.9 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="absolute inset-0"
             >
               <Image
                 src={image.imageUrl}
@@ -33,22 +28,28 @@ export const ExperimentalSection = () => {
                 fill
                 className="object-cover shadow-2xl"
               />
-            </div>
+            </motion.div>
           )}
         </div>
-        <div className="relative z-10 space-y-8">
-          <h2 className="font-headline text-5xl md:text-7xl">
-            Vielseitig einsetzbar.
-          </h2>
-          <p className="max-w-md text-lg text-muted-foreground">
-            Ob modern, klassisch oder natürlich – unsere Materialien lassen sich flexibel einsetzen und passen sich unterschiedlichsten Projekten an. Von Wegen und Terrassen bis hin zu Beeten, Mauern und Akzenten im Garten.
-          </p>
-          <InteractiveElement cursorType="link">
-            <Link href="/produkte" className="inline-block text-xl font-bold text-primary hover:underline">
-              Unsere Produkte ansehen →
-            </Link>
-          </InteractiveElement>
-        </div>
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative z-10 space-y-8"
+        >
+            <h2 className="font-headline text-5xl md:text-7xl">
+              Vielseitig einsetzbar.
+            </h2>
+            <p className="max-w-md text-lg text-muted-foreground">
+              Ob modern, klassisch oder natürlich – unsere Materialien lassen sich flexibel einsetzen und passen sich unterschiedlichsten Projekten an. Von Wegen und Terrassen bis zu Beeten, Mauern und Akzenten im Garten.
+            </p>
+            <InteractiveElement cursorType="link">
+              <Link href="/produkte" className="inline-block text-xl font-bold text-primary hover:underline">
+                Unsere Produkte ansehen →
+              </Link>
+            </InteractiveElement>
+        </motion.div>
       </div>
     </section>
   );
