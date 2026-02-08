@@ -34,25 +34,23 @@ export const ExperimentalSection = () => {
               </Link>
             </InteractiveElement>
         </motion.div>
-        <div className="relative h-[60vh] md:h-[80vh]">
+        <motion.div
+          initial={{ opacity: 0, x: 100, scale: 0.9 }}
+          whileInView={{ opacity: 1, x: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="relative aspect-[3/4] w-full"
+        >
           {image && (
-            <motion.div
-              initial={{ opacity: 0, x: 100, scale: 0.9 }}
-              whileInView={{ opacity: 1, x: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={image.imageUrl}
-                alt={image.description}
-                data-ai-hint={image.imageHint}
-                fill
-                className="object-cover shadow-2xl"
-              />
-            </motion.div>
+            <Image
+              src={image.imageUrl}
+              alt={image.description}
+              data-ai-hint={image.imageHint}
+              fill
+              className="rounded-lg object-cover"
+            />
           )}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
