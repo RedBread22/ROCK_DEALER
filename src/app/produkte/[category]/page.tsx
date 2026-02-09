@@ -47,15 +47,15 @@ export default function CategoryPage({ params }: { params: { category: string } 
 
     return (
         <>
-            <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20 bg-zinc-100 text-zinc-900">
+            <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20 bg-secondary/30">
                 <div className="container px-4">
-                    <Breadcrumbs items={breadcrumbItems} className="mb-10 !text-zinc-500" />
+                    <Breadcrumbs items={breadcrumbItems} className="mb-10" />
                     <AnimatedText
                         el="h1"
                         text={category.name}
                         className="font-headline text-5xl md:text-7xl"
                     />
-                    <p className="mt-6 max-w-2xl text-lg text-zinc-600 md:text-xl">
+                    <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
                         {category.description}
                     </p>
                 </div>
