@@ -67,15 +67,15 @@ export default function SubCategoryPage({ params }: { params: { category: string
 
     return (
         <>
-            <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20">
+            <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20 bg-white text-zinc-900">
                 <div className="container px-4">
-                    <Breadcrumbs items={breadcrumbItems} className="mb-10" />
+                    <Breadcrumbs items={breadcrumbItems} className="mb-10 !text-zinc-500" />
                     <AnimatedText
                         el="h1"
                         text={subCategory.name}
                         className="font-headline text-5xl md:text-7xl"
                     />
-                    <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
+                    <p className="mt-6 max-w-2xl text-lg text-zinc-600 md:text-xl">
                         {subCategory.description}
                     </p>
                 </div>
