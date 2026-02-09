@@ -13,7 +13,7 @@ export const PhilosophySection = () => {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen w-full overflow-hidden py-32"
+      className="relative min-h-screen w-full overflow-hidden py-32 bg-secondary"
     >
       <div className="container mx-auto px-4">
         <div className="flex flex-col gap-24">
