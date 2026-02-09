@@ -15,7 +15,7 @@ export const VisualSection = () => {
   }
 
   return (
-    <section id="products" className="w-full overflow-hidden bg-secondary py-24 sm:py-32">
+    <section id="products" className="w-full overflow-hidden bg-white py-24 sm:py-32">
       <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 md:grid-cols-2 lg:gap-24">
         {/* Image Block */}
         <motion.div
@@ -42,10 +42,10 @@ export const VisualSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col items-start text-left"
         >
-          <h2 className="font-headline text-5xl leading-tight text-foreground md:text-6xl">
+          <h2 className="font-headline text-5xl leading-tight text-zinc-900 md:text-6xl">
             Materialien mit Charakter
           </h2>
-          <p className="mt-6 max-w-lg text-lg text-muted-foreground">
+          <p className="mt-6 max-w-lg text-lg text-zinc-600">
             Unsere Steine, Platten und Kiese überzeugen durch Struktur, Farbe und Beständigkeit – für Außenbereiche, die lange Freude machen.
           </p>
           <div className="mt-10">
