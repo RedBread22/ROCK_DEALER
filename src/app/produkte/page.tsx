@@ -53,9 +53,9 @@ export default function ProduktePage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 bg-secondary/30">
+      <section className="py-16 sm:py-24 bg-white">
         <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-headline mb-12 text-center md:text-left">Alle Produktkategorien</h2>
+            <h2 className="text-3xl font-headline mb-12 text-center md:text-left text-zinc-900">Alle Produktkategorien</h2>
             <div className="flex flex-wrap justify-center -mx-4">
               {allCategories.map((category) => (
                 <div key={category.id} className="w-full sm:w-1/2 md:w-1/3 p-4">
