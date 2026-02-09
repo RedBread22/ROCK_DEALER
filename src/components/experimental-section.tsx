@@ -18,7 +18,7 @@ export const ExperimentalSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative z-10 space-y-8"
+            className="relative z-10 space-y-8 rounded-lg bg-black/5 p-8 backdrop-blur-sm"
         >
             <h2 className="font-headline text-5xl md:text-7xl text-zinc-900">
               Vielseitig einsetzbar.
