@@ -11,7 +11,7 @@ export const ExperimentalSection = () => {
   const image = PlaceHolderImages.find((img) => img.id === 'kinetic-3');
 
   return (
-    <section className="relative min-h-[110vh] w-full overflow-hidden bg-secondary py-24">
+    <section className="relative min-h-[110vh] w-full overflow-hidden bg-white py-24">
       <div className="container mx-auto grid h-full grid-cols-1 items-center gap-12 md:grid-cols-2">
         <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -20,10 +20,10 @@ export const ExperimentalSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative z-10 space-y-8"
         >
-            <h2 className="font-headline text-5xl md:text-7xl">
+            <h2 className="font-headline text-5xl md:text-7xl text-zinc-900">
               Vielseitig einsetzbar.
             </h2>
-            <p className="max-w-md text-lg text-muted-foreground">
+            <p className="max-w-md text-lg text-zinc-600">
               Ob modern, klassisch oder natürlich – unsere Materialien lassen sich flexibel einsetzen und passen sich unterschiedlichsten Projekten an. Von Wegen und Terrassen bis zu Beeten, Mauern und Akzenten im Garten.
             </p>
             <InteractiveElement cursorType="link">
