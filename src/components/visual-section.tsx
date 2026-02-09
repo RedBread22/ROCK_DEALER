@@ -40,15 +40,15 @@ export const VisualSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col items-start text-left"
+          className="space-y-8 rounded-lg bg-black/5 p-8 backdrop-blur-sm"
         >
           <h2 className="font-headline text-5xl leading-tight text-zinc-900 md:text-6xl">
             Materialien mit Charakter
           </h2>
-          <p className="mt-6 max-w-lg text-lg text-zinc-600">
+          <p className="max-w-lg text-lg text-zinc-600">
             Unsere Steine, Platten und Kiese überzeugen durch Struktur, Farbe und Beständigkeit – für Außenbereiche, die lange Freude machen.
           </p>
-          <div className="mt-10">
+          <div className="pt-2">
             <InteractiveElement cursorType="link">
               <Link href="/produkte" passHref>
                 <Button size="lg" className="font-bold">
