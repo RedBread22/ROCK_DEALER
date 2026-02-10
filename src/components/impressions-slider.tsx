@@ -72,7 +72,7 @@ export const ImpressionsSlider = () => {
         <CarouselContent className="-ml-0">
           {sliderImages.map((image, index) => (
             <CarouselItem key={index} className="pl-0">
-              <div className="relative h-[70vh] w-full">
+              <div className="relative h-[calc(100vh-6rem)] w-full">
                 <Image
                   src={image.imageUrl}
                   alt={image.description}
