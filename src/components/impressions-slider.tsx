@@ -12,13 +12,13 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
 
 const sliderImageIds = [
+  'slider-3',
   'slider-1',
   'slider-2',
-  'slider-3',
   'slider-4',
   'slider-5',
   'slider-6',
@@ -30,7 +30,9 @@ export const ImpressionsSlider = () => {
   const [current, setCurrent] = React.useState(0);
   const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([]);
   
-  const sliderImages = PlaceHolderImages.filter(img => sliderImageIds.includes(img.id));
+  const sliderImages = sliderImageIds
+    .map(id => PlaceHolderImages.find(img => img.id === id))
+    .filter((img): img is ImagePlaceholder => !!img);
 
   const plugin = React.useRef(
     Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })
