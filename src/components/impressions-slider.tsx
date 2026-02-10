@@ -60,7 +60,7 @@ export const ImpressionsSlider = () => {
   }, [api]);
 
   return (
-    <section className="w-full bg-background">
+    <section className="w-full bg-background pt-24">
       <Carousel
         setApi={setApi}
         plugins={[plugin.current]}
