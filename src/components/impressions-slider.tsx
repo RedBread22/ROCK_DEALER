@@ -14,7 +14,6 @@ import {
 } from '@/components/ui/carousel';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
-import { AnimatedText } from './animated-text';
 
 const sliderImageIds = [
   'slider-1',
@@ -61,20 +60,7 @@ export const ImpressionsSlider = () => {
   }, [api]);
 
   return (
-    <section className="w-full py-24 sm:py-32 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <AnimatedText
-            el="h2"
-            text="Impressionen"
-            className="font-headline text-5xl md:text-6xl text-primary"
-          />
-          <p className="mt-4 text-lg text-primary">
-            Einblicke in die Vielseitigkeit und Ästhetik unserer Materialien.
-          </p>
-        </div>
-      </div>
-      
+    <section className="w-full bg-background">
       <Carousel
         setApi={setApi}
         plugins={[plugin.current]}
@@ -83,10 +69,10 @@ export const ImpressionsSlider = () => {
         }}
         className="w-full relative"
       >
-        <CarouselContent className="ml-0">
+        <CarouselContent className="-ml-0">
           {sliderImages.map((image, index) => (
             <CarouselItem key={index} className="pl-0">
-              <div className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] w-full">
+              <div className="relative h-[70vh] w-full">
                 <Image
                   src={image.imageUrl}
                   alt={image.description}
