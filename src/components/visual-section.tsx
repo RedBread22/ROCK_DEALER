@@ -15,7 +15,7 @@ export const VisualSection = () => {
   }
 
   return (
-    <section id="products" className="w-full overflow-hidden bg-white py-24 sm:py-32">
+    <section id="products" className="w-full overflow-hidden bg-white py-24 sm:py-32 border-b border-zinc-200">
       <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 md:grid-cols-2 lg:gap-24">
         {/* Image Block */}
         <motion.div
