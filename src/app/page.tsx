@@ -11,10 +11,10 @@ import { ContactFormSection } from '@/components/contact-form-section';
 export default function Home() {
   return (
     <main className="w-full">
+      <ImpressionsSlider />
       <HeroSection />
       <PhilosophySection />
       <VisualSection />
-      <ImpressionsSlider />
       <ExperimentalSection />
       <CTASection />
       <ContactFormSection />
