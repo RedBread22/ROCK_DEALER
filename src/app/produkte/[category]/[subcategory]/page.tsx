@@ -8,6 +8,7 @@ import {
     type Product, 
     granitSubCategoriesData,
     schieferSubCategoriesData,
+    lusernaGneisSubCategoriesData,
     productCategories, 
     getTravertinProducts,
     getBrasilQuarzitProducts
@@ -136,6 +137,44 @@ export default function SubCategoryPage({ params }: { params: { category: string
                                     description={schieferSub.description}
                                     image={schieferSub.image}
                                     href={`/produkte/natursteine/schiefer/${schieferSub.id}`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+                
+                <ContactFormSection />
+            </>
+        );
+    }
+
+    if (params.category === 'natursteine' && params.subcategory === 'luserna-gneis') {
+        return (
+            <>
+                <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20 bg-secondary/30">
+                    <div className="container px-4">
+                        <Breadcrumbs items={breadcrumbItems} className="mb-10" />
+                        <AnimatedText
+                            el="h1"
+                            text={subCategory.name}
+                            className="font-headline text-5xl md:text-7xl"
+                        />
+                        <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
+                            {subCategory.description}
+                        </p>
+                    </div>
+                </section>
+
+                <section className="py-24 sm:py-32">
+                    <div className="mx-auto max-w-7xl px-4">
+                        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                            {lusernaGneisSubCategoriesData.map((lusernaSub) => (
+                                <ContentCard
+                                    key={lusernaSub.id}
+                                    title={lusernaSub.name}
+                                    description={lusernaSub.description}
+                                    image={lusernaSub.image}
+                                    href={`/produkte/natursteine/luserna-gneis/${lusernaSub.id}`}
                                 />
                             ))}
                         </div>

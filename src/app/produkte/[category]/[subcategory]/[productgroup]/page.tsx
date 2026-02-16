@@ -9,6 +9,9 @@ import {
     getSchieferSubCategoryById,
     getSchieferProducts,
     schieferSubCategoriesData,
+    lusernaGneisSubCategoriesData,
+    getLusernaGneisSubCategoryById,
+    getLusernaGneisProducts,
     type Product 
 } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
@@ -37,7 +40,13 @@ export async function generateStaticParams() {
         productgroup: sub.id,
     }));
 
-    return [...granitParams, ...schieferParams];
+    const lusernaParams = lusernaGneisSubCategoriesData.map((sub) => ({
+        category: 'natursteine',
+        subcategory: 'luserna-gneis',
+        productgroup: sub.id,
+    }));
+
+    return [...granitParams, ...schieferParams, ...lusernaParams];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -49,6 +58,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     productGroup = getGranitSubCategoryById(params.productgroup);
   } else if (params.subcategory === 'schiefer') {
     productGroup = getSchieferSubCategoryById(params.productgroup);
+  } else if (params.subcategory === 'luserna-gneis') {
+    productGroup = getLusernaGneisSubCategoryById(params.productgroup);
   }
 
 
@@ -65,7 +76,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default function ProductGroupPage({ params }: PageProps) {
-    if (params.category !== 'natursteine' || !['granit', 'schiefer'].includes(params.subcategory)) {
+    if (params.category !== 'natursteine' || !['granit', 'schiefer', 'luserna-gneis'].includes(params.subcategory)) {
         notFound();
     }
     
@@ -81,6 +92,9 @@ export default function ProductGroupPage({ params }: PageProps) {
     } else if (params.subcategory === 'schiefer') {
         productGroup = getSchieferSubCategoryById(params.productgroup);
         products = getSchieferProducts(params.productgroup);
+    } else if (params.subcategory === 'luserna-gneis') {
+        productGroup = getLusernaGneisSubCategoryById(params.productgroup);
+        products = getLusernaGneisProducts(params.productgroup);
     }
 
     if (!category || !subCategory || !productGroup) {
