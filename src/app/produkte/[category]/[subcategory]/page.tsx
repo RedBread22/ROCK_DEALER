@@ -1,6 +1,16 @@
 import { type Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getCategoryById, getSubCategoryByIds, generatePlaceholderProducts, getGartendekoProducts, type Product, granitSubCategoriesData, productCategories, getTravertinProducts } from '@/lib/products';
+import { 
+    getCategoryById, 
+    getSubCategoryByIds, 
+    generatePlaceholderProducts, 
+    getGartendekoProducts, 
+    type Product, 
+    granitSubCategoriesData,
+    schieferSubCategoriesData,
+    productCategories, 
+    getTravertinProducts 
+} from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { ContactFormSection } from '@/components/contact-form-section';
@@ -79,6 +89,44 @@ export default function SubCategoryPage({ params }: { params: { category: string
                                     description={granitSub.description}
                                     image={granitSub.image}
                                     href={`/produkte/natursteine/granit/${granitSub.id}`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+                
+                <ContactFormSection />
+            </>
+        );
+    }
+    
+    if (params.category === 'natursteine' && params.subcategory === 'schiefer') {
+        return (
+            <>
+                <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20 bg-secondary/30">
+                    <div className="container px-4">
+                        <Breadcrumbs items={breadcrumbItems} className="mb-10" />
+                        <AnimatedText
+                            el="h1"
+                            text={subCategory.name}
+                            className="font-headline text-5xl md:text-7xl"
+                        />
+                        <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
+                            {subCategory.description}
+                        </p>
+                    </div>
+                </section>
+
+                <section className="py-24 sm:py-32">
+                    <div className="mx-auto max-w-7xl px-4">
+                        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                            {schieferSubCategoriesData.map((schieferSub) => (
+                                <ContentCard
+                                    key={schieferSub.id}
+                                    title={schieferSub.name}
+                                    description={schieferSub.description}
+                                    image={schieferSub.image}
+                                    href={`/produkte/natursteine/schiefer/${schieferSub.id}`}
                                 />
                             ))}
                         </div>

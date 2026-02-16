@@ -104,7 +104,7 @@ const subCategoryDescriptions: Record<string, Record<string, string>> = {
   natursteine: {
     granit: 'Extrem harter und widerstandsfähiger Naturstein, ideal für stark beanspruchte Bereiche.',
     travertin: 'Warmer Naturstein mit mediterraner Optik – ideal für Terrassen und elegante Außenflächen.',
-    schiefer: 'Markante Struktur und natürliche Spaltoptik – perfekt für moderne Akzente im Garten und an Mauern.',
+    schiefer: 'Vielseitiger Naturstein mit charaktervoller Struktur.',
     sandstein: 'Natürliche Farbtöne und angenehme Haptik – vielseitig einsetzbar für Wege, Stufen und Terrassen.',
     'brasil-quarzit': 'Extrem widerstandsfähig und edel in der Wirkung – ideal für stark beanspruchte Außenbereiche.',
     'luserna-gneis': 'Klassischer Gneis mit hoher Festigkeit – beliebt für Platten, Stufen und langlebige Außenanlagen.',
@@ -259,6 +259,64 @@ export const granitSubCategoriesData: SubCategory[] = [
     },
 ];
 
+export const schieferSubCategoriesData: SubCategory[] = [
+    {
+      id: 'blockstufen',
+      name: 'Blockstufen',
+      description: 'Massive und langlebige Stufen aus Schiefer für den Außenbereich.',
+      image: {
+        id: 'schiefer-blockstufen',
+        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Blockstufen/5.jpg',
+        description: 'Schiefer Blockstufen',
+        imageHint: 'slate steps',
+      },
+    },
+    {
+      id: 'bodenplatten',
+      name: 'Bodenplatten',
+      description: 'Elegante und robuste Bodenplatten für Terrassen und Wege.',
+      image: {
+        id: 'schiefer-bodenplatten',
+        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Bodenplatten/5.jpg',
+        description: 'Schiefer Bodenplatten',
+        imageHint: 'slate slabs',
+      },
+    },
+    {
+      id: 'mauersteine',
+      name: 'Mauersteine',
+      description: 'Vielseitige Mauersteine für stabile und ästhetische Gartenmauern.',
+      image: {
+        id: 'schiefer-mauersteine',
+        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Mauersteine/28.jpg',
+        description: 'Schiefer Mauersteine',
+        imageHint: 'slate bricks',
+      },
+    },
+    {
+        id: 'polygonalplatten',
+        name: 'Polygonalplatten',
+        description: 'Natürlich gebrochene Platten für rustikale und individuelle Flächen.',
+        image: {
+          id: 'schiefer-polygonalplatten',
+          imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Polygonalplatten/4.jpg',
+          description: 'Schiefer Polygonalplatten',
+          imageHint: 'slate polygonal',
+        },
+    },
+    {
+        id: 'stelen',
+        name: 'Stelen',
+        description: 'Moderne und schlanke Elemente zur Gartengestaltung und als Sichtschutz.',
+        image: {
+          id: 'schiefer-stelen',
+          imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen/9.jpg',
+          description: 'Schiefer Stelen',
+          imageHint: 'slate steles',
+        },
+    },
+];
+
 export const getCategoryById = (id: string) => {
   return productCategories.find((cat) => cat.id === id);
 };
@@ -271,6 +329,10 @@ export const getSubCategoryByIds = (categoryId: string, subCategoryId: string) =
 
 export const getGranitSubCategoryById = (id: string) => {
     return granitSubCategoriesData.find((cat) => cat.id === id);
+};
+
+export const getSchieferSubCategoryById = (id: string) => {
+    return schieferSubCategoriesData.find((cat) => cat.id === id);
 };
 
 export const getSubCategoriesByParentId = (parentId: string) => {
@@ -351,6 +413,37 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
   }
   return products;
 };
+
+const schieferProductImageMap: Record<string, { path: string, name: string }> = {
+  blockstufen: { path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Blockstufen/5.jpg', name: 'Schiefer Blockstufe' },
+  bodenplatten: { path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Bodenplatten/5.jpg', name: 'Schiefer Bodenplatte' },
+  mauersteine: { path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Mauersteine/28.jpg', name: 'Schiefer Mauerstein' },
+  polygonalplatten: { path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Polygonalplatten/4.jpg', name: 'Schiefer Polygonalplatte' },
+  stelen: { path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen/9.jpg', name: 'Schiefer Stele' },
+};
+
+export const getSchieferProducts = (productGroupId: string): Product[] | null => {
+  const imageInfo = schieferProductImageMap[productGroupId];
+  if (!imageInfo) {
+    return null;
+  }
+
+  const products: Product[] = [
+    {
+      name: `${imageInfo.name}`,
+      description: `Produktdetails folgen.\n\nKontaktieren Sie uns für weitere Informationen zu Verfügbarkeit und Preisen.`,
+      meta: 'Schiefer, frostfest und witterungsbeständig',
+      image: {
+        id: `schiefer-${productGroupId}-1`,
+        description: imageInfo.name,
+        imageUrl: imageInfo.path,
+        imageHint: `slate ${productGroupId}`,
+      },
+    }
+  ];
+  return products;
+};
+
 
 export const getFeinsteinzeugProducts = (): Product[] => {
   return [

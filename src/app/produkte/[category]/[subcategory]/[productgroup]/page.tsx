@@ -6,6 +6,9 @@ import {
     getGranitSubCategoryById,
     getGranitProducts,
     granitSubCategoriesData,
+    getSchieferSubCategoryById,
+    getSchieferProducts,
+    schieferSubCategoriesData,
     type Product 
 } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
@@ -22,17 +25,32 @@ type PageProps = {
 }
 
 export async function generateStaticParams() {
-    return granitSubCategoriesData.map((sub) => ({
+    const granitParams = granitSubCategoriesData.map((sub) => ({
         category: 'natursteine',
         subcategory: 'granit',
         productgroup: sub.id,
     }));
+
+    const schieferParams = schieferSubCategoriesData.map((sub) => ({
+        category: 'natursteine',
+        subcategory: 'schiefer',
+        productgroup: sub.id,
+    }));
+
+    return [...granitParams, ...schieferParams];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const category = getCategoryById(params.category);
   const subCategory = getSubCategoryByIds(params.category, params.subcategory);
-  const productGroup = getGranitSubCategoryById(params.productgroup);
+  
+  let productGroup;
+  if (params.subcategory === 'granit') {
+    productGroup = getGranitSubCategoryById(params.productgroup);
+  } else if (params.subcategory === 'schiefer') {
+    productGroup = getSchieferSubCategoryById(params.productgroup);
+  }
+
 
   if (!category || !subCategory || !productGroup) {
     return {
@@ -47,13 +65,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default function ProductGroupPage({ params }: PageProps) {
-    if (params.category !== 'natursteine' || params.subcategory !== 'granit') {
+    if (params.category !== 'natursteine' || !['granit', 'schiefer'].includes(params.subcategory)) {
         notFound();
     }
     
     const category = getCategoryById(params.category);
     const subCategory = getSubCategoryByIds(params.category, params.subcategory);
-    const productGroup = getGranitSubCategoryById(params.productgroup);
+    
+    let productGroup;
+    let products: Product[] | null = [];
+
+    if (params.subcategory === 'granit') {
+        productGroup = getGranitSubCategoryById(params.productgroup);
+        products = getGranitProducts(params.productgroup);
+    } else if (params.subcategory === 'schiefer') {
+        productGroup = getSchieferSubCategoryById(params.productgroup);
+        products = getSchieferProducts(params.productgroup);
+    }
 
     if (!category || !subCategory || !productGroup) {
         notFound();
@@ -67,13 +95,29 @@ export default function ProductGroupPage({ params }: PageProps) {
         { label: productGroup.name, href: `/produkte/${category.id}/${subCategory.id}/${productGroup.id}` },
     ];
 
-    const products = getGranitProducts(params.productgroup);
-
-    if (!products) {
+    if (!products || products.length === 0) {
         return (
-            <div className="py-24 text-center">
-                Für diese Kategorie sind derzeit keine Produkte verfügbar.
-            </div>
+            <>
+                <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20 bg-secondary/30">
+                    <div className="container px-4">
+                        <Breadcrumbs items={breadcrumbItems} className="mb-10" />
+                        <AnimatedText
+                            el="h1"
+                            text={productGroup.name}
+                            className="font-headline text-5xl md:text-7xl"
+                        />
+                        <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
+                            {productGroup.description}
+                        </p>
+                    </div>
+                </section>
+                 <section className="py-24 sm:py-32">
+                    <div className="container mx-auto px-4 text-center text-muted-foreground">
+                        Für diese Kategorie sind derzeit keine Produkte verfügbar.
+                    </div>
+                </section>
+                <ContactFormSection />
+            </>
         );
     }
 
