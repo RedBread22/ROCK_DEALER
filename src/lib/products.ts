@@ -159,7 +159,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     palisaden: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden.jpg',
   },
   zierkies: {
-    kantkorn: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn.jpg',
+    kantkorn: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/12.jpg',
     rundkorn: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn.jpg',
   },
   gartendeko: {
@@ -430,6 +430,34 @@ export const generatePlaceholderProducts = (count: number = 6): Product[] => {
     meta: 'Frostfest & witterungsbeständig',
     image: findImage('product-placeholder'),
   }));
+};
+
+const zierkiesImageCounts: Record<string, { count: number, path: string, name: string }> = {
+  kantkorn: { count: 12, path: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn', name: 'Kantkorn' },
+};
+
+export const getZierkiesProducts = (subCategoryId: string): Product[] | null => {
+  const imageInfo = zierkiesImageCounts[subCategoryId];
+  if (!imageInfo || imageInfo.count === 0) {
+    return null;
+  }
+
+  const products: Product[] = [];
+  for (let i = 1; i <= imageInfo.count; i++) {
+    const imageUrl = `${imageInfo.path}/${i}.jpg`;
+    products.push({
+      name: `${imageInfo.name} ${i}`,
+      description: `Produktdetails folgen.`,
+      meta: 'Dekoratives Kantkorn für Flächen und Akzente',
+      image: {
+        id: `${subCategoryId}-${i}`,
+        description: `${imageInfo.name} ${i}`,
+        imageUrl: imageUrl,
+        imageHint: 'decorative gravel',
+      },
+    });
+  }
+  return products;
 };
 
 const gartendekoImageCounts: Record<string, { count: number, path: string, name: string }> = {

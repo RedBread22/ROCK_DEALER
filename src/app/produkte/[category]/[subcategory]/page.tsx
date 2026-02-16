@@ -14,7 +14,8 @@ import {
     getBrasilQuarzitProducts,
     getTuffProducts,
     getPorphyrProducts,
-    getMuschelkalkProducts
+    getMuschelkalkProducts,
+    getZierkiesProducts
 } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
 import { Breadcrumbs } from '@/components/breadcrumbs';
@@ -196,6 +197,13 @@ export default function SubCategoryPage({ params }: { params: { category: string
         const gartendekoProducts = getGartendekoProducts(params.subcategory);
         if (gartendekoProducts && gartendekoProducts.length > 0) {
             products = gartendekoProducts;
+        } else {
+            products = generatePlaceholderProducts(8);
+        }
+    } else if (params.category === 'zierkies') {
+        const zierkiesProducts = getZierkiesProducts(params.subcategory);
+        if (zierkiesProducts && zierkiesProducts.length > 0) {
+            products = zierkiesProducts;
         } else {
             products = generatePlaceholderProducts(8);
         }
