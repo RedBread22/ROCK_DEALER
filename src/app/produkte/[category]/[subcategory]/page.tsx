@@ -71,7 +71,7 @@ export default function SubCategoryPage({ params }: { params: { category: string
 
                 <section className="py-24 sm:py-32">
                     <div className="mx-auto max-w-7xl px-4">
-                        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                             {granitSubCategoriesData.map((granitSub) => (
                                 <ContentCard
                                     key={granitSub.id}
