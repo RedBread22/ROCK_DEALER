@@ -7,11 +7,13 @@ import { ImpressionsSlider } from '@/components/impressions-slider';
 import { ExperimentalSection } from '@/components/experimental-section';
 import { CTASection } from '@/components/cta-section';
 import { ContactFormSection } from '@/components/contact-form-section';
+import { VideoSection } from '@/components/video-section';
 
 export default function Home() {
   return (
     <main className="w-full">
       <ImpressionsSlider />
+      <VideoSection />
       <HeroSection />
       <PhilosophySection />
       <VisualSection />
