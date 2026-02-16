@@ -143,13 +143,13 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     basalt: '/images/UNSERE-PRODUKTE/Natursteine/Basalt.jpg',
     'brasil-quarzit': '/images/UNSERE-PRODUKTE/Natursteine/Brasil. Quarzit.jpg',
     'luserna-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Allgemein/6.jpg',
-    muschelkalk: '/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk.jpg',
-    porphyr: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr.jpg',
-    schiefer: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer.jpg',
+    muschelkalk: '/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk/9.jpg',
+    porphyr: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr/7.jpg',
+    schiefer: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen/9.jpg',
     sandstein: '/images/UNSERE-PRODUKTE/Natursteine/Sandstein.jpg',
     'stainzer-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis.jpg',
-    travertin: '/images/UNSERE-PRODUKTE/Natursteine/Travertin.jpg',
-    tuff: '/images/UNSERE-PRODUKTE/Natursteine/Tuff.jpg',
+    travertin: '/images/UNSERE-PRODUKTE/Natursteine/Travertin/1.jpg',
+    tuff: '/images/UNSERE-PRODUKTE/Natursteine/Tuff/6.jpg',
   },
   betonsteine: {
     pflastersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine.jpg',
@@ -634,4 +634,61 @@ export const getTravertinProducts = (): Product[] => {
       }
     }
   ];
+};
+
+export const getTuffProducts = (): Product[] => {
+  const products: Product[] = [];
+  const count = 6;
+  for (let i = 1; i <= count; i++) {
+    products.push({
+      name: `Tuff Variante ${i}`,
+      description: 'Leichter und poröser Naturstein mit warmen Erdtönen. Ideal für dekorative Elemente und individuelle Akzente im Garten. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
+      meta: 'Leicht, porös, dekorativ',
+      image: {
+        id: `tuff-${i}`,
+        description: `Tuff Variante ${i}`,
+        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Tuff/${i}.jpg`,
+        imageHint: 'tuff stone',
+      },
+    });
+  }
+  return products;
+};
+
+export const getPorphyrProducts = (): Product[] => {
+  const products: Product[] = [];
+  const count = 7;
+  for (let i = 1; i <= count; i++) {
+    products.push({
+      name: `Porphyr Variante ${i}`,
+      description: 'Äußerst robuster und rutschfester Naturstein, perfekt für stark beanspruchte Flächen wie Einfahrten und Wege. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
+      meta: 'Rutschfest, extrem wetterbeständig',
+      image: {
+        id: `porphyr-${i}`,
+        description: `Porphyr Variante ${i}`,
+        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Porphyr/${i}.jpg`,
+        imageHint: 'porphyry stone',
+      },
+    });
+  }
+  return products;
+};
+
+export const getMuschelkalkProducts = (): Product[] => {
+  const products: Product[] = [];
+  const count = 9;
+  for (let i = 1; i <= count; i++) {
+    products.push({
+      name: `Muschelkalk Variante ${i}`,
+      description: 'Eleganter, heller Naturstein mit charakteristischen fossilen Einschlüssen. Ideal für zeitlose Terrassen, Mauern und klassische Außenanlagen. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
+      meta: 'Elegant, zeitlos, fossilienreich',
+      image: {
+        id: `muschelkalk-${i}`,
+        description: `Muschelkalk Variante ${i}`,
+        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk/${i}.jpg`,
+        imageHint: 'shell limestone',
+      },
+    });
+  }
+  return products;
 };
