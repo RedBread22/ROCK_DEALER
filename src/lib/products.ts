@@ -257,3 +257,41 @@ export const getGartendekoProducts = (subCategoryId: string): Product[] | null =
   }
   return products;
 };
+
+export const getFeinsteinzeugProducts = (): Product[] => {
+  return [
+    {
+      name: 'Feinsteinzeug Ashima',
+      description: 'Hochwertige Feinsteinzeugplatte in eleganter Steinoptik. Ideal für moderne Terrassen und Außenbereiche. Pflegeleicht und extrem widerstandsfähig.',
+      meta: '2 cm, R11 Rutschhemmung, Frostfest',
+      image: {
+        id: 'feinsteinzeug-1',
+        description: 'Feinsteinzeug Ashima',
+        imageUrl: '/images/UNSERE-PRODUKTE/Feinsteinzeug/1.jpg',
+        imageHint: 'porcelain tile',
+      },
+    },
+    {
+      name: 'Feinsteinzeug Atakama',
+      description: 'Robuste Feinsteinzeugplatte mit natürlicher Ausstrahlung. Perfekt für langlebige und stilvolle Außenflächen.',
+      meta: '2 cm, R11 Rutschhemmung, Frostfest',
+      image: {
+        id: 'feinsteinzeug-2',
+        description: 'Feinsteinzeug Atakama',
+        imageUrl: '/images/UNSERE-PRODUKTE/Feinsteinzeug/2.jpg',
+        imageHint: 'stone look tile',
+      },
+    },
+    {
+      name: 'Feinsteinzeug Basalt',
+      description: 'Dunkle Feinsteinzeugplatte in Basaltoptik. Verleiht Außenbereichen eine moderne und edle Note.',
+      meta: '2 cm, R11 Rutschhemmung, Frostfest',
+      image: {
+        id: 'feinsteinzeug-3',
+        description: 'Feinsteinzeug Basalt',
+        imageUrl: '/images/UNSERE-PRODUKTE/Feinsteinzeug/3.jpg',
+        imageHint: 'dark porcelain tile',
+      },
+    },
+  ];
+};

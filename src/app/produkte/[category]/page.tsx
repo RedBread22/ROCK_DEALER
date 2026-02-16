@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { productCategories, getCategoryById, getSubCategoriesByParentId, generatePlaceholderProducts } from '@/lib/products';
+import { productCategories, getCategoryById, getSubCategoriesByParentId, generatePlaceholderProducts, getFeinsteinzeugProducts, type Product } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { ContactFormSection } from '@/components/contact-form-section';
@@ -42,7 +42,15 @@ export default function CategoryPage({ params }: { params: { category: string } 
     const hasSubCategories = category.subCategories && category.subCategories.length > 0;
     
     const subCategories = hasSubCategories ? getSubCategoriesByParentId(category.id) : [];
-    const products = !hasSubCategories ? generatePlaceholderProducts(8) : [];
+    
+    let products: Product[] = [];
+    if (!hasSubCategories) {
+        if (category.id === 'feinsteinzeug') {
+            products = getFeinsteinzeugProducts();
+        } else {
+            products = generatePlaceholderProducts(8);
+        }
+    }
 
 
     return (
