@@ -9,7 +9,8 @@ import {
     granitSubCategoriesData,
     schieferSubCategoriesData,
     productCategories, 
-    getTravertinProducts 
+    getTravertinProducts,
+    getBrasilQuarzitProducts
 } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
 import { Breadcrumbs } from '@/components/breadcrumbs';
@@ -35,6 +36,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { category: string; subcategory: string } }): Promise<Metadata> {
   const subCategory = getSubCategoryByIds(params.category, params.subcategory);
   const category = getCategoryById(params.category);
+
+  if (params.category === 'natursteine' && params.subcategory === 'brasil-quarzit') {
+    return {
+      title: 'Brasil Quarzit Naturstein | Rock Dealer',
+      description: 'Hochwertiger Brasil Quarzit als Naturstein – ideal für Garten, Mauern und Außenbereiche.',
+    };
+  }
+  
   if (!subCategory || !category) {
     return {
       title: 'Kategorie nicht gefunden',
@@ -150,6 +159,8 @@ export default function SubCategoryPage({ params }: { params: { category: string
         }
     } else if (params.category === 'natursteine' && params.subcategory === 'travertin') {
         products = getTravertinProducts();
+    } else if (params.category === 'natursteine' && params.subcategory === 'brasil-quarzit') {
+        products = getBrasilQuarzitProducts();
     }
      else {
         products = generatePlaceholderProducts(8);

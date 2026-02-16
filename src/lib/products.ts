@@ -446,6 +446,23 @@ export const getSchieferProducts = (productGroupId: string): Product[] | null =>
   return products;
 };
 
+export const getBrasilQuarzitProducts = (): Product[] => {
+  const products: Product[] = [];
+  for (let i = 1; i <= 4; i++) {
+    products.push({
+      name: `Brasil. Quarzit Variante ${i}`,
+      description: 'Hochwertiger Brasil Quarzit besticht durch seine extreme Härte und edle Optik. Er ist besonders widerstandsfähig und eignet sich daher perfekt für stark beanspruchte Außenbereiche wie Terrassen, Wege und Poolumrandungen. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
+      meta: 'Extrem widerstandsfähig, frostfest',
+      image: {
+        id: `brasil-quarzit-${i}`,
+        description: `Brasil. Quarzit Variante ${i}`,
+        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Brasil. Quarzit/${i}.jpg`,
+        imageHint: 'brazilian quartzite',
+      },
+    });
+  }
+  return products;
+};
 
 export const getFeinsteinzeugProducts = (): Product[] => {
   return [
