@@ -168,7 +168,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     findlinge: '/images/UNSERE-PRODUKTE/Gartendeko/Findlinge.jpg',
     vulkanbrocken: '/images/UNSERE-PRODUKTE/Gartendeko/Vulkanbrocken.jpg',
     brunnen: '/images/UNSERE-PRODUKTE/Gartendeko/Brunnen.jpg',
-    'tische-baenke': '/images/UNSERE-PRODUKTE/Gartendeko/Tische  Bänke.jpg',
+    'tische-baenke': '/images/5. Gartendeko/6. TischeBanke/3.jpg',
     blumentrog: '/images/UNSERE-PRODUKTE/Gartendeko/Blumentrog.jpg',
     vasen: '/images/UNSERE-PRODUKTE/Gartendeko/Vasen.jpg',
   }
@@ -465,7 +465,7 @@ const gartendekoImageCounts: Record<string, { count: number, path: string, name:
   figuren: { count: 3, path: '/images/5. Gartendeko/2. Figuren', name: 'Figur' },
   findlinge: { count: 13, path: '/images/5. Gartendeko/3. Findlinge', name: 'Findling' },
   brunnen: { count: 4, path: '/images/5. Gartendeko/5. Brunnen', name: 'Brunnen' },
-  'tische-baenke': { count: 3, path: '/images/5. Gartendeko/6. Tische  Bänke', name: 'Tisch / Bank' },
+  'tische-baenke': { count: 3, path: '/images/5. Gartendeko/6. TischeBanke', name: 'Tisch / Bank' },
   blumentrog: { count: 8, path: '/images/5. Gartendeko/7. Blumentrog', name: 'Blumentrog' },
   vasen: { count: 4, path: '/images/5. Gartendeko/8. Vasen', name: 'Vase' },
 };

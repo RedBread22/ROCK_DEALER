@@ -20,7 +20,7 @@ export const PhilosophySection = () => {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div className="space-y-4">
               <InteractiveElement cursorType="text">
-                <h2 className="font-headline text-2xl text-primary">01 / Unsere Philosophie</h2>
+                <h2 className="font-headline text-2xl text-primary">01 / Unsere Philosophie.</h2>
               </InteractiveElement>
             </div>
             <div className="space-y-6">
