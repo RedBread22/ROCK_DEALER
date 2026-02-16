@@ -56,15 +56,16 @@ export default function ProduktePage() {
       <section className="py-16 sm:py-24 bg-white">
         <div className="container mx-auto px-4">
             <h2 className="text-3xl font-headline mb-12 text-center md:text-left text-zinc-900">Alle Produktkategorien</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="flex flex-wrap justify-center -m-4">
               {allCategories.map((category) => (
-                  <ContentCard
-                    key={category.id}
-                    title={category.name}
-                    description={category.description}
-                    image={category.image}
-                    href={`/produkte/${category.id}`}
-                  />
+                  <div key={category.id} className="w-full sm:w-1/2 lg:w-1/3 p-4 flex">
+                    <ContentCard
+                      title={category.name}
+                      description={category.description}
+                      image={category.image}
+                      href={`/produkte/${category.id}`}
+                    />
+                  </div>
               ))}
             </div>
         </div>
