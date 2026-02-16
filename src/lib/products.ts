@@ -414,33 +414,35 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
   return products;
 };
 
-const schieferProductImageMap: Record<string, { path: string, name: string }> = {
-  blockstufen: { path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Blockstufen/5.jpg', name: 'Schiefer Blockstufe' },
-  bodenplatten: { path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Bodenplatten/5.jpg', name: 'Schiefer Bodenplatte' },
-  mauersteine: { path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Mauersteine/28.jpg', name: 'Schiefer Mauerstein' },
-  polygonalplatten: { path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Polygonalplatten/4.jpg', name: 'Schiefer Polygonalplatte' },
-  stelen: { path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen/9.jpg', name: 'Schiefer Stele' },
+const schieferImageCounts: Record<string, { count: number, path: string, name: string }> = {
+  blockstufen: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Blockstufen', name: 'Schiefer Blockstufe' },
+  bodenplatten: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Bodenplatten', name: 'Schiefer Bodenplatte' },
+  mauersteine: { count: 28, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Mauersteine', name: 'Schiefer Mauerstein' },
+  polygonalplatten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Polygonalplatten', name: 'Schiefer Polygonalplatte' },
+  stelen: { count: 9, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen', name: 'Schiefer Stele' },
 };
 
 export const getSchieferProducts = (productGroupId: string): Product[] | null => {
-  const imageInfo = schieferProductImageMap[productGroupId];
+  const imageInfo = schieferImageCounts[productGroupId];
   if (!imageInfo) {
     return null;
   }
 
-  const products: Product[] = [
-    {
-      name: `${imageInfo.name}`,
+  const products: Product[] = [];
+  for (let i = 1; i <= imageInfo.count; i++) {
+    const imageUrl = `${imageInfo.path}/${i}.jpg`;
+    products.push({
+      name: `${imageInfo.name} ${i}`,
       description: `Produktdetails folgen.\n\nKontaktieren Sie uns für weitere Informationen zu Verfügbarkeit und Preisen.`,
       meta: 'Schiefer, frostfest und witterungsbeständig',
       image: {
-        id: `schiefer-${productGroupId}-1`,
-        description: imageInfo.name,
-        imageUrl: imageInfo.path,
-        imageHint: `slate ${productGroupId}`,
+        id: `schiefer-${productGroupId}-${i}`,
+        description: `${imageInfo.name} ${i}`,
+        imageUrl: imageUrl,
+        imageHint: `slate ${productGroupId.replace(/s$/, '')}`,
       },
-    }
-  ];
+    });
+  }
   return products;
 };
 
