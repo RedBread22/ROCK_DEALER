@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getCategoryById, getSubCategoryByIds, generatePlaceholderProducts, getGartendekoProducts, type Product, granitSubCategoriesData, productCategories } from '@/lib/products';
+import { getCategoryById, getSubCategoryByIds, generatePlaceholderProducts, getGartendekoProducts, type Product, granitSubCategoriesData, productCategories, getTravertinProducts } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { ContactFormSection } from '@/components/contact-form-section';
@@ -100,7 +100,10 @@ export default function SubCategoryPage({ params }: { params: { category: string
         } else {
             products = generatePlaceholderProducts(8);
         }
-    } else {
+    } else if (params.category === 'natursteine' && params.subcategory === 'travertin') {
+        products = getTravertinProducts();
+    }
+     else {
         products = generatePlaceholderProducts(8);
     }
 

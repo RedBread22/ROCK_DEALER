@@ -389,3 +389,19 @@ export const getFeinsteinzeugProducts = (): Product[] => {
     },
   ];
 };
+
+export const getTravertinProducts = (): Product[] => {
+  return [
+    {
+      name: 'Travertin – Beispiel',
+      description: 'Platzhalterbeschreibung – Details folgen',
+      meta: 'Frostfest & witterungsbeständig',
+      image: {
+        id: 'travertin-beispiel-1',
+        description: 'Travertin – Beispiel',
+        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Travertin/1.jpg',
+        imageHint: 'travertine tile'
+      }
+    }
+  ];
+};
