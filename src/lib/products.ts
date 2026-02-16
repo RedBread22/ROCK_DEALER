@@ -141,7 +141,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
   natursteine: {
     granit: '/images/UNSERE-PRODUKTE/Natursteine/Granit.jpg',
     basalt: '/images/UNSERE-PRODUKTE/Natursteine/Basalt.jpg',
-    'brasil-quarzit': '/images/UNSERE-PRODUKTE/Natursteine/Brasil. Quarzit.jpg',
+    'brasil-quarzit': '/images/UNSERE-PRODUKTE/Natursteine/Brasil. Quarzit/1.jpg',
     'luserna-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Allgemein/6.jpg',
     muschelkalk: '/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk/9.jpg',
     porphyr: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr/7.jpg',
@@ -390,7 +390,7 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
         description: 'Saubere Kantenabschlüsse für Beete und Flächen aus Luserna Gneis.',
         image: {
             id: 'luserna-gneis-randleisten-preview',
-            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten/5.jpg',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten/1.jpg',
             description: 'Luserna Gneis Randleisten',
             imageHint: 'gneiss curbs',
         },
