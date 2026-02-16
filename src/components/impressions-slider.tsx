@@ -16,9 +16,9 @@ import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-imag
 import { cn } from '@/lib/utils';
 
 const sliderImageIds = [
-  'slider-3',
-  'slider-1',
   'slider-2',
+  'slider-1',
+  'slider-3',
   'slider-4',
   'slider-5',
   'slider-6',
@@ -62,7 +62,7 @@ export const ImpressionsSlider = () => {
   }, [api]);
 
   return (
-    <section className="w-full bg-background pt-24">
+    <section className="w-full bg-background">
       <Carousel
         setApi={setApi}
         plugins={[plugin.current]}
@@ -74,7 +74,7 @@ export const ImpressionsSlider = () => {
         <CarouselContent className="-ml-0">
           {sliderImages.map((image, index) => (
             <CarouselItem key={index} className="pl-0">
-              <div className="relative h-[calc(100vh-6rem)] w-full">
+              <div className="relative h-[70vh] w-full">
                 <Image
                   src={image.imageUrl}
                   alt={image.description}

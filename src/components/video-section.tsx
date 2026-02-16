@@ -4,7 +4,7 @@ import React from 'react';
 
 export const VideoSection = () => {
   return (
-    <section className="relative w-full h-[50vh] md:h-[70vh] overflow-hidden bg-black">
+    <section className="relative w-full h-screen overflow-hidden bg-black">
       {/* Background Video Layer */}
       <video
         autoPlay
@@ -21,7 +21,7 @@ export const VideoSection = () => {
       <div className="absolute inset-0 bg-black/20" />
 
       {/* Foreground Video Layer */}
-      <div className="relative z-10 h-full w-full flex items-center justify-center">
+      <div className="relative z-10 h-full w-full flex items-center justify-center pt-24">
         <video
           autoPlay
           muted

@@ -12,8 +12,8 @@ import { VideoSection } from '@/components/video-section';
 export default function Home() {
   return (
     <main className="w-full">
-      <ImpressionsSlider />
       <VideoSection />
+      <ImpressionsSlider />
       <HeroSection />
       <PhilosophySection />
       <VisualSection />
