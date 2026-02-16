@@ -102,7 +102,7 @@ export const productCategories: ProductCategory[] = [
 
 const subCategoryDescriptions: Record<string, Record<string, string>> = {
   natursteine: {
-    granit: 'Robuster Naturstein für Terrassen, Wege und Stufen – frostfest, langlebig und pflegeleicht.',
+    granit: 'Extrem harter und widerstandsfähiger Naturstein, ideal für stark beanspruchte Bereiche.',
     travertin: 'Warmer Naturstein mit mediterraner Optik – ideal für Terrassen und elegante Außenflächen.',
     schiefer: 'Markante Struktur und natürliche Spaltoptik – perfekt für moderne Akzente im Garten und an Mauern.',
     sandstein: 'Natürliche Farbtöne und angenehme Haptik – vielseitig einsetzbar für Wege, Stufen und Terrassen.',
@@ -139,9 +139,9 @@ const subCategoryDescriptions: Record<string, Record<string, string>> = {
 
 const subCategoryImages: Record<string, Record<string, string>> = {
   natursteine: {
+    granit: '/images/UNSERE-PRODUKTE/Natursteine/Granit.jpg',
     basalt: '/images/UNSERE-PRODUKTE/Natursteine/Basalt.jpg',
     'brasil-quarzit': '/images/UNSERE-PRODUKTE/Natursteine/Brasil. Quarzit.jpg',
-    granit: '/images/UNSERE-PRODUKTE/Natursteine/Granit.jpg',
     'luserna-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis.jpg',
     muschelkalk: '/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk.jpg',
     porphyr: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr.jpg',
@@ -201,6 +201,64 @@ const allSubCategories: (SubCategory & { parentId: string })[] = productCategori
     })
   );
 
+export const granitSubCategoriesData: SubCategory[] = [
+    {
+      id: 'blockstufen',
+      name: 'Blockstufen',
+      description: 'Massive und langlebige Stufen aus Granit für den Außenbereich.',
+      image: {
+        id: 'granit-blockstufen',
+        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen/1.jpg',
+        description: 'Granit Blockstufen',
+        imageHint: 'granite steps',
+      },
+    },
+    {
+      id: 'bodenplatten',
+      name: 'Bodenplatten',
+      description: 'Elegante und robuste Bodenplatten für Terrassen und Wege.',
+      image: {
+        id: 'granit-bodenplatten',
+        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten/1.jpg',
+        description: 'Granit Bodenplatten',
+        imageHint: 'granite slabs',
+      },
+    },
+    {
+      id: 'mauersteine',
+      name: 'Mauersteine',
+      description: 'Vielseitige Mauersteine für stabile und ästhetische Gartenmauern.',
+      image: {
+        id: 'granit-mauersteine',
+        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Mauersteine/1.jpg',
+        description: 'Granit Mauersteine',
+        imageHint: 'granite bricks',
+      },
+    },
+    {
+        id: 'pflastersteine',
+        name: 'Pflastersteine',
+        description: 'Klassische Pflastersteine für zeitlose Einfahrten und Wege.',
+        image: {
+          id: 'granit-pflastersteine',
+          imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Pflastersteine/1.jpg',
+          description: 'Granit Pflastersteine',
+          imageHint: 'granite pavers',
+        },
+    },
+    {
+        id: 'randleisten',
+        name: 'Randleisten',
+        description: 'Saubere und stabile Abschlüsse für Beete und Pflasterflächen.',
+        image: {
+          id: 'granit-randleisten',
+          imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Randleisten/1.jpg',
+          description: 'Granit Randleisten',
+          imageHint: 'granite curbs',
+        },
+    },
+];
+
 export const getCategoryById = (id: string) => {
   return productCategories.find((cat) => cat.id === id);
 };
@@ -209,6 +267,10 @@ export const getSubCategoryByIds = (categoryId: string, subCategoryId: string) =
   return allSubCategories.find(
     (sub) => sub.parentId === categoryId && sub.id === subCategoryId
   );
+};
+
+export const getGranitSubCategoryById = (id: string) => {
+    return granitSubCategoriesData.find((cat) => cat.id === id);
 };
 
 export const getSubCategoriesByParentId = (parentId: string) => {
@@ -252,6 +314,38 @@ export const getGartendekoProducts = (subCategoryId: string): Product[] | null =
         description: `${imageInfo.name} ${i}`,
         imageUrl: imageUrl,
         imageHint: subCategoryId.replace('-', ' '),
+      },
+    });
+  }
+  return products;
+};
+
+const granitImageCounts: Record<string, { count: number, path: string, name: string }> = {
+  blockstufen: { count: 7, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen', name: 'Blockstufe' },
+  bodenplatten: { count: 13, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten', name: 'Bodenplatte' },
+  mauersteine: { count: 6, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Mauersteine', name: 'Mauerstein' },
+  pflastersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Pflastersteine', name: 'Pflasterstein' },
+  randleisten: { count: 2, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Randleisten', name: 'Randleiste' },
+};
+
+export const getGranitProducts = (productGroupId: string): Product[] | null => {
+  const imageInfo = granitImageCounts[productGroupId];
+  if (!imageInfo || imageInfo.count === 0) {
+    return null;
+  }
+
+  const products: Product[] = [];
+  for (let i = 1; i <= imageInfo.count; i++) {
+    const imageUrl = `${imageInfo.path}/${i}.jpg`;
+    products.push({
+      name: `${imageInfo.name} ${i}`,
+      description: `Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
+      meta: 'Granit, frostfest und witterungsbeständig',
+      image: {
+        id: `${productGroupId}-${i}`,
+        description: `${imageInfo.name} ${i}`,
+        imageUrl: imageUrl,
+        imageHint: `granite ${productGroupId.slice(0, -1)}`,
       },
     });
   }
