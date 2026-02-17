@@ -29,7 +29,7 @@ export const HeroSliderSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
-  const [isSliderReady, setIsSliderReady] = useState(false);
+  const [videoState, setVideoState] = useState<'playing' | 'fading' | 'hidden'>('playing');
 
   const sliderImages = sliderImageIds
     .map(id => PlaceHolderImages.find(img => img.id === id))
@@ -43,18 +43,24 @@ export const HeroSliderSection = () => {
     if (sliderImages.length > 0) {
       const img = new window.Image();
       img.src = sliderImages[0].imageUrl;
-      // Preload the first image, then switch state
-      img.onload = () => setIsSliderReady(true);
-      img.onerror = () => setIsSliderReady(true); // Still proceed on error to not block the UI
+      img.onload = () => setVideoState('fading');
+      img.onerror = () => setVideoState('fading');
     } else {
-      setIsSliderReady(true); // Fallback if no images
+      setVideoState('fading');
     }
   };
 
   useEffect(() => {
-    if (!api) {
-      return;
+    if (videoState === 'fading') {
+      const fadeOutTimer = setTimeout(() => {
+        setVideoState('hidden');
+      }, 1000); // Match CSS transition duration
+      return () => clearTimeout(fadeOutTimer);
     }
+  }, [videoState]);
+
+  useEffect(() => {
+    if (!api) return;
     
     setScrollSnaps(api.scrollSnapList());
     setCurrent(api.selectedScrollSnap());
@@ -62,31 +68,28 @@ export const HeroSliderSection = () => {
     const onSelect = () => {
       setCurrent(api.selectedScrollSnap());
     };
-
     api.on('select', onSelect);
-
     return () => {
       api.off('select', onSelect);
     };
   }, [api]);
 
-  // This effect reliably re-initializes the carousel after it becomes visible.
   useEffect(() => {
-    if (isSliderReady && api) {
-      // Use a timeout to defer the re-initialization until after the current render cycle.
-      // This ensures the component is visible in the DOM before Embla tries to measure it.
-      const timer = setTimeout(() => {
-        api.reInit();
+    const sliderIsActive = videoState === 'fading' || videoState === 'hidden';
+    if (sliderIsActive && api) {
+      api.reInit();
+      const playTimer = setTimeout(() => {
         autoplayPlugin.current.play();
-      }, 100); // A small delay is safer for cross-browser compatibility.
-
-      return () => clearTimeout(timer);
+      }, 1000);
+      return () => clearTimeout(playTimer);
     }
-  }, [isSliderReady, api]);
+  }, [videoState, api]);
 
   const scrollTo = React.useCallback((index: number) => {
     api?.scrollTo(index);
   }, [api]);
+
+  const isSliderVisible = videoState !== 'playing';
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
@@ -94,7 +97,7 @@ export const HeroSliderSection = () => {
       <div
         className={cn(
           "absolute inset-0 w-full h-full transition-opacity duration-1000",
-          isSliderReady ? "opacity-100" : "opacity-0 pointer-events-none"
+          isSliderVisible ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
       >
         <Carousel
@@ -141,39 +144,38 @@ export const HeroSliderSection = () => {
         </Carousel>
       </div>
 
-      {/* Video Layer - starts visible, fades out */}
-      <div
-        className={cn(
-          'absolute inset-0 w-full h-full z-20 transition-opacity duration-1000',
-          isSliderReady ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        )}
-      >
-        {/* Background Video for blur effect */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover blur-xl opacity-40"
-          aria-hidden="true"
+      {/* Video Layer - unmounted when hidden */}
+      {videoState !== 'hidden' && (
+        <div
+          className={cn(
+            'absolute inset-0 w-full h-full z-20 transition-opacity duration-1000',
+            videoState === 'fading' ? 'opacity-0' : 'opacity-100'
+          )}
         >
-          <source src="/videos/video.mp4" type="video/mp4" />
-        </video>
-
-        {/* Foreground Video */}
-        <div className="relative z-10 h-full w-full flex items-center justify-center pt-24">
           <video
             autoPlay
             muted
+            loop
             playsInline
-            onEnded={handleVideoEnd}
-            className="w-full h-full object-contain"
+            className="absolute inset-0 w-full h-full object-cover blur-xl opacity-40"
+            aria-hidden="true"
           >
             <source src="/videos/video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
           </video>
+          <div className="relative z-10 h-full w-full flex items-center justify-center pt-24">
+            <video
+              autoPlay
+              muted
+              playsInline
+              onEnded={handleVideoEnd}
+              className="w-full h-full object-contain"
+            >
+              <source src="/videos/video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };
