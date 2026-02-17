@@ -41,10 +41,11 @@ export const HeroSliderSection = () => {
 
   const handleVideoEnd = () => {
     if (sliderImages.length > 0) {
+      // Preload the first image to ensure a smooth transition
       const img = new window.Image();
       img.src = sliderImages[0].imageUrl;
       img.onload = () => setVideoState('fading');
-      img.onerror = () => setVideoState('fading');
+      img.onerror = () => setVideoState('fading'); // Also fade if image fails to load
     } else {
       setVideoState('fading');
     }
@@ -69,21 +70,24 @@ export const HeroSliderSection = () => {
       setCurrent(api.selectedScrollSnap());
     };
     api.on('select', onSelect);
+    
+    const sliderIsActive = videoState === 'fading' || videoState === 'hidden';
+    if (sliderIsActive) {
+      // The carousel is mounted when visible, so it should have correct dimensions.
+      // We just need to start the autoplay.
+      const playTimer = setTimeout(() => {
+        autoplayPlugin.current.play();
+      }, 1000); // Give it a moment after fade-in
+      return () => {
+        api.off('select', onSelect);
+        clearTimeout(playTimer);
+      };
+    }
+    
     return () => {
       api.off('select', onSelect);
     };
-  }, [api]);
-
-  useEffect(() => {
-    const sliderIsActive = videoState === 'fading' || videoState === 'hidden';
-    if (sliderIsActive && api) {
-      api.reInit();
-      const playTimer = setTimeout(() => {
-        autoplayPlugin.current.play();
-      }, 1000);
-      return () => clearTimeout(playTimer);
-    }
-  }, [videoState, api]);
+  }, [api, videoState]);
 
   const scrollTo = React.useCallback((index: number) => {
     api?.scrollTo(index);
@@ -93,55 +97,57 @@ export const HeroSliderSection = () => {
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Slider Layer - starts hidden, fades in */}
+      {/* Slider Layer - conditionally rendered to ensure correct initialization */}
       <div
         className={cn(
           "absolute inset-0 w-full h-full transition-opacity duration-1000",
           isSliderVisible ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
       >
-        <Carousel
-          setApi={setApi}
-          plugins={[autoplayPlugin.current]}
-          opts={{
-            loop: true,
-          }}
-          className="w-full h-full relative"
-        >
-          <CarouselContent className="-ml-0 h-full">
-            {sliderImages.map((image, index) => (
-              <CarouselItem key={index} className="pl-0 h-full">
-                <div className="relative h-full w-full">
-                  <Image
-                    src={image.imageUrl}
-                    alt={image.description}
-                    data-ai-hint={image.imageHint}
-                    fill
-                    className="object-cover"
-                    priority={index === 0}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-10 h-10 w-10 sm:h-12 sm:w-12 text-white bg-black/30 hover:bg-black/50 border-none transition-colors rounded-full" />
-          <CarouselNext className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-10 h-10 w-10 sm:h-12 sm:w-12 text-white bg-black/30 hover:bg-black/50 border-none transition-colors rounded-full" />
-          
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex justify-center gap-2">
-            {scrollSnaps.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => scrollTo(index)}
-                className={cn(
-                  'h-2 w-2 rounded-full transition-all duration-300',
-                  index === current ? 'w-6 bg-white' : 'bg-white/50 hover:bg-white/75'
-                )}
-                aria-label={`Gehe zu Slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        </Carousel>
+        {isSliderVisible && (
+          <Carousel
+            setApi={setApi}
+            plugins={[autoplayPlugin.current]}
+            opts={{
+              loop: true,
+            }}
+            className="w-full h-full relative"
+          >
+            <CarouselContent className="-ml-0 h-full">
+              {sliderImages.map((image, index) => (
+                <CarouselItem key={index} className="pl-0 h-full">
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={image.imageUrl}
+                      alt={image.description}
+                      data-ai-hint={image.imageHint}
+                      fill
+                      className="object-cover"
+                      priority={index === 0}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-10 h-10 w-10 sm:h-12 sm:w-12 text-white bg-black/30 hover:bg-black/50 border-none transition-colors rounded-full" />
+            <CarouselNext className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-10 h-10 w-10 sm:h-12 sm:w-12 text-white bg-black/30 hover:bg-black/50 border-none transition-colors rounded-full" />
+            
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex justify-center gap-2">
+              {scrollSnaps.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  className={cn(
+                    'h-2 w-2 rounded-full transition-all duration-300',
+                    index === current ? 'w-6 bg-white' : 'bg-white/50 hover:bg-white/75'
+                  )}
+                  aria-label={`Gehe zu Slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </Carousel>
+        )}
       </div>
 
       {/* Video Layer - unmounted when hidden */}
