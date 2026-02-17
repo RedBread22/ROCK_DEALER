@@ -357,7 +357,7 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
         description: 'Klassische Pflasterwürfel für langlebige und stilvolle Wege.',
         image: {
             id: 'luserna-gneis-pflasterwuerfel-preview',
-            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Pflasterwürfel/5.jpg',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Pflasterwuerfel/5.jpg',
             description: 'Luserna Gneis Pflasterwürfel',
             imageHint: 'gneiss pavers',
         },
@@ -562,7 +562,7 @@ const lusernaGneisImageCounts: Record<string, { count: number; path: string; nam
     allgemein: { count: 6, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Allgemein', name: 'Luserna Gneis - Allgemein' },
     gemischt: { count: 19, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Gemischt', name: 'Luserna Gneis - Gemischt' },
     mauersteine: { count: 12, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Mauersteine', name: 'Luserna Gneis - Mauerstein' },
-    pflasterwuerfel: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Pflasterwürfel', name: 'Luserna Gneis - Pflasterwürfel' },
+    pflasterwuerfel: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Pflasterwuerfel', name: 'Luserna Gneis - Pflasterwürfel' },
     'polygonal-platten': { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Polygonal Platten', name: 'Luserna Gneis - Polygonal Platte' },
     trittplatten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Trittplatten', name: 'Luserna Gneis - Trittplatte' },
     randleisten: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten', name: 'Luserna Gneis - Randleiste' },
