@@ -390,7 +390,7 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
         description: 'Saubere Kantenabschlüsse für Beete und Flächen aus Luserna Gneis.',
         image: {
             id: 'luserna-gneis-randleisten-preview',
-            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten/1.jpg',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten/5.jpg',
             description: 'Luserna Gneis Randleisten',
             imageHint: 'gneiss curbs',
         },
