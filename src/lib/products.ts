@@ -390,7 +390,7 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
         description: 'Saubere Kantenabschlüsse für Beete und Flächen aus Luserna Gneis.',
         image: {
             id: 'luserna-gneis-randleisten-preview',
-            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten/5.jpg',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten/4.jpg',
             description: 'Luserna Gneis Randleisten',
             imageHint: 'gneiss curbs',
         },
@@ -565,7 +565,7 @@ const lusernaGneisImageCounts: Record<string, { count: number; path: string; nam
     pflasterwuerfel: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Pflasterwuerfel', name: 'Luserna Gneis - Pflasterwürfel' },
     'polygonal-platten': { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Polygonal Platten', name: 'Luserna Gneis - Polygonal Platte' },
     trittplatten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Trittplatten', name: 'Luserna Gneis - Trittplatte' },
-    randleisten: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten', name: 'Luserna Gneis - Randleiste' },
+    randleisten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten', name: 'Luserna Gneis - Randleiste' },
 };
 
 export const getLusernaGneisProducts = (productGroupId: string): Product[] | null => {
