@@ -29,7 +29,7 @@ export const HeroSliderSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
-  const [videoFinished, setVideoFinished] = useState(false);
+  const [isSliderReady, setIsSliderReady] = useState(false);
 
   const sliderImages = sliderImageIds
     .map(id => PlaceHolderImages.find(img => img.id === id))
@@ -38,6 +38,17 @@ export const HeroSliderSection = () => {
   const autoplayPlugin = useRef(
     Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true, playOnInit: false })
   );
+
+  const handleVideoEnd = () => {
+    if (sliderImages.length > 0) {
+      const img = new window.Image();
+      img.src = sliderImages[0].imageUrl;
+      img.onload = () => setIsSliderReady(true);
+      img.onerror = () => setIsSliderReady(true); // Still proceed on error
+    } else {
+      setIsSliderReady(true);
+    }
+  };
 
   useEffect(() => {
     if (!api) {
@@ -52,22 +63,19 @@ export const HeroSliderSection = () => {
     };
 
     api.on('select', onSelect);
-    
-    if(videoFinished) {
-      // Re-initialize the carousel when it becomes visible to ensure correct dimensions are calculated
-      // and start the autoplay plugin.
-      api.reInit();
-      autoplayPlugin.current.play();
-    }
 
     return () => {
       api.off('select', onSelect);
     };
-  }, [api, videoFinished]);
+  }, [api]);
   
-  const handleVideoEnd = () => {
-    setVideoFinished(true);
-  };
+  const handleSliderTransitionEnd = () => {
+    if (isSliderReady && api) {
+      // Now that the slider is visible, we can safely re-init and play.
+      api.reInit();
+      autoplayPlugin.current.play();
+    }
+  }
 
   const scrollTo = React.useCallback((index: number) => {
     api?.scrollTo(index);
@@ -75,8 +83,14 @@ export const HeroSliderSection = () => {
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Slider Layer - Always present, revealed by Video Layer fading out */}
-      <div className="absolute inset-0 w-full h-full">
+      {/* Slider Layer - starts hidden, fades in */}
+      <div 
+        onTransitionEnd={handleSliderTransitionEnd}
+        className={cn(
+          "absolute inset-0 w-full h-full transition-opacity duration-1000",
+          isSliderReady ? "opacity-100" : "opacity-0 pointer-events-none"
+        )}
+      >
         <Carousel
           setApi={setApi}
           plugins={[autoplayPlugin.current]}
@@ -121,11 +135,11 @@ export const HeroSliderSection = () => {
         </Carousel>
       </div>
 
-      {/* Video Layer - Sits on top and fades out */}
+      {/* Video Layer - starts visible, fades out */}
       <div
         className={cn(
           'absolute inset-0 w-full h-full z-20 transition-opacity duration-1000',
-          videoFinished ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          isSliderReady ? 'opacity-0 pointer-events-none' : 'opacity-100'
         )}
       >
         {/* Background Video for blur effect */}
