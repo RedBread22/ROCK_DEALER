@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import Image from 'next/image';
-import Autoplay from 'embla-carousel-autoplay';
 
 import {
   Carousel,
@@ -25,88 +24,166 @@ const sliderImageIds = [
   'slider-7',
 ];
 
+const SLIDE_INTERVAL_MS = 5000;
+
 export const HeroSliderSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
   const [videoState, setVideoState] = useState<'playing' | 'fading' | 'hidden'>('playing');
+  const [videoDone, setVideoDone] = useState(false);
+  const [firstSlideReady, setFirstSlideReady] = useState(false);
 
-  const sliderImages = sliderImageIds
-    .map(id => PlaceHolderImages.find(img => img.id === id))
-    .filter((img): img is ImagePlaceholder => !!img);
+  const slideshowTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const autoplayPlugin = useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true, playOnInit: false })
+  const sliderImages = useMemo(
+    () =>
+      sliderImageIds
+        .map(id => PlaceHolderImages.find(img => img.id === id))
+        .filter((img): img is ImagePlaceholder => !!img),
+    []
   );
 
-  const handleVideoEnd = () => {
-    if (sliderImages.length > 0) {
-      const img = new window.Image();
-      img.src = sliderImages[0].imageUrl;
-      img.onload = () => setVideoState('fading');
-      img.onerror = () => setVideoState('fading');
-    } else {
-      setVideoState('fading');
+  const clearSlideshowTimer = useCallback(() => {
+    if (slideshowTimerRef.current) {
+      clearInterval(slideshowTimerRef.current);
+      slideshowTimerRef.current = null;
     }
+  }, []);
+
+  useEffect(() => {
+    if (sliderImages.length === 0) return;
+
+    let isCancelled = false;
+    const preloadImage = (src: string) =>
+      new Promise<void>((resolve, reject) => {
+        const image = new window.Image();
+        image.onload = () => resolve();
+        image.onerror = () => reject(new Error(`Failed to preload image: ${src}`));
+        image.src = src;
+      });
+
+    preloadImage(sliderImages[0].imageUrl)
+      .then(async () => {
+        if (sliderImages[1]) {
+          try {
+            await preloadImage(sliderImages[1].imageUrl);
+          } catch {
+            // Optional preload only
+          }
+        }
+        if (!isCancelled) {
+          setFirstSlideReady(true);
+        }
+      })
+      .catch(() => {
+        if (!isCancelled) {
+          setFirstSlideReady(false);
+        }
+      });
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [sliderImages]);
+
+  const handleVideoEnd = () => {
+    setVideoDone(true);
   };
+
+  const slideshowActive = videoDone && firstSlideReady && sliderImages.length > 0;
+
+  useEffect(() => {
+    if (slideshowActive) {
+      setVideoState('fading');
+      return;
+    }
+
+    if (!videoDone) {
+      setVideoState('playing');
+    }
+  }, [slideshowActive, videoDone]);
 
   useEffect(() => {
     if (videoState === 'fading') {
       const fadeOutTimer = setTimeout(() => {
         setVideoState('hidden');
-      }, 1000); // Match CSS transition duration
+      }, 1000);
       return () => clearTimeout(fadeOutTimer);
     }
   }, [videoState]);
 
   useEffect(() => {
     if (!api) return;
-    
+
     setScrollSnaps(api.scrollSnapList());
     setCurrent(api.selectedScrollSnap());
 
     const onSelect = () => {
-      setCurrent(api.selectedScrollSnap());
+      const selected = api.selectedScrollSnap();
+      const total = api.scrollSnapList().length;
+      const safeIndex = total > 0 ? ((selected % total) + total) % total : 0;
+      setCurrent(safeIndex);
     };
+
     api.on('select', onSelect);
+    api.on('reInit', onSelect);
+
     return () => {
       api.off('select', onSelect);
+      api.off('reInit', onSelect);
     };
   }, [api]);
 
   useEffect(() => {
-    const sliderIsActive = videoState === 'fading' || videoState === 'hidden';
-    if (sliderIsActive && api) {
-      api.reInit();
-      const playTimer = setTimeout(() => {
-        autoplayPlugin.current.play();
-      }, 1000);
-      return () => clearTimeout(playTimer);
+    if (!api || !slideshowActive || videoState !== 'hidden') {
+      clearSlideshowTimer();
+      return;
     }
-  }, [videoState, api]);
 
-  const scrollTo = React.useCallback((index: number) => {
-    api?.scrollTo(index);
-  }, [api]);
+    api.reInit();
+
+    clearSlideshowTimer();
+    slideshowTimerRef.current = setInterval(() => {
+      api.scrollNext();
+    }, SLIDE_INTERVAL_MS);
+
+    return () => {
+      clearSlideshowTimer();
+    };
+  }, [api, slideshowActive, videoState, clearSlideshowTimer]);
+
+  useEffect(() => {
+    return () => {
+      clearSlideshowTimer();
+    };
+  }, [clearSlideshowTimer]);
+
+  const scrollTo = useCallback(
+    (index: number) => {
+      if (!api || scrollSnaps.length === 0) return;
+      const safeIndex = ((index % scrollSnaps.length) + scrollSnaps.length) % scrollSnaps.length;
+      api.scrollTo(safeIndex);
+    },
+    [api, scrollSnaps.length]
+  );
 
   const isSliderVisible = videoState !== 'playing';
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Slider Layer - starts hidden, fades in */}
       <div
         className={cn(
-          "absolute inset-0 w-full h-full transition-opacity duration-1000",
-          isSliderVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+          'absolute inset-0 w-full h-full transition-opacity duration-1000',
+          isSliderVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
         )}
       >
         <Carousel
           setApi={setApi}
-          plugins={[autoplayPlugin.current]}
           opts={{
             loop: true,
           }}
-          className="w-full h-full relative"
+          className="w-full h-full relative [&>div]:h-full"
         >
           <CarouselContent className="-ml-0 h-full">
             {sliderImages.map((image, index) => (
@@ -118,7 +195,7 @@ export const HeroSliderSection = () => {
                     data-ai-hint={image.imageHint}
                     fill
                     className="object-cover"
-                    priority={index === 0}
+                    priority={index < 2}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
                 </div>
@@ -127,7 +204,7 @@ export const HeroSliderSection = () => {
           </CarouselContent>
           <CarouselPrevious className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-10 h-10 w-10 sm:h-12 sm:w-12 text-white bg-black/30 hover:bg-black/50 border-none transition-colors rounded-full" />
           <CarouselNext className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-10 h-10 w-10 sm:h-12 sm:w-12 text-white bg-black/30 hover:bg-black/50 border-none transition-colors rounded-full" />
-          
+
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex justify-center gap-2">
             {scrollSnaps.map((_, index) => (
               <button
@@ -144,7 +221,6 @@ export const HeroSliderSection = () => {
         </Carousel>
       </div>
 
-      {/* Video Layer - unmounted when hidden */}
       {videoState !== 'hidden' && (
         <div
           className={cn(
