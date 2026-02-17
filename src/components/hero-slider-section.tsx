@@ -28,7 +28,6 @@ const sliderImageIds = [
 export const HeroSliderSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
   const sliderImages = sliderImageIds
     .map(id => PlaceHolderImages.find(img => img.id === id))
@@ -36,11 +35,15 @@ export const HeroSliderSection = () => {
 
   useEffect(() => {
     if (!api) return;
+
+    // Re-initialize the carousel when the component is mounted to ensure
+    // it correctly measures its dimensions after the video is gone.
+    api.reInit();
     
-    setScrollSnaps(api.scrollSnapList());
     setCurrent(api.selectedScrollSnap());
 
     const onSelect = () => {
+      if (!api.canScroll()) return;
       setCurrent(api.selectedScrollSnap());
     };
 
@@ -54,6 +57,8 @@ export const HeroSliderSection = () => {
   const scrollTo = React.useCallback((index: number) => {
     api?.scrollTo(index);
   }, [api]);
+
+  const scrollSnaps = api?.scrollSnapList() ?? [];
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
