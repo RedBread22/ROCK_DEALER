@@ -43,10 +43,11 @@ export const HeroSliderSection = () => {
     if (sliderImages.length > 0) {
       const img = new window.Image();
       img.src = sliderImages[0].imageUrl;
+      // Preload the first image, then switch state
       img.onload = () => setIsSliderReady(true);
-      img.onerror = () => setIsSliderReady(true); // Still proceed on error
+      img.onerror = () => setIsSliderReady(true); // Still proceed on error to not block the UI
     } else {
-      setIsSliderReady(true);
+      setIsSliderReady(true); // Fallback if no images
     }
   };
 
@@ -68,14 +69,20 @@ export const HeroSliderSection = () => {
       api.off('select', onSelect);
     };
   }, [api]);
-  
-  const handleSliderTransitionEnd = () => {
+
+  // This effect reliably re-initializes the carousel after it becomes visible.
+  useEffect(() => {
     if (isSliderReady && api) {
-      // Now that the slider is visible, we can safely re-init and play.
-      api.reInit();
-      autoplayPlugin.current.play();
+      // Use a timeout to defer the re-initialization until after the current render cycle.
+      // This ensures the component is visible in the DOM before Embla tries to measure it.
+      const timer = setTimeout(() => {
+        api.reInit();
+        autoplayPlugin.current.play();
+      }, 100); // A small delay is safer for cross-browser compatibility.
+
+      return () => clearTimeout(timer);
     }
-  }
+  }, [isSliderReady, api]);
 
   const scrollTo = React.useCallback((index: number) => {
     api?.scrollTo(index);
@@ -84,8 +91,7 @@ export const HeroSliderSection = () => {
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
       {/* Slider Layer - starts hidden, fades in */}
-      <div 
-        onTransitionEnd={handleSliderTransitionEnd}
+      <div
         className={cn(
           "absolute inset-0 w-full h-full transition-opacity duration-1000",
           isSliderReady ? "opacity-100" : "opacity-0 pointer-events-none"
