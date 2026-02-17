@@ -43,7 +43,7 @@ export const HeroSliderSection = () => {
     if (!api) {
       return;
     }
-
+    
     setScrollSnaps(api.scrollSnapList());
     setCurrent(api.selectedScrollSnap());
 
@@ -52,9 +52,11 @@ export const HeroSliderSection = () => {
     };
 
     api.on('select', onSelect);
-
-    // Start autoplay when video finishes and api is available
-    if (videoFinished) {
+    
+    if(videoFinished) {
+      // Re-initialize the carousel when it becomes visible to ensure correct dimensions are calculated
+      // and start the autoplay plugin.
+      api.reInit();
       autoplayPlugin.current.play();
     }
 
@@ -73,45 +75,8 @@ export const HeroSliderSection = () => {
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Video Layer */}
-      <div
-        className={cn(
-          'absolute inset-0 w-full h-full z-20 transition-opacity duration-1000',
-          videoFinished ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        )}
-      >
-        {/* Background Video */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover blur-xl opacity-40"
-          aria-hidden="true"
-        >
-          <source src="/videos/video.mp4" type="video/mp4" />
-        </video>
-
-        {/* Foreground Video */}
-        <div className="relative z-10 h-full w-full flex items-center justify-center pt-24">
-          <video
-            autoPlay
-            muted
-            playsInline
-            onEnded={handleVideoEnd}
-            className="w-full h-full object-contain"
-          >
-            <source src="/videos/video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </div>
-
-      {/* Slider Layer */}
-      <div className={cn(
-        'w-full h-full transition-opacity duration-1000', 
-        videoFinished ? 'opacity-100' : 'opacity-0 pointer-events-none'
-      )}>
+      {/* Slider Layer - Always present, revealed by Video Layer fading out */}
+      <div className="absolute inset-0 w-full h-full">
         <Carousel
           setApi={setApi}
           plugins={[autoplayPlugin.current]}
@@ -154,6 +119,40 @@ export const HeroSliderSection = () => {
             ))}
           </div>
         </Carousel>
+      </div>
+
+      {/* Video Layer - Sits on top and fades out */}
+      <div
+        className={cn(
+          'absolute inset-0 w-full h-full z-20 transition-opacity duration-1000',
+          videoFinished ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        )}
+      >
+        {/* Background Video for blur effect */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover blur-xl opacity-40"
+          aria-hidden="true"
+        >
+          <source src="/videos/video.mp4" type="video/mp4" />
+        </video>
+
+        {/* Foreground Video */}
+        <div className="relative z-10 h-full w-full flex items-center justify-center pt-24">
+          <video
+            autoPlay
+            muted
+            playsInline
+            onEnded={handleVideoEnd}
+            className="w-full h-full object-contain"
+          >
+            <source src="/videos/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
     </section>
   );
