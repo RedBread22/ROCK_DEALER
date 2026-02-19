@@ -34,7 +34,7 @@ export const HeroSection = () => {
             <InteractiveElement cursorType="link">
               <Button asChild size="lg" className="font-bold transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
                 <Link href="/produkte/zierkies">
-                  Katalog öffnen
+                  Zierkies ansehen
                 </Link>
               </Button>
             </InteractiveElement>
