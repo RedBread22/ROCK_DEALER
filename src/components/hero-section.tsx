@@ -1,4 +1,3 @@
-
 "use client";
 import React from 'react';
 import Link from 'next/link';
@@ -34,7 +33,7 @@ export const HeroSection = () => {
             <InteractiveElement cursorType="link">
               <Button asChild size="lg" className="font-bold transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
                 <Link href="/produkte/zierkies">
-                  Zierkies ansehen
+                  Zierkies entdecken
                 </Link>
               </Button>
             </InteractiveElement>
