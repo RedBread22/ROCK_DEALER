@@ -54,7 +54,7 @@ export function ProductGridWithModal({ products }: ProductGridWithModalProps) {
                   {selectedProduct.description}
                 </DialogDescription>
                 <div className="mt-8">
-                  <Link href="/#product-contact" passHref>
+                  <Link href={`?product=${encodeURIComponent(selectedProduct.name)}#product-contact`} passHref>
                     <Button size="lg" className="w-full" onClick={() => setSelectedProduct(null)}>
                       Anfrage senden
                     </Button>
