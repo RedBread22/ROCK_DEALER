@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Instagram, Facebook } from 'lucide-react';
 import { InteractiveElement } from './interactive-element';
 
 export const Footer = () => {
@@ -31,9 +32,35 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Middle: Copyright (Order changes on mobile) */}
-          <div className="flex items-center justify-center order-last md:order-none">
-             <p className="text-sm text-muted-foreground">&copy; Rock-Dealer 2025.</p>
+          {/* Middle: Social Media */}
+          <div className="flex flex-col items-center">
+            <h3 className="font-headline text-base uppercase tracking-widest text-primary">
+              Folge uns
+            </h3>
+            <div className="mt-6 flex gap-6">
+              <InteractiveElement cursorType="link">
+                <a 
+                  href="https://www.instagram.com/rock__dealer/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground transition-colors hover:text-primary"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-7 w-7" />
+                </a>
+              </InteractiveElement>
+              <InteractiveElement cursorType="link">
+                <a 
+                  href="https://www.facebook.com/p/The-Rock-Dealer-100057296156483/?locale=de_DE" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground transition-colors hover:text-primary"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="h-7 w-7" />
+                </a>
+              </InteractiveElement>
+            </div>
           </div>
 
           {/* Right: Navigation */}
@@ -59,6 +86,11 @@ export const Footer = () => {
               </InteractiveElement>
             </nav>
           </div>
+        </div>
+
+        {/* Bottom: Copyright */}
+        <div className="mt-16 border-t border-border pt-8 text-center">
+          <p className="text-sm text-muted-foreground">&copy; Rock-Dealer 2025.</p>
         </div>
       </div>
     </footer>
