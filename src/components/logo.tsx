@@ -4,7 +4,7 @@ import Image from 'next/image';
 export const Logo = ({ className }: { className?: string }) => {
   return (
     <Image
-        src="/images/Logo.webp"
+        src="/images/Logo2.webp"
         alt="ROCK DEALER Logo"
         width={280}
         height={40}
