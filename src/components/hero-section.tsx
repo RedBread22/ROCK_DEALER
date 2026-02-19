@@ -1,5 +1,7 @@
+
 "use client";
 import React from 'react';
+import Link from 'next/link';
 import { AnimatedText } from './animated-text';
 import { InteractiveElement } from './interactive-element';
 import { Button } from './ui/button';
@@ -30,17 +32,11 @@ export const HeroSection = () => {
           
           <div className="mt-8">
             <InteractiveElement cursorType="link">
-                <a
-                  href="https://drive.google.com/file/d/122uFlw70h8tnXXydQKIhUctNTZ1PjPlB/view"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Katalog als PDF öffnen (externer Link)"
-                  className="inline-block"
-                >
-                  <Button size="lg" className="font-bold transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
-                    Katalog öffnen
-                  </Button>
-                </a>
+              <Button asChild size="lg" className="font-bold transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
+                <Link href="/produkte/zierkies">
+                  Katalog öffnen
+                </Link>
+              </Button>
             </InteractiveElement>
           </div>
 
