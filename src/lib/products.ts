@@ -67,12 +67,6 @@ export const productCategories: ProductCategory[] = [
     ],
   },
   {
-    id: 'feinsteinzeug',
-    name: 'Feinsteinzeug',
-    description: 'Pflegeleichte und elegante Platten für Terrassen und Balkone.',
-    image: findImage('category-feinsteinzeug'),
-  },
-  {
     id: 'zierkies',
     name: 'Zierkies',
     description: 'Dekorative Kiese und Splitte für individuelle Gartenakzente.',
@@ -514,7 +508,7 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
     products.push({
       name: `${imageInfo.name} ${i}`,
       description: `Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
-      meta: 'Granit, frostfest und witterungsbeständig',
+      meta: 'Granit, frostfest and witterungsbeständig',
       image: {
         id: `${productGroupId}-${i}`,
         description: `${imageInfo.name} ${i}`,
@@ -546,7 +540,7 @@ export const getSchieferProducts = (productGroupId: string): Product[] | null =>
     products.push({
       name: `${imageInfo.name} ${i}`,
       description: `Produktdetails folgen.\n\nKontaktieren Sie uns für weitere Informationen zu Verfügbarkeit und Preisen.`,
-      meta: 'Schiefer, frostfest und witterungsbeständig',
+      meta: 'Schiefer, frostfest and witterungsbeständig',
       image: {
         id: `schiefer-${productGroupId}-${i}`,
         description: `${imageInfo.name} ${i}`,
@@ -580,7 +574,7 @@ export const getLusernaGneisProducts = (productGroupId: string): Product[] | nul
     products.push({
       name: `${imageInfo.name} ${i}`,
       description: `Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
-      meta: 'Luserna Gneis, frostfest und witterungsbeständig',
+      meta: 'Luserna Gneis, frostfest and witterungsbeständig',
       image: {
         id: `luserna-${productGroupId}-${i}`,
         description: `${imageInfo.name} ${i}`,
@@ -608,44 +602,6 @@ export const getBrasilQuarzitProducts = (): Product[] => {
     });
   }
   return products;
-};
-
-export const getFeinsteinzeugProducts = (): Product[] => {
-  return [
-    {
-      name: 'Feinsteinzeug Ashima',
-      description: 'Hochwertige Feinsteinzeugplatte in eleganter Steinoptik. Ideal für moderne Terrassen und Außenbereiche. Pflegeleicht und extrem widerstandsfähig.',
-      meta: '2 cm, R11 Rutschhemmung, Frostfest',
-      image: {
-        id: 'feinsteinzeug-1',
-        description: 'Feinsteinzeug Ashima',
-        imageUrl: '/images/UNSERE-PRODUKTE/Feinsteinzeug/1.jpg',
-        imageHint: 'porcelain tile',
-      },
-    },
-    {
-      name: 'Feinsteinzeug Atakama',
-      description: 'Robuste Feinsteinzeugplatte mit natürlicher Ausstrahlung. Perfekt für langlebige und stilvolle Außenflächen.',
-      meta: '2 cm, R11 Rutschhemmung, Frostfest',
-      image: {
-        id: 'feinsteinzeug-2',
-        description: 'Feinsteinzeug Atakama',
-        imageUrl: '/images/UNSERE-PRODUKTE/Feinsteinzeug/2.jpg',
-        imageHint: 'stone look tile',
-      },
-    },
-    {
-      name: 'Feinsteinzeug Basalt',
-      description: 'Dunkle Feinsteinzeugplatte in Basaltoptik. Verleiht Außenbereichen eine moderne und edle Note.',
-      meta: '2 cm, R11 Rutschhemmung, Frostfest',
-      image: {
-        id: 'feinsteinzeug-3',
-        description: 'Feinsteinzeug Basalt',
-        imageUrl: '/images/UNSERE-PRODUKTE/Feinsteinzeug/3.jpg',
-        imageHint: 'dark porcelain tile',
-      },
-    },
-  ];
 };
 
 export const getTravertinProducts = (): Product[] => {

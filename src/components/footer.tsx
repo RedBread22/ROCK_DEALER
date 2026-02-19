@@ -79,11 +79,6 @@ export const Footer = () => {
                   AGB
                 </Link>
               </InteractiveElement>
-               <InteractiveElement cursorType="link">
-                <Link href="/produkte/feinsteinzeug" className="block text-primary underline transition-colors hover:text-primary/80">
-                   Natursteinplatten &amp; Feinsteinzeug
-                </Link>
-              </InteractiveElement>
             </nav>
           </div>
         </div>
