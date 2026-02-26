@@ -503,21 +503,41 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
   }
 
   const products: Product[] = [];
-  // Skip "Mauerstein 1" if the product group is mauersteine
-  const start = productGroupId === 'mauersteine' ? 2 : 1;
-  for (let i = start; i <= imageInfo.count; i++) {
-    const imageUrl = `${imageInfo.path}/${i}.jpg`;
-    products.push({
-      name: `${imageInfo.name} ${i}`,
-      description: `Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
-      meta: 'Granit, frostfest and witterungsbeständig',
-      image: {
-        id: `${productGroupId}-${i}`,
-        description: `${imageInfo.name} ${i}`,
-        imageUrl: imageUrl,
-        imageHint: `granite ${productGroupId.slice(0, -1)}`,
-      },
+  
+  if (productGroupId === 'bodenplatten') {
+    // Specific reordering as requested: images 7 and 8 should be at the first two positions (becoming 1 and 2)
+    const indices = [7, 8, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13];
+    indices.forEach((imgIndex, displayIndex) => {
+      const imageUrl = `${imageInfo.path}/${imgIndex}.jpg`;
+      products.push({
+        name: `${imageInfo.name} ${displayIndex + 1}`,
+        description: `Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
+        meta: 'Granit, frostfest and witterungsbeständig',
+        image: {
+          id: `${productGroupId}-${imgIndex}`,
+          description: `${imageInfo.name} ${displayIndex + 1}`,
+          imageUrl: imageUrl,
+          imageHint: `granite bodenplatte`,
+        },
+      });
     });
+  } else {
+    // Standard logic
+    const start = productGroupId === 'mauersteine' ? 2 : 1;
+    for (let i = start; i <= imageInfo.count; i++) {
+      const imageUrl = `${imageInfo.path}/${i}.jpg`;
+      products.push({
+        name: `${imageInfo.name} ${i}`,
+        description: `Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
+        meta: 'Granit, frostfest and witterungsbeständig',
+        image: {
+          id: `${productGroupId}-${i}`,
+          description: `${imageInfo.name} ${i}`,
+          imageUrl: imageUrl,
+          imageHint: `granite ${productGroupId.slice(0, -1)}`,
+        },
+      });
+    }
   }
   return products;
 };
