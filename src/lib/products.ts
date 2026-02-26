@@ -213,7 +213,7 @@ export const granitSubCategoriesData: SubCategory[] = [
       description: 'Elegante und robuste Bodenplatten für Terrassen und Wege.',
       image: {
         id: 'granit-bodenplatten',
-        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten/1.jpg',
+        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten/7.jpg',
         description: 'Granit Bodenplatten',
         imageHint: 'granite slabs',
       },
