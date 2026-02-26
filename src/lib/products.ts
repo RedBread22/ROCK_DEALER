@@ -122,7 +122,7 @@ const subCategoryDescriptions: Record<string, Record<string, string>> = {
   gartendeko: {
       herz: 'Dekorative Herzen aus Naturstein als liebevolles und beständiges Symbol in Ihrem Garten.',
       figuren: 'Handgefertigte Figuren aus Stein – einzigartige Kunstwerke und Blickfänge für den Außenbereich.',
-      findlinge: 'Charakterstarke Findlinge und Solitärsteine als natürliche Gestaltungselemente.',
+      findlinge: 'Charakterstarke Findlinge und Solitärsteine als natürliche Gestaltungenelemente.',
       vulkanbrocken: 'Poröse Vulkanbrocken für einzigartige, leichte und naturnahe Gartendekorationen.',
       brunnen: 'Gartenbrunnen aus Naturstein – beruhigendes Wasserspiel und edler Mittelpunkt.',
       'tische-baenke': 'Robuste und wetterfeste Tische und Bänke aus massivem Naturstein.',
@@ -141,7 +141,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     porphyr: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr/7.jpg',
     schiefer: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen/9.jpg',
     sandstein: '/images/UNSERE-PRODUKTE/Natursteine/Sandstein.jpg',
-    'stainzer-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis.jpg',
+    'stainzer-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/1.jpg',
     travertin: '/images/UNSERE-PRODUKTE/Natursteine/Travertin/1.jpg',
     tuff: '/images/UNSERE-PRODUKTE/Natursteine/Tuff/6.jpg',
   },
@@ -580,6 +580,25 @@ export const getLusernaGneisProducts = (productGroupId: string): Product[] | nul
         description: `${imageInfo.name} ${i}`,
         imageUrl: imageUrl,
         imageHint: `luserna gneiss ${productGroupId.replace('-', ' ')}`,
+      },
+    });
+  }
+  return products;
+};
+
+export const getStainzerGneisProducts = (): Product[] => {
+  const products: Product[] = [];
+  const count = 5;
+  for (let i = 1; i <= count; i++) {
+    products.push({
+      name: `Stainzer Gneis Variante ${i}`,
+      description: 'Stainzer Gneis ist ein regionaler Charakterstein mit lebendiger Struktur. Er ist extrem robust und vielseitig einsetzbar für Garten- und Hofbereiche, Mauern sowie Terrassen. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
+      meta: 'Regionaler Naturstein, robust & witterungsbeständig',
+      image: {
+        id: `stainzer-gneis-${i}`,
+        description: `Stainzer Gneis Variante ${i}`,
+        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/${i}.jpg`,
+        imageHint: 'stainzer gneiss',
       },
     });
   }
