@@ -169,7 +169,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
 };
 
 const allSubCategories: (SubCategory & { parentId: string })[] = productCategories
-  .filter((cat) => cat.subCategories)
+  .filter((cat) => cat.id !== 'feinsteinzeug' && cat.subCategories)
   .flatMap((cat) =>
     cat.subCategories!.map((sub) => {
       const imageUrl = subCategoryImages[cat.id]?.[sub.id];
@@ -623,15 +623,19 @@ export const getBetonsteineProducts = (subCategoryId: string): Product[] | null 
   }
 
   const products: Product[] = [];
+  let displayCounter = 1;
   for (let i = 1; i <= imageInfo.count; i++) {
+    // Skip index 3 for Randleisten
+    if (subCategoryId === 'randleisten' && i === 3) continue;
+
     const imageUrl = `${imageInfo.path}/${i}.jpg`;
     products.push({
-      name: `${imageInfo.name} ${i}`,
+      name: `${imageInfo.name} ${displayCounter++}`,
       description: `Vielseitige Gestaltungsmöglichkeiten mit hochwertigen Betonsteinen. Robust, frostfest und ideal für Wege, Mauern und Außenanlagen.\n\nFür Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
       meta: 'Betonstein, frostfest & langlebig',
       image: {
         id: `betonsteine-${subCategoryId}-${i}`,
-        description: `${imageInfo.name} ${i}`,
+        description: `${imageInfo.name} ${displayCounter - 1}`,
         imageUrl: imageUrl,
         imageHint: `betonstein ${subCategoryId.replace(/s$/, '')}`,
       },
