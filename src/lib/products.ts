@@ -150,7 +150,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     mauersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine/4.jpg',
     palisaden: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden/3.jpg',
     pflastersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine/10.jpg',
-    randleisten: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten/2.jpg',
+    randleisten: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten/4.jpg',
   },
   zierkies: {
     kantkorn: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/12.jpg',
@@ -613,7 +613,7 @@ const betonsteineImageCounts: Record<string, { count: number, path: string, name
   mauersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine', name: 'Beton-Mauerstein' },
   palisaden: { count: 3, path: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden', name: 'Beton-Palisade' },
   pflastersteine: { count: 10, path: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine', name: 'Beton-Pflasterstein' },
-  randleisten: { count: 2, path: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten', name: 'Beton-Randleiste' },
+  randleisten: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten', name: 'Beton-Randleiste' },
 };
 
 export const getBetonsteineProducts = (subCategoryId: string): Product[] | null => {
