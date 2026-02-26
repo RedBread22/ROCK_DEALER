@@ -59,11 +59,11 @@ export const productCategories: ProductCategory[] = [
     description: 'Moderne und vielseitige Lösungen für Wege und Mauern.',
     image: findImage('category-betonsteine'),
     subCategories: [
-      { id: 'pflastersteine', name: 'Pflastersteine' },
-      { id: 'mauersteine', name: 'Mauersteine' },
-      { id: 'randleisten', name: 'Randleisten' },
       { id: 'betonplatten', name: 'Betonplatten' },
+      { id: 'mauersteine', name: 'Mauersteine' },
       { id: 'palisaden', name: 'Palisaden' },
+      { id: 'pflastersteine', name: 'Pflastersteine' },
+      { id: 'randleisten', name: 'Randleisten' },
     ],
   },
   {
@@ -109,11 +109,11 @@ const subCategoryDescriptions: Record<string, Record<string, string>> = {
     muschelkalk: 'Heller Naturstein mit feiner Struktur und fossilen Einschlüssen – zeitlos, elegant und ideal für Terrassen, Mauern und klassische Außenanlagen.',
   },
   betonsteine: {
-      pflastersteine: 'Vielseitige Pflastersteine aus Beton für moderne Wege, Einfahrten und Plätze.',
-      mauersteine: 'System-Mauersteine aus Beton für stabile und ästhetische Gartenmauern und Abgrenzungen.',
-      randleisten: 'Saubere und stabile Kantenabschlüsse für Beete und Pflasterflächen mit Beton-Randleisten.',
       betonplatten: 'Großformatige Betonplatten für moderne, ruhige Terrassen- und Weggestaltungen.',
+      mauersteine: 'System-Mauersteine aus Beton für stabile und ästhetische Gartenmauern und Abgrenzungen.',
       palisaden: 'Beton-Palisaden zum Abfangen von Hängen, als Einfassung oder zur dekorativen Gliederung.',
+      pflastersteine: 'Vielseitige Pflastersteine aus Beton für moderne Wege, Einfahrten und Plätze.',
+      randleisten: 'Saubere und stabile Kantenabschlüsse für Beete und Pflasterflächen mit Beton-Randleisten.',
   },
   zierkies: {
       rundkorn: 'Natürlich gerundeter Zierkies für pflegeleichte Flächen, Wege und dekorative Akzente.',
@@ -146,11 +146,11 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     tuff: '/images/UNSERE-PRODUKTE/Natursteine/Tuff/6.jpg',
   },
   betonsteine: {
-    pflastersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine.jpg',
-    mauersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine.jpg',
-    randleisten: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten.jpg',
-    betonplatten: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten.jpg',
-    palisaden: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden.jpg',
+    betonplatten: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten/3.jpg',
+    mauersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine/4.jpg',
+    palisaden: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden/3.jpg',
+    pflastersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine/10.jpg',
+    randleisten: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten/2.jpg',
   },
   zierkies: {
     kantkorn: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/12.jpg',
@@ -595,13 +595,45 @@ export const getLusernaGneisProducts = (productGroupId: string): Product[] | nul
     const imageUrl = `${imageInfo.path}/${i}.jpg`;
     products.push({
       name: `${imageInfo.name} ${i}`,
-      description: `Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
+      description: `Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
       meta: 'Luserna Gneis, frostfest and witterungsbeständig',
       image: {
         id: `luserna-${productGroupId}-${i}`,
         description: `${imageInfo.name} ${i}`,
         imageUrl: imageUrl,
         imageHint: `luserna gneiss ${productGroupId.replace('-', ' ')}`,
+      },
+    });
+  }
+  return products;
+};
+
+const betonsteineImageCounts: Record<string, { count: number, path: string, name: string }> = {
+  betonplatten: { count: 3, path: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten', name: 'Betonplatte' },
+  mauersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine', name: 'Beton-Mauerstein' },
+  palisaden: { count: 3, path: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden', name: 'Beton-Palisade' },
+  pflastersteine: { count: 10, path: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine', name: 'Beton-Pflasterstein' },
+  randleisten: { count: 2, path: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten', name: 'Beton-Randleiste' },
+};
+
+export const getBetonsteineProducts = (subCategoryId: string): Product[] | null => {
+  const imageInfo = betonsteineImageCounts[subCategoryId];
+  if (!imageInfo || imageInfo.count === 0) {
+    return null;
+  }
+
+  const products: Product[] = [];
+  for (let i = 1; i <= imageInfo.count; i++) {
+    const imageUrl = `${imageInfo.path}/${i}.jpg`;
+    products.push({
+      name: `${imageInfo.name} ${i}`,
+      description: `Vielseitige Gestaltungsmöglichkeiten mit hochwertigen Betonsteinen. Robust, frostfest und ideal für Wege, Mauern und Außenanlagen.\n\nFür Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
+      meta: 'Betonstein, frostfest & langlebig',
+      image: {
+        id: `betonsteine-${subCategoryId}-${i}`,
+        description: `${imageInfo.name} ${i}`,
+        imageUrl: imageUrl,
+        imageHint: `betonstein ${subCategoryId.replace(/s$/, '')}`,
       },
     });
   }

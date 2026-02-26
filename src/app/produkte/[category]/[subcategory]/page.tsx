@@ -16,7 +16,8 @@ import {
     getPorphyrProducts,
     getMuschelkalkProducts,
     getZierkiesProducts,
-    getStainzerGneisProducts
+    getStainzerGneisProducts,
+    getBetonsteineProducts
 } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
 import { Breadcrumbs } from '@/components/breadcrumbs';
@@ -205,6 +206,13 @@ export default function SubCategoryPage({ params }: { params: { category: string
         const zierkiesProducts = getZierkiesProducts(params.subcategory);
         if (zierkiesProducts && zierkiesProducts.length > 0) {
             products = zierkiesProducts;
+        } else {
+            products = generatePlaceholderProducts(8);
+        }
+    } else if (params.category === 'betonsteine') {
+        const betonsteineProducts = getBetonsteineProducts(params.subcategory);
+        if (betonsteineProducts && betonsteineProducts.length > 0) {
+            products = betonsteineProducts;
         } else {
             products = generatePlaceholderProducts(8);
         }
