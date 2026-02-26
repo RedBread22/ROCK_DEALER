@@ -588,8 +588,8 @@ export const getLusernaGneisProducts = (productGroupId: string): Product[] | nul
 
 export const getStainzerGneisProducts = (): Product[] => {
   const products: Product[] = [];
-  const count = 5;
-  for (let i = 1; i <= count; i++) {
+  const indices = [1, 2, 3, 4, 5, 11, 12, 13];
+  for (const i of indices) {
     products.push({
       name: `Stainzer Gneis Variante ${i}`,
       description: 'Stainzer Gneis ist ein regionaler Charakterstein mit lebendiger Struktur. Er ist extrem robust und vielseitig einsetzbar für Garten- und Hofbereiche, Mauern sowie Terrassen. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
