@@ -224,7 +224,7 @@ export const granitSubCategoriesData: SubCategory[] = [
       description: 'Vielseitige Mauersteine für stabile und ästhetische Gartenmauern.',
       image: {
         id: 'granit-mauersteine',
-        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Mauersteine/1.jpg',
+        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Mauersteine/2.jpg',
         description: 'Granit Mauersteine',
         imageHint: 'granite bricks',
       },
@@ -503,7 +503,9 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
   }
 
   const products: Product[] = [];
-  for (let i = 1; i <= imageInfo.count; i++) {
+  // Skip "Mauerstein 1" if the product group is mauersteine
+  const start = productGroupId === 'mauersteine' ? 2 : 1;
+  for (let i = start; i <= imageInfo.count; i++) {
     const imageUrl = `${imageInfo.path}/${i}.jpg`;
     products.push({
       name: `${imageInfo.name} ${i}`,
