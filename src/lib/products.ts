@@ -532,6 +532,11 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
     // Standard logic
     const start = productGroupId === 'mauersteine' ? 2 : 1;
     for (let i = start; i <= imageInfo.count; i++) {
+      // Skip specific Mauersteine as requested (Mauerstein 3 and 5)
+      if (productGroupId === 'mauersteine' && (i === 3 || i === 5)) {
+        continue;
+      }
+
       const imageUrl = `${imageInfo.path}/${i}.jpg`;
       products.push({
         name: `${imageInfo.name} ${i}`,
