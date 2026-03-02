@@ -172,7 +172,13 @@ const allSubCategories: (SubCategory & { parentId: string })[] = productCategori
   .filter((cat) => cat.id !== 'feinsteinzeug' && cat.subCategories)
   .flatMap((cat) =>
     cat.subCategories!.map((sub) => {
-      const imageUrl = subCategoryImages[cat.id]?.[sub.id];
+      let imageUrl = subCategoryImages[cat.id]?.[sub.id];
+      
+      // Use image 7 for Granit Bodenplatten preview as requested
+      if (cat.id === 'natursteine' && sub.id === 'granit') {
+        imageUrl = '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten/7.jpg';
+      }
+
       const image: ImagePlaceholder = imageUrl
         ? {
             id: `${cat.id}-${sub.id}`,
@@ -506,7 +512,8 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
   
   if (productGroupId === 'bodenplatten') {
     // Specific reordering as requested: images 7 and 8 should be at the first two positions (becoming 1 and 2)
-    const indices = [7, 8, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13];
+    // Removed other indices as requested
+    const indices = [7, 8];
     indices.forEach((imgIndex, displayIndex) => {
       const imageUrl = `${imageInfo.path}/${imgIndex}.jpg`;
       products.push({
