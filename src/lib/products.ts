@@ -409,7 +409,48 @@ const zierkiesImageCounts: Record<string, { count: number, path: string, name: s
   kantkorn: { count: 12, path: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn', name: 'Kantkorn' },
 };
 
+const rundkornProducts: { name: string; image: string }[] = [
+  { name: 'Flusskiesel, Bunt', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Flusskiesel, Bunt.png' },
+  { name: 'Teichkies, Bunt', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Teichkies, Bunt.png' },
+  { name: 'Alpenkies, Rosé-bunt', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Alpenkies, Rosé-bunt.png' },
+  { name: 'Naturkies, Weiß-grau', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Naturkies, Weiß-grau.png' },
+  { name: 'Quarzkies, Weiß-bunt', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Quarzkies, Weiß-bunt.png' },
+  { name: 'Flusskiesel, Anthrazit', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Flusskiesel, Anthrazit.png' },
+  { name: 'Marmorzierkies, Wolken-weiß', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Wolken-weiß.png' },
+  { name: 'Marmorzierkies, Carrara-weiß', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Carrara-weiß.png' },
+  { name: 'Marmorzierkies, Schneeweiß', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Schneeweiß.png' },
+  { name: 'Marmorzierkies, Matt-weiß', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Matt-weiß.png' },
+  { name: 'Gletscherkiesel, Chateau-beige', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Gletscherkiesel, Chateau-beige.png' },
+  { name: 'Marmorzierkies, Royal-rot', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Royal-rot.png' },
+  { name: 'Marmorzierkies, Anthrazit-weiß', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Anthrazit-weiß.png' },
+  { name: 'Marmorzierkies, Ebano-schwarz', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Ebano-schwarz.png' },
+  { name: 'Marmorzierkies, Donau-blau', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Donau-blau.png' },
+  { name: 'Marmorzierkies, Dachstein-blau', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Dachstein-blau.png' },
+  { name: 'Marmorzierkies, Gold-ocker', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Gold-ocker.png' },
+  { name: 'Marmorzierkies, Siena-gelb', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Siena-gelb.png' },
+  { name: 'Marmorzierkies, Sunrise', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Sunrise.png' },
+  { name: 'Marmorzierkies, Verona-rot', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Verona-rot.png' },
+  { name: 'Marmorzierkies, Alpen-grün', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Marmorzierkies, Alpen-grün.png' },
+  { name: 'Engelstein, Grün-weiß', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Engelstein, Grün-weiß.png' },
+  { name: 'Granitzierkiesel, Salz-Pfeffer', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Granitzierkiesel, Salz-Pfeffer.png' },
+  { name: 'Diskus-Granitzierkiesel, Salz-Pfeffer', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Diskus-Granitzierkiesel, Salz-Pfeffer.png' },
+];
+
 export const getZierkiesProducts = (subCategoryId: string): Product[] | null => {
+  if (subCategoryId === 'rundkorn') {
+    return rundkornProducts.map((p, i) => ({
+      name: p.name,
+      description: 'Hochwertiger Zierkies für Garten und Teich',
+      meta: 'Dekorativer Rundkorn-Zierkies',
+      image: {
+        id: `rundkorn-${i + 1}`,
+        description: p.name,
+        imageUrl: p.image,
+        imageHint: 'decorative round gravel',
+      },
+    }));
+  }
+
   const imageInfo = zierkiesImageCounts[subCategoryId];
   if (!imageInfo || imageInfo.count === 0) {
     return null;
