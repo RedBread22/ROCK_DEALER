@@ -23,6 +23,9 @@ const sliderImageIds = [
   'slider-5',
   'slider-6',
   'slider-7',
+  'slider-neu-1',
+  'slider-neu-2',
+  'slider-neu-3',
 ];
 
 type HeroSliderSectionProps = {
