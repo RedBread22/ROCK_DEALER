@@ -16,14 +16,14 @@ import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-imag
 import { cn } from '@/lib/utils';
 
 const sliderImageIds = [
+  'slider-5',
+  'slider-neu-3',
   'slider-2',
   'slider-1',
   'slider-3',
   'slider-4',
-  'slider-5',
   'slider-neu-1',
   'slider-neu-2',
-  'slider-neu-3',
 ];
 
 type HeroSliderSectionProps = {
