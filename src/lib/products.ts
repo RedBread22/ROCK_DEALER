@@ -49,7 +49,7 @@ export const productCategories: ProductCategory[] = [
       { id: 'stainzer-gneis', name: 'Stainzer Gneis' },
       { id: 'porphyr', name: 'Porphyr' },
       { id: 'basalt', name: 'Basalt' },
-      { id: 'tuff', name: 'Tuff' },
+      { id: 'tuff', name: 'Grauer Gneis' },
       { id: 'muschelkalk', name: 'Muschelkalk' },
     ],
   },
@@ -714,14 +714,14 @@ export const getTuffProducts = (): Product[] => {
   const count = 6;
   for (let i = 1; i <= count; i++) {
     products.push({
-      name: `Tuff Variante ${i}`,
+      name: `Grauer Gneis Variante ${i}`,
       description: 'Leichter und poröser Naturstein mit warmen Erdtönen. Ideal für dekorative Elemente und individuelle Akzente im Garten. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
       meta: 'Leicht, porös, dekorativ',
       image: {
         id: `tuff-${i}`,
-        description: `Tuff Variante ${i}`,
+        description: `Grauer Gneis Variante ${i}`,
         imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Tuff/${i}.jpg`,
-        imageHint: 'tuff stone',
+        imageHint: 'grey gneiss stone',
       },
     });
   }
