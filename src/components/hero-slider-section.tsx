@@ -102,6 +102,8 @@ export const HeroSliderSection = ({ isActive = true }: HeroSliderSectionProps) =
                   alt={image.description}
                   data-ai-hint={image.imageHint}
                   fill
+                  sizes="100vw"
+                  quality={85}
                   className="object-cover opacity-100"
                   priority={index === 0}
                 />
