@@ -246,6 +246,17 @@ export const granitSubCategoriesData: SubCategory[] = [
           imageHint: 'granite curbs',
         },
     },
+    {
+        id: 'granitplatte',
+        name: 'Granitplatte',
+        description: 'Hochwertige Granitplatten – robust, frostbeständig und vielseitig einsetzbar.',
+        image: {
+          id: 'granit-granitplatte',
+          imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Granitplatte/1.jpg',
+          description: 'Granitplatte',
+          imageHint: 'granite slab plate',
+        },
+    },
 ];
 
 export const schieferSubCategoriesData: SubCategory[] = [
@@ -488,6 +499,7 @@ const granitImageCounts: Record<string, { count: number, path: string, name: str
   bodenplatten: { count: 13, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten', name: 'Bodenplatte' },
   pflastersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Pflastersteine', name: 'Pflasterstein' },
   randleisten: { count: 2, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Randleisten', name: 'Randleiste' },
+  granitplatte: { count: 1, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Granitplatte', name: 'Granitplatte' },
 };
 
 export const getGranitProducts = (productGroupId: string): Product[] | null => {
