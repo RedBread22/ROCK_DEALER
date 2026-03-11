@@ -149,12 +149,12 @@ export function ImageLightbox({ images, initialIndex = 0, open, onClose }: Image
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.25 }}
-            className="relative z-[1] max-h-[85vh] max-w-[90vw] md:max-w-[80vw]"
+            className="relative z-[1] max-h-[92vh] max-w-[95vw]"
             onClick={(e) => e.stopPropagation()}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
-            <div className="relative h-[70vh] w-[90vw] md:h-[80vh] md:w-[75vw]">
+            <div className="relative h-[85vh] w-[95vw] md:h-[90vh] md:w-[90vw]">
               <Image
                 src={current.src}
                 alt={current.alt}
