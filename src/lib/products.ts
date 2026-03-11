@@ -225,17 +225,6 @@ export const granitSubCategoriesData: SubCategory[] = [
       },
     },
     {
-      id: 'mauersteine',
-      name: 'Mauersteine',
-      description: 'Vielseitige Mauersteine für stabile und ästhetische Gartenmauern.',
-      image: {
-        id: 'granit-mauersteine',
-        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Mauersteine/2.jpg',
-        description: 'Granit Mauersteine',
-        imageHint: 'granite bricks',
-      },
-    },
-    {
         id: 'pflastersteine',
         name: 'Pflastersteine',
         description: 'Klassische Pflastersteine für zeitlose Einfahrten und Wege.',
@@ -497,7 +486,6 @@ export const getGartendekoProducts = (subCategoryId: string): Product[] | null =
 const granitImageCounts: Record<string, { count: number, path: string, name: string }> = {
   blockstufen: { count: 7, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen', name: 'Blockstufe' },
   bodenplatten: { count: 13, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten', name: 'Bodenplatte' },
-  mauersteine: { count: 6, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Mauersteine', name: 'Mauerstein' },
   pflastersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Pflastersteine', name: 'Pflasterstein' },
   randleisten: { count: 2, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Randleisten', name: 'Randleiste' },
 };
@@ -551,13 +539,7 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
     }
   } else {
     // Standard logic
-    const start = productGroupId === 'mauersteine' ? 2 : 1;
-    for (let i = start; i <= imageInfo.count; i++) {
-      // Skip specific Mauersteine as requested (Mauerstein 3 and 5)
-      if (productGroupId === 'mauersteine' && (i === 3 || i === 5)) {
-        continue;
-      }
-
+    for (let i = 1; i <= imageInfo.count; i++) {
       const imageUrl = `${imageInfo.path}/${i}.jpg`;
       products.push({
         name: `${imageInfo.name} ${i}`,
