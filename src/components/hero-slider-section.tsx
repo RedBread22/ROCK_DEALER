@@ -16,13 +16,14 @@ import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-imag
 import { cn } from '@/lib/utils';
 
 const sliderImageIds = [
+  'slider-5',
+  'slider-neu-3',
   'slider-2',
   'slider-1',
   'slider-3',
   'slider-4',
-  'slider-5',
-  'slider-6',
-  'slider-7',
+  'slider-neu-1',
+  'slider-neu-2',
 ];
 
 type HeroSliderSectionProps = {
@@ -101,6 +102,8 @@ export const HeroSliderSection = ({ isActive = true }: HeroSliderSectionProps) =
                   alt={image.description}
                   data-ai-hint={image.imageHint}
                   fill
+                  sizes="100vw"
+                  quality={85}
                   className="object-cover opacity-100"
                   priority={index === 0}
                 />

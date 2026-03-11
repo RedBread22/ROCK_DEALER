@@ -49,7 +49,7 @@ export const productCategories: ProductCategory[] = [
       { id: 'stainzer-gneis', name: 'Stainzer Gneis' },
       { id: 'porphyr', name: 'Porphyr' },
       { id: 'basalt', name: 'Basalt' },
-      { id: 'tuff', name: 'Tuff' },
+      { id: 'tuff', name: 'Grauer Gneis' },
       { id: 'muschelkalk', name: 'Muschelkalk' },
     ],
   },
@@ -149,7 +149,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     betonplatten: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten/3.jpg',
     mauersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine/4.jpg',
     palisaden: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden/3.jpg',
-    pflastersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine/10.jpg',
+    pflastersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine/4.jpg',
     randleisten: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten/4.jpg',
   },
   zierkies: {
@@ -173,11 +173,6 @@ const allSubCategories: (SubCategory & { parentId: string })[] = productCategori
   .flatMap((cat) =>
     cat.subCategories!.map((sub) => {
       let imageUrl = subCategoryImages[cat.id]?.[sub.id];
-      
-      // Use image 7 for Granit Bodenplatten preview as requested
-      if (cat.id === 'natursteine' && sub.id === 'granit') {
-        imageUrl = '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten/7.jpg';
-      }
 
       const image: ImagePlaceholder = imageUrl
         ? {
@@ -214,28 +209,6 @@ export const granitSubCategoriesData: SubCategory[] = [
       },
     },
     {
-      id: 'bodenplatten',
-      name: 'Bodenplatten',
-      description: 'Elegante und robuste Bodenplatten für Terrassen und Wege.',
-      image: {
-        id: 'granit-bodenplatten',
-        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten/7.jpg',
-        description: 'Granit Bodenplatten',
-        imageHint: 'granite slabs',
-      },
-    },
-    {
-      id: 'mauersteine',
-      name: 'Mauersteine',
-      description: 'Vielseitige Mauersteine für stabile und ästhetische Gartenmauern.',
-      image: {
-        id: 'granit-mauersteine',
-        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Mauersteine/2.jpg',
-        description: 'Granit Mauersteine',
-        imageHint: 'granite bricks',
-      },
-    },
-    {
         id: 'pflastersteine',
         name: 'Pflastersteine',
         description: 'Klassische Pflastersteine für zeitlose Einfahrten und Wege.',
@@ -257,6 +230,17 @@ export const granitSubCategoriesData: SubCategory[] = [
           imageHint: 'granite curbs',
         },
     },
+    {
+        id: 'granitplatte',
+        name: 'Granitplatte',
+        description: 'Hochwertige Granitplatten – robust, frostbeständig und vielseitig einsetzbar.',
+        image: {
+          id: 'granit-granitplatte',
+          imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Granitplatte/1.jpg',
+          description: 'Granitplatte',
+          imageHint: 'granite slab plate',
+        },
+    },
 ];
 
 export const schieferSubCategoriesData: SubCategory[] = [
@@ -269,17 +253,6 @@ export const schieferSubCategoriesData: SubCategory[] = [
         imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Blockstufen/5.jpg',
         description: 'Schiefer Blockstufen',
         imageHint: 'slate steps',
-      },
-    },
-    {
-      id: 'bodenplatten',
-      name: 'Bodenplatten',
-      description: 'Elegante und robuste Bodenplatten für Terrassen und Wege.',
-      image: {
-        id: 'schiefer-bodenplatten',
-        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Bodenplatten/5.jpg',
-        description: 'Schiefer Bodenplatten',
-        imageHint: 'slate slabs',
       },
     },
     {
@@ -496,10 +469,9 @@ export const getGartendekoProducts = (subCategoryId: string): Product[] | null =
 
 const granitImageCounts: Record<string, { count: number, path: string, name: string }> = {
   blockstufen: { count: 7, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen', name: 'Blockstufe' },
-  bodenplatten: { count: 13, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten', name: 'Bodenplatte' },
-  mauersteine: { count: 6, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Mauersteine', name: 'Mauerstein' },
   pflastersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Pflastersteine', name: 'Pflasterstein' },
   randleisten: { count: 2, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Randleisten', name: 'Randleiste' },
+  granitplatte: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Granitplatte', name: 'Granitplatte' },
 };
 
 export const getGranitProducts = (productGroupId: string): Product[] | null => {
@@ -510,33 +482,30 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
 
   const products: Product[] = [];
   
-  if (productGroupId === 'bodenplatten') {
-    // Specific reordering as requested: images 7 and 8 should be at the first two positions (becoming 1 and 2)
-    // Removed other indices as requested
-    const indices = [7, 8];
-    indices.forEach((imgIndex, displayIndex) => {
-      const imageUrl = `${imageInfo.path}/${imgIndex}.jpg`;
+  if (productGroupId === 'blockstufen') {
+    // Skip images 5 and 7; rename images 2, 3, 6 to "Blockstufe Luserna Gneis"
+    const lusernaImages = new Set([2, 3, 6]);
+    const skipImages = new Set([5, 7]);
+    for (let i = 1; i <= imageInfo.count; i++) {
+      if (skipImages.has(i)) continue;
+      const isLuserna = lusernaImages.has(i);
+      const displayName = isLuserna ? 'Blockstufe Luserna Gneis' : `${imageInfo.name} ${i}`;
+      const imageUrl = `${imageInfo.path}/${i}.jpg`;
       products.push({
-        name: `${imageInfo.name} ${displayIndex + 1}`,
+        name: displayName,
         description: `Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
         meta: 'Granit, frostfest and witterungsbeständig',
         image: {
-          id: `${productGroupId}-${imgIndex}`,
-          description: `${imageInfo.name} ${displayIndex + 1}`,
+          id: `${productGroupId}-${i}`,
+          description: displayName,
           imageUrl: imageUrl,
-          imageHint: `granite bodenplatte`,
+          imageHint: isLuserna ? 'luserna gneiss blockstufe' : `granite ${productGroupId.slice(0, -1)}`,
         },
       });
-    });
+    }
   } else {
     // Standard logic
-    const start = productGroupId === 'mauersteine' ? 2 : 1;
-    for (let i = start; i <= imageInfo.count; i++) {
-      // Skip specific Mauersteine as requested (Mauerstein 3 and 5)
-      if (productGroupId === 'mauersteine' && (i === 3 || i === 5)) {
-        continue;
-      }
-
+    for (let i = 1; i <= imageInfo.count; i++) {
       const imageUrl = `${imageInfo.path}/${i}.jpg`;
       products.push({
         name: `${imageInfo.name} ${i}`,
@@ -556,7 +525,6 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
 
 const schieferImageCounts: Record<string, { count: number, path: string, name: string }> = {
   blockstufen: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Blockstufen', name: 'Schiefer Blockstufe' },
-  bodenplatten: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Bodenplatten', name: 'Schiefer Bodenplatte' },
   mauersteine: { count: 28, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Mauersteine', name: 'Schiefer Mauerstein' },
   polygonalplatten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Polygonalplatten', name: 'Schiefer Polygonalplatte' },
   stelen: { count: 9, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen', name: 'Schiefer Stele' },
@@ -621,10 +589,10 @@ export const getLusernaGneisProducts = (productGroupId: string): Product[] | nul
 };
 
 const betonsteineImageCounts: Record<string, { count: number, path: string, name: string }> = {
-  betonplatten: { count: 3, path: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten', name: 'Betonplatte' },
+  betonplatten: { count: 9, path: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten', name: 'Betonplatte' },
   mauersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine', name: 'Beton-Mauerstein' },
   palisaden: { count: 3, path: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden', name: 'Beton-Palisade' },
-  pflastersteine: { count: 10, path: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine', name: 'Beton-Pflasterstein' },
+  pflastersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine', name: 'Beton-Pflasterstein' },
   randleisten: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten', name: 'Beton-Randleiste' },
 };
 
@@ -639,6 +607,8 @@ export const getBetonsteineProducts = (subCategoryId: string): Product[] | null 
   for (let i = 1; i <= imageInfo.count; i++) {
     // Skip index 3 for Randleisten
     if (subCategoryId === 'randleisten' && i === 3) continue;
+    // Skip index 4 for Betonplatten
+    if (subCategoryId === 'betonplatten' && i === 4) continue;
 
     const imageUrl = `${imageInfo.path}/${i}.jpg`;
     products.push({
@@ -714,14 +684,14 @@ export const getTuffProducts = (): Product[] => {
   const count = 6;
   for (let i = 1; i <= count; i++) {
     products.push({
-      name: `Tuff Variante ${i}`,
+      name: `Grauer Gneis Variante ${i}`,
       description: 'Leichter und poröser Naturstein mit warmen Erdtönen. Ideal für dekorative Elemente und individuelle Akzente im Garten. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
       meta: 'Leicht, porös, dekorativ',
       image: {
         id: `tuff-${i}`,
-        description: `Tuff Variante ${i}`,
+        description: `Grauer Gneis Variante ${i}`,
         imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Tuff/${i}.jpg`,
-        imageHint: 'tuff stone',
+        imageHint: 'grey gneiss stone',
       },
     });
   }
