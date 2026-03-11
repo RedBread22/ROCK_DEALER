@@ -654,6 +654,8 @@ export const getBetonsteineProducts = (subCategoryId: string): Product[] | null 
   for (let i = 1; i <= imageInfo.count; i++) {
     // Skip index 3 for Randleisten
     if (subCategoryId === 'randleisten' && i === 3) continue;
+    // Skip index 4 for Betonplatten
+    if (subCategoryId === 'betonplatten' && i === 4) continue;
 
     const imageUrl = `${imageInfo.path}/${i}.jpg`;
     products.push({
