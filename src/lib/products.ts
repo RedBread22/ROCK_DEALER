@@ -528,6 +528,27 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
         },
       });
     });
+  } else if (productGroupId === 'blockstufen') {
+    // Skip images 5 and 7; rename images 2, 3, 6 to "Blockstufe Luserna Gneis"
+    const lusernaImages = new Set([2, 3, 6]);
+    const skipImages = new Set([5, 7]);
+    for (let i = 1; i <= imageInfo.count; i++) {
+      if (skipImages.has(i)) continue;
+      const isLuserna = lusernaImages.has(i);
+      const displayName = isLuserna ? 'Blockstufe Luserna Gneis' : `${imageInfo.name} ${i}`;
+      const imageUrl = `${imageInfo.path}/${i}.jpg`;
+      products.push({
+        name: displayName,
+        description: `Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
+        meta: 'Granit, frostfest and witterungsbeständig',
+        image: {
+          id: `${productGroupId}-${i}`,
+          description: displayName,
+          imageUrl: imageUrl,
+          imageHint: isLuserna ? 'luserna gneiss blockstufe' : `granite ${productGroupId.slice(0, -1)}`,
+        },
+      });
+    }
   } else {
     // Standard logic
     const start = productGroupId === 'mauersteine' ? 2 : 1;
