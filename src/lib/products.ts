@@ -499,7 +499,7 @@ const granitImageCounts: Record<string, { count: number, path: string, name: str
   bodenplatten: { count: 13, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten', name: 'Bodenplatte' },
   pflastersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Pflastersteine', name: 'Pflasterstein' },
   randleisten: { count: 2, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Randleisten', name: 'Randleiste' },
-  granitplatte: { count: 1, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Granitplatte', name: 'Granitplatte' },
+  granitplatte: { count: 3, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Granitplatte', name: 'Granitplatte' },
 };
 
 export const getGranitProducts = (productGroupId: string): Product[] | null => {
