@@ -173,11 +173,6 @@ const allSubCategories: (SubCategory & { parentId: string })[] = productCategori
   .flatMap((cat) =>
     cat.subCategories!.map((sub) => {
       let imageUrl = subCategoryImages[cat.id]?.[sub.id];
-      
-      // Use image 7 for Granit Bodenplatten preview as requested
-      if (cat.id === 'natursteine' && sub.id === 'granit') {
-        imageUrl = '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten/7.jpg';
-      }
 
       const image: ImagePlaceholder = imageUrl
         ? {
@@ -211,17 +206,6 @@ export const granitSubCategoriesData: SubCategory[] = [
         imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen/1.jpg',
         description: 'Granit Blockstufen',
         imageHint: 'granite steps',
-      },
-    },
-    {
-      id: 'bodenplatten',
-      name: 'Bodenplatten',
-      description: 'Elegante und robuste Bodenplatten für Terrassen und Wege.',
-      image: {
-        id: 'granit-bodenplatten',
-        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten/7.jpg',
-        description: 'Granit Bodenplatten',
-        imageHint: 'granite slabs',
       },
     },
     {
@@ -269,17 +253,6 @@ export const schieferSubCategoriesData: SubCategory[] = [
         imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Blockstufen/5.jpg',
         description: 'Schiefer Blockstufen',
         imageHint: 'slate steps',
-      },
-    },
-    {
-      id: 'bodenplatten',
-      name: 'Bodenplatten',
-      description: 'Elegante und robuste Bodenplatten für Terrassen und Wege.',
-      image: {
-        id: 'schiefer-bodenplatten',
-        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Bodenplatten/5.jpg',
-        description: 'Schiefer Bodenplatten',
-        imageHint: 'slate slabs',
       },
     },
     {
@@ -496,7 +469,6 @@ export const getGartendekoProducts = (subCategoryId: string): Product[] | null =
 
 const granitImageCounts: Record<string, { count: number, path: string, name: string }> = {
   blockstufen: { count: 7, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen', name: 'Blockstufe' },
-  bodenplatten: { count: 13, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Bodenplatten', name: 'Bodenplatte' },
   pflastersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Pflastersteine', name: 'Pflasterstein' },
   randleisten: { count: 2, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Randleisten', name: 'Randleiste' },
   granitplatte: { count: 3, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Granitplatte', name: 'Granitplatte' },
@@ -510,25 +482,7 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
 
   const products: Product[] = [];
   
-  if (productGroupId === 'bodenplatten') {
-    // Specific reordering as requested: images 7 and 8 should be at the first two positions (becoming 1 and 2)
-    // Removed other indices as requested
-    const indices = [7, 8];
-    indices.forEach((imgIndex, displayIndex) => {
-      const imageUrl = `${imageInfo.path}/${imgIndex}.jpg`;
-      products.push({
-        name: `${imageInfo.name} ${displayIndex + 1}`,
-        description: `Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
-        meta: 'Granit, frostfest and witterungsbeständig',
-        image: {
-          id: `${productGroupId}-${imgIndex}`,
-          description: `${imageInfo.name} ${displayIndex + 1}`,
-          imageUrl: imageUrl,
-          imageHint: `granite bodenplatte`,
-        },
-      });
-    });
-  } else if (productGroupId === 'blockstufen') {
+  if (productGroupId === 'blockstufen') {
     // Skip images 5 and 7; rename images 2, 3, 6 to "Blockstufe Luserna Gneis"
     const lusernaImages = new Set([2, 3, 6]);
     const skipImages = new Set([5, 7]);
@@ -571,7 +525,6 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
 
 const schieferImageCounts: Record<string, { count: number, path: string, name: string }> = {
   blockstufen: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Blockstufen', name: 'Schiefer Blockstufe' },
-  bodenplatten: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Bodenplatten', name: 'Schiefer Bodenplatte' },
   mauersteine: { count: 28, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Mauersteine', name: 'Schiefer Mauerstein' },
   polygonalplatten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Polygonalplatten', name: 'Schiefer Polygonalplatte' },
   stelen: { count: 9, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen', name: 'Schiefer Stele' },
