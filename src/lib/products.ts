@@ -149,7 +149,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     betonplatten: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten/3.jpg',
     mauersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine/4.jpg',
     palisaden: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden/3.jpg',
-    pflastersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine/10.jpg',
+    pflastersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine/4.jpg',
     randleisten: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten/4.jpg',
   },
   zierkies: {
@@ -636,10 +636,10 @@ export const getLusernaGneisProducts = (productGroupId: string): Product[] | nul
 };
 
 const betonsteineImageCounts: Record<string, { count: number, path: string, name: string }> = {
-  betonplatten: { count: 3, path: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten', name: 'Betonplatte' },
+  betonplatten: { count: 14, path: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten', name: 'Betonplatte' },
   mauersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine', name: 'Beton-Mauerstein' },
   palisaden: { count: 3, path: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden', name: 'Beton-Palisade' },
-  pflastersteine: { count: 10, path: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine', name: 'Beton-Pflasterstein' },
+  pflastersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine', name: 'Beton-Pflasterstein' },
   randleisten: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten', name: 'Beton-Randleiste' },
 };
 
