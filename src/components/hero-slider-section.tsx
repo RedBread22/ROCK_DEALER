@@ -21,8 +21,6 @@ const sliderImageIds = [
   'slider-3',
   'slider-4',
   'slider-5',
-  'slider-6',
-  'slider-7',
   'slider-neu-1',
   'slider-neu-2',
   'slider-neu-3',
