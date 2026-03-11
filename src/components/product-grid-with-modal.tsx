@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { type Product } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
+import { ImageLightbox, useLightbox } from '@/components/image-lightbox';
 import {
   Dialog,
   DialogContent,
@@ -20,6 +21,24 @@ type ProductGridWithModalProps = {
 
 export function ProductGridWithModal({ products }: ProductGridWithModalProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const { lightboxState, openLightbox, closeLightbox } = useLightbox();
+
+  const handleImageClick = (product: Product) => {
+    const allImages = products.map((p) => ({
+      src: p.image.imageUrl,
+      alt: p.name,
+    }));
+    const index = products.indexOf(product);
+    openLightbox(allImages, index >= 0 ? index : 0);
+  };
+
+  const handleModalImageClick = () => {
+    if (!selectedProduct) return;
+    openLightbox(
+      [{ src: selectedProduct.image.imageUrl, alt: selectedProduct.name }],
+      0
+    );
+  };
 
   return (
     <>
@@ -29,6 +48,7 @@ export function ProductGridWithModal({ products }: ProductGridWithModalProps) {
             key={product.name}
             product={product}
             onDetailsClick={() => setSelectedProduct(product)}
+            onImageClick={() => handleImageClick(product)}
           />
         ))}
       </div>
@@ -37,7 +57,10 @@ export function ProductGridWithModal({ products }: ProductGridWithModalProps) {
         <DialogContent className="max-w-4xl">
           {selectedProduct && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4">
-              <div className="relative aspect-square w-full overflow-hidden rounded-md md:aspect-auto md:h-full">
+              <div
+                className="relative aspect-square w-full overflow-hidden rounded-md md:aspect-auto md:h-full cursor-zoom-in"
+                onClick={handleModalImageClick}
+              >
                  <Image
                     src={selectedProduct.image.imageUrl}
                     alt={selectedProduct.name}
@@ -65,6 +88,13 @@ export function ProductGridWithModal({ products }: ProductGridWithModalProps) {
           )}
         </DialogContent>
       </Dialog>
+
+      <ImageLightbox
+        images={lightboxState.images}
+        initialIndex={lightboxState.index}
+        open={lightboxState.open}
+        onClose={closeLightbox}
+      />
     </>
   );
 }

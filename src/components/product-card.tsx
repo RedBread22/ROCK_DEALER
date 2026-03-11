@@ -8,9 +8,11 @@ import { Button } from '@/components/ui/button';
 export const ProductCard = ({
   product,
   onDetailsClick,
+  onImageClick,
 }: {
   product: Product;
   onDetailsClick: () => void;
+  onImageClick?: () => void;
 }) => {
   return (
     <motion.div
@@ -20,7 +22,13 @@ export const ProductCard = ({
       transition={{ duration: 0.5 }}
       className="group relative flex flex-col overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm transition-shadow duration-300 hover:shadow-primary/20 hover:shadow-lg"
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden">
+      <div
+        className="relative aspect-[4/3] w-full overflow-hidden cursor-zoom-in"
+        onClick={(e) => {
+          e.stopPropagation();
+          onImageClick?.();
+        }}
+      >
         <Image
           src={product.image.imageUrl}
           alt={product.name}
