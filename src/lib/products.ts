@@ -636,7 +636,7 @@ export const getLusernaGneisProducts = (productGroupId: string): Product[] | nul
 };
 
 const betonsteineImageCounts: Record<string, { count: number, path: string, name: string }> = {
-  betonplatten: { count: 14, path: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten', name: 'Betonplatte' },
+  betonplatten: { count: 9, path: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten', name: 'Betonplatte' },
   mauersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine', name: 'Beton-Mauerstein' },
   palisaden: { count: 3, path: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden', name: 'Beton-Palisade' },
   pflastersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine', name: 'Beton-Pflasterstein' },
