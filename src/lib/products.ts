@@ -811,17 +811,27 @@ export const getBrasilQuarzitProducts = (): Product[] => {
 
 export const getTravertinProducts = (productGroupId?: string): Product[] | null => {
   if (!productGroupId) {
-    // Legacy: return all travertin products flat (kept for backwards compatibility)
     return [
       {
-        name: 'Travertin – Beispiel',
-        description: 'Platzhalterbeschreibung – Details folgen',
+        name: 'Travertin',
+        description: 'Warmer Naturstein mit mediterraner Optik – ideal für Terrassen und elegante Außenflächen. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
         meta: 'Frostfest & witterungsbeständig',
         image: {
-          id: 'travertin-beispiel-1',
-          description: 'Travertin – Beispiel',
+          id: 'travertin-allgemein-1',
+          description: 'Travertin',
           imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Travertin/1.jpg',
           imageHint: 'travertine tile'
+        }
+      },
+      {
+        name: 'Travertin Flamingo',
+        description: 'Warmer Naturstein mit mediterraner Optik – ideal für Terrassen und elegante Außenflächen. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
+        meta: 'Frostfest & witterungsbeständig',
+        image: {
+          id: 'travertin-flamingo-1',
+          description: 'Travertin Flamingo',
+          imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Flamingo 1.AVIF'),
+          imageHint: 'travertine flamingo stone'
         }
       },
     ];

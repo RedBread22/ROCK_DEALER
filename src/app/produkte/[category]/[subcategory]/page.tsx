@@ -194,8 +194,9 @@ export default function SubCategoryPage({ params }: { params: { category: string
     }
 
 
-    // Special handling for Travertin to show sub-sub-categories
+    // Special handling for Travertin to show sub-sub-categories + standalone products
     if (params.category === 'natursteine' && params.subcategory === 'travertin') {
+        const travertinStandaloneProducts = getTravertinProducts() || [];
         return (
             <>
                 <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20 bg-secondary/30">
@@ -227,6 +228,14 @@ export default function SubCategoryPage({ params }: { params: { category: string
                         </div>
                     </div>
                 </section>
+
+                {travertinStandaloneProducts.length > 0 && (
+                    <section className="pb-24 sm:pb-32">
+                        <div className="mx-auto max-w-7xl px-4">
+                            <ProductGridWithModal products={travertinStandaloneProducts} />
+                        </div>
+                    </section>
+                )}
 
                 <ContactFormSection />
             </>
