@@ -737,7 +737,18 @@ export const getTravertinProducts = (): Product[] => {
         imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Travertin/1.jpg',
         imageHint: 'travertine tile'
       }
-    }
+    },
+    ...Array.from({ length: 4 }, (_, i) => ({
+      name: 'Travertin Noce',
+      description: 'Warmer Naturstein mit mediterraner Optik – ideal für Terrassen und elegante Außenflächen. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
+      meta: 'Frostfest & witterungsbeständig',
+      image: {
+        id: `travertin-noce-${i + 1}`,
+        description: `Travertin Noce ${i + 1}`,
+        imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Noce ${i + 1}.jpg`),
+        imageHint: 'travertine noce stone',
+      },
+    })),
   ];
 };
 
