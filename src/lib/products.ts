@@ -1,4 +1,5 @@
 import { type ImagePlaceholder, PlaceHolderImages } from './placeholder-images';
+import { encodeImagePath } from './utils';
 
 export type Product = {
   name: string;
@@ -178,7 +179,7 @@ const allSubCategories: (SubCategory & { parentId: string })[] = productCategori
         ? {
             id: `${cat.id}-${sub.id}`,
             description: `Bild für ${sub.name}`,
-            imageUrl: imageUrl,
+            imageUrl: encodeImagePath(imageUrl),
             imageHint: sub.name.toLowerCase().replace('.', ''),
           }
         : findImage('product-placeholder');
@@ -297,7 +298,7 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
         description: 'Allgemeine Ansichten und Anwendungsbeispiele von Luserna Gneis.',
         image: {
             id: 'luserna-gneis-allgemein-preview',
-            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Allgemein/6.jpg',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Allgemein/6.jpg'),
             description: 'Luserna Gneis Allgemein',
             imageHint: 'gneiss stone',
         },
@@ -308,7 +309,7 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
         description: 'Verschiedene Formate und Anwendungen von Luserna Gneis gemischt.',
         image: {
             id: 'luserna-gneis-gemischt-preview',
-            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Gemischt/19.jpg',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Gemischt/19.jpg'),
             description: 'Luserna Gneis Gemischt',
             imageHint: 'gneiss mix',
         },
@@ -319,7 +320,7 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
         description: 'Robuste Mauersteine aus Luserna Gneis für Mauern und Abgrenzungen.',
         image: {
             id: 'luserna-gneis-mauersteine-preview',
-            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Mauersteine/12.jpg',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Mauersteine/12.jpg'),
             description: 'Luserna Gneis Mauersteine',
             imageHint: 'gneiss wall',
         },
@@ -330,7 +331,7 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
         description: 'Klassische Pflasterwürfel für langlebige und stilvolle Wege.',
         image: {
             id: 'luserna-gneis-pflasterwuerfel-preview',
-            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Pflasterwuerfel/5.jpg',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Pflasterwuerfel/5.jpg'),
             description: 'Luserna Gneis Pflasterwürfel',
             imageHint: 'gneiss pavers',
         },
@@ -341,7 +342,7 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
         description: 'Natürlich gebrochene Platten für rustikale und individuelle Flächen.',
         image: {
             id: 'luserna-gneis-polygonal-preview',
-            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Polygonal Platten/4.jpg',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Polygonal Platten/4.jpg'),
             description: 'Luserna Gneis Polygonal Platten',
             imageHint: 'gneiss polygonal',
         },
@@ -352,7 +353,7 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
         description: 'Großformatige Platten als Trittsteine für Gartenwege.',
         image: {
             id: 'luserna-gneis-trittplatten-preview',
-            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Trittplatten/4.jpg',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Trittplatten/4.jpg'),
             description: 'Luserna Gneis Trittplatten',
             imageHint: 'gneiss stepping stones',
         },
@@ -363,7 +364,7 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
         description: 'Saubere Kantenabschlüsse für Beete und Flächen aus Luserna Gneis.',
         image: {
             id: 'luserna-gneis-randleisten-preview',
-            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten/4.jpg',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten/4.jpg'),
             description: 'Luserna Gneis Randleisten',
             imageHint: 'gneiss curbs',
         },
@@ -471,7 +472,7 @@ export const getZierkiesProducts = (subCategoryId: string): Product[] | null => 
       image: {
         id: `rundkorn-${i + 1}`,
         description: p.name,
-        imageUrl: p.image,
+        imageUrl: encodeImagePath(p.image),
         imageHint: 'decorative round gravel',
       },
     }));
@@ -485,7 +486,7 @@ export const getZierkiesProducts = (subCategoryId: string): Product[] | null => 
       image: {
         id: `kantkorn-${i + 1}`,
         description: p.name,
-        imageUrl: p.image,
+        imageUrl: encodeImagePath(p.image),
         imageHint: 'decorative angular gravel',
       },
     }));
@@ -512,7 +513,7 @@ export const getGartendekoProducts = (subCategoryId: string): Product[] | null =
 
   const products: Product[] = [];
   for (let i = 1; i <= imageInfo.count; i++) {
-    const imageUrl = `${imageInfo.path}/${i}.jpg`;
+    const imageUrl = encodeImagePath(`${imageInfo.path}/${i}.jpg`);
     products.push({
       name: `${imageInfo.name} ${i}`,
       description: `Jedes unserer Deko-Elemente ist ein einzigartiges Naturprodukt. Abmessungen, Farbe und Form können variieren.\n\nFür Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
@@ -633,7 +634,7 @@ export const getLusernaGneisProducts = (productGroupId: string): Product[] | nul
 
   const products: Product[] = [];
   for (let i = 1; i <= imageInfo.count; i++) {
-    const imageUrl = `${imageInfo.path}/${i}.jpg`;
+    const imageUrl = encodeImagePath(`${imageInfo.path}/${i}.jpg`);
     products.push({
       name: `${imageInfo.name} ${i}`,
       description: `Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
@@ -698,7 +699,7 @@ export const getStainzerGneisProducts = (): Product[] => {
       image: {
         id: `stainzer-gneis-${i}`,
         description: `Stainzer Gneis Variante ${i}`,
-        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/${i}.jpg`,
+        imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/${i}.jpg`),
         imageHint: 'stainzer gneiss',
       },
     });
@@ -716,7 +717,7 @@ export const getBrasilQuarzitProducts = (): Product[] => {
       image: {
         id: `brasil-quarzit-${i}`,
         description: `Brasil. Quarzit Variante ${i}`,
-        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Brasil. Quarzit/${i}.jpg`,
+        imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Brasil. Quarzit/${i}.jpg`),
         imageHint: 'brazilian quartzite',
       },
     });
