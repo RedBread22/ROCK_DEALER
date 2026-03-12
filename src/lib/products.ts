@@ -371,6 +371,37 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
     },
 ];
 
+export const travertinSubCategoriesData: SubCategory[] = [
+    {
+        id: 'travertin-noce',
+        name: 'Travertin Noce',
+        description: 'Warmer Travertin mit dunklem, nussbraunem Farbton – ideal für mediterrane Terrassen und Außenflächen.',
+        image: findImage('product-placeholder'),
+    },
+    {
+        id: 'travertin-vanilla',
+        name: 'Travertin Vanilla',
+        description: 'Heller, cremefarbener Travertin für elegante und zeitlose Außengestaltungen.',
+        image: {
+            id: 'travertin-vanilla-preview',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Vanilla 1.AVIF'),
+            description: 'Travertin Vanilla',
+            imageHint: 'travertine vanilla',
+        },
+    },
+    {
+        id: 'travertin-mix',
+        name: 'Travertin Mix',
+        description: 'Vielseitige Travertin-Mischung mit natürlichen Farbnuancen für lebendige Flächen.',
+        image: {
+            id: 'travertin-mix-preview',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Mix 1.AVIF'),
+            description: 'Travertin Mix',
+            imageHint: 'travertine mix',
+        },
+    },
+];
+
 export const getCategoryById = (id: string) => {
   return productCategories.find((cat) => cat.id === id);
 };
@@ -391,6 +422,10 @@ export const getSchieferSubCategoryById = (id: string) => {
 
 export const getLusernaGneisSubCategoryById = (id: string) => {
     return lusernaGneisSubCategoriesData.find((cat) => cat.id === id);
+};
+
+export const getTravertinSubCategoryById = (id: string) => {
+    return travertinSubCategoriesData.find((cat) => cat.id === id);
 };
 
 export const getSubCategoriesByParentId = (parentId: string) => {
@@ -565,6 +600,50 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
         },
       });
     }
+    // Named AVIF images
+    for (let i = 1; i <= 2; i++) {
+      products.push({
+        name: `Granit Blockstufen ${i}`,
+        description: 'Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
+        meta: 'Granit, frostfest and witterungsbeständig',
+        image: {
+          id: `blockstufen-avif-${i}`,
+          description: `Granit Blockstufen ${i}`,
+          imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen/Granit Blockstufen ${i}.AVIF`),
+          imageHint: 'granite steps',
+        },
+      });
+    }
+  } else if (productGroupId === 'randleisten') {
+    // Numbered images
+    for (let i = 1; i <= imageInfo.count; i++) {
+      const imageUrl = `${imageInfo.path}/${i}.jpg`;
+      products.push({
+        name: `${imageInfo.name} ${i}`,
+        description: `Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.`,
+        meta: 'Granit, frostfest and witterungsbeständig',
+        image: {
+          id: `${productGroupId}-${i}`,
+          description: `${imageInfo.name} ${i}`,
+          imageUrl: imageUrl,
+          imageHint: `granite ${productGroupId.slice(0, -1)}`,
+        },
+      });
+    }
+    // Named AVIF images
+    for (let i = 1; i <= 2; i++) {
+      products.push({
+        name: `Granit Randleiste ${i}`,
+        description: 'Robust und langlebig – ideal für den Außenbereich. Für Details zu diesem spezifischen Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
+        meta: 'Granit, frostfest and witterungsbeständig',
+        image: {
+          id: `randleisten-avif-${i}`,
+          description: `Granit Randleiste ${i}`,
+          imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Granit/Randleisten/Granit Randleiste ${i}.AVIF`),
+          imageHint: 'granite curbs',
+        },
+      });
+    }
   } else {
     // Standard logic
     for (let i = 1; i <= imageInfo.count; i++) {
@@ -725,21 +804,27 @@ export const getBrasilQuarzitProducts = (): Product[] => {
   return products;
 };
 
-export const getTravertinProducts = (): Product[] => {
-  return [
-    {
-      name: 'Travertin – Beispiel',
-      description: 'Platzhalterbeschreibung – Details folgen',
-      meta: 'Frostfest & witterungsbeständig',
-      image: {
-        id: 'travertin-beispiel-1',
-        description: 'Travertin – Beispiel',
-        imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Travertin/1.jpg',
-        imageHint: 'travertine tile'
-      }
-    },
-    ...Array.from({ length: 4 }, (_, i) => ({
-      name: 'Travertin Noce',
+export const getTravertinProducts = (productGroupId?: string): Product[] | null => {
+  if (!productGroupId) {
+    // Legacy: return all travertin products flat (kept for backwards compatibility)
+    return [
+      {
+        name: 'Travertin – Beispiel',
+        description: 'Platzhalterbeschreibung – Details folgen',
+        meta: 'Frostfest & witterungsbeständig',
+        image: {
+          id: 'travertin-beispiel-1',
+          description: 'Travertin – Beispiel',
+          imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Travertin/1.jpg',
+          imageHint: 'travertine tile'
+        }
+      },
+    ];
+  }
+
+  if (productGroupId === 'travertin-noce') {
+    return Array.from({ length: 4 }, (_, i) => ({
+      name: `Travertin Noce ${i + 1}`,
       description: 'Warmer Naturstein mit mediterraner Optik – ideal für Terrassen und elegante Außenflächen. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
       meta: 'Frostfest & witterungsbeständig',
       image: {
@@ -748,8 +833,38 @@ export const getTravertinProducts = (): Product[] => {
         imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Noce ${i + 1}.jpg`),
         imageHint: 'travertine noce stone',
       },
-    })),
-  ];
+    }));
+  }
+
+  if (productGroupId === 'travertin-vanilla') {
+    return Array.from({ length: 3 }, (_, i) => ({
+      name: `Travertin Vanilla ${i + 1}`,
+      description: 'Heller, cremefarbener Travertin für elegante und zeitlose Außengestaltungen. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
+      meta: 'Frostfest & witterungsbeständig',
+      image: {
+        id: `travertin-vanilla-${i + 1}`,
+        description: `Travertin Vanilla ${i + 1}`,
+        imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Vanilla ${i + 1}.AVIF`),
+        imageHint: 'travertine vanilla stone',
+      },
+    }));
+  }
+
+  if (productGroupId === 'travertin-mix') {
+    return Array.from({ length: 5 }, (_, i) => ({
+      name: `Travertin Mix ${i + 1}`,
+      description: 'Vielseitige Travertin-Mischung mit natürlichen Farbnuancen für lebendige Flächen. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
+      meta: 'Frostfest & witterungsbeständig',
+      image: {
+        id: `travertin-mix-${i + 1}`,
+        description: `Travertin Mix ${i + 1}`,
+        imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Mix ${i + 1}.AVIF`),
+        imageHint: 'travertine mix stone',
+      },
+    }));
+  }
+
+  return null;
 };
 
 export const getTuffProducts = (): Product[] => {

@@ -1,15 +1,16 @@
 import { type Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { 
-    getCategoryById, 
-    getSubCategoryByIds, 
-    generatePlaceholderProducts, 
-    getGartendekoProducts, 
-    type Product, 
+import {
+    getCategoryById,
+    getSubCategoryByIds,
+    generatePlaceholderProducts,
+    getGartendekoProducts,
+    type Product,
     granitSubCategoriesData,
     schieferSubCategoriesData,
     lusernaGneisSubCategoriesData,
-    productCategories, 
+    travertinSubCategoriesData,
+    productCategories,
     getTravertinProducts,
     getBrasilQuarzitProducts,
     getTuffProducts,
@@ -193,6 +194,45 @@ export default function SubCategoryPage({ params }: { params: { category: string
     }
 
 
+    // Special handling for Travertin to show sub-sub-categories
+    if (params.category === 'natursteine' && params.subcategory === 'travertin') {
+        return (
+            <>
+                <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20 bg-secondary/30">
+                    <div className="container px-4">
+                        <Breadcrumbs items={breadcrumbItems} className="mb-10" />
+                        <AnimatedText
+                            el="h1"
+                            text={subCategory.name}
+                            className="font-headline text-5xl md:text-7xl"
+                        />
+                        <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
+                            {subCategory.description}
+                        </p>
+                    </div>
+                </section>
+
+                <section className="py-24 sm:py-32">
+                    <div className="mx-auto max-w-7xl px-4">
+                        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                            {travertinSubCategoriesData.map((travertinSub) => (
+                                <ContentCard
+                                    key={travertinSub.id}
+                                    title={travertinSub.name}
+                                    description={travertinSub.description}
+                                    image={travertinSub.image}
+                                    href={`/produkte/natursteine/travertin/${travertinSub.id}`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <ContactFormSection />
+            </>
+        );
+    }
+
     let products: Product[];
 
     if (params.category === 'gartendeko') {
@@ -216,8 +256,6 @@ export default function SubCategoryPage({ params }: { params: { category: string
         } else {
             products = generatePlaceholderProducts(8);
         }
-    } else if (params.category === 'natursteine' && params.subcategory === 'travertin') {
-        products = getTravertinProducts();
     } else if (params.category === 'natursteine' && params.subcategory === 'brasil-quarzit') {
         products = getBrasilQuarzitProducts();
     } else if (params.category === 'natursteine' && params.subcategory === 'stainzer-gneis') {
