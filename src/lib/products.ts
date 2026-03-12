@@ -376,7 +376,12 @@ export const travertinSubCategoriesData: SubCategory[] = [
         id: 'travertin-noce',
         name: 'Travertin Noce',
         description: 'Warmer Travertin mit dunklem, nussbraunem Farbton – ideal für mediterrane Terrassen und Außenflächen.',
-        image: findImage('product-placeholder'),
+        image: {
+            id: 'travertin-noce-preview',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Noce 2.jpg'),
+            description: 'Travertin Noce',
+            imageHint: 'travertine noce',
+        },
     },
     {
         id: 'travertin-vanilla',
