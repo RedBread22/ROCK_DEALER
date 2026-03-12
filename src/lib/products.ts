@@ -405,9 +405,35 @@ export const generatePlaceholderProducts = (count: number = 6): Product[] => {
   }));
 };
 
-const zierkiesImageCounts: Record<string, { count: number, path: string, name: string }> = {
-  kantkorn: { count: 12, path: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn', name: 'Kantkorn' },
-};
+const kantkornProducts: { name: string; image: string }[] = [
+  { name: 'Kantkorn 1', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/1.jpg' },
+  { name: 'Kantkorn 2', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/2.jpg' },
+  { name: 'Kantkorn 3', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/3.jpg' },
+  { name: 'Kantkorn 4', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/4.jpg' },
+  { name: 'Kantkorn 5', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/5.jpg' },
+  { name: 'Kantkorn 6', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/6.jpg' },
+  { name: 'Kantkorn 7', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/7.jpg' },
+  { name: 'Kantkorn 8', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/8.jpg' },
+  { name: 'Kantkorn 9', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/9.jpg' },
+  { name: 'Kantkorn 10', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/10.jpg' },
+  { name: 'Kantkorn 11', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/11.jpg' },
+  { name: 'Kantkorn 12', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/12.jpg' },
+  { name: 'Marmorsplitt Matt-weiß', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Marmorsplitt Matt-weiß.png' },
+  { name: 'Marmorsplitt Wolken-weiß', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Marmorsplitt Wolken-weiß.png' },
+  { name: 'Marmorbruch Wolken-weiß', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Marmorbruch Wolken-weiß.png' },
+  { name: 'Marmorsplitt Carrara-weiß', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Marmorsplitt Carrara-weiß.png' },
+  { name: 'Marmorsplitt Chateau-beige', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Marmorsplitt Chateau-beige.png' },
+  { name: 'Marmorbruch Chateau-beige', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Marmorbruch Chateau-beige.png' },
+  { name: 'Marmorsplitt Rosé-bunt', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Marmorsplitt Rosé-bunt.png' },
+  { name: 'Marmorbruch Rosé-bunt', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Marmorbruch Rosé-bunt.png' },
+  { name: 'Marmorsplitt Rosa-corallo', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Marmorsplitt Rosa-corallo.png' },
+  { name: 'Marmorsplitt Black & white', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Marmorsplitt Black & white.png' },
+  { name: 'Marmorsplitt Anthrazit-weiß', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Marmorsplitt Anthrazit-weiß.png' },
+  { name: 'Marmorbruch Schwarz-weiß', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Marmorbruch Schwarz-weiß.png' },
+  { name: 'Basaltsplitt Schwarz', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Basaltsplitt Schwarz.png' },
+  { name: 'Basaltbruch Schwarz', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Basaltbruch Schwarz.png' },
+  { name: 'Schieferplättchen Schwarz', image: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/Schieferplättchen Schwarz.png' },
+];
 
 const rundkornProducts: { name: string; image: string }[] = [
   { name: 'Flusskiesel, Bunt', image: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn/Flusskiesel, Bunt.png' },
@@ -451,27 +477,21 @@ export const getZierkiesProducts = (subCategoryId: string): Product[] | null => 
     }));
   }
 
-  const imageInfo = zierkiesImageCounts[subCategoryId];
-  if (!imageInfo || imageInfo.count === 0) {
-    return null;
-  }
-
-  const products: Product[] = [];
-  for (let i = 1; i <= imageInfo.count; i++) {
-    const imageUrl = `${imageInfo.path}/${i}.jpg`;
-    products.push({
-      name: `${imageInfo.name} ${i}`,
-      description: `Produktdetails folgen.`,
+  if (subCategoryId === 'kantkorn') {
+    return kantkornProducts.map((p, i) => ({
+      name: p.name,
+      description: 'Hochwertiger Ziersplitt für Garten und Flächen',
       meta: 'Dekoratives Kantkorn für Flächen und Akzente',
       image: {
-        id: `${subCategoryId}-${i}`,
-        description: `${imageInfo.name} ${i}`,
-        imageUrl: imageUrl,
-        imageHint: 'decorative gravel',
+        id: `kantkorn-${i + 1}`,
+        description: p.name,
+        imageUrl: p.image,
+        imageHint: 'decorative angular gravel',
       },
-    });
+    }));
   }
-  return products;
+
+  return null;
 };
 
 const gartendekoImageCounts: Record<string, { count: number, path: string, name: string }> = {
