@@ -806,6 +806,17 @@ export const getBrasilQuarzitProducts = (): Product[] => {
       },
     });
   }
+  products.push({
+    name: 'Brasil Quarzit',
+    description: 'Hochwertiger Brasil Quarzit besticht durch seine extreme Härte und edle Optik. Er ist besonders widerstandsfähig und eignet sich daher perfekt für stark beanspruchte Außenbereiche wie Terrassen, Wege und Poolumrandungen. Für Details zu diesem Produkt, Verfügbarkeit und Preisanfragen kontaktieren Sie uns bitte direkt.',
+    meta: 'Extrem widerstandsfähig, frostfest',
+    image: {
+      id: 'brasil-quarzit-avif-1',
+      description: 'Brasil Quarzit',
+      imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Brasil. Quarzit/Brasil Quarzit 1.AVIF'),
+      imageHint: 'brazilian quartzite',
+    },
+  });
   return products;
 };
 
