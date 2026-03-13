@@ -289,6 +289,17 @@ export const schieferSubCategoriesData: SubCategory[] = [
           imageHint: 'slate steles',
         },
     },
+    {
+        id: 'bodenplatten',
+        name: 'Bodenplatten',
+        description: 'Robuste Bodenplatten aus Schiefer für Terrassen, Wege und Eingangsbereiche.',
+        image: {
+          id: 'schiefer-bodenplatten',
+          imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Bodenplatten/1.jpg',
+          description: 'Schiefer Bodenplatten',
+          imageHint: 'slate floor tiles',
+        },
+    },
 ];
 
 export const lusernaGneisSubCategoriesData: SubCategory[] = [
@@ -796,6 +807,7 @@ const schieferImageCounts: Record<string, { count: number, path: string, name: s
   mauersteine: { count: 28, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Mauersteine', name: 'Schiefer Mauerstein' },
   polygonalplatten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Polygonalplatten', name: 'Schiefer Polygonalplatte' },
   stelen: { count: 9, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen', name: 'Schiefer Stele' },
+  bodenplatten: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Bodenplatten', name: 'Schiefer Bodenplatte' },
 };
 
 const schieferDescriptions: Record<string, string> = {
@@ -803,6 +815,7 @@ const schieferDescriptions: Record<string, string> = {
   mauersteine: 'Schiefer-Mauerstein mit unregelmäßiger, lebendiger Oberfläche – eignet sich hervorragend für Trockenmauern, Hangstützungen und als dekoratives Gestaltungselement.',
   polygonalplatten: 'Polygonalplatte aus Schiefer mit natürlich gebrochenen Kanten – schafft einzigartige, individuelle Verlegemuster für Terrassen, Gartenwege und Sitzplätze.',
   stelen: 'Schlanke Schiefer-Stele mit natürlicher Spaltung – ein markanter Blickfang als Sichtschutz, Wegbegrenzung oder skulpturales Element im Garten.',
+  bodenplatten: 'Schiefer-Bodenplatte mit natürlicher Schieferung und spaltrauer Oberfläche – ideal für Terrassen, Gartenwege und Eingangsbereiche mit rutschfester Trittsicherheit.',
 };
 
 export const getSchieferProducts = (productGroupId: string): Product[] | null => {
