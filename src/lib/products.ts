@@ -868,15 +868,20 @@ export const getLusernaGneisProducts = (productGroupId: string): Product[] | nul
 
   const desc = lusernaGneisDescriptions[productGroupId] || 'Luserna Gneis – ein vielseitiger Naturstein mit grün-grauer Farbgebung für anspruchsvolle Außenprojekte.';
   const products: Product[] = [];
+  let displayCounter = 1;
   for (let i = 1; i <= imageInfo.count; i++) {
+    // Skip deleted images
+    if (productGroupId === 'gemischt' && i >= 7 && i <= 9) continue;
+    if (productGroupId === 'mauersteine' && i === 9) continue;
+
     const imageUrl = encodeImagePath(`${imageInfo.path}/${i}.jpg`);
     products.push({
-      name: `${imageInfo.name} ${i}`,
+      name: `${imageInfo.name} ${displayCounter++}`,
       description: desc,
       meta: 'Luserna Gneis, frostfest & witterungsbeständig',
       image: {
         id: `luserna-${productGroupId}-${i}`,
-        description: `${imageInfo.name} ${i}`,
+        description: `${imageInfo.name} ${displayCounter - 1}`,
         imageUrl: imageUrl,
         imageHint: `luserna gneiss ${productGroupId.replace('-', ' ')}`,
       },
