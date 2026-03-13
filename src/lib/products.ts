@@ -295,7 +295,7 @@ export const schieferSubCategoriesData: SubCategory[] = [
         description: 'Robuste Bodenplatten aus Schiefer für Terrassen, Wege und Eingangsbereiche.',
         image: {
           id: 'schiefer-bodenplatten',
-          imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Bodenplatten/1.jpg',
+          imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Bodenplatten/2.jpg',
           description: 'Schiefer Bodenplatten',
           imageHint: 'slate floor tiles',
         },
