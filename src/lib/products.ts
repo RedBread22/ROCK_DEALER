@@ -692,7 +692,6 @@ const granitImageCounts: Record<string, { count: number, path: string, name: str
 
 const granitDescriptions: Record<string, string> = {
   blockstufen: 'Massiv geschnittene Granit-Blockstufe mit gespaltener oder gesägter Oberfläche – trittsicher, frostbeständig und prädestiniert für Eingangstreppen, Gartenstufen und Hangbefestigungen.',
-  'blockstufen-luserna': 'Blockstufe aus Luserna Gneis mit grün-grauer Schattierung und natürlicher Schieferung – besonders rutschfest und formstabil auch bei starker Beanspruchung.',
   pflastersteine: 'Granit-Pflasterstein in klassischer Würfelform – extrem druckfest und unverwüstlich, bestens geeignet für Einfahrten, Höfe und repräsentative Platzgestaltungen.',
   randleisten: 'Granitrandleiste als sauberer Abschluss für Pflasterflächen und Beeteinfassungen – formstabil, frostfest und in verschiedenen Längen verfügbar.',
   granitplatte: 'Großformatige Granitplatte mit gleichmäßiger Oberfläche – ideal für Terrassen, Gehwege und Außenbereiche, die eine ruhige, elegante Flächenwirkung erfordern.',
@@ -717,7 +716,7 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
       const imageUrl = `${imageInfo.path}/${i}.jpg`;
       products.push({
         name: displayName,
-        description: isLuserna ? granitDescriptions['blockstufen-luserna'] : granitDescriptions.blockstufen,
+        description: granitDescriptions.blockstufen,
         meta: 'Granit, frostfest & witterungsbeständig',
         image: {
           id: `${productGroupId}-${i}`,
