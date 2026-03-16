@@ -18,7 +18,8 @@ import {
     getMuschelkalkProducts,
     getZierkiesProducts,
     getStainzerGneisProducts,
-    getBetonsteineProducts
+    getBetonsteineProducts,
+    getSandsteinProducts
 } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
 import { Breadcrumbs } from '@/components/breadcrumbs';
@@ -275,6 +276,8 @@ export default function SubCategoryPage({ params }: { params: { category: string
         products = getPorphyrProducts();
     } else if (params.category === 'natursteine' && params.subcategory === 'muschelkalk') {
         products = getMuschelkalkProducts();
+    } else if (params.category === 'natursteine' && params.subcategory === 'sandstein') {
+        products = getSandsteinProducts();
     }
      else {
         products = generatePlaceholderProducts(8);

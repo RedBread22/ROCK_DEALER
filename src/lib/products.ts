@@ -999,6 +999,66 @@ export const getBrasilQuarzitProducts = (): Product[] => {
   return products;
 };
 
+export const getSandsteinProducts = (): Product[] => {
+  return [
+    {
+      name: 'Regenbogenstein',
+      description: 'REGENBOGENSTEIN – Rot-gelb, Rundgetrommelter Sandstein mit warmen Farben und einzigartigen Zeichnungen.',
+      meta: 'Sandstein, natürliche Farbtöne',
+      image: {
+        id: 'sandstein-regenbogenstein',
+        description: 'Regenbogenstein',
+        imageUrl: '/images/UNSERE-PRODUKTE/Sandstein/Regenbogenstein.avif',
+        imageHint: 'rainbow sandstone',
+      },
+    },
+    {
+      name: 'Sandstein Mint',
+      description: 'SANDSTEIN – Natursteinplatten, Handbekantet, Oberfläche bruchrau, begehbar. Farbe: MINT (Gelb-mint-bräunlich). Kategorie: Natursteinplatten & Feinsteinzeug.',
+      meta: 'Sandstein, natürliche Farbtöne',
+      image: {
+        id: 'sandstein-mint',
+        description: 'Sandstein Mint',
+        imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Sandstein/Sandstein 1.avif'),
+        imageHint: 'mint sandstone slab',
+      },
+    },
+    {
+      name: 'Sandstein Modak',
+      description: 'SANDSTEIN – Natursteinplatten, Handbekantet, Oberfläche bruchrau, begehbar. Farbe: MODAK (Rötlich-bräunlich-gelblich). Kategorie: Natursteinplatten & Feinsteinzeug.',
+      meta: 'Sandstein, natürliche Farbtöne',
+      image: {
+        id: 'sandstein-modak',
+        description: 'Sandstein Modak',
+        imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Sandstein/Sandstein 2.avif'),
+        imageHint: 'modak sandstone slab',
+      },
+    },
+    {
+      name: 'Sandstein Kandia Grey',
+      description: 'SANDSTEIN – Natursteinplatten, Handbekantet, Oberfläche bruchrau, begehbar. Farbe: KANDIA GREY (Grau-bräunlich). Kategorie: Natursteinplatten & Feinsteinzeug.',
+      meta: 'Sandstein, natürliche Farbtöne',
+      image: {
+        id: 'sandstein-kandia-grey',
+        description: 'Sandstein Kandia Grey',
+        imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Sandstein/Sandstein 3.avif'),
+        imageHint: 'kandia grey sandstone slab',
+      },
+    },
+    {
+      name: 'Sandstein Feinsteinzeug',
+      description: 'SANDSTEIN – Feinsteinzeug-Terrassenplatte. Rutschhemmend (R11), pflegeleicht, Frost- und Tausalzbeständig. Farbe: Beige. Kategorie: Natursteinplatten & Feinsteinzeug / Feinsteinzeug.',
+      meta: 'Sandstein, natürliche Farbtöne',
+      image: {
+        id: 'sandstein-feinsteinzeug',
+        description: 'Sandstein Feinsteinzeug',
+        imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Sandstein/Sandstein 4.avif'),
+        imageHint: 'sandstone porcelain tile',
+      },
+    },
+  ];
+};
+
 export const getTravertinProducts = (productGroupId?: string): Product[] | null => {
   if (!productGroupId) {
     return [
