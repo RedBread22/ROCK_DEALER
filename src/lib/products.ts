@@ -49,7 +49,6 @@ export const productCategories: ProductCategory[] = [
       { id: 'luserna-gneis', name: 'Luserna Gneis' },
       { id: 'stainzer-gneis', name: 'Stainzer Gneis' },
       { id: 'porphyr', name: 'Porphyr' },
-      { id: 'basalt', name: 'Basalt' },
       { id: 'tuff', name: 'Grauer Gneis' },
       { id: 'muschelkalk', name: 'Muschelkalk' },
     ],
@@ -104,7 +103,6 @@ const subCategoryDescriptions: Record<string, Record<string, string>> = {
     'luserna-gneis': 'Klassischer Gneis mit hoher Festigkeit – beliebt für Platten, Stufen und langlebige Außenanlagen.',
     'stainzer-gneis': 'Regionaler Charakterstein mit lebendiger Struktur – robust und vielseitig für Garten- und Hofbereiche.',
     porphyr: 'Rutschfest und extrem wetterbeständig – optimal für Einfahrten, Wege und Pflasterflächen.',
-    basalt: 'Dunkler, dichter Naturstein mit moderner Wirkung – sehr belastbar und langlebig im Außenbereich.',
     tuff: 'Leichter Naturstein mit warmen Erdtönen – ideal für dekorative Elemente und individuelle Akzente.',
     muschelkalk: 'Heller Naturstein mit feiner Struktur und fossilen Einschlüssen – zeitlos, elegant und ideal für Terrassen, Mauern und klassische Außenanlagen.',
   },
@@ -133,7 +131,6 @@ const subCategoryDescriptions: Record<string, Record<string, string>> = {
 const subCategoryImages: Record<string, Record<string, string>> = {
   natursteine: {
     granit: '/images/UNSERE-PRODUKTE/Natursteine/Granit.jpg',
-    basalt: '/images/UNSERE-PRODUKTE/Natursteine/Basalt.jpg',
     'brasil-quarzit': '/images/UNSERE-PRODUKTE/Natursteine/Brasil. Quarzit/1.jpg',
     'luserna-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Allgemein/6.jpg',
     muschelkalk: '/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk/9.jpg',
