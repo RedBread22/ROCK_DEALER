@@ -136,7 +136,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     muschelkalk: '/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk/9.jpg',
     porphyr: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr/7.jpg',
     schiefer: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen/9.jpg',
-    sandstein: '/images/UNSERE-PRODUKTE/Natursteine/Sandstein.jpg',
+    sandstein: '/images/UNSERE-PRODUKTE/Sandstein/Regenbogenstein.avif',
     'stainzer-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/1.jpg',
     travertin: '/images/UNSERE-PRODUKTE/Natursteine/Travertin/1.jpg',
     tuff: '/images/UNSERE-PRODUKTE/Natursteine/Tuff/6.jpg',
