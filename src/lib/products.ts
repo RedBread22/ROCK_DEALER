@@ -51,6 +51,7 @@ export const productCategories: ProductCategory[] = [
       { id: 'porphyr', name: 'Porphyr' },
       { id: 'tuff', name: 'Grauer Gneis' },
       { id: 'muschelkalk', name: 'Muschelkalk' },
+      { id: 'bluestone', name: 'BlueStone' },
     ],
   },
   {
@@ -105,6 +106,7 @@ const subCategoryDescriptions: Record<string, Record<string, string>> = {
     porphyr: 'Rutschfest und extrem wetterbeständig – optimal für Einfahrten, Wege und Pflasterflächen.',
     tuff: 'Leichter Naturstein mit warmen Erdtönen – ideal für dekorative Elemente und individuelle Akzente.',
     muschelkalk: 'Heller Naturstein mit feiner Struktur und fossilen Einschlüssen – zeitlos, elegant und ideal für Terrassen, Mauern und klassische Außenanlagen.',
+    bluestone: 'Edler blauer Naturstein mit markanter Oberfläche – ideal für exklusive Terrassen und Akzentflächen.',
   },
   betonsteine: {
       betonplatten: 'Großformatige Betonplatten für moderne, ruhige Terrassen- und Weggestaltungen.',
@@ -140,6 +142,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     'stainzer-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/1.jpg',
     travertin: '/images/UNSERE-PRODUKTE/Natursteine/Travertin/1.jpg',
     tuff: '/images/UNSERE-PRODUKTE/Natursteine/Tuff/6.jpg',
+    bluestone: '/images/UNSERE-PRODUKTE/Natursteine/BlueStone/BlueStone0.avif',
   },
   betonsteine: {
     betonplatten: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten/3.jpg',
@@ -1059,20 +1062,23 @@ export const getSandsteinProducts = (): Product[] => {
   ];
 };
 
+export const getBlueStoneProducts = (): Product[] => {
+  return Array.from({ length: 4 }, (_, i) => ({
+    name: `BlueStone ${i + 1}`,
+    description: 'Edler blauer Naturstein mit markanter Oberfläche und lebhafter Farbgebung – ideal für exklusive Terrassen, Eingangsbereiche und Akzentflächen.',
+    meta: 'Frostfest & witterungsbeständig',
+    image: {
+      id: `bluestone-${i}`,
+      description: `BlueStone ${i}`,
+      imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/BlueStone/BlueStone${i}.avif`,
+      imageHint: 'blue stone natural stone',
+    },
+  }));
+};
+
 export const getTravertinProducts = (productGroupId?: string): Product[] | null => {
   if (!productGroupId) {
     return [
-      {
-        name: 'Travertin',
-        description: 'Travertin-Platte mit offenporiger Oberfläche und warmem Beigeton – der Klassiker für mediterrane Terrassen, Poolbereiche und sonnige Sitzplätze.',
-        meta: 'Frostfest & witterungsbeständig',
-        image: {
-          id: 'travertin-allgemein-1',
-          description: 'Travertin',
-          imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Travertin/1.jpg',
-          imageHint: 'travertine tile'
-        }
-      },
       {
         name: 'Travertin Flamingo',
         description: 'Travertin Flamingo mit zartem Rosa-Schimmer und charakteristischer Porenstruktur – verleiht Terrassen und Außenflächen einen unverwechselbar warmen, südländischen Akzent.',
