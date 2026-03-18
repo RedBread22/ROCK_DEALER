@@ -20,7 +20,7 @@ import {
     getStainzerGneisProducts,
     getBetonsteineProducts,
     getSandsteinProducts,
-    getBlueStoneProducts
+    getBluestoneProducts
 } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
 import { Breadcrumbs } from '@/components/breadcrumbs';
@@ -280,7 +280,7 @@ export default function SubCategoryPage({ params }: { params: { category: string
     } else if (params.category === 'natursteine' && params.subcategory === 'sandstein') {
         products = getSandsteinProducts();
     } else if (params.category === 'natursteine' && params.subcategory === 'bluestone') {
-        products = getBlueStoneProducts();
+        products = getBluestoneProducts();
     } else {
         products = generatePlaceholderProducts(8);
     }
