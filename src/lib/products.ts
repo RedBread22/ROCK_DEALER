@@ -142,7 +142,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     'stainzer-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/1.jpg',
     travertin: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Flamingo 1.AVIF'),
     tuff: '/images/UNSERE-PRODUKTE/Natursteine/Tuff/6.jpg',
-    bluestone: '/images/UNSERE-PRODUKTE/Natursteine/Bluestone/Bluestone0.avif',
+    bluestone: '/images/UNSERE-PRODUKTE/Natursteine/BlueStone/BlueStone0.avif',
   },
   betonsteine: {
     betonplatten: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten/3.jpg',
@@ -1094,7 +1094,7 @@ export const getBluestoneProducts = (): Product[] => {
     image: {
       id: `bluestone-${i}`,
       description: `Bluestone ${i}`,
-      imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Bluestone/Bluestone${i}.avif`,
+      imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/BlueStone/BlueStone${i}.avif`,
       imageHint: 'blue stone natural stone',
     },
   }));
