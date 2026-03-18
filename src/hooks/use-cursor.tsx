@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useMemo, useCallback } from 'react';
 
 export type CursorType = 'default' | 'link' | 'text' | 'magnetic';
 
@@ -12,10 +12,19 @@ type CursorContextType = {
 const CursorContext = createContext<CursorContextType | null>(null);
 
 export const CursorProvider = ({ children }: { children: React.ReactNode }) => {
-  const [cursorType, setCursorType] = useState<CursorType>('default');
+  const [cursorType, setCursorTypeRaw] = useState<CursorType>('default');
+
+  const setCursorType = useCallback((type: CursorType) => {
+    setCursorTypeRaw((prev) => (prev === type ? prev : type));
+  }, []);
+
+  const value = useMemo(
+    () => ({ cursorType, setCursorType }),
+    [cursorType, setCursorType]
+  );
 
   return (
-    <CursorContext.Provider value={{ cursorType, setCursorType }}>
+    <CursorContext.Provider value={value}>
       {children}
     </CursorContext.Provider>
   );

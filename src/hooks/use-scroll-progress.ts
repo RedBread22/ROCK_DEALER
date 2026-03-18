@@ -10,12 +10,17 @@ export const useScrollProgress = <T extends HTMLElement>() => {
     const element = ref.current;
     if (!element) return;
 
+    let ticking = false;
     const onScroll = () => {
-      const { top, height } = element.getBoundingClientRect();
-      const screenHeight = window.innerHeight;
-      
-      const value = (screenHeight - top) / (screenHeight + height);
-      setProgress(Math.max(0, Math.min(1, value)));
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const { top, height } = element.getBoundingClientRect();
+        const screenHeight = window.innerHeight;
+        const value = (screenHeight - top) / (screenHeight + height);
+        setProgress(Math.max(0, Math.min(1, value)));
+        ticking = false;
+      });
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });

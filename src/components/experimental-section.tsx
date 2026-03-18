@@ -47,6 +47,7 @@ export const ExperimentalSection = () => {
               alt={image.description}
               data-ai-hint={image.imageHint}
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="rounded-lg object-cover"
             />
           )}

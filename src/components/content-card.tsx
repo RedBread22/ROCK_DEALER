@@ -31,6 +31,7 @@ export const ContentCard = ({ title, description, image, href }: ContentCardProp
               alt={title}
               data-ai-hint={image.imageHint}
               fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
             />
           )}
