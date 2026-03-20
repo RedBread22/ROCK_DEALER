@@ -452,6 +452,108 @@ export const getMuschelkalkSubCategoryById = (id: string) => {
     return muschelkalkSubCategoriesData.find((cat) => cat.id === id);
 };
 
+export const stainzerGneisSubCategoriesData: SubCategory[] = [
+    {
+        id: 'polygonalplatten',
+        name: 'Polygonalplatten',
+        description: 'Unregelmäßig gebrochene Stainzer-Gneis-Platten für natürliche, lebendige Verlegemuster auf Terrassen und Wegen.',
+        image: {
+            id: 'stainzer-gneis-polygonalplatten',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/1.jpg'),
+            description: 'Stainzer Gneis Polygonalplatten',
+            imageHint: 'stainzer gneiss polygonal plates',
+        },
+    },
+    {
+        id: 'bodenplatten',
+        name: 'Bodenplatten',
+        description: 'Gleichmäßig geschnittene Stainzer-Gneis-Platten – ideal für geordnete Terrassen- und Wegflächen.',
+        image: {
+            id: 'stainzer-gneis-bodenplatten',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/11.jpg'),
+            description: 'Stainzer Gneis Bodenplatten',
+            imageHint: 'stainzer gneiss floor plates',
+        },
+    },
+    {
+        id: 'mauersteine',
+        name: 'Mauersteine',
+        description: 'Robuste Stainzer-Gneis-Mauersteine für Trockenmauern, Hangbefestigungen und Garteneingrenzungen.',
+        image: {
+            id: 'stainzer-gneis-mauersteine',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/12.jpg'),
+            description: 'Stainzer Gneis Mauersteine',
+            imageHint: 'stainzer gneiss wall stones',
+        },
+    },
+    {
+        id: 'pflasterwuerfel',
+        name: 'Pflasterwürfel',
+        description: 'Stainzer-Gneis-Pflasterwürfel – widerstandsfähig und vielseitig für Einfahrten, Wege und Platzgestaltungen.',
+        image: {
+            id: 'stainzer-gneis-pflasterwuerfel',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/13.jpg'),
+            description: 'Stainzer Gneis Pflasterwürfel',
+            imageHint: 'stainzer gneiss paving cubes',
+        },
+    },
+];
+
+export const getStainzerGneisSubCategoryById = (id: string) => {
+    return stainzerGneisSubCategoriesData.find((cat) => cat.id === id);
+};
+
+export const porphyrSubCategoriesData: SubCategory[] = [
+    {
+        id: 'polygonalplatten',
+        name: 'Polygonalplatten',
+        description: 'Unregelmäßig gebrochene Porphyr-Platten für naturnahe Verlegemuster – rutschfest und extrem witterungsbeständig.',
+        image: {
+            id: 'porphyr-polygonalplatten',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr/1.jpg',
+            description: 'Porphyr Polygonalplatten',
+            imageHint: 'porphyry polygonal plates',
+        },
+    },
+    {
+        id: 'bodenplatten',
+        name: 'Bodenplatten',
+        description: 'Porphyr-Bodenplatten mit spaltrauer Oberfläche – rutschfest auch bei Nässe und Frost.',
+        image: {
+            id: 'porphyr-bodenplatten',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr/2.jpg',
+            description: 'Porphyr Bodenplatten',
+            imageHint: 'porphyry floor plates',
+        },
+    },
+    {
+        id: 'mauersteine',
+        name: 'Mauersteine',
+        description: 'Porphyr-Mauersteine mit rötlich-violetter Färbung – markant und langlebig für Gartenmauern und Einfassungen.',
+        image: {
+            id: 'porphyr-mauersteine',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr/3.jpg',
+            description: 'Porphyr Mauersteine',
+            imageHint: 'porphyry wall stones',
+        },
+    },
+    {
+        id: 'pflasterwuerfel',
+        name: 'Pflasterwürfel',
+        description: 'Porphyr-Pflasterwürfel – extrem abriebfest und ideal für Einfahrten, Wege und historische Platzgestaltungen.',
+        image: {
+            id: 'porphyr-pflasterwuerfel',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr/4.jpg',
+            description: 'Porphyr Pflasterwürfel',
+            imageHint: 'porphyry paving cubes',
+        },
+    },
+];
+
+export const getPorphyrSubCategoryById = (id: string) => {
+    return porphyrSubCategoriesData.find((cat) => cat.id === id);
+};
+
 export const getSubCategoriesByParentId = (parentId: string) => {
   return allSubCategories.filter((sub) => sub.parentId === parentId);
 }
@@ -1154,23 +1256,33 @@ const stainzerGneisDescriptions: Record<number, string> = {
   13: 'Stainzer Gneis in Quaderform – eignet sich besonders für exakte Mauerwerke, Pfeiler und architektonisch anspruchsvolle Gestaltungen im Garten.',
 };
 
-export const getStainzerGneisProducts = (): Product[] => {
-  const products: Product[] = [];
-  const indices = [1, 2, 3, 4, 5, 11, 12, 13];
-  for (const i of indices) {
-    products.push({
-      name: 'Stainzer Gneis',
-      description: stainzerGneisDescriptions[i] || 'Regionaler Gneis-Naturstein mit lebendiger Struktur – robust und vielseitig für den Außenbereich.',
-      meta: 'Regionaler Naturstein, robust & witterungsbeständig',
-      image: {
-        id: `stainzer-gneis-${i}`,
-        description: 'Stainzer Gneis',
-        imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/${i}.jpg`),
-        imageHint: 'stainzer gneiss',
-      },
-    });
+export const getStainzerGneisProducts = (productGroupId?: string): Product[] | null => {
+  const meta = 'Regionaler Naturstein, robust & witterungsbeständig';
+  const makeProduct = (i: number, name: string) => ({
+    name,
+    description: stainzerGneisDescriptions[i] || 'Regionaler Gneis-Naturstein mit lebendiger Struktur – robust und vielseitig für den Außenbereich.',
+    meta,
+    image: {
+      id: `stainzer-gneis-${i}`,
+      description: 'Stainzer Gneis',
+      imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/${i}.jpg`),
+      imageHint: 'stainzer gneiss',
+    },
+  });
+
+  if (productGroupId === 'polygonalplatten') {
+    return [1, 2, 3, 4, 5].map((i) => makeProduct(i, 'Polygonalplatte'));
   }
-  return products;
+  if (productGroupId === 'bodenplatten') {
+    return [11].map((i) => makeProduct(i, 'Bodenplatte'));
+  }
+  if (productGroupId === 'mauersteine') {
+    return [12].map((i) => makeProduct(i, 'Mauerstein'));
+  }
+  if (productGroupId === 'pflasterwuerfel') {
+    return [13].map((i) => makeProduct(i, 'Pflasterwürfel'));
+  }
+  return null;
 };
 
 const brasilQuarzitDescriptions: Record<number, string> = {
@@ -1400,23 +1512,33 @@ const porphyrDescriptions: Record<number, string> = {
   7: 'Porphyr in Stelen- oder Quaderform – ein vielseitiger Gestaltungsstein für Pfeiler, Sichtschutz und architektonische Akzente im Garten.',
 };
 
-export const getPorphyrProducts = (): Product[] => {
-  const products: Product[] = [];
-  const count = 7;
-  for (let i = 1; i <= count; i++) {
-    products.push({
-      name: 'Porphyr',
-      description: porphyrDescriptions[i] || 'Porphyr – äußerst robuster, rutschfester Naturstein für stark beanspruchte Außenflächen.',
-      meta: 'Rutschfest, extrem wetterbeständig',
-      image: {
-        id: `porphyr-${i}`,
-        description: 'Porphyr',
-        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Porphyr/${i}.jpg`,
-        imageHint: 'porphyry stone',
-      },
-    });
+export const getPorphyrProducts = (productGroupId?: string): Product[] | null => {
+  const meta = 'Rutschfest, extrem wetterbeständig';
+  const makeProduct = (i: number, name: string) => ({
+    name,
+    description: porphyrDescriptions[i] || 'Porphyr – äußerst robuster, rutschfester Naturstein für stark beanspruchte Außenflächen.',
+    meta,
+    image: {
+      id: `porphyr-${i}`,
+      description: 'Porphyr',
+      imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Porphyr/${i}.jpg`,
+      imageHint: 'porphyry stone',
+    },
+  });
+
+  if (productGroupId === 'polygonalplatten') {
+    return [1, 5].map((i) => makeProduct(i, 'Polygonalplatte'));
   }
-  return products;
+  if (productGroupId === 'bodenplatten') {
+    return [2].map((i) => makeProduct(i, 'Bodenplatte'));
+  }
+  if (productGroupId === 'mauersteine') {
+    return [3].map((i) => makeProduct(i, 'Mauerstein'));
+  }
+  if (productGroupId === 'pflasterwuerfel') {
+    return [4, 6, 7].map((i) => makeProduct(i, 'Pflasterwürfel'));
+  }
+  return null;
 };
 
 const muschelkalkDescriptions: Record<number, string> = {

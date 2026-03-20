@@ -18,6 +18,12 @@ import {
     muschelkalkSubCategoriesData,
     getMuschelkalkSubCategoryById,
     getMuschelkalkProducts,
+    stainzerGneisSubCategoriesData,
+    getStainzerGneisSubCategoryById,
+    getStainzerGneisProducts,
+    porphyrSubCategoriesData,
+    getPorphyrSubCategoryById,
+    getPorphyrProducts,
     type Product
 } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
@@ -64,7 +70,19 @@ export async function generateStaticParams() {
         productgroup: sub.id,
     }));
 
-    return [...granitParams, ...schieferParams, ...lusernaParams, ...tuffParams, ...muschelkalkParams];
+    const stainzerGneisParams = stainzerGneisSubCategoriesData.map((sub) => ({
+        category: 'natursteine',
+        subcategory: 'stainzer-gneis',
+        productgroup: sub.id,
+    }));
+
+    const porphyrParams = porphyrSubCategoriesData.map((sub) => ({
+        category: 'natursteine',
+        subcategory: 'porphyr',
+        productgroup: sub.id,
+    }));
+
+    return [...granitParams, ...schieferParams, ...lusernaParams, ...tuffParams, ...muschelkalkParams, ...stainzerGneisParams, ...porphyrParams];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -98,7 +116,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default function ProductGroupPage({ params }: PageProps) {
-    if (params.category !== 'natursteine' || !['granit', 'schiefer', 'luserna-gneis', 'tuff', 'muschelkalk'].includes(params.subcategory)) {
+    if (params.category !== 'natursteine' || !['granit', 'schiefer', 'luserna-gneis', 'tuff', 'muschelkalk', 'stainzer-gneis', 'porphyr'].includes(params.subcategory)) {
         notFound();
     }
     
@@ -123,6 +141,12 @@ export default function ProductGroupPage({ params }: PageProps) {
     } else if (params.subcategory === 'muschelkalk') {
         productGroup = getMuschelkalkSubCategoryById(params.productgroup);
         products = getMuschelkalkProducts(params.productgroup);
+    } else if (params.subcategory === 'stainzer-gneis') {
+        productGroup = getStainzerGneisSubCategoryById(params.productgroup);
+        products = getStainzerGneisProducts(params.productgroup);
+    } else if (params.subcategory === 'porphyr') {
+        productGroup = getPorphyrSubCategoryById(params.productgroup);
+        products = getPorphyrProducts(params.productgroup);
     }
 
     if (!category || !subCategory || !productGroup) {

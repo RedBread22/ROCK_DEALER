@@ -14,12 +14,12 @@ import {
     productCategories,
     getTravertinProducts,
     getBrasilQuarzitProducts,
-    getPorphyrProducts,
     getZierkiesProducts,
-    getStainzerGneisProducts,
     getBetonsteineProducts,
     getSandsteinProducts,
-    getBluestoneProducts
+    getBluestoneProducts,
+    stainzerGneisSubCategoriesData,
+    porphyrSubCategoriesData,
 } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
 import { Breadcrumbs } from '@/components/breadcrumbs';
@@ -270,6 +270,82 @@ export default function SubCategoryPage({ params }: { params: { category: string
         );
     }
 
+    if (params.category === 'natursteine' && params.subcategory === 'stainzer-gneis') {
+        return (
+            <>
+                <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20 bg-secondary/30">
+                    <div className="container px-4">
+                        <Breadcrumbs items={breadcrumbItems} className="mb-10" />
+                        <AnimatedText
+                            el="h1"
+                            text={subCategory.name}
+                            className="font-headline text-5xl md:text-7xl"
+                        />
+                        <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
+                            {subCategory.description}
+                        </p>
+                    </div>
+                </section>
+
+                <section className="py-24 sm:py-32">
+                    <div className="mx-auto max-w-7xl px-4">
+                        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                            {stainzerGneisSubCategoriesData.map((sub) => (
+                                <ContentCard
+                                    key={sub.id}
+                                    title={sub.name}
+                                    description={sub.description}
+                                    image={sub.image}
+                                    href={`/produkte/natursteine/stainzer-gneis/${sub.id}`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <ContactFormSection />
+            </>
+        );
+    }
+
+    if (params.category === 'natursteine' && params.subcategory === 'porphyr') {
+        return (
+            <>
+                <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20 bg-secondary/30">
+                    <div className="container px-4">
+                        <Breadcrumbs items={breadcrumbItems} className="mb-10" />
+                        <AnimatedText
+                            el="h1"
+                            text={subCategory.name}
+                            className="font-headline text-5xl md:text-7xl"
+                        />
+                        <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
+                            {subCategory.description}
+                        </p>
+                    </div>
+                </section>
+
+                <section className="py-24 sm:py-32">
+                    <div className="mx-auto max-w-7xl px-4">
+                        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                            {porphyrSubCategoriesData.map((sub) => (
+                                <ContentCard
+                                    key={sub.id}
+                                    title={sub.name}
+                                    description={sub.description}
+                                    image={sub.image}
+                                    href={`/produkte/natursteine/porphyr/${sub.id}`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <ContactFormSection />
+            </>
+        );
+    }
+
     // Travertin: all products shown directly (no subcategories)
     if (params.category === 'natursteine' && params.subcategory === 'travertin') {
         const travertinProducts = getTravertinProducts();
@@ -325,10 +401,6 @@ export default function SubCategoryPage({ params }: { params: { category: string
         }
     } else if (params.category === 'natursteine' && params.subcategory === 'brasil-quarzit') {
         products = getBrasilQuarzitProducts();
-    } else if (params.category === 'natursteine' && params.subcategory === 'stainzer-gneis') {
-        products = getStainzerGneisProducts();
-    } else if (params.category === 'natursteine' && params.subcategory === 'porphyr') {
-        products = getPorphyrProducts();
     } else if (params.category === 'natursteine' && params.subcategory === 'sandstein') {
         products = getSandsteinProducts();
     } else if (params.category === 'natursteine' && params.subcategory === 'bluestone') {
