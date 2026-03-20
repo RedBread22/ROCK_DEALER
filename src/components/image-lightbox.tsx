@@ -161,7 +161,6 @@ export function ImageLightbox({ images, initialIndex = 0, open, onClose }: Image
                 fill
                 className="object-contain"
                 sizes="90vw"
-                priority
               />
             </div>
           </motion.div>

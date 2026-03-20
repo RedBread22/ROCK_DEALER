@@ -1,14 +1,16 @@
 "use client";
 
 import { useEffect, useMemo, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { HeroSection } from '@/components/hero-section';
-import { PhilosophySection } from '@/components/philosophy-section';
-import { VisualSection } from '@/components/visual-section';
 import { HeroSliderSection } from '@/components/hero-slider-section';
-import { ExperimentalSection } from '@/components/experimental-section';
-import { CTASection } from '@/components/cta-section';
-import { ContactFormSection } from '@/components/contact-form-section';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+
+const PhilosophySection = dynamic(() => import('@/components/philosophy-section').then(m => ({ default: m.PhilosophySection })));
+const VisualSection = dynamic(() => import('@/components/visual-section').then(m => ({ default: m.VisualSection })));
+const ExperimentalSection = dynamic(() => import('@/components/experimental-section').then(m => ({ default: m.ExperimentalSection })));
+const CTASection = dynamic(() => import('@/components/cta-section').then(m => ({ default: m.CTASection })));
+const ContactFormSection = dynamic(() => import('@/components/contact-form-section').then(m => ({ default: m.ContactFormSection })));
 
 const heroSliderImageIds = [
   'slider-2',

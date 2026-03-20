@@ -51,6 +51,7 @@ export const productCategories: ProductCategory[] = [
       { id: 'porphyr', name: 'Porphyr' },
       { id: 'tuff', name: 'Grauer Gneis' },
       { id: 'muschelkalk', name: 'Muschelkalk' },
+      { id: 'bluestone', name: 'Bluestone' },
     ],
   },
   {
@@ -105,6 +106,7 @@ const subCategoryDescriptions: Record<string, Record<string, string>> = {
     porphyr: 'Rutschfest und extrem wetterbeständig – optimal für Einfahrten, Wege und Pflasterflächen.',
     tuff: 'Leichter Naturstein mit warmen Erdtönen – ideal für dekorative Elemente und individuelle Akzente.',
     muschelkalk: 'Heller Naturstein mit feiner Struktur und fossilen Einschlüssen – zeitlos, elegant und ideal für Terrassen, Mauern und klassische Außenanlagen.',
+    bluestone: 'Edler blauer Naturstein mit markanter Oberfläche – ideal für exklusive Terrassen und Akzentflächen.',
   },
   betonsteine: {
       betonplatten: 'Großformatige Betonplatten für moderne, ruhige Terrassen- und Weggestaltungen.',
@@ -138,8 +140,9 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     schiefer: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen/9.jpg',
     sandstein: '/images/UNSERE-PRODUKTE/Sandstein/Regenbogenstein.avif',
     'stainzer-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/1.jpg',
-    travertin: '/images/UNSERE-PRODUKTE/Natursteine/Travertin/1.jpg',
+    travertin: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Flamingo 1.AVIF'),
     tuff: '/images/UNSERE-PRODUKTE/Natursteine/Tuff/6.jpg',
+    bluestone: '/images/UNSERE-PRODUKTE/Natursteine/BlueStone/BlueStone0.avif',
   },
   betonsteine: {
     betonplatten: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten/3.jpg',
@@ -372,6 +375,17 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
             imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten/4.jpg'),
             description: 'Luserna Gneis Randleisten',
             imageHint: 'gneiss curbs',
+        },
+    },
+    {
+        id: 'blockstufen',
+        name: 'Blockstufen',
+        description: 'Massiv geschnittene Blockstufen aus Luserna Gneis – trittsicher und frostbeständig für Treppen und Hangbefestigungen.',
+        image: {
+            id: 'luserna-gneis-blockstufen-preview',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen/2.jpg',
+            description: 'Luserna Gneis Blockstufen',
+            imageHint: 'luserna gneiss steps',
         },
     },
 ];
@@ -711,23 +725,20 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
   const products: Product[] = [];
 
   if (productGroupId === 'blockstufen') {
-    // Skip images 5 and 7; rename images 2, 3, 6 to "Blockstufe Luserna Gneis"
-    const lusernaImages = new Set([2, 3, 6]);
-    const skipImages = new Set([5, 7]);
+    // Skip images 2, 3, 6 (moved to Luserna Gneis Blockstufen) and 5, 7 (deleted)
+    const skipImages = new Set([2, 3, 5, 6, 7]);
     for (let i = 1; i <= imageInfo.count; i++) {
       if (skipImages.has(i)) continue;
-      const isLuserna = lusernaImages.has(i);
-      const displayName = isLuserna ? 'Blockstufe Luserna Gneis' : `${imageInfo.name} ${i}`;
       const imageUrl = `${imageInfo.path}/${i}.jpg`;
       products.push({
-        name: displayName,
+        name: `${imageInfo.name} ${i}`,
         description: granitDescriptions.blockstufen,
         meta: 'Granit, frostfest & witterungsbeständig',
         image: {
           id: `${productGroupId}-${i}`,
-          description: displayName,
+          description: `${imageInfo.name} ${i}`,
           imageUrl: imageUrl,
-          imageHint: isLuserna ? 'luserna gneiss blockstufe' : `granite ${productGroupId.slice(0, -1)}`,
+          imageHint: 'granite blockstufe',
         },
       });
     }
@@ -845,6 +856,7 @@ const lusernaGneisImageCounts: Record<string, { count: number; path: string; nam
     'polygonal-platten': { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Polygonal Platten', name: 'Luserna Gneis - Polygonal Platte' },
     trittplatten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Trittplatten', name: 'Luserna Gneis - Trittplatte' },
     randleisten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten', name: 'Luserna Gneis - Randleiste' },
+    blockstufen: { count: 3, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen', name: 'Blockstufe Luserna Gneis' },
 };
 
 const lusernaGneisDescriptions: Record<string, string> = {
@@ -861,6 +873,21 @@ export const getLusernaGneisProducts = (productGroupId: string): Product[] | nul
   const imageInfo = lusernaGneisImageCounts[productGroupId];
   if (!imageInfo) {
     return null;
+  }
+
+  if (productGroupId === 'blockstufen') {
+    const imageNumbers = [2, 3, 6];
+    return imageNumbers.map((num, idx) => ({
+      name: `Blockstufe Luserna Gneis ${idx + 1}`,
+      description: 'Massiv geschnittene Blockstufe aus Luserna Gneis – trittsicher, frostbeständig und ideal für Eingangstreppen, Gartenstufen und Hangbefestigungen.',
+      meta: 'Luserna Gneis, frostfest & witterungsbeständig',
+      image: {
+        id: `luserna-blockstufen-${num}`,
+        description: `Blockstufe Luserna Gneis ${idx + 1}`,
+        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen/${num}.jpg`,
+        imageHint: 'luserna gneiss blockstufe',
+      },
+    }));
   }
 
   const desc = lusernaGneisDescriptions[productGroupId] || 'Luserna Gneis – ein vielseitiger Naturstein mit grün-grauer Farbgebung für anspruchsvolle Außenprojekte.';
@@ -1059,20 +1086,23 @@ export const getSandsteinProducts = (): Product[] => {
   ];
 };
 
+export const getBluestoneProducts = (): Product[] => {
+  return Array.from({ length: 4 }, (_, i) => ({
+    name: `Bluestone ${i + 1}`,
+    description: 'Edler blauer Naturstein mit markanter Oberfläche und lebhafter Farbgebung – ideal für exklusive Terrassen, Eingangsbereiche und Akzentflächen.',
+    meta: 'Frostfest & witterungsbeständig',
+    image: {
+      id: `bluestone-${i}`,
+      description: `Bluestone ${i}`,
+      imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/BlueStone/BlueStone${i}.avif`,
+      imageHint: 'blue stone natural stone',
+    },
+  }));
+};
+
 export const getTravertinProducts = (productGroupId?: string): Product[] | null => {
   if (!productGroupId) {
     return [
-      {
-        name: 'Travertin',
-        description: 'Travertin-Platte mit offenporiger Oberfläche und warmem Beigeton – der Klassiker für mediterrane Terrassen, Poolbereiche und sonnige Sitzplätze.',
-        meta: 'Frostfest & witterungsbeständig',
-        image: {
-          id: 'travertin-allgemein-1',
-          description: 'Travertin',
-          imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Travertin/1.jpg',
-          imageHint: 'travertine tile'
-        }
-      },
       {
         name: 'Travertin Flamingo',
         description: 'Travertin Flamingo mit zartem Rosa-Schimmer und charakteristischer Porenstruktur – verleiht Terrassen und Außenflächen einen unverwechselbar warmen, südländischen Akzent.',

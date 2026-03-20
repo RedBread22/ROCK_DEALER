@@ -80,6 +80,7 @@ export default function ProduktePage() {
                         alt={bannerImage.description}
                         data-ai-hint={bannerImage.imageHint}
                         fill
+                        sizes="100vw"
                         className="object-cover"
                     />
                 </div>

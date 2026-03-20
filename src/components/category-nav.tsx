@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { productCategories } from '@/lib/products';
 import { cn } from '@/lib/utils';
 import { InteractiveElement } from './interactive-element';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export const CategoryNav = () => {
   const pathname = usePathname();
@@ -13,21 +13,25 @@ export const CategoryNav = () => {
   const currentCategorySlug = pathSegments[1];
 
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollYRef = useRef(0);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY > 100 && currentScrollY > lastScrollY) {
-        // Scrolling down past threshold
-        setIsVisible(false);
-      } else {
-        // Scrolling up or near the top
-        setIsVisible(true);
-      }
-      
-      setLastScrollY(currentScrollY);
+      if (ticking) return;
+      ticking = true;
+
+      requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > 100 && currentScrollY > lastScrollYRef.current) {
+          setIsVisible(false);
+        } else {
+          setIsVisible(true);
+        }
+        lastScrollYRef.current = currentScrollY;
+        ticking = false;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -35,7 +39,7 @@ export const CategoryNav = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollY]);
+  }, []);
 
   return (
     <nav

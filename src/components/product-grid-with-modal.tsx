@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { type Product } from '@/lib/products';
@@ -23,11 +23,12 @@ export function ProductGridWithModal({ products }: ProductGridWithModalProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const { lightboxState, openLightbox, closeLightbox } = useLightbox();
 
+  const allImages = useMemo(
+    () => products.map((p) => ({ src: p.image.imageUrl, alt: p.name })),
+    [products]
+  );
+
   const handleImageClick = (product: Product) => {
-    const allImages = products.map((p) => ({
-      src: p.image.imageUrl,
-      alt: p.name,
-    }));
     const index = products.indexOf(product);
     openLightbox(allImages, index >= 0 ? index : 0);
   };
@@ -66,6 +67,7 @@ export function ProductGridWithModal({ products }: ProductGridWithModalProps) {
                     alt={selectedProduct.name}
                     data-ai-hint={selectedProduct.image.imageHint}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
                   />
               </div>
