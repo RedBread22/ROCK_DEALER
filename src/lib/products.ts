@@ -211,12 +211,12 @@ export const granitSubCategoriesData: SubCategory[] = [
     },
     {
         id: 'pflastersteine',
-        name: 'Pflastersteine',
-        description: 'Klassische Pflastersteine für zeitlose Einfahrten und Wege.',
+        name: 'Granitwürfel',
+        description: 'Klassische Granitwürfel für zeitlose Einfahrten und Wege.',
         image: {
           id: 'granit-pflastersteine',
           imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Pflastersteine/1.jpg',
-          description: 'Granit Pflastersteine',
+          description: 'Granitwürfel',
           imageHint: 'granite pavers',
         },
     },
@@ -877,7 +877,7 @@ export const getGartendekoProducts = (subCategoryId: string): Product[] | null =
 
 const granitImageCounts: Record<string, { count: number, path: string, name: string }> = {
   blockstufen: { count: 7, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen', name: 'Blockstufe' },
-  pflastersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Pflastersteine', name: 'Pflasterstein' },
+  pflastersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Pflastersteine', name: 'Granitwürfel' },
   randleisten: { count: 2, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Randleisten', name: 'Randleiste' },
   granitplatte: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Granitplatte', name: 'Granitplatte' },
 };
