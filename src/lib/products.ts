@@ -918,7 +918,7 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
       'avif-1': 'Granit-Blockstufen auf Palette – lieferbereit in verschiedenen Formaten. Frostbeständig und für den Außenbereich geeignet.',
       'avif-2': 'Granit-Blockstufen gestapelt auf Palette – hohe Stückzahl verfügbar, ideal für größere Bauprojekte und Außenanlagen.',
     };
-    // Skip images 2, 3, 6 (moved to Luserna Gneis Blockstufen) and 5, 7 (deleted)
+    // Skip images 2, 3, 5, 6 (moved to Luserna Gneis Blockstufen) and 7 (deleted)
     const skipImages = new Set([2, 3, 5, 6, 7]);
     for (let i = 1; i <= imageInfo.count; i++) {
       if (skipImages.has(i)) continue;
@@ -1108,7 +1108,7 @@ const lusernaGneisImageCounts: Record<string, { count: number; path: string; nam
     'polygonal-platten': { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Polygonal Platten', name: 'Luserna Gneis - Polygonal Platte' },
     trittplatten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Trittplatten', name: 'Luserna Gneis - Trittplatte' },
     randleisten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten', name: 'Luserna Gneis - Randleiste' },
-    blockstufen: { count: 3, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen', name: 'Blockstufe Luserna Gneis' },
+    blockstufen: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen', name: 'Blockstufe Luserna Gneis' },
 };
 
 const lusernaGneisDescriptions: Record<string, string> = {
@@ -1127,10 +1127,16 @@ export const getLusernaGneisProducts = (productGroupId: string): Product[] | nul
   }
 
   if (productGroupId === 'blockstufen') {
-    const imageNumbers = [2, 3, 6];
+    const blockstufeDescriptions: Record<number, string> = {
+      2: 'Luserna Gneis Blockstufen im Außenbereich – naturbelassen, robust und ideal für Gartentreppen und Hangbefestigungen.',
+      3: 'Luserna Gneis Blockstufen geschnitten und gestrahlt – gleichmäßige Oberfläche, rutschhemmend und repräsentativ.',
+      5: 'Luserna Gneis Blockstufen auf Palette – lieferbereit in verschiedenen Formaten, frostbeständig und langlebig.',
+      6: 'Luserna Gneis Blockstufen gestapelt – hohe Stückzahl verfügbar, ideal für größere Treppen- und Außenanlagen.',
+    };
+    const imageNumbers = [2, 3, 5, 6];
     return imageNumbers.map((num) => ({
       name: 'Blockstufe Luserna Gneis',
-      description: 'Massiv geschnittene Blockstufe aus Luserna Gneis – trittsicher, frostbeständig und ideal für Eingangstreppen, Gartenstufen und Hangbefestigungen.',
+      description: blockstufeDescriptions[num],
       meta: 'Luserna Gneis, frostfest & witterungsbeständig',
       image: {
         id: `luserna-blockstufen-${num}`,
