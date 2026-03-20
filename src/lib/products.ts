@@ -75,6 +75,7 @@ export const productCategories: ProductCategory[] = [
     subCategories: [
       { id: 'rundkorn', name: 'Rundkorn' },
       { id: 'kantkorn', name: 'Kantkorn' },
+      { id: 'schieferplaettchen', name: 'Schieferplättchen' },
     ],
   },
   {
@@ -85,7 +86,7 @@ export const productCategories: ProductCategory[] = [
     subCategories: [
       { id: 'herz', name: 'Herz' },
       { id: 'figuren', name: 'Figuren' },
-      { id: 'findlinge', name: 'Findlinge' },
+      { id: 'findlinge', name: 'Gartenelemente' },
       { id: 'brunnen', name: 'Brunnen' },
       { id: 'tische-baenke', name: 'Tische / Bänke' },
       { id: 'blumentrog', name: 'Blumentrog' },
@@ -118,11 +119,12 @@ const subCategoryDescriptions: Record<string, Record<string, string>> = {
   zierkies: {
       rundkorn: 'Natürlich gerundeter Zierkies für pflegeleichte Flächen, Wege und dekorative Akzente.',
       kantkorn: 'Gebrochener Ziersplitt für stabile, wasserdurchlässige Flächen und moderne Gartengestaltung.',
+      schieferplaettchen: 'Flache Schieferplättchen in verschiedenen Farbtönen – ideal als edle Beetabdeckung und für dekorative Gartengestaltungen.',
   },
   gartendeko: {
       herz: 'Dekorative Herzen aus Naturstein als liebevolles und beständiges Symbol in Ihrem Garten.',
       figuren: 'Handgefertigte Figuren aus Stein – einzigartige Kunstwerke und Blickfänge für den Außenbereich.',
-      findlinge: 'Charakterstarke Findlinge und Solitärsteine als natürliche Gestaltungenelemente.',
+      findlinge: 'Natürliche Gartenelemente aus Stein – von Trockenmauern über Solitärsteine bis hin zu handgefertigten Kunstobjekten.',
       brunnen: 'Gartenbrunnen aus Naturstein – beruhigendes Wasserspiel und edler Mittelpunkt.',
       'tische-baenke': 'Robuste und wetterfeste Tische und Bänke aus massivem Naturstein.',
       blumentrog: 'Massive Blumentröge aus Naturstein – langlebig, stilvoll und für jede Pflanze geeignet.',
@@ -138,7 +140,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     muschelkalk: '/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk/9.jpg',
     porphyr: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr/7.jpg',
     schiefer: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen/9.jpg',
-    sandstein: '/images/UNSERE-PRODUKTE/Sandstein/Regenbogenstein.avif',
+    sandstein: encodeImagePath('/images/UNSERE-PRODUKTE/Sandstein/Sandstein 1.avif'),
     'stainzer-gneis': '/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/1.jpg',
     travertin: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Flamingo 1.AVIF'),
     tuff: '/images/UNSERE-PRODUKTE/Natursteine/Tuff/6.jpg',
@@ -154,6 +156,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
   zierkies: {
     kantkorn: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/12.jpg',
     rundkorn: '/images/UNSERE-PRODUKTE/Zierkies/Rundkorn.jpg',
+    schieferplaettchen: '/images/UNSERE-PRODUKTE/Zierkies/Kantkorn/1.jpg',
   },
   gartendeko: {
     herz: '/images/UNSERE-PRODUKTE/Gartendeko/Herz.jpg',
@@ -301,25 +304,14 @@ export const schieferSubCategoriesData: SubCategory[] = [
 
 export const lusernaGneisSubCategoriesData: SubCategory[] = [
     {
-        id: 'allgemein',
-        name: 'Allgemein',
-        description: 'Allgemeine Ansichten und Anwendungsbeispiele von Luserna Gneis.',
+        id: 'bodenplatten',
+        name: 'Bodenplatten',
+        description: 'Luserna Gneis Bodenplatten in verschiedenen Formaten – ideal für Terrassen, Wege und Außenflächen.',
         image: {
-            id: 'luserna-gneis-allgemein-preview',
+            id: 'luserna-gneis-bodenplatten-preview',
             imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Allgemein/6.jpg'),
-            description: 'Luserna Gneis Allgemein',
-            imageHint: 'gneiss stone',
-        },
-    },
-    {
-        id: 'gemischt',
-        name: 'Gemischt',
-        description: 'Verschiedene Formate und Anwendungen von Luserna Gneis gemischt.',
-        image: {
-            id: 'luserna-gneis-gemischt-preview',
-            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Gemischt/19.jpg'),
-            description: 'Luserna Gneis Gemischt',
-            imageHint: 'gneiss mix',
+            description: 'Luserna Gneis Bodenplatten',
+            imageHint: 'gneiss floor tiles',
         },
     },
     {
@@ -390,41 +382,45 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
     },
 ];
 
-export const travertinSubCategoriesData: SubCategory[] = [
+export const tuffSubCategoriesData: SubCategory[] = [
     {
-        id: 'travertin-noce',
-        name: 'Travertin Noce',
-        description: 'Warmer Travertin mit dunklem, nussbraunem Farbton – ideal für mediterrane Terrassen und Außenflächen.',
+        id: 'polygonalplatten',
+        name: 'Polygonalplatten',
+        description: 'Unregelmäßig gebrochene Gneis-Platten für natürliche, lebendige Flächen – ideal für Terrassen, Wege und Sitzplätze mit individuellem Charakter.',
         image: {
-            id: 'travertin-noce-preview',
-            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Noce 2.jpg'),
-            description: 'Travertin Noce',
-            imageHint: 'travertine noce',
+            id: 'tuff-polygonalplatten',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Tuff/1.jpg',
+            description: 'Grauer Gneis Polygonalplatten',
+            imageHint: 'grey gneiss polygonal plates',
         },
     },
     {
-        id: 'travertin-vanilla',
-        name: 'Travertin Vanilla',
-        description: 'Heller, cremefarbener Travertin für elegante und zeitlose Außengestaltungen.',
+        id: 'bodenplatten',
+        name: 'Bodenplatten',
+        description: 'Gleichmäßig geschnittene Gneis-Platten für geordnete, elegante Flächen – perfekt für Terrassen, Eingangsbereiche und Gartenwege.',
         image: {
-            id: 'travertin-vanilla-preview',
-            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Vanilla 1.AVIF'),
-            description: 'Travertin Vanilla',
-            imageHint: 'travertine vanilla',
-        },
-    },
-    {
-        id: 'travertin-mix',
-        name: 'Travertin Mix',
-        description: 'Vielseitige Travertin-Mischung mit natürlichen Farbnuancen für lebendige Flächen.',
-        image: {
-            id: 'travertin-mix-preview',
-            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Mix 1.AVIF'),
-            description: 'Travertin Mix',
-            imageHint: 'travertine mix',
+            id: 'tuff-bodenplatten',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Tuff/3.jpg',
+            description: 'Grauer Gneis Bodenplatten',
+            imageHint: 'grey gneiss floor plates',
         },
     },
 ];
+
+export const muschelkalkSubCategoriesData: SubCategory[] = [
+    {
+        id: 'mauersteine',
+        name: 'Mauersteine',
+        description: 'Muschelkalk-Mauersteine mit fossilen Einschlüssen und heller, gleichmäßiger Färbung – ideal für repräsentative Gartenmauern, Einfriedungen und klassische Außenanlagen.',
+        image: {
+            id: 'muschelkalk-mauersteine',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk/2.jpg',
+            description: 'Muschelkalk Mauersteine',
+            imageHint: 'shell limestone wall stones',
+        },
+    },
+];
+
 
 export const getCategoryById = (id: string) => {
   return productCategories.find((cat) => cat.id === id);
@@ -448,8 +444,114 @@ export const getLusernaGneisSubCategoryById = (id: string) => {
     return lusernaGneisSubCategoriesData.find((cat) => cat.id === id);
 };
 
-export const getTravertinSubCategoryById = (id: string) => {
-    return travertinSubCategoriesData.find((cat) => cat.id === id);
+export const getTuffSubCategoryById = (id: string) => {
+    return tuffSubCategoriesData.find((cat) => cat.id === id);
+};
+
+export const getMuschelkalkSubCategoryById = (id: string) => {
+    return muschelkalkSubCategoriesData.find((cat) => cat.id === id);
+};
+
+export const stainzerGneisSubCategoriesData: SubCategory[] = [
+    {
+        id: 'polygonalplatten',
+        name: 'Polygonalplatten',
+        description: 'Unregelmäßig gebrochene Stainzer-Gneis-Platten für natürliche, lebendige Verlegemuster auf Terrassen und Wegen.',
+        image: {
+            id: 'stainzer-gneis-polygonalplatten',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/1.jpg'),
+            description: 'Stainzer Gneis Polygonalplatten',
+            imageHint: 'stainzer gneiss polygonal plates',
+        },
+    },
+    {
+        id: 'bodenplatten',
+        name: 'Bodenplatten',
+        description: 'Gleichmäßig geschnittene Stainzer-Gneis-Platten – ideal für geordnete Terrassen- und Wegflächen.',
+        image: {
+            id: 'stainzer-gneis-bodenplatten',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/11.jpg'),
+            description: 'Stainzer Gneis Bodenplatten',
+            imageHint: 'stainzer gneiss floor plates',
+        },
+    },
+    {
+        id: 'mauersteine',
+        name: 'Mauersteine',
+        description: 'Robuste Stainzer-Gneis-Mauersteine für Trockenmauern, Hangbefestigungen und Garteneingrenzungen.',
+        image: {
+            id: 'stainzer-gneis-mauersteine',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/12.jpg'),
+            description: 'Stainzer Gneis Mauersteine',
+            imageHint: 'stainzer gneiss wall stones',
+        },
+    },
+    {
+        id: 'pflasterwuerfel',
+        name: 'Pflasterwürfel',
+        description: 'Stainzer-Gneis-Pflasterwürfel – widerstandsfähig und vielseitig für Einfahrten, Wege und Platzgestaltungen.',
+        image: {
+            id: 'stainzer-gneis-pflasterwuerfel',
+            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/13.jpg'),
+            description: 'Stainzer Gneis Pflasterwürfel',
+            imageHint: 'stainzer gneiss paving cubes',
+        },
+    },
+];
+
+export const getStainzerGneisSubCategoryById = (id: string) => {
+    return stainzerGneisSubCategoriesData.find((cat) => cat.id === id);
+};
+
+export const porphyrSubCategoriesData: SubCategory[] = [
+    {
+        id: 'polygonalplatten',
+        name: 'Polygonalplatten',
+        description: 'Unregelmäßig gebrochene Porphyr-Platten für naturnahe Verlegemuster – rutschfest und extrem witterungsbeständig.',
+        image: {
+            id: 'porphyr-polygonalplatten',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr/1.jpg',
+            description: 'Porphyr Polygonalplatten',
+            imageHint: 'porphyry polygonal plates',
+        },
+    },
+    {
+        id: 'bodenplatten',
+        name: 'Bodenplatten',
+        description: 'Porphyr-Bodenplatten mit spaltrauer Oberfläche – rutschfest auch bei Nässe und Frost.',
+        image: {
+            id: 'porphyr-bodenplatten',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr/2.jpg',
+            description: 'Porphyr Bodenplatten',
+            imageHint: 'porphyry floor plates',
+        },
+    },
+    {
+        id: 'mauersteine',
+        name: 'Mauersteine',
+        description: 'Porphyr-Mauersteine mit rötlich-violetter Färbung – markant und langlebig für Gartenmauern und Einfassungen.',
+        image: {
+            id: 'porphyr-mauersteine',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr/3.jpg',
+            description: 'Porphyr Mauersteine',
+            imageHint: 'porphyry wall stones',
+        },
+    },
+    {
+        id: 'pflasterwuerfel',
+        name: 'Pflasterwürfel',
+        description: 'Porphyr-Pflasterwürfel – extrem abriebfest und ideal für Einfahrten, Wege und historische Platzgestaltungen.',
+        image: {
+            id: 'porphyr-pflasterwuerfel',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Porphyr/4.jpg',
+            description: 'Porphyr Pflasterwürfel',
+            imageHint: 'porphyry paving cubes',
+        },
+    },
+];
+
+export const getPorphyrSubCategoryById = (id: string) => {
+    return porphyrSubCategoriesData.find((cat) => cat.id === id);
 };
 
 export const getSubCategoriesByParentId = (parentId: string) => {
@@ -458,7 +560,7 @@ export const getSubCategoriesByParentId = (parentId: string) => {
 
 export const generatePlaceholderProducts = (count: number = 6): Product[] => {
   return Array.from({ length: count }, (_, i) => ({
-    name: `Produkt ${i + 1}`,
+    name: 'Produkt',
     description: 'Details zu diesem Produkt folgen in Kürze. Kontaktieren Sie uns für weitere Informationen zu Verfügbarkeit und Preisen.',
     meta: 'Frostfest & witterungsbeständig',
     image: findImage('product-placeholder'),
@@ -579,6 +681,9 @@ const kantkornDescriptions: Record<string, string> = {
   'Schieferplättchen Schwarz': 'Flache, schwarze Schieferplättchen mit natürlicher Schichtung – schaffen eine besonders edle, dunkle Flächenoptik in Beeten und Zierflächen.',
 };
 
+// Schieferplättchen: images 1-12 from Kantkorn
+const schieferplaettchenProducts = kantkornProducts.slice(0, 12);
+
 export const getZierkiesProducts = (subCategoryId: string): Product[] | null => {
   if (subCategoryId === 'rundkorn') {
     return rundkornProducts.map((p, i) => ({
@@ -594,8 +699,24 @@ export const getZierkiesProducts = (subCategoryId: string): Product[] | null => 
     }));
   }
 
+  if (subCategoryId === 'schieferplaettchen') {
+    return schieferplaettchenProducts.map((p, i) => ({
+      name: 'Schieferplättchen',
+      description: kantkornDescriptions[p.name] || 'Flache Schieferplättchen mit natürlicher Schichtung – schaffen eine edle, dunkle Flächenoptik in Beeten und Zierflächen.',
+      meta: 'Dekorative Schieferplättchen',
+      image: {
+        id: `schieferplaettchen-${i + 1}`,
+        description: 'Schieferplättchen',
+        imageUrl: encodeImagePath(p.image),
+        imageHint: 'decorative slate chips',
+      },
+    }));
+  }
+
   if (subCategoryId === 'kantkorn') {
-    return kantkornProducts.map((p, i) => ({
+    // Only the named products (index 12+), not the first 12 which moved to Schieferplättchen
+    const remainingKantkorn = kantkornProducts.slice(12);
+    return remainingKantkorn.map((p, i) => ({
       name: p.name,
       description: kantkornDescriptions[p.name] || 'Gebrochener Ziersplitt für stabile, wasserdurchlässige Flächen und individuelle Gartengestaltung.',
       meta: 'Dekorativer Kantkorn-Ziersplitt',
@@ -614,10 +735,10 @@ export const getZierkiesProducts = (subCategoryId: string): Product[] | null => 
 const gartendekoImageCounts: Record<string, { count: number, path: string, name: string }> = {
   herz: { count: 4, path: '/images/5. Gartendeko/1. Herz', name: 'Herz' },
   figuren: { count: 3, path: '/images/5. Gartendeko/2. Figuren', name: 'Figur' },
-  findlinge: { count: 13, path: '/images/5. Gartendeko/3. Findlinge', name: 'Findling' },
-  brunnen: { count: 4, path: '/images/5. Gartendeko/5. Brunnen', name: 'Brunnen' },
+  findlinge: { count: 13, path: '/images/5. Gartendeko/3. Findlinge', name: 'Gartenelement' },
+  brunnen: { count: 5, path: '/images/5. Gartendeko/5. Brunnen', name: 'Brunnen' },
   'tische-baenke': { count: 3, path: '/images/5. Gartendeko/6. TischeBanke', name: 'Tisch / Bank' },
-  blumentrog: { count: 8, path: '/images/5. Gartendeko/7. Blumentrog', name: 'Blumentrog' },
+  blumentrog: { count: 8, path: '/images/5. Gartendeko/7. Blumentrog', name: 'Blumentrog' }, // image 6 moved to Brunnen
   vasen: { count: 4, path: '/images/5. Gartendeko/8. Vasen', name: 'Vase' },
 };
 
@@ -629,51 +750,51 @@ const gartendekoDescriptions: Record<string, Record<number, string>> = {
     4: 'Dekoratives Herz aus hellem Naturstein – die schlichte Form und das natürliche Material schaffen einen bleibenden Akzent im Garten.',
   },
   figuren: {
-    1: 'Tierfigur aus massivem Naturstein – ein handwerklich gearbeiteter Blickfang, der Gärten und Eingangsbereichen eine besondere Atmosphäre verleiht.',
-    2: 'Steinerne Gartenfigur mit detailreicher Gestaltung – wetterfest und standsicher als dauerhafte Bereicherung für jede Gartenanlage.',
-    3: 'Skulpturale Naturstein-Figur in kompakter Form – vereint künstlerischen Ausdruck mit der Beständigkeit echten Steins.',
+    1: 'Gartenfigur Elefant – dekoratives Steinelement für Garten und Terrasse.',
+    2: 'Gartenfigur – charmante Dekoration aus Naturstein für jeden Außenbereich.',
+    3: 'Gartenfigur Pferd – edles Dekorelement aus Naturstein, wetterfest und langlebig.',
   },
   findlinge: {
-    1: 'Mächtiger Findling mit natürlich abgerundeter Form – als Solitärstein ein imposanter Blickfang in großzügigen Gartenanlagen.',
-    2: 'Findling mit moosfreundlicher, poröser Oberfläche – entwickelt im Laufe der Zeit eine lebendige, natürliche Patina.',
-    3: 'Mittelgroßer Findling in warmem Erdton – ideal als Akzentstein neben Teichen, Wegen oder in Steingärten.',
-    4: 'Flacher Findling als dekorativer Trittstein oder Sitzgelegenheit – die glatte Oberseite lädt zum Verweilen ein.',
-    5: 'Markanter Findling mit auffälliger Gesteinsmaserung – ein natürliches Kunstwerk, geformt durch Jahrtausende geologischer Prozesse.',
-    6: 'Kompakter Findling als Wegbegrenzung oder Beetakzent – dezent und zugleich unverwechselbar durch seine einzigartige Form.',
-    7: 'Großer Solitärfindling mit rustikaler Oberfläche – dominiert Vorgärten und Grünflächen als natürlicher Gestaltungsmittelpunkt.',
-    8: 'Findling in heller Färbung mit kristallinen Einschlüssen – reflektiert das Licht und setzt funkelnde Akzente im Garten.',
-    9: 'Kantiger Findling mit schroffer Bruchkante – bringt alpine Wildheit in die Gartengestaltung und eignet sich als Hangabstützung.',
-    10: 'Rundlicher Findling in dunklem Grau – passt zu modernen Gartenkonzepten und bildet einen ruhigen Kontrast zu Pflanzen.',
-    11: 'Findling mit Quarzadern und lebhafter Zeichnung – ein geologisches Schmuckstück für anspruchsvolle Garten- und Parkgestaltungen.',
-    12: 'Flacher, plattenförmiger Findling – vielseitig einsetzbar als Trittstufe, Brückenplatte oder dekorativer Bodenakzent.',
-    13: 'Massiver Findling in beeindruckender Größe – ein naturbelassenes Highlight, das Gärten Charakter und Tiefe verleiht.',
+    1: 'Natursteinanlage für den Garten – individuell gestaltbar als Beetbegrenzung oder Hangbefestigung.',
+    2: 'Natursteingestaltung – harmonische Gartengestaltung mit verschiedenen Steinelementen.',
+    3: 'Naturstein-Trockenmauer – robust, natürlich und langlebig für Gartenanlagen.',
+    4: 'Natürlicher Solitärstein – markantes Einzelelement für Garten und Außenanlage.',
+    5: 'Naturstein-Kunstobjekt – jedes Stück ein Unikat, handgefertigt aus natürlichem Gestein.',
+    6: 'Naturstein-Kunstobjekt – jedes Stück ein Unikat, handgefertigt aus natürlichem Gestein.',
+    7: 'Naturstein-Kunstobjekt – jedes Stück ein Unikat, handgefertigt aus natürlichem Gestein.',
+    8: 'Naturstein-Kunstobjekt – jedes Stück ein Unikat, handgefertigt aus natürlichem Gestein.',
+    9: 'Naturstein-Kunstobjekt – jedes Stück ein Unikat, handgefertigt aus natürlichem Gestein.',
+    10: 'Naturstein-Kunstobjekt – jedes Stück ein Unikat, handgefertigt aus natürlichem Gestein.',
+    11: 'Naturstein-Kunstobjekt – jedes Stück ein Unikat, handgefertigt aus natürlichem Gestein.',
+    12: 'Naturstein-Kunstobjekt – jedes Stück ein Unikat, handgefertigt aus natürlichem Gestein.',
+    13: 'Naturstein-Kunstobjekt – jedes Stück ein Unikat, handgefertigt aus natürlichem Gestein.',
   },
   brunnen: {
-    1: 'Gartenbrunnen aus massivem Naturstein mit beruhigendem Wasserfluss – schafft eine entspannende Atmosphäre und dient als akustischer Ruhepol.',
-    2: 'Steinbrunnen in klassischer Säulenform – das plätschernde Wasser belebt Innenhöfe, Terrassen und repräsentative Gartenbereiche.',
-    3: 'Naturstein-Brunnen mit rustikaler Oberfläche – die Kombination aus Stein und Wasser erzeugt ein natürliches, meditatives Ambiente.',
-    4: 'Kompakter Quellstein-Brunnen für kleinere Gärten und Eingangsbereiche – pflegeleicht und ganzjährig ein dekoratives Element.',
+    1: 'Dekorativer Zierbrunnen mit Ornamentrelief – handgefertigt aus Naturstein, ideal als Gartenmittelpunkt.',
+    2: 'Runder Trogbrunnen in Steinoptik – klassisches Design für Garten und Terrasse.',
+    3: 'Granit-Trogbrunnen – massiv und langlebig, für Außenbereiche und Einfahrten geeignet.',
+    4: 'Granit-Wandbrunnen mit Zapfhahn – funktional und dekorativ, wetterfest und pflegeleicht.',
+    5: 'Granit-Waschbecken aus einem Stück – zeitlos, robust und ideal für den Außenbereich.',
   },
   'tische-baenke': {
-    1: 'Massive Naturstein-Sitzgarnitur für den Garten – trotzt Wind und Wetter und bietet dauerhaft einen einladenden Sitzplatz im Freien.',
-    2: 'Steinbank mit geschliffener Sitzfläche – verbindet Komfort mit Beständigkeit und fügt sich harmonisch in jede Gartenanlage ein.',
-    3: 'Naturstein-Tisch in robuster Ausführung – ein Treffpunkt im Garten, der über Generationen Bestand hat.',
+    1: 'Granit-Outdoorküche – maßgefertigte Außenküche aus Naturstein, wetterfest und langlebig.',
+    2: 'Granit-Gartentisch – modernes Design, kratzfest und witterungsbeständig für jede Terrasse.',
+    3: 'Rustikaler Naturstein-Tisch – handgefertigt aus einem Stück, jedes Exemplar ein Unikat.',
   },
   blumentrog: {
-    1: 'Massiver Blumentrog aus Naturstein mit großem Pflanzvolumen – ein repräsentatives Gefäß für Stauden, Sträucher oder saisonale Bepflanzungen.',
-    2: 'Naturstein-Blumentrog in länglicher Form – ideal als Raumteiler auf Terrassen oder zur Begrünung von Einfahrten und Innenhöfen.',
-    3: 'Rustikaler Steintrog mit verwitterter Oberfläche – der antike Charme macht ihn zum Blickfang in ländlichen und romantischen Gärten.',
-    4: 'Kompakter Blumentrog für Kräuter und kleine Zierpflanzen – die natürliche Steinoptik wertet Balkone und Eingangsbereiche stilvoll auf.',
-    5: 'Großer Naturstein-Pflanztrog als Solitärelement – die schwere, solide Bauweise garantiert Standfestigkeit auch bei starkem Wind.',
-    6: 'Blumentrog mit leicht konischer Form und glatter Außenfläche – modern und zeitlos zugleich, passend zu jeder Gartenarchitektur.',
-    7: 'Steintrog in quadratischer Form – eignet sich als symmetrisches Gestaltungselement zu beiden Seiten eines Eingangs oder Gartenwegs.',
-    8: 'Flacher, breiter Naturstein-Trog für flächige Bepflanzungen – bringt Grün auf Augenhöhe und strukturiert Außenbereiche elegant.',
+    1: 'Blumentrog mit Ornamentrelief – dekorativ und funktional, ideal für Terrasse und Garten.',
+    2: 'Granit-Blumentrog rustikal – natürliche Oberfläche, frostbeständig und langlebig.',
+    3: 'Naturstein-Blumentrog in Rosétönen – wetterfest und ein echter Blickfang im Garten.',
+    4: 'Moderner Blumentrog in Weiß – klare Linien, pflegeleicht und für jeden Stil geeignet.',
+    5: 'Blumentrog in Anthrazit – modernes Design, robust und witterungsbeständig.',
+    7: 'Blumentröge in verschiedenen Größen – für Terrasse, Einfahrt und Gartengestaltung.',
+    8: 'Blumentröge im Außenbereich – vielseitig einsetzbar als Raumteiler oder Bepflanzungselement.',
   },
   vasen: {
-    1: 'Steinvase in klassischer Amphoren-Form – ein dekorativer Akzent für Eingangsbereiche, Terrassen und repräsentative Gartenanlagen.',
-    2: 'Naturstein-Vase mit schlanker Silhouette – die schlichte Eleganz aus massivem Stein setzt Blumen und Trockensträuße gekonnt in Szene.',
-    3: 'Rustikale Steinvase mit natürlicher Patina – verleiht Gärten und Innenhöfen einen Hauch von Antike und Beständigkeit.',
-    4: 'Kompakte Ziervase aus poliertem Naturstein – wetterfest und standsicher als ganzjähriges Dekoelement im Außenbereich.',
+    1: 'Naturstein-Vase mit Blattdekor und Henkeln – mediterranes Dekorelement für Terrasse und Garten.',
+    2: 'Hohe Naturstein-Vase mit filigranem Blattrelief – eleganter Blickfang für jeden Außenbereich.',
+    3: 'Naturstein-Krug mit geschwungenem Henkel – stilvolles Gartenaccessoire in klassischer Form.',
+    4: 'Naturstein-Pflanzkübel mit Ornamentrelief – robust, frostbeständig und dekorativ zugleich.',
   },
 };
 
@@ -685,15 +806,67 @@ export const getGartendekoProducts = (subCategoryId: string): Product[] | null =
 
   const subcatDescriptions = gartendekoDescriptions[subCategoryId] || {};
   const products: Product[] = [];
+
+  if (subCategoryId === 'brunnen') {
+    // Original 4 Brunnen images
+    for (let i = 1; i <= 4; i++) {
+      const imageUrl = encodeImagePath(`${imageInfo.path}/${i}.jpg`);
+      products.push({
+        name: imageInfo.name,
+        description: subcatDescriptions[i] || 'Gartenbrunnen aus Naturstein – ein dekoratives Wasserspiel, das jedem Außenbereich eine besondere Atmosphäre verleiht.',
+        meta: 'Unikat aus Naturstein',
+        image: {
+          id: `${subCategoryId}-${i}`,
+          description: imageInfo.name,
+          imageUrl: imageUrl,
+          imageHint: 'brunnen',
+        },
+      });
+    }
+    // Image 6 from Blumentrog moved here as Brunnen 5
+    products.push({
+      name: imageInfo.name,
+      description: subcatDescriptions[5] || 'Gartenbrunnen aus Naturstein – ein dekoratives Wasserspiel, das jedem Außenbereich eine besondere Atmosphäre verleiht.',
+      meta: 'Unikat aus Naturstein',
+      image: {
+        id: 'brunnen-from-blumentrog-6',
+        description: 'Brunnen',
+        imageUrl: encodeImagePath('/images/5. Gartendeko/7. Blumentrog/6.jpg'),
+        imageHint: 'brunnen',
+      },
+    });
+    return products;
+  }
+
+  if (subCategoryId === 'blumentrog') {
+    // Skip image 6 (moved to Brunnen)
+    for (let i = 1; i <= imageInfo.count; i++) {
+      if (i === 6) continue;
+      const imageUrl = encodeImagePath(`${imageInfo.path}/${i}.jpg`);
+      products.push({
+        name: imageInfo.name,
+        description: subcatDescriptions[i] || 'Einzigartiges Deko-Element aus Naturstein – jedes Stück ein handverlesenes Unikat, bei dem Abmessungen, Farbe und Form natürlich variieren.',
+        meta: 'Unikat aus Naturstein',
+        image: {
+          id: `${subCategoryId}-${i}`,
+          description: imageInfo.name,
+          imageUrl: imageUrl,
+          imageHint: subCategoryId.replace('-', ' '),
+        },
+      });
+    }
+    return products;
+  }
+
   for (let i = 1; i <= imageInfo.count; i++) {
     const imageUrl = encodeImagePath(`${imageInfo.path}/${i}.jpg`);
     products.push({
-      name: `${imageInfo.name} ${i}`,
+      name: imageInfo.name,
       description: subcatDescriptions[i] || 'Einzigartiges Deko-Element aus Naturstein – jedes Stück ein handverlesenes Unikat, bei dem Abmessungen, Farbe und Form natürlich variieren.',
       meta: 'Unikat aus Naturstein',
       image: {
         id: `${subCategoryId}-${i}`,
-        description: `${imageInfo.name} ${i}`,
+        description: imageInfo.name,
         imageUrl: imageUrl,
         imageHint: subCategoryId.replace('-', ' '),
       },
@@ -713,7 +886,21 @@ const granitDescriptions: Record<string, string> = {
   blockstufen: 'Massiv geschnittene Granit-Blockstufe mit gespaltener oder gesägter Oberfläche – trittsicher, frostbeständig und prädestiniert für Eingangstreppen, Gartenstufen und Hangbefestigungen.',
   pflastersteine: 'Granit-Pflasterstein in klassischer Würfelform – extrem druckfest und unverwüstlich, bestens geeignet für Einfahrten, Höfe und repräsentative Platzgestaltungen.',
   randleisten: 'Granitrandleiste als sauberer Abschluss für Pflasterflächen und Beeteinfassungen – formstabil, frostfest und in verschiedenen Längen verfügbar.',
-  granitplatte: 'Großformatige Granitplatte mit gleichmäßiger Oberfläche – ideal für Terrassen, Gehwege und Außenbereiche, die eine ruhige, elegante Flächenwirkung erfordern.',
+  granitplatte: 'Granitplatte in verschiedenen Formaten – ob als großformatige Terrassenplatte oder als kompakter Bodenbelag, überzeugt dieser frostbeständige Naturstein durch seine gleichmäßige Struktur, hohe Belastbarkeit und zeitlose Eleganz für jeden Außenbereich.',
+};
+
+const granitwuerfelDescriptions: Record<number, string> = {
+  1: 'Granit-Pflasterwürfel gespalten – natürliche raue Oberfläche, ideal für rustikale Einfahrten, Wege und Hofpflasterungen.',
+  2: 'Granit-Pflasterwürfel geschnitten und gestrahlt – gleichmäßige Oberfläche, rutschhemmend und pflegeleicht. Für moderne Außenanlagen.',
+  3: 'Granit-Pflasterwürfel in gespaltener Form – massiv und langlebig, klassischer Naturstein für Garten und Einfahrt.',
+  4: 'Granit-Pflasterwürfel in verschiedenen Ausführungen erhältlich – frostbeständig, salzbeständig und für alle Außenbereiche geeignet.',
+};
+
+const granitRandleistenDescriptions: Record<number, string> = {
+  1: 'Granit-Randleiste gespalten – natürliche raue Oberfläche, ideal als Beetbegrenzung, Wegrandstein oder Gartenabschluss.',
+  2: 'Granit-Randleiste gespalten und aufrecht – robuste Einfassung für Wege, Einfahrten und Grünflächen.',
+  3: 'Granit-Randleiste geschnitten und gestrahlt – gleichmäßige Kanten, saubere Optik. Lieferbereit auf Palette in verschiedenen Formaten.',
+  4: 'Granit-Randleiste geschnitten, gestrahlt mit Fase – edle Ausführung für repräsentative Einfahrten und hochwertige Außenanlagen.',
 };
 
 export const getGranitProducts = (productGroupId: string): Product[] | null => {
@@ -725,18 +912,24 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
   const products: Product[] = [];
 
   if (productGroupId === 'blockstufen') {
-    // Skip images 2, 3, 6 (moved to Luserna Gneis Blockstufen) and 5, 7 (deleted)
+    const blockstufeDescriptions: Record<string, string> = {
+      '1': 'Granit-Blockstufen im Außenbereich – robust, witterungsbeständig und natürlich wirkend. Ideal für Gartentreppen und Hangbefestigungen.',
+      '4': 'Granit-Blockstufen geschnitten und gestrahlt – gleichmäßige Oberfläche, rutschhemmend und langlebig. Perfekt für repräsentative Eingangsbereiche.',
+      'avif-1': 'Granit-Blockstufen auf Palette – lieferbereit in verschiedenen Formaten. Frostbeständig und für den Außenbereich geeignet.',
+      'avif-2': 'Granit-Blockstufen gestapelt auf Palette – hohe Stückzahl verfügbar, ideal für größere Bauprojekte und Außenanlagen.',
+    };
+    // Skip images 2, 3, 5, 6 (moved to Luserna Gneis Blockstufen) and 7 (deleted)
     const skipImages = new Set([2, 3, 5, 6, 7]);
     for (let i = 1; i <= imageInfo.count; i++) {
       if (skipImages.has(i)) continue;
       const imageUrl = `${imageInfo.path}/${i}.jpg`;
       products.push({
-        name: `${imageInfo.name} ${i}`,
-        description: granitDescriptions.blockstufen,
+        name: imageInfo.name,
+        description: blockstufeDescriptions[String(i)] || granitDescriptions.blockstufen,
         meta: 'Granit, frostfest & witterungsbeständig',
         image: {
           id: `${productGroupId}-${i}`,
-          description: `${imageInfo.name} ${i}`,
+          description: imageInfo.name,
           imageUrl: imageUrl,
           imageHint: 'granite blockstufe',
         },
@@ -745,59 +938,81 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
     // Named AVIF images
     for (let i = 1; i <= 2; i++) {
       products.push({
-        name: `Granit Blockstufen ${i}`,
-        description: granitDescriptions.blockstufen,
+        name: 'Blockstufe',
+        description: blockstufeDescriptions[`avif-${i}`] || granitDescriptions.blockstufen,
         meta: 'Granit, frostfest & witterungsbeständig',
         image: {
           id: `blockstufen-avif-${i}`,
-          description: `Granit Blockstufen ${i}`,
+          description: 'Granit Blockstufe',
           imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen/Granit Blockstufen ${i}.AVIF`),
           imageHint: 'granite steps',
         },
       });
     }
-  } else if (productGroupId === 'randleisten') {
-    // Numbered images
+  } else if (productGroupId === 'pflastersteine') {
+    // Per-image descriptions for Granitwürfel
     for (let i = 1; i <= imageInfo.count; i++) {
       const imageUrl = `${imageInfo.path}/${i}.jpg`;
       products.push({
-        name: `${imageInfo.name} ${i}`,
-        description: granitDescriptions.randleisten,
+        name: imageInfo.name,
+        description: granitwuerfelDescriptions[i] || granitDescriptions.pflastersteine,
         meta: 'Granit, frostfest & witterungsbeständig',
         image: {
           id: `${productGroupId}-${i}`,
-          description: `${imageInfo.name} ${i}`,
+          description: imageInfo.name,
           imageUrl: imageUrl,
-          imageHint: `granite ${productGroupId.slice(0, -1)}`,
+          imageHint: 'granite paving cube',
         },
       });
     }
-    // Named AVIF images
+  } else if (productGroupId === 'randleisten') {
+    // Numbered images (1 & 2: gespalten)
+    for (let i = 1; i <= imageInfo.count; i++) {
+      const imageUrl = `${imageInfo.path}/${i}.jpg`;
+      products.push({
+        name: imageInfo.name,
+        description: granitRandleistenDescriptions[i] || granitDescriptions.randleisten,
+        meta: 'Granit, frostfest & witterungsbeständig',
+        image: {
+          id: `${productGroupId}-${i}`,
+          description: imageInfo.name,
+          imageUrl: imageUrl,
+          imageHint: 'granite curb',
+        },
+      });
+    }
+    // Named AVIF images (3: geschnitten/gestrahlt, 4: geschnitten/gestrahlt mit Fase)
     for (let i = 1; i <= 2; i++) {
       products.push({
-        name: `Granit Randleiste ${i}`,
-        description: granitDescriptions.randleisten,
+        name: 'Randleiste',
+        description: granitRandleistenDescriptions[i + 2] || granitDescriptions.randleisten,
         meta: 'Granit, frostfest & witterungsbeständig',
         image: {
           id: `randleisten-avif-${i}`,
-          description: `Granit Randleiste ${i}`,
+          description: 'Granit Randleiste',
           imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Granit/Randleisten/Granit Randleiste ${i}.AVIF`),
           imageHint: 'granite curbs',
         },
       });
     }
   } else {
-    // Standard logic for pflastersteine and granitplatte
-    const desc = granitDescriptions[productGroupId] || 'Granit-Naturstein für den Außenbereich – frostfest und vielseitig einsetzbar.';
+    // Per-image descriptions for Granitplatte
+    const granitplatteDescriptions: Record<number, string> = {
+      1: 'Granitplatte geschliffen und gestrahlt – gleichmäßige Oberfläche, ideal für Terrassen und Eingangsbereiche. Frostbeständig und pflegeleicht.',
+      2: 'Granitplatte im kleineren Format – vielseitig einsetzbar als Terrassenplatte oder Wegbelag. Derselbe hochwertige Granit, frostbeständig und langlebig.',
+      3: 'Granitplatten auf Palette – lieferbereit in großer Stückzahl. Ideal für größere Flächen wie Einfahrten, Terrassen oder Gartenwege.',
+      4: 'Granitplatte in verschiedenen Formaten erhältlich – derselbe Stein, angepasst an jeden Einsatzbereich. Rutschhemmend, witterungsbeständig und zeitlos schön.',
+    };
+    const fallbackDesc = granitDescriptions[productGroupId] || 'Granit-Naturstein für den Außenbereich – frostfest und vielseitig einsetzbar.';
     for (let i = 1; i <= imageInfo.count; i++) {
       const imageUrl = `${imageInfo.path}/${i}.jpg`;
       products.push({
-        name: `${imageInfo.name} ${i}`,
-        description: desc,
+        name: imageInfo.name,
+        description: granitplatteDescriptions[i] || fallbackDesc,
         meta: 'Granit, frostfest & witterungsbeständig',
         image: {
           id: `${productGroupId}-${i}`,
-          description: `${imageInfo.name} ${i}`,
+          description: imageInfo.name,
           imageUrl: imageUrl,
           imageHint: `granite ${productGroupId.slice(0, -1)}`,
         },
@@ -823,6 +1038,9 @@ const schieferDescriptions: Record<string, string> = {
   bodenplatten: 'Schiefer-Bodenplatte mit natürlicher Schieferung und spaltrauer Oberfläche – ideal für Terrassen, Gartenwege und Eingangsbereiche mit rutschfester Trittsicherheit.',
 };
 
+// Schiefer Mauerstein: reordered image groups, image 23 deleted
+const schieferMauersteinOrder = [1, 12, 17, 18, 21, 2, 9, 13, 20, 3, 14, 15, 16];
+
 export const getSchieferProducts = (productGroupId: string): Product[] | null => {
   const imageInfo = schieferImageCounts[productGroupId];
   if (!imageInfo) {
@@ -831,37 +1049,70 @@ export const getSchieferProducts = (productGroupId: string): Product[] | null =>
 
   const desc = schieferDescriptions[productGroupId] || 'Schiefer-Naturstein mit charaktervoller Struktur – vielseitig einsetzbar im Außenbereich.';
   const products: Product[] = [];
-  for (let i = 1; i <= imageInfo.count; i++) {
-    const imageUrl = `${imageInfo.path}/${i}.jpg`;
-    products.push({
-      name: `${imageInfo.name} ${i}`,
-      description: desc,
-      meta: 'Schiefer, frostfest & witterungsbeständig',
-      image: {
-        id: `schiefer-${productGroupId}-${i}`,
-        description: `${imageInfo.name} ${i}`,
-        imageUrl: imageUrl,
-        imageHint: `slate ${productGroupId.replace(/s$/, '')}`,
-      },
-    });
+
+  if (productGroupId === 'mauersteine') {
+    // Use custom order, excluding image 23
+    for (const i of schieferMauersteinOrder) {
+      const imageUrl = `${imageInfo.path}/${i}.jpg`;
+      products.push({
+        name: imageInfo.name,
+        description: desc,
+        meta: 'Schiefer, frostfest & witterungsbeständig',
+        image: {
+          id: `schiefer-${productGroupId}-${i}`,
+          description: imageInfo.name,
+          imageUrl: imageUrl,
+          imageHint: `slate ${productGroupId.replace(/s$/, '')}`,
+        },
+      });
+    }
+    // Add remaining images not in the specific order (4-8, 10-11, 19, 22, 24-28) excluding 23
+    for (let i = 1; i <= imageInfo.count; i++) {
+      if (schieferMauersteinOrder.includes(i) || i === 23) continue;
+      const imageUrl = `${imageInfo.path}/${i}.jpg`;
+      products.push({
+        name: imageInfo.name,
+        description: desc,
+        meta: 'Schiefer, frostfest & witterungsbeständig',
+        image: {
+          id: `schiefer-${productGroupId}-${i}`,
+          description: imageInfo.name,
+          imageUrl: imageUrl,
+          imageHint: `slate ${productGroupId.replace(/s$/, '')}`,
+        },
+      });
+    }
+  } else {
+    for (let i = 1; i <= imageInfo.count; i++) {
+      const imageUrl = `${imageInfo.path}/${i}.jpg`;
+      products.push({
+        name: imageInfo.name,
+        description: desc,
+        meta: 'Schiefer, frostfest & witterungsbeständig',
+        image: {
+          id: `schiefer-${productGroupId}-${i}`,
+          description: imageInfo.name,
+          imageUrl: imageUrl,
+          imageHint: `slate ${productGroupId.replace(/s$/, '')}`,
+        },
+      });
+    }
   }
   return products;
 };
 
 const lusernaGneisImageCounts: Record<string, { count: number; path: string; name: string }> = {
-    allgemein: { count: 6, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Allgemein', name: 'Luserna Gneis - Allgemein' },
-    gemischt: { count: 19, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Gemischt', name: 'Luserna Gneis - Gemischt' },
+    bodenplatten: { count: 0, path: '', name: 'Luserna Gneis - Bodenplatte' }, // custom handling
     mauersteine: { count: 12, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Mauersteine', name: 'Luserna Gneis - Mauerstein' },
     pflasterwuerfel: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Pflasterwuerfel', name: 'Luserna Gneis - Pflasterwürfel' },
     'polygonal-platten': { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Polygonal Platten', name: 'Luserna Gneis - Polygonal Platte' },
     trittplatten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Trittplatten', name: 'Luserna Gneis - Trittplatte' },
     randleisten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Randleisten', name: 'Luserna Gneis - Randleiste' },
-    blockstufen: { count: 3, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen', name: 'Blockstufe Luserna Gneis' },
+    blockstufen: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen', name: 'Blockstufe Luserna Gneis' },
 };
 
 const lusernaGneisDescriptions: Record<string, string> = {
-  allgemein: 'Luserna Gneis in seiner ganzen Vielfalt – ein grün-grauer Naturstein mit feiner Schieferung, der sich durch seine Frostbeständigkeit und natürliche Eleganz für nahezu jede Außengestaltung eignet.',
-  gemischt: 'Verschiedene Formate und Anwendungen von Luserna Gneis – die lebendige Farbgebung von Silbergrau bis Olivgrün macht jeden Stein zu einem Unikat.',
+  bodenplatten: 'Luserna Gneis Bodenplatte in verschiedenen Formaten – die lebendige Farbgebung von Silbergrau bis Olivgrün und die natürliche Frostbeständigkeit machen diesen Stein ideal für Terrassen, Wege und anspruchsvolle Außenflächen.',
   mauersteine: 'Luserna-Gneis-Mauerstein mit natürlicher Bruchkante – ideal für freistehende Gartenmauern, Stützmauern und als gestalterische Abgrenzung von Grünflächen.',
   pflasterwuerfel: 'Pflasterwürfel aus Luserna Gneis mit spaltrauer Oberfläche – rutschfest, extrem belastbar und traditionell bewährt für Wege, Plätze und Hofeinfahrten.',
   'polygonal-platten': 'Polygonalplatte aus Luserna Gneis mit unregelmäßig gebrochenen Kanten – erzeugt natürliche, lebendige Verlegemuster auf Terrassen und Gartenwegen.',
@@ -876,36 +1127,77 @@ export const getLusernaGneisProducts = (productGroupId: string): Product[] | nul
   }
 
   if (productGroupId === 'blockstufen') {
-    const imageNumbers = [2, 3, 6];
-    return imageNumbers.map((num, idx) => ({
-      name: `Blockstufe Luserna Gneis ${idx + 1}`,
-      description: 'Massiv geschnittene Blockstufe aus Luserna Gneis – trittsicher, frostbeständig und ideal für Eingangstreppen, Gartenstufen und Hangbefestigungen.',
+    const blockstufeDescriptions: Record<number, string> = {
+      2: 'Luserna Gneis Blockstufen im Außenbereich – naturbelassen, robust und ideal für Gartentreppen und Hangbefestigungen.',
+      3: 'Luserna Gneis Blockstufen geschnitten und gestrahlt – gleichmäßige Oberfläche, rutschhemmend und repräsentativ.',
+      5: 'Luserna Gneis Blockstufen auf Palette – lieferbereit in verschiedenen Formaten, frostbeständig und langlebig.',
+      6: 'Luserna Gneis Blockstufen gestapelt – hohe Stückzahl verfügbar, ideal für größere Treppen- und Außenanlagen.',
+    };
+    const imageNumbers = [2, 3, 5, 6];
+    return imageNumbers.map((num) => ({
+      name: 'Blockstufe Luserna Gneis',
+      description: blockstufeDescriptions[num],
       meta: 'Luserna Gneis, frostfest & witterungsbeständig',
       image: {
         id: `luserna-blockstufen-${num}`,
-        description: `Blockstufe Luserna Gneis ${idx + 1}`,
+        description: 'Blockstufe Luserna Gneis',
         imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Granit/Blockstufen/${num}.jpg`,
         imageHint: 'luserna gneiss blockstufe',
       },
     }));
   }
 
+  // Merged Bodenplatten: Allgemein (keep 1, 2, 6) + Gemischt (skip 7-9)
+  if (productGroupId === 'bodenplatten') {
+    const desc = lusernaGneisDescriptions.bodenplatten;
+    const products: Product[] = [];
+    // Allgemein images: keep 1, 2, 6 (remove 3, 4, 5)
+    for (const i of [1, 2, 6]) {
+      products.push({
+        name: 'Luserna Gneis - Bodenplatte',
+        description: desc,
+        meta: 'Luserna Gneis, frostfest & witterungsbeständig',
+        image: {
+          id: `luserna-bodenplatten-allg-${i}`,
+          description: 'Luserna Gneis Bodenplatte',
+          imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Allgemein/${i}.jpg`),
+          imageHint: 'luserna gneiss floor tile',
+        },
+      });
+    }
+    // Gemischt images: skip 7-9
+    for (let i = 1; i <= 19; i++) {
+      if (i >= 7 && i <= 9) continue;
+      products.push({
+        name: 'Luserna Gneis - Bodenplatte',
+        description: desc,
+        meta: 'Luserna Gneis, frostfest & witterungsbeständig',
+        image: {
+          id: `luserna-bodenplatten-gem-${i}`,
+          description: 'Luserna Gneis Bodenplatte',
+          imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Luserna Gneis/Gemischt/${i}.jpg`),
+          imageHint: 'luserna gneiss floor tile',
+        },
+      });
+    }
+    return products;
+  }
+
   const desc = lusernaGneisDescriptions[productGroupId] || 'Luserna Gneis – ein vielseitiger Naturstein mit grün-grauer Farbgebung für anspruchsvolle Außenprojekte.';
   const products: Product[] = [];
-  let displayCounter = 1;
   for (let i = 1; i <= imageInfo.count; i++) {
-    // Skip deleted images
-    if (productGroupId === 'gemischt' && i >= 7 && i <= 9) continue;
     if (productGroupId === 'mauersteine' && i === 9) continue;
+    // Trittplatten: skip image 2
+    if (productGroupId === 'trittplatten' && i === 2) continue;
 
     const imageUrl = encodeImagePath(`${imageInfo.path}/${i}.jpg`);
     products.push({
-      name: `${imageInfo.name} ${displayCounter++}`,
+      name: imageInfo.name,
       description: desc,
       meta: 'Luserna Gneis, frostfest & witterungsbeständig',
       image: {
         id: `luserna-${productGroupId}-${i}`,
-        description: `${imageInfo.name} ${displayCounter - 1}`,
+        description: imageInfo.name,
         imageUrl: imageUrl,
         imageHint: `luserna gneiss ${productGroupId.replace('-', ' ')}`,
       },
@@ -937,7 +1229,6 @@ export const getBetonsteineProducts = (subCategoryId: string): Product[] | null 
   }
 
   const products: Product[] = [];
-  let displayCounter = 1;
   for (let i = 1; i <= imageInfo.count; i++) {
     // Skip index 3 for Randleisten
     if (subCategoryId === 'randleisten' && i === 3) continue;
@@ -946,12 +1237,12 @@ export const getBetonsteineProducts = (subCategoryId: string): Product[] | null 
 
     const imageUrl = `${imageInfo.path}/${i}.jpg`;
     products.push({
-      name: `${imageInfo.name} ${displayCounter++}`,
+      name: imageInfo.name,
       description: betonsteineDescriptions[subCategoryId] || 'Betonstein für den Außenbereich – frostfest und vielseitig einsetzbar.',
       meta: 'Betonstein, frostfest & langlebig',
       image: {
         id: `betonsteine-${subCategoryId}-${i}`,
-        description: `${imageInfo.name} ${displayCounter - 1}`,
+        description: imageInfo.name,
         imageUrl: imageUrl,
         imageHint: `betonstein ${subCategoryId.replace(/s$/, '')}`,
       },
@@ -961,33 +1252,43 @@ export const getBetonsteineProducts = (subCategoryId: string): Product[] | null 
 };
 
 const stainzerGneisDescriptions: Record<number, string> = {
-  1: 'Stainzer Gneis als Mauersteinformat – die grün-graue, lebendige Oberfläche verleiht Trockenmauern und Hangbefestigungen einen regionaltypischen Charakter.',
-  2: 'Polygonale Stainzer-Gneis-Platte mit unregelmäßiger Bruchkante – erzeugt natürliche Verlegemuster auf Terrassen und Sitzplätzen.',
-  3: 'Stainzer Gneis als Trittstein oder Bodenplatte – die spaltraue Oberfläche bietet sicheren Halt und eine authentische Naturstein-Optik.',
-  4: 'Stainzer-Gneis-Bruchstein in rustikaler Form – vielseitig einsetzbar für Mauerbau, Beetumrandungen und individuelle Gartenakzente.',
-  5: 'Großformatiger Stainzer Gneis als dekoratives Solitärelement – ein markanter Blickfang mit lebhafter Maserung und regionaler Herkunft.',
-  11: 'Stainzer Gneis als Stufenplatte – die natürliche Schieferung sorgt für Trittsicherheit und passt zu traditionellen wie modernen Gartenkonzepten.',
-  12: 'Verarbeiteter Stainzer Gneis als Wandverkleidung oder Terrassenbelag – die wechselnden Grau- und Grüntöne schaffen ein lebendiges Flächenbild.',
-  13: 'Stainzer Gneis in Quaderform – eignet sich besonders für exakte Mauerwerke, Pfeiler und architektonisch anspruchsvolle Gestaltungen im Garten.',
+  1: 'Stainzer Gneis Polygonalplatten verlegt – naturbelassene Oberfläche, ideal für Gartenwege und Terrassen.',
+  2: 'Stainzer Gneis Polygonalplatten am Eingangsbereich – robust, rutschhemmend und regionaler Naturstein.',
+  3: 'Stainzer Gneis Polygonalplatten großflächig verlegt – natürliches Erscheinungsbild mit charakteristischer Farbgebung.',
+  4: 'Stainzer Gneis Polygonalplatten auf Terrasse – wetterfest, frostbeständig und langlebig.',
+  5: 'Stainzer Gneis Polygonalplatten als Wegbelag – unregelmäßige Formen für ein natürliches Gesamtbild.',
+  11: 'Stainzer Gneis Bodenplatten – gleichmäßig gesägte Platten mit charakteristischer grau-grüner Färbung. Ideal für Terrassen und Eingangsbereiche.',
+  12: 'Stainzer Gneis Mauersteine – naturbelassene Bruchsteine für Trockenmauern, Beetbegrenzungen und Gartenanlagen.',
+  13: 'Stainzer Gneis Pflasterwürfel – kleinformatig, robust und ideal für Einfahrten, Höfe und Gartenwege.',
 };
 
-export const getStainzerGneisProducts = (): Product[] => {
-  const products: Product[] = [];
-  const indices = [1, 2, 3, 4, 5, 11, 12, 13];
-  for (const i of indices) {
-    products.push({
-      name: `Stainzer Gneis Variante ${i}`,
-      description: stainzerGneisDescriptions[i] || 'Regionaler Gneis-Naturstein mit lebendiger Struktur – robust und vielseitig für den Außenbereich.',
-      meta: 'Regionaler Naturstein, robust & witterungsbeständig',
-      image: {
-        id: `stainzer-gneis-${i}`,
-        description: `Stainzer Gneis Variante ${i}`,
-        imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/${i}.jpg`),
-        imageHint: 'stainzer gneiss',
-      },
-    });
+export const getStainzerGneisProducts = (productGroupId?: string): Product[] | null => {
+  const meta = 'Regionaler Naturstein, robust & witterungsbeständig';
+  const makeProduct = (i: number, name: string) => ({
+    name,
+    description: stainzerGneisDescriptions[i] || 'Regionaler Gneis-Naturstein mit lebendiger Struktur – robust und vielseitig für den Außenbereich.',
+    meta,
+    image: {
+      id: `stainzer-gneis-${i}`,
+      description: 'Stainzer Gneis',
+      imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Stainzer Gneis/${i}.jpg`),
+      imageHint: 'stainzer gneiss',
+    },
+  });
+
+  if (productGroupId === 'polygonalplatten') {
+    return [1, 2, 3, 4, 5].map((i) => makeProduct(i, 'Polygonalplatte'));
   }
-  return products;
+  if (productGroupId === 'bodenplatten') {
+    return [11].map((i) => makeProduct(i, 'Bodenplatte'));
+  }
+  if (productGroupId === 'mauersteine') {
+    return [12].map((i) => makeProduct(i, 'Mauerstein'));
+  }
+  if (productGroupId === 'pflasterwuerfel') {
+    return [13].map((i) => makeProduct(i, 'Pflasterwürfel'));
+  }
+  return null;
 };
 
 const brasilQuarzitDescriptions: Record<number, string> = {
@@ -1001,12 +1302,12 @@ export const getBrasilQuarzitProducts = (): Product[] => {
   const products: Product[] = [];
   for (let i = 1; i <= 4; i++) {
     products.push({
-      name: `Brasil. Quarzit Variante ${i}`,
+      name: 'Brasil. Quarzit',
       description: brasilQuarzitDescriptions[i] || 'Brasil Quarzit – extrem hart, edel und widerstandsfähig für anspruchsvolle Außenprojekte.',
       meta: 'Extrem widerstandsfähig, frostfest',
       image: {
         id: `brasil-quarzit-${i}`,
-        description: `Brasil. Quarzit Variante ${i}`,
+        description: 'Brasil. Quarzit',
         imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Brasil. Quarzit/${i}.jpg`),
         imageHint: 'brazilian quartzite',
       },
@@ -1028,17 +1329,6 @@ export const getBrasilQuarzitProducts = (): Product[] => {
 
 export const getSandsteinProducts = (): Product[] => {
   return [
-    {
-      name: 'Regenbogenstein',
-      description: 'REGENBOGENSTEIN – Rot-gelb, Rundgetrommelter Sandstein mit warmen Farben und einzigartigen Zeichnungen.',
-      meta: 'Sandstein, natürliche Farbtöne',
-      image: {
-        id: 'sandstein-regenbogenstein',
-        description: 'Regenbogenstein',
-        imageUrl: '/images/UNSERE-PRODUKTE/Sandstein/Regenbogenstein.avif',
-        imageHint: 'rainbow sandstone',
-      },
-    },
     {
       name: 'Sandstein Mint',
       description: 'SANDSTEIN – Natursteinplatten, Handbekantet, Oberfläche bruchrau, begehbar. Farbe: MINT (Gelb-mint-bräunlich). Kategorie: Natursteinplatten & Feinsteinzeug.',
@@ -1088,73 +1378,129 @@ export const getSandsteinProducts = (): Product[] => {
 
 export const getBluestoneProducts = (): Product[] => {
   return Array.from({ length: 4 }, (_, i) => ({
-    name: `Bluestone ${i + 1}`,
+    name: 'Bluestone',
     description: 'Edler blauer Naturstein mit markanter Oberfläche und lebhafter Farbgebung – ideal für exklusive Terrassen, Eingangsbereiche und Akzentflächen.',
     meta: 'Frostfest & witterungsbeständig',
     image: {
       id: `bluestone-${i}`,
-      description: `Bluestone ${i}`,
+      description: 'Bluestone',
       imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/BlueStone/BlueStone${i}.avif`,
       imageHint: 'blue stone natural stone',
     },
   }));
 };
 
-export const getTravertinProducts = (productGroupId?: string): Product[] | null => {
-  if (!productGroupId) {
-    return [
-      {
-        name: 'Travertin Flamingo',
-        description: 'Travertin Flamingo mit zartem Rosa-Schimmer und charakteristischer Porenstruktur – verleiht Terrassen und Außenflächen einen unverwechselbar warmen, südländischen Akzent.',
-        meta: 'Frostfest & witterungsbeständig',
-        image: {
-          id: 'travertin-flamingo-1',
-          description: 'Travertin Flamingo',
-          imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Flamingo 1.AVIF'),
-          imageHint: 'travertine flamingo stone'
-        }
-      },
-    ];
-  }
+export const getTravertinProducts = (): Product[] => {
+  const travertinNoceDescriptions: Record<number, string> = {
+    1: 'Travertin Noce – satte, nussbraune Färbung mit natürlicher Textur. Ideal für Terrassen und Eingangsbereiche die Wärme und Stil ausstrahlen sollen.',
+    2: 'Travertin Noce – offenporige Oberfläche mit warmem Braunton. Klassiker für mediterrane Außengestaltungen.',
+    3: 'Travertin Noce im verlegten Zustand – harmonisches Erscheinungsbild durch natürliche Farbvariationen im Braunton.',
+    4: 'Travertin Noce – zeitloser Naturstein mit charakteristischer Maserung. Frostbeständig und für Innen- und Außenbereiche geeignet.',
+  };
+  const travertinVanillaDescriptions: Record<number, string> = {
+    1: 'Travertin Vanilla – heller, cremefarbener Naturstein mit feiner Maserung. Bringt Leichtigkeit und Eleganz in jeden Außenbereich.',
+    2: 'Travertin Vanilla – gleichmäßige, helle Oberfläche mit subtilen Farbverläufen. Perfekt für moderne und mediterrane Terrassen.',
+    3: 'Travertin Vanilla – in verschiedenen Formaten erhältlich. Zeitlos schön, witterungsbeständig und pflegeleicht.',
+  };
+  const travertinMixDescriptions: Record<number, string> = {
+    1: 'Travertin Mix – lebhafte Mischung aus warmen Rot-, Orange- und Beigetönen. Jede Platte ein Unikat.',
+    2: 'Travertin Mix – ausgeprägte Farbvielfalt durch natürliche Mineraleinschlüsse. Verlegt entsteht ein einzigartiges, lebendiges Bodenbild.',
+    3: 'Travertin Mix – kontrastreiche Farbgebung von cremeweiß bis kräftigem Rot. Ideal für Akzentflächen und repräsentative Bereiche.',
+    4: 'Travertin Mix – warme Erdtöne mit intensiver Maserung. Jede Fläche erhält dadurch ein individuelles, natürliches Erscheinungsbild.',
+    5: 'Travertin Mix – naturbelassene Oberfläche mit charakteristischer Poren- und Farbstruktur. Robust, frostbeständig und langlebig.',
+  };
 
-  if (productGroupId === 'travertin-noce') {
-    return Array.from({ length: 4 }, (_, i) => ({
-      name: `Travertin Noce ${i + 1}`,
-      description: 'Travertin Noce mit satter, nussbrauner Färbung und markanter Porenstruktur – bringt Wärme und mediterranen Charakter auf Terrassen, in Eingangsbereiche und rund um Poolanlagen.',
+  return [
+    // Travertin Flamingo
+    {
+      name: 'Travertin Flamingo',
+      description: 'Travertin Flamingo – warme Rosétöne mit lebhafter Maserung. Verleiht Terrassen und Außenbereichen einen mediterranen, eleganten Charakter.',
+      meta: 'Frostfest & witterungsbeständig',
+      image: {
+        id: 'travertin-flamingo-1',
+        description: 'Travertin Flamingo',
+        imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Flamingo 1.AVIF'),
+        imageHint: 'travertine flamingo stone'
+      }
+    },
+    // Travertin Noce (4 images)
+    ...Array.from({ length: 4 }, (_, i) => ({
+      name: 'Travertin Noce',
+      description: travertinNoceDescriptions[i + 1],
       meta: 'Frostfest & witterungsbeständig',
       image: {
         id: `travertin-noce-${i + 1}`,
-        description: `Travertin Noce ${i + 1}`,
+        description: 'Travertin Noce',
         imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Noce ${i + 1}.jpg`),
         imageHint: 'travertine noce stone',
       },
-    }));
-  }
-
-  if (productGroupId === 'travertin-vanilla') {
-    return Array.from({ length: 3 }, (_, i) => ({
-      name: `Travertin Vanilla ${i + 1}`,
-      description: 'Travertin Vanilla in hellem Cremeton mit feiner, gleichmäßiger Struktur – wirkt zurückhaltend elegant und passt zu klassischen wie modernen Gartenarchitekturen.',
+    })),
+    // Travertin Vanilla (3 images)
+    ...Array.from({ length: 3 }, (_, i) => ({
+      name: 'Travertin Vanilla',
+      description: travertinVanillaDescriptions[i + 1],
       meta: 'Frostfest & witterungsbeständig',
       image: {
         id: `travertin-vanilla-${i + 1}`,
-        description: `Travertin Vanilla ${i + 1}`,
+        description: 'Travertin Vanilla',
         imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Vanilla ${i + 1}.AVIF`),
         imageHint: 'travertine vanilla stone',
+      },
+    })),
+    // Travertin Mix (5 images)
+    ...Array.from({ length: 5 }, (_, i) => ({
+      name: 'Travertin Mix',
+      description: travertinMixDescriptions[i + 1],
+      meta: 'Frostfest & witterungsbeständig',
+      image: {
+        id: `travertin-mix-${i + 1}`,
+        description: 'Travertin Mix',
+        imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Mix ${i + 1}.AVIF`),
+        imageHint: 'travertine mix stone',
+      },
+    })),
+  ];
+};
+
+const tuffPolygonalDescriptions: Record<number, string> = {
+  1: 'Grauer Gneis als Mauerstein mit silbrig-grauer Oberfläche – verleiht Gartenmauern und Einfassungen eine ruhige, natürliche Ausstrahlung.',
+  2: 'Grauer Gneis in Plattenform mit dezenter Schichtung – gut geeignet als Wegebelag oder Terrassenplatte in zurückhaltend-elegantem Design.',
+  5: 'Grauer Gneis in Quaderform – eignet sich für präzise Mauerwerke und architektonisch klare Gartenstrukturen mit regionalem Charakter.',
+  6: 'Grauer Gneis als dekorativer Solitärstein – die wechselnden Grautöne und die natürliche Patina machen ihn zum Blickfang in jeder Gartenanlage.',
+};
+
+const tuffBodenplattenDescriptions: Record<number, string> = {
+  3: 'Grauer Gneis als Bruchstein mit lebendiger Textur – vielseitig verwendbar für Trockenmauern, Steingärten und rustikale Gestaltungselemente.',
+  4: 'Grauer Gneis als Stufenplatte – die spaltraue Oberfläche bietet natürlichen Halt und fügt sich harmonisch in naturnahe Gartenkonzepte ein.',
+};
+
+export const getTuffProducts = (productGroupId?: string): Product[] | null => {
+  if (productGroupId === 'polygonalplatten') {
+    // Bilder 1, 2, 5, 6
+    return [1, 2, 5, 6].map((i) => ({
+      name: 'Polygonalplatte',
+      description: tuffPolygonalDescriptions[i],
+      meta: 'Natürlich, dezent, vielseitig',
+      image: {
+        id: `tuff-polygonal-${i}`,
+        description: 'Grauer Gneis Polygonalplatte',
+        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Tuff/${i}.jpg`,
+        imageHint: 'grey gneiss polygonal plate',
       },
     }));
   }
 
-  if (productGroupId === 'travertin-mix') {
-    return Array.from({ length: 5 }, (_, i) => ({
-      name: `Travertin Mix ${i + 1}`,
-      description: 'Travertin Mix aus verschiedenen Farbnuancen von Beige über Creme bis Braun – die natürliche Farbvielfalt erzeugt ein lebendiges, abwechslungsreiches Flächenbild.',
-      meta: 'Frostfest & witterungsbeständig',
+  if (productGroupId === 'bodenplatten') {
+    // Bilder 3, 4
+    return [3, 4].map((i) => ({
+      name: 'Bodenplatte',
+      description: tuffBodenplattenDescriptions[i],
+      meta: 'Natürlich, dezent, vielseitig',
       image: {
-        id: `travertin-mix-${i + 1}`,
-        description: `Travertin Mix ${i + 1}`,
-        imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Mix ${i + 1}.AVIF`),
-        imageHint: 'travertine mix stone',
+        id: `tuff-boden-${i}`,
+        description: 'Grauer Gneis Bodenplatte',
+        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Tuff/${i}.jpg`,
+        imageHint: 'grey gneiss floor plate',
       },
     }));
   }
@@ -1162,61 +1508,42 @@ export const getTravertinProducts = (productGroupId?: string): Product[] | null 
   return null;
 };
 
-const tuffDescriptions: Record<number, string> = {
-  1: 'Grauer Gneis als Mauerstein mit silbrig-grauer Oberfläche – verleiht Gartenmauern und Einfassungen eine ruhige, natürliche Ausstrahlung.',
-  2: 'Grauer Gneis in Plattenform mit dezenter Schichtung – gut geeignet als Wegebelag oder Terrassenplatte in zurückhaltend-elegantem Design.',
-  3: 'Grauer Gneis als Bruchstein mit lebendiger Textur – vielseitig verwendbar für Trockenmauern, Steingärten und rustikale Gestaltungselemente.',
-  4: 'Grauer Gneis als Stufenplatte – die spaltraue Oberfläche bietet natürlichen Halt und fügt sich harmonisch in naturnahe Gartenkonzepte ein.',
-  5: 'Grauer Gneis in Quaderform – eignet sich für präzise Mauerwerke und architektonisch klare Gartenstrukturen mit regionalem Charakter.',
-  6: 'Grauer Gneis als dekorativer Solitärstein – die wechselnden Grautöne und die natürliche Patina machen ihn zum Blickfang in jeder Gartenanlage.',
-};
-
-export const getTuffProducts = (): Product[] => {
-  const products: Product[] = [];
-  const count = 6;
-  for (let i = 1; i <= count; i++) {
-    products.push({
-      name: `Grauer Gneis Variante ${i}`,
-      description: tuffDescriptions[i] || 'Grauer Gneis – ein dezenter Naturstein mit warmen Grautönen für vielseitige Außengestaltungen.',
-      meta: 'Natürlich, dezent, vielseitig',
-      image: {
-        id: `tuff-${i}`,
-        description: `Grauer Gneis Variante ${i}`,
-        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Tuff/${i}.jpg`,
-        imageHint: 'grey gneiss stone',
-      },
-    });
-  }
-  return products;
-};
-
 const porphyrDescriptions: Record<number, string> = {
-  1: 'Porphyr-Pflasterstein in klassischer Würfelform – die rotbraune Färbung und extreme Abriebfestigkeit machen ihn zum Favoriten für Einfahrten und historische Platzgestaltungen.',
-  2: 'Porphyr-Platte mit spaltrauer Oberfläche – rutschfest auch bei Nässe und Frost, ideal für Gartenwege und Treppenanlagen.',
-  3: 'Porphyr als Mauerstein mit lebendiger, rötlich-violetter Färbung – verleiht Gartenmauern und Einfassungen einen markanten, alpinen Charakter.',
-  4: 'Porphyr in großformatiger Plattenausführung – vereint natürliche Rutschsicherheit mit einer warmen, erdigen Farbpalette für Terrassen und Sitzplätze.',
-  5: 'Porphyr-Bruchstein für Trockenmauern und Hangbefestigungen – die unregelmäßige Bruchkante erzeugt ein authentisches, naturnahes Erscheinungsbild.',
-  6: 'Porphyr als Randstein oder Beeteinfassung – widersteht Tausalz, mechanischer Belastung und extremen Temperaturschwankungen ohne sichtbare Abnutzung.',
-  7: 'Porphyr in Stelen- oder Quaderform – ein vielseitiger Gestaltungsstein für Pfeiler, Sichtschutz und architektonische Akzente im Garten.',
+  1: 'Porphyr Polygonalplatten verlegt – dunkel-violette Färbung mit natürlicher Struktur, ideal für Terrassen und Wege.',
+  2: 'Porphyr Bodenplatten geschnitten – gleichmäßige Oberfläche, extrem witterungsbeständig und rutschhemmend.',
+  3: 'Porphyr Mauersteine – naturbelassene Bruchsteine mit typischer dunkelgrauer Färbung. Robust und langlebig für Stütz- und Trockenmauern.',
+  5: 'Porphyr Polygonalplatten – unregelmäßige Formen mit charakteristischer Porphyr-Maserung für naturnahe Gartengestaltung.',
+  6: 'Porphyr Pflasterwürfel kleinformatig – gleichmäßig gesetzt für Einfahrten, Plätze und Gartenwege.',
+  7: 'Porphyr Pflasterwürfel im Rundbogen verlegt – zeitloses Erscheinungsbild für repräsentative Außenanlagen.',
 };
 
-export const getPorphyrProducts = (): Product[] => {
-  const products: Product[] = [];
-  const count = 7;
-  for (let i = 1; i <= count; i++) {
-    products.push({
-      name: `Porphyr Variante ${i}`,
-      description: porphyrDescriptions[i] || 'Porphyr – äußerst robuster, rutschfester Naturstein für stark beanspruchte Außenflächen.',
-      meta: 'Rutschfest, extrem wetterbeständig',
-      image: {
-        id: `porphyr-${i}`,
-        description: `Porphyr Variante ${i}`,
-        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Porphyr/${i}.jpg`,
-        imageHint: 'porphyry stone',
-      },
-    });
+export const getPorphyrProducts = (productGroupId?: string): Product[] | null => {
+  const meta = 'Rutschfest, extrem wetterbeständig';
+  const makeProduct = (i: number, name: string) => ({
+    name,
+    description: porphyrDescriptions[i] || 'Porphyr – äußerst robuster, rutschfester Naturstein für stark beanspruchte Außenflächen.',
+    meta,
+    image: {
+      id: `porphyr-${i}`,
+      description: 'Porphyr',
+      imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Porphyr/${i}.jpg`,
+      imageHint: 'porphyry stone',
+    },
+  });
+
+  if (productGroupId === 'polygonalplatten') {
+    return [1, 5].map((i) => makeProduct(i, 'Polygonalplatte'));
   }
-  return products;
+  if (productGroupId === 'bodenplatten') {
+    return [2].map((i) => makeProduct(i, 'Bodenplatte'));
+  }
+  if (productGroupId === 'mauersteine') {
+    return [3].map((i) => makeProduct(i, 'Mauerstein'));
+  }
+  if (productGroupId === 'pflasterwuerfel') {
+    return [6, 7].map((i) => makeProduct(i, 'Pflasterwürfel'));
+  }
+  return null;
 };
 
 const muschelkalkDescriptions: Record<number, string> = {
@@ -1231,21 +1558,25 @@ const muschelkalkDescriptions: Record<number, string> = {
   9: 'Muschelkalk als dekorative Abdeckplatte – schützt Mauerkronen vor Witterung und rundet das Gesamtbild von Muschelkalk-Mauern stilvoll ab.',
 };
 
-export const getMuschelkalkProducts = (): Product[] => {
-  const products: Product[] = [];
-  const count = 9;
-  for (let i = 1; i <= count; i++) {
-    products.push({
-      name: `Muschelkalk Variante ${i}`,
-      description: muschelkalkDescriptions[i] || 'Muschelkalk – heller Naturstein mit fossilen Einschlüssen für zeitlose Außengestaltungen.',
-      meta: 'Elegant, zeitlos, fossilienreich',
-      image: {
-        id: `muschelkalk-${i}`,
-        description: `Muschelkalk Variante ${i}`,
-        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk/${i}.jpg`,
-        imageHint: 'shell limestone',
-      },
-    });
+export const getMuschelkalkProducts = (productGroupId?: string): Product[] | null => {
+  if (productGroupId === 'mauersteine') {
+    const products: Product[] = [];
+    const count = 9;
+    for (let i = 1; i <= count; i++) {
+      products.push({
+        name: 'Muschelkalk Mauerstein',
+        description: muschelkalkDescriptions[i] || 'Muschelkalk – heller Naturstein mit fossilen Einschlüssen für zeitlose Außengestaltungen.',
+        meta: 'Elegant, zeitlos, fossilienreich',
+        image: {
+          id: `muschelkalk-${i}`,
+          description: 'Muschelkalk Mauerstein',
+          imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk/${i}.jpg`,
+          imageHint: 'shell limestone wall stone',
+        },
+      });
+    }
+    return products;
   }
-  return products;
+
+  return null;
 };

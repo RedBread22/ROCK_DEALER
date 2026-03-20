@@ -5,6 +5,7 @@ import { CursorProvider } from '@/hooks/use-cursor';
 import { Header } from '@/components/header';
 import { CustomCursor } from '@/components/custom-cursor';
 import { Footer } from '@/components/footer';
+import { FloatingCTA } from '@/components/floating-cta';
 
 export const metadata: Metadata = {
   title: 'ROCK DEALER',
@@ -29,6 +30,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <FloatingCTA />
           <Toaster />
         </CursorProvider>
       </body>

@@ -12,9 +12,18 @@ import {
     lusernaGneisSubCategoriesData,
     getLusernaGneisSubCategoryById,
     getLusernaGneisProducts,
-    travertinSubCategoriesData,
-    getTravertinSubCategoryById,
-    getTravertinProducts,
+    tuffSubCategoriesData,
+    getTuffSubCategoryById,
+    getTuffProducts,
+    muschelkalkSubCategoriesData,
+    getMuschelkalkSubCategoryById,
+    getMuschelkalkProducts,
+    stainzerGneisSubCategoriesData,
+    getStainzerGneisSubCategoryById,
+    getStainzerGneisProducts,
+    porphyrSubCategoriesData,
+    getPorphyrSubCategoryById,
+    getPorphyrProducts,
     type Product
 } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
@@ -49,13 +58,31 @@ export async function generateStaticParams() {
         productgroup: sub.id,
     }));
 
-    const travertinParams = travertinSubCategoriesData.map((sub) => ({
+    const tuffParams = tuffSubCategoriesData.map((sub) => ({
         category: 'natursteine',
-        subcategory: 'travertin',
+        subcategory: 'tuff',
         productgroup: sub.id,
     }));
 
-    return [...granitParams, ...schieferParams, ...lusernaParams, ...travertinParams];
+    const muschelkalkParams = muschelkalkSubCategoriesData.map((sub) => ({
+        category: 'natursteine',
+        subcategory: 'muschelkalk',
+        productgroup: sub.id,
+    }));
+
+    const stainzerGneisParams = stainzerGneisSubCategoriesData.map((sub) => ({
+        category: 'natursteine',
+        subcategory: 'stainzer-gneis',
+        productgroup: sub.id,
+    }));
+
+    const porphyrParams = porphyrSubCategoriesData.map((sub) => ({
+        category: 'natursteine',
+        subcategory: 'porphyr',
+        productgroup: sub.id,
+    }));
+
+    return [...granitParams, ...schieferParams, ...lusernaParams, ...tuffParams, ...muschelkalkParams, ...stainzerGneisParams, ...porphyrParams];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -69,8 +96,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     productGroup = getSchieferSubCategoryById(params.productgroup);
   } else if (params.subcategory === 'luserna-gneis') {
     productGroup = getLusernaGneisSubCategoryById(params.productgroup);
-  } else if (params.subcategory === 'travertin') {
-    productGroup = getTravertinSubCategoryById(params.productgroup);
+  } else if (params.subcategory === 'tuff') {
+    productGroup = getTuffSubCategoryById(params.productgroup);
+  } else if (params.subcategory === 'muschelkalk') {
+    productGroup = getMuschelkalkSubCategoryById(params.productgroup);
   }
 
 
@@ -87,7 +116,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default function ProductGroupPage({ params }: PageProps) {
-    if (params.category !== 'natursteine' || !['granit', 'schiefer', 'luserna-gneis', 'travertin'].includes(params.subcategory)) {
+    if (params.category !== 'natursteine' || !['granit', 'schiefer', 'luserna-gneis', 'tuff', 'muschelkalk', 'stainzer-gneis', 'porphyr'].includes(params.subcategory)) {
         notFound();
     }
     
@@ -106,9 +135,18 @@ export default function ProductGroupPage({ params }: PageProps) {
     } else if (params.subcategory === 'luserna-gneis') {
         productGroup = getLusernaGneisSubCategoryById(params.productgroup);
         products = getLusernaGneisProducts(params.productgroup);
-    } else if (params.subcategory === 'travertin') {
-        productGroup = getTravertinSubCategoryById(params.productgroup);
-        products = getTravertinProducts(params.productgroup);
+    } else if (params.subcategory === 'tuff') {
+        productGroup = getTuffSubCategoryById(params.productgroup);
+        products = getTuffProducts(params.productgroup);
+    } else if (params.subcategory === 'muschelkalk') {
+        productGroup = getMuschelkalkSubCategoryById(params.productgroup);
+        products = getMuschelkalkProducts(params.productgroup);
+    } else if (params.subcategory === 'stainzer-gneis') {
+        productGroup = getStainzerGneisSubCategoryById(params.productgroup);
+        products = getStainzerGneisProducts(params.productgroup);
+    } else if (params.subcategory === 'porphyr') {
+        productGroup = getPorphyrSubCategoryById(params.productgroup);
+        products = getPorphyrProducts(params.productgroup);
     }
 
     if (!category || !subCategory || !productGroup) {
