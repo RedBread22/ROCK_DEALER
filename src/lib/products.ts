@@ -802,6 +802,12 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
   const products: Product[] = [];
 
   if (productGroupId === 'blockstufen') {
+    const blockstufeDescriptions: Record<string, string> = {
+      '1': 'Granit-Blockstufen im Außenbereich – robust, witterungsbeständig und natürlich wirkend. Ideal für Gartentreppen und Hangbefestigungen.',
+      '4': 'Granit-Blockstufen geschnitten und gestrahlt – gleichmäßige Oberfläche, rutschhemmend und langlebig. Perfekt für repräsentative Eingangsbereiche.',
+      'avif-1': 'Granit-Blockstufen auf Palette – lieferbereit in verschiedenen Formaten. Frostbeständig und für den Außenbereich geeignet.',
+      'avif-2': 'Granit-Blockstufen gestapelt auf Palette – hohe Stückzahl verfügbar, ideal für größere Bauprojekte und Außenanlagen.',
+    };
     // Skip images 2, 3, 6 (moved to Luserna Gneis Blockstufen) and 5, 7 (deleted)
     const skipImages = new Set([2, 3, 5, 6, 7]);
     for (let i = 1; i <= imageInfo.count; i++) {
@@ -809,7 +815,7 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
       const imageUrl = `${imageInfo.path}/${i}.jpg`;
       products.push({
         name: imageInfo.name,
-        description: granitDescriptions.blockstufen,
+        description: blockstufeDescriptions[String(i)] || granitDescriptions.blockstufen,
         meta: 'Granit, frostfest & witterungsbeständig',
         image: {
           id: `${productGroupId}-${i}`,
@@ -823,7 +829,7 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
     for (let i = 1; i <= 2; i++) {
       products.push({
         name: 'Blockstufe',
-        description: granitDescriptions.blockstufen,
+        description: blockstufeDescriptions[`avif-${i}`] || granitDescriptions.blockstufen,
         meta: 'Granit, frostfest & witterungsbeständig',
         image: {
           id: `blockstufen-avif-${i}`,
