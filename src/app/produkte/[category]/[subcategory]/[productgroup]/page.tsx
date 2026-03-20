@@ -12,9 +12,6 @@ import {
     lusernaGneisSubCategoriesData,
     getLusernaGneisSubCategoryById,
     getLusernaGneisProducts,
-    travertinSubCategoriesData,
-    getTravertinSubCategoryById,
-    getTravertinProducts,
     type Product
 } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
@@ -49,13 +46,7 @@ export async function generateStaticParams() {
         productgroup: sub.id,
     }));
 
-    const travertinParams = travertinSubCategoriesData.map((sub) => ({
-        category: 'natursteine',
-        subcategory: 'travertin',
-        productgroup: sub.id,
-    }));
-
-    return [...granitParams, ...schieferParams, ...lusernaParams, ...travertinParams];
+    return [...granitParams, ...schieferParams, ...lusernaParams];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -69,8 +60,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     productGroup = getSchieferSubCategoryById(params.productgroup);
   } else if (params.subcategory === 'luserna-gneis') {
     productGroup = getLusernaGneisSubCategoryById(params.productgroup);
-  } else if (params.subcategory === 'travertin') {
-    productGroup = getTravertinSubCategoryById(params.productgroup);
   }
 
 
@@ -106,9 +95,6 @@ export default function ProductGroupPage({ params }: PageProps) {
     } else if (params.subcategory === 'luserna-gneis') {
         productGroup = getLusernaGneisSubCategoryById(params.productgroup);
         products = getLusernaGneisProducts(params.productgroup);
-    } else if (params.subcategory === 'travertin') {
-        productGroup = getTravertinSubCategoryById(params.productgroup);
-        products = getTravertinProducts(params.productgroup);
     }
 
     if (!category || !subCategory || !productGroup) {

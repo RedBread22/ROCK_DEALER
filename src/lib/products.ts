@@ -382,41 +382,6 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
     },
 ];
 
-export const travertinSubCategoriesData: SubCategory[] = [
-    {
-        id: 'travertin-noce',
-        name: 'Travertin Noce',
-        description: 'Warmer Travertin mit dunklem, nussbraunem Farbton – ideal für mediterrane Terrassen und Außenflächen.',
-        image: {
-            id: 'travertin-noce-preview',
-            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Noce 2.jpg'),
-            description: 'Travertin Noce',
-            imageHint: 'travertine noce',
-        },
-    },
-    {
-        id: 'travertin-vanilla',
-        name: 'Travertin Vanilla',
-        description: 'Heller, cremefarbener Travertin für elegante und zeitlose Außengestaltungen.',
-        image: {
-            id: 'travertin-vanilla-preview',
-            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Vanilla 1.AVIF'),
-            description: 'Travertin Vanilla',
-            imageHint: 'travertine vanilla',
-        },
-    },
-    {
-        id: 'travertin-mix',
-        name: 'Travertin Mix',
-        description: 'Vielseitige Travertin-Mischung mit natürlichen Farbnuancen für lebendige Flächen.',
-        image: {
-            id: 'travertin-mix-preview',
-            imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Mix 1.AVIF'),
-            description: 'Travertin Mix',
-            imageHint: 'travertine mix',
-        },
-    },
-];
 
 export const getCategoryById = (id: string) => {
   return productCategories.find((cat) => cat.id === id);
@@ -440,9 +405,6 @@ export const getLusernaGneisSubCategoryById = (id: string) => {
     return lusernaGneisSubCategoriesData.find((cat) => cat.id === id);
 };
 
-export const getTravertinSubCategoryById = (id: string) => {
-    return travertinSubCategoriesData.find((cat) => cat.id === id);
-};
 
 export const getSubCategoriesByParentId = (parentId: string) => {
   return allSubCategories.filter((sub) => sub.parentId === parentId);
@@ -1264,25 +1226,22 @@ export const getBluestoneProducts = (): Product[] => {
   }));
 };
 
-export const getTravertinProducts = (productGroupId?: string): Product[] | null => {
-  if (!productGroupId) {
-    return [
-      {
-        name: 'Travertin Flamingo',
-        description: 'Travertin Flamingo mit zartem Rosa-Schimmer und charakteristischer Porenstruktur – verleiht Terrassen und Außenflächen einen unverwechselbar warmen, südländischen Akzent.',
-        meta: 'Frostfest & witterungsbeständig',
-        image: {
-          id: 'travertin-flamingo-1',
-          description: 'Travertin Flamingo',
-          imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Flamingo 1.AVIF'),
-          imageHint: 'travertine flamingo stone'
-        }
-      },
-    ];
-  }
-
-  if (productGroupId === 'travertin-noce') {
-    return Array.from({ length: 4 }, (_, i) => ({
+export const getTravertinProducts = (): Product[] => {
+  return [
+    // Travertin Flamingo
+    {
+      name: 'Travertin Flamingo',
+      description: 'Travertin Flamingo mit zartem Rosa-Schimmer und charakteristischer Porenstruktur – verleiht Terrassen und Außenflächen einen unverwechselbar warmen, südländischen Akzent.',
+      meta: 'Frostfest & witterungsbeständig',
+      image: {
+        id: 'travertin-flamingo-1',
+        description: 'Travertin Flamingo',
+        imageUrl: encodeImagePath('/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Flamingo 1.AVIF'),
+        imageHint: 'travertine flamingo stone'
+      }
+    },
+    // Travertin Noce (4 images)
+    ...Array.from({ length: 4 }, (_, i) => ({
       name: 'Travertin Noce',
       description: 'Travertin Noce mit satter, nussbrauner Färbung und markanter Porenstruktur – bringt Wärme und mediterranen Charakter auf Terrassen, in Eingangsbereiche und rund um Poolanlagen.',
       meta: 'Frostfest & witterungsbeständig',
@@ -1292,11 +1251,9 @@ export const getTravertinProducts = (productGroupId?: string): Product[] | null 
         imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Noce ${i + 1}.jpg`),
         imageHint: 'travertine noce stone',
       },
-    }));
-  }
-
-  if (productGroupId === 'travertin-vanilla') {
-    return Array.from({ length: 3 }, (_, i) => ({
+    })),
+    // Travertin Vanilla (3 images)
+    ...Array.from({ length: 3 }, (_, i) => ({
       name: 'Travertin Vanilla',
       description: 'Travertin Vanilla in hellem Cremeton mit feiner, gleichmäßiger Struktur – wirkt zurückhaltend elegant und passt zu klassischen wie modernen Gartenarchitekturen.',
       meta: 'Frostfest & witterungsbeständig',
@@ -1306,11 +1263,9 @@ export const getTravertinProducts = (productGroupId?: string): Product[] | null 
         imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Vanilla ${i + 1}.AVIF`),
         imageHint: 'travertine vanilla stone',
       },
-    }));
-  }
-
-  if (productGroupId === 'travertin-mix') {
-    return Array.from({ length: 5 }, (_, i) => ({
+    })),
+    // Travertin Mix (5 images)
+    ...Array.from({ length: 5 }, (_, i) => ({
       name: 'Travertin Mix',
       description: 'Travertin Mix aus verschiedenen Farbnuancen von Beige über Creme bis Braun – die natürliche Farbvielfalt erzeugt ein lebendiges, abwechslungsreiches Flächenbild.',
       meta: 'Frostfest & witterungsbeständig',
@@ -1320,10 +1275,8 @@ export const getTravertinProducts = (productGroupId?: string): Product[] | null 
         imageUrl: encodeImagePath(`/images/UNSERE-PRODUKTE/Natursteine/Travertin/Travertin Mix ${i + 1}.AVIF`),
         imageHint: 'travertine mix stone',
       },
-    }));
-  }
-
-  return null;
+    })),
+  ];
 };
 
 const tuffDescriptions: Record<number, string> = {

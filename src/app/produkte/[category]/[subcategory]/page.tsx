@@ -9,7 +9,6 @@ import {
     granitSubCategoriesData,
     schieferSubCategoriesData,
     lusernaGneisSubCategoriesData,
-    travertinSubCategoriesData,
     productCategories,
     getTravertinProducts,
     getBrasilQuarzitProducts,
@@ -196,9 +195,9 @@ export default function SubCategoryPage({ params }: { params: { category: string
     }
 
 
-    // Special handling for Travertin to show sub-sub-categories + standalone products
+    // Travertin: all products shown directly (no subcategories)
     if (params.category === 'natursteine' && params.subcategory === 'travertin') {
-        const travertinStandaloneProducts = getTravertinProducts() || [];
+        const travertinProducts = getTravertinProducts();
         return (
             <>
                 <section className="relative flex min-h-[55vh] flex-col justify-center overflow-hidden border-b border-border py-20 bg-secondary/30">
@@ -217,27 +216,9 @@ export default function SubCategoryPage({ params }: { params: { category: string
 
                 <section className="py-24 sm:py-32">
                     <div className="mx-auto max-w-7xl px-4">
-                        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                            {travertinSubCategoriesData.map((travertinSub) => (
-                                <ContentCard
-                                    key={travertinSub.id}
-                                    title={travertinSub.name}
-                                    description={travertinSub.description}
-                                    image={travertinSub.image}
-                                    href={`/produkte/natursteine/travertin/${travertinSub.id}`}
-                                />
-                            ))}
-                        </div>
+                        <ProductGridWithModal products={travertinProducts} />
                     </div>
                 </section>
-
-                {travertinStandaloneProducts.length > 0 && (
-                    <section className="pb-24 sm:pb-32">
-                        <div className="mx-auto max-w-7xl px-4">
-                            <ProductGridWithModal products={travertinStandaloneProducts} />
-                        </div>
-                    </section>
-                )}
 
                 <ContactFormSection />
             </>
