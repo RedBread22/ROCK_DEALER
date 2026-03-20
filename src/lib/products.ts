@@ -787,10 +787,10 @@ const granitwuerfelDescriptions: Record<number, string> = {
 };
 
 const granitRandleistenDescriptions: Record<number, string> = {
-  1: 'Granitrandleiste gespalten – die naturbelassene Bruchkante fügt sich harmonisch in rustikale Gartengestaltungen ein und bietet einen robusten, formstabilen Kantenabschluss.',
-  2: 'Granitrandleiste gespalten – als seitliche Einfassung für Pflasterflächen und Beete sorgt die spaltraue Oberfläche für einen natürlichen, traditionellen Abschluss.',
-  3: 'Granitrandleiste geschnitten und gestrahlt – die präzise bearbeitete Oberfläche bietet ein modernes, gleichmäßiges Erscheinungsbild bei hoher Rutschfestigkeit.',
-  4: 'Granitrandleiste geschnitten, gestrahlt mit Fase – die zusätzliche Fase an der Oberkante sorgt für eine elegante Linienführung und reduziert Absplitterungen.',
+  1: 'Granit-Randleiste gespalten – natürliche raue Oberfläche, ideal als Beetbegrenzung, Wegrandstein oder Gartenabschluss.',
+  2: 'Granit-Randleiste gespalten und aufrecht – robuste Einfassung für Wege, Einfahrten und Grünflächen.',
+  3: 'Granit-Randleiste geschnitten und gestrahlt – gleichmäßige Kanten, saubere Optik. Lieferbereit auf Palette in verschiedenen Formaten.',
+  4: 'Granit-Randleiste geschnitten, gestrahlt mit Fase – edle Ausführung für repräsentative Einfahrten und hochwertige Außenanlagen.',
 };
 
 export const getGranitProducts = (productGroupId: string): Product[] | null => {
