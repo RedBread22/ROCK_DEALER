@@ -15,6 +15,9 @@ import {
     tuffSubCategoriesData,
     getTuffSubCategoryById,
     getTuffProducts,
+    muschelkalkSubCategoriesData,
+    getMuschelkalkSubCategoryById,
+    getMuschelkalkProducts,
     type Product
 } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
@@ -55,7 +58,13 @@ export async function generateStaticParams() {
         productgroup: sub.id,
     }));
 
-    return [...granitParams, ...schieferParams, ...lusernaParams, ...tuffParams];
+    const muschelkalkParams = muschelkalkSubCategoriesData.map((sub) => ({
+        category: 'natursteine',
+        subcategory: 'muschelkalk',
+        productgroup: sub.id,
+    }));
+
+    return [...granitParams, ...schieferParams, ...lusernaParams, ...tuffParams, ...muschelkalkParams];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -71,6 +80,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     productGroup = getLusernaGneisSubCategoryById(params.productgroup);
   } else if (params.subcategory === 'tuff') {
     productGroup = getTuffSubCategoryById(params.productgroup);
+  } else if (params.subcategory === 'muschelkalk') {
+    productGroup = getMuschelkalkSubCategoryById(params.productgroup);
   }
 
 
@@ -87,7 +98,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default function ProductGroupPage({ params }: PageProps) {
-    if (params.category !== 'natursteine' || !['granit', 'schiefer', 'luserna-gneis', 'tuff'].includes(params.subcategory)) {
+    if (params.category !== 'natursteine' || !['granit', 'schiefer', 'luserna-gneis', 'tuff', 'muschelkalk'].includes(params.subcategory)) {
         notFound();
     }
     
@@ -109,6 +120,9 @@ export default function ProductGroupPage({ params }: PageProps) {
     } else if (params.subcategory === 'tuff') {
         productGroup = getTuffSubCategoryById(params.productgroup);
         products = getTuffProducts(params.productgroup);
+    } else if (params.subcategory === 'muschelkalk') {
+        productGroup = getMuschelkalkSubCategoryById(params.productgroup);
+        products = getMuschelkalkProducts(params.productgroup);
     }
 
     if (!category || !subCategory || !productGroup) {

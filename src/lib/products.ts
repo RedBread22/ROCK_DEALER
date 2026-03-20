@@ -407,6 +407,20 @@ export const tuffSubCategoriesData: SubCategory[] = [
     },
 ];
 
+export const muschelkalkSubCategoriesData: SubCategory[] = [
+    {
+        id: 'mauersteine',
+        name: 'Mauersteine',
+        description: 'Muschelkalk-Mauersteine mit fossilen Einschlüssen und heller, gleichmäßiger Färbung – ideal für repräsentative Gartenmauern, Einfriedungen und klassische Außenanlagen.',
+        image: {
+            id: 'muschelkalk-mauersteine',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk/2.jpg',
+            description: 'Muschelkalk Mauersteine',
+            imageHint: 'shell limestone wall stones',
+        },
+    },
+];
+
 
 export const getCategoryById = (id: string) => {
   return productCategories.find((cat) => cat.id === id);
@@ -432,6 +446,10 @@ export const getLusernaGneisSubCategoryById = (id: string) => {
 
 export const getTuffSubCategoryById = (id: string) => {
     return tuffSubCategoriesData.find((cat) => cat.id === id);
+};
+
+export const getMuschelkalkSubCategoryById = (id: string) => {
+    return muschelkalkSubCategoriesData.find((cat) => cat.id === id);
 };
 
 export const getSubCategoriesByParentId = (parentId: string) => {
@@ -1413,21 +1431,25 @@ const muschelkalkDescriptions: Record<number, string> = {
   9: 'Muschelkalk als dekorative Abdeckplatte – schützt Mauerkronen vor Witterung und rundet das Gesamtbild von Muschelkalk-Mauern stilvoll ab.',
 };
 
-export const getMuschelkalkProducts = (): Product[] => {
-  const products: Product[] = [];
-  const count = 9;
-  for (let i = 1; i <= count; i++) {
-    products.push({
-      name: 'Muschelkalk',
-      description: muschelkalkDescriptions[i] || 'Muschelkalk – heller Naturstein mit fossilen Einschlüssen für zeitlose Außengestaltungen.',
-      meta: 'Elegant, zeitlos, fossilienreich',
-      image: {
-        id: `muschelkalk-${i}`,
-        description: 'Muschelkalk',
-        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk/${i}.jpg`,
-        imageHint: 'shell limestone',
-      },
-    });
+export const getMuschelkalkProducts = (productGroupId?: string): Product[] | null => {
+  if (productGroupId === 'mauersteine') {
+    const products: Product[] = [];
+    const count = 9;
+    for (let i = 1; i <= count; i++) {
+      products.push({
+        name: 'Muschelkalk Mauerstein',
+        description: muschelkalkDescriptions[i] || 'Muschelkalk – heller Naturstein mit fossilen Einschlüssen für zeitlose Außengestaltungen.',
+        meta: 'Elegant, zeitlos, fossilienreich',
+        image: {
+          id: `muschelkalk-${i}`,
+          description: 'Muschelkalk Mauerstein',
+          imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Muschelkalk/${i}.jpg`,
+          imageHint: 'shell limestone wall stone',
+        },
+      });
+    }
+    return products;
   }
-  return products;
+
+  return null;
 };
