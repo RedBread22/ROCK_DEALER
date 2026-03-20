@@ -40,9 +40,6 @@ export const ProductCard = ({
       </div>
       <div className="flex flex-1 flex-col p-6">
         <h3 className="text-lg font-semibold text-white">{product.name}</h3>
-        {product.meta && (
-          <p className="mt-1 text-xs text-white/60 line-clamp-1">{product.meta}</p>
-        )}
         <p className="mt-2 text-sm text-white/70 line-clamp-2">{product.description}</p>
         <div className="mt-auto pt-4">
           <Button
