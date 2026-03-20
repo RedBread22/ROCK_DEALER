@@ -12,6 +12,9 @@ import {
     lusernaGneisSubCategoriesData,
     getLusernaGneisSubCategoryById,
     getLusernaGneisProducts,
+    tuffSubCategoriesData,
+    getTuffSubCategoryById,
+    getTuffProducts,
     type Product
 } from '@/lib/products';
 import { AnimatedText } from '@/components/animated-text';
@@ -46,7 +49,13 @@ export async function generateStaticParams() {
         productgroup: sub.id,
     }));
 
-    return [...granitParams, ...schieferParams, ...lusernaParams];
+    const tuffParams = tuffSubCategoriesData.map((sub) => ({
+        category: 'natursteine',
+        subcategory: 'tuff',
+        productgroup: sub.id,
+    }));
+
+    return [...granitParams, ...schieferParams, ...lusernaParams, ...tuffParams];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -60,6 +69,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     productGroup = getSchieferSubCategoryById(params.productgroup);
   } else if (params.subcategory === 'luserna-gneis') {
     productGroup = getLusernaGneisSubCategoryById(params.productgroup);
+  } else if (params.subcategory === 'tuff') {
+    productGroup = getTuffSubCategoryById(params.productgroup);
   }
 
 
@@ -76,7 +87,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default function ProductGroupPage({ params }: PageProps) {
-    if (params.category !== 'natursteine' || !['granit', 'schiefer', 'luserna-gneis', 'travertin'].includes(params.subcategory)) {
+    if (params.category !== 'natursteine' || !['granit', 'schiefer', 'luserna-gneis', 'tuff'].includes(params.subcategory)) {
         notFound();
     }
     
@@ -95,6 +106,9 @@ export default function ProductGroupPage({ params }: PageProps) {
     } else if (params.subcategory === 'luserna-gneis') {
         productGroup = getLusernaGneisSubCategoryById(params.productgroup);
         products = getLusernaGneisProducts(params.productgroup);
+    } else if (params.subcategory === 'tuff') {
+        productGroup = getTuffSubCategoryById(params.productgroup);
+        products = getTuffProducts(params.productgroup);
     }
 
     if (!category || !subCategory || !productGroup) {

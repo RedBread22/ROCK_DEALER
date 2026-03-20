@@ -382,6 +382,31 @@ export const lusernaGneisSubCategoriesData: SubCategory[] = [
     },
 ];
 
+export const tuffSubCategoriesData: SubCategory[] = [
+    {
+        id: 'polygonalplatten',
+        name: 'Polygonalplatten',
+        description: 'Unregelmäßig gebrochene Gneis-Platten für natürliche, lebendige Flächen – ideal für Terrassen, Wege und Sitzplätze mit individuellem Charakter.',
+        image: {
+            id: 'tuff-polygonalplatten',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Tuff/1.jpg',
+            description: 'Grauer Gneis Polygonalplatten',
+            imageHint: 'grey gneiss polygonal plates',
+        },
+    },
+    {
+        id: 'bodenplatten',
+        name: 'Bodenplatten',
+        description: 'Gleichmäßig geschnittene Gneis-Platten für geordnete, elegante Flächen – perfekt für Terrassen, Eingangsbereiche und Gartenwege.',
+        image: {
+            id: 'tuff-bodenplatten',
+            imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Tuff/3.jpg',
+            description: 'Grauer Gneis Bodenplatten',
+            imageHint: 'grey gneiss floor plates',
+        },
+    },
+];
+
 
 export const getCategoryById = (id: string) => {
   return productCategories.find((cat) => cat.id === id);
@@ -405,6 +430,9 @@ export const getLusernaGneisSubCategoryById = (id: string) => {
     return lusernaGneisSubCategoriesData.find((cat) => cat.id === id);
 };
 
+export const getTuffSubCategoryById = (id: string) => {
+    return tuffSubCategoriesData.find((cat) => cat.id === id);
+};
 
 export const getSubCategoriesByParentId = (parentId: string) => {
   return allSubCategories.filter((sub) => sub.parentId === parentId);
@@ -1298,32 +1326,50 @@ export const getTravertinProducts = (): Product[] => {
   ];
 };
 
-const tuffDescriptions: Record<number, string> = {
+const tuffPolygonalDescriptions: Record<number, string> = {
   1: 'Grauer Gneis als Mauerstein mit silbrig-grauer Oberfläche – verleiht Gartenmauern und Einfassungen eine ruhige, natürliche Ausstrahlung.',
   2: 'Grauer Gneis in Plattenform mit dezenter Schichtung – gut geeignet als Wegebelag oder Terrassenplatte in zurückhaltend-elegantem Design.',
-  3: 'Grauer Gneis als Bruchstein mit lebendiger Textur – vielseitig verwendbar für Trockenmauern, Steingärten und rustikale Gestaltungselemente.',
-  4: 'Grauer Gneis als Stufenplatte – die spaltraue Oberfläche bietet natürlichen Halt und fügt sich harmonisch in naturnahe Gartenkonzepte ein.',
-  5: 'Grauer Gneis in Quaderform – eignet sich für präzise Mauerwerke und architektonisch klare Gartenstrukturen mit regionalem Charakter.',
   6: 'Grauer Gneis als dekorativer Solitärstein – die wechselnden Grautöne und die natürliche Patina machen ihn zum Blickfang in jeder Gartenanlage.',
 };
 
-export const getTuffProducts = (): Product[] => {
-  const products: Product[] = [];
-  const count = 6;
-  for (let i = 1; i <= count; i++) {
-    products.push({
-      name: 'Grauer Gneis',
-      description: tuffDescriptions[i] || 'Grauer Gneis – ein dezenter Naturstein mit warmen Grautönen für vielseitige Außengestaltungen.',
+const tuffBodenplattenDescriptions: Record<number, string> = {
+  3: 'Grauer Gneis als Bruchstein mit lebendiger Textur – vielseitig verwendbar für Trockenmauern, Steingärten und rustikale Gestaltungselemente.',
+  4: 'Grauer Gneis als Stufenplatte – die spaltraue Oberfläche bietet natürlichen Halt und fügt sich harmonisch in naturnahe Gartenkonzepte ein.',
+  5: 'Grauer Gneis in Quaderform – eignet sich für präzise Mauerwerke und architektonisch klare Gartenstrukturen mit regionalem Charakter.',
+};
+
+export const getTuffProducts = (productGroupId?: string): Product[] | null => {
+  if (productGroupId === 'polygonalplatten') {
+    // Bilder 1, 2, 6
+    return [1, 2, 6].map((i) => ({
+      name: 'Polygonalplatte',
+      description: tuffPolygonalDescriptions[i],
       meta: 'Natürlich, dezent, vielseitig',
       image: {
-        id: `tuff-${i}`,
-        description: 'Grauer Gneis',
+        id: `tuff-polygonal-${i}`,
+        description: 'Grauer Gneis Polygonalplatte',
         imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Tuff/${i}.jpg`,
-        imageHint: 'grey gneiss stone',
+        imageHint: 'grey gneiss polygonal plate',
       },
-    });
+    }));
   }
-  return products;
+
+  if (productGroupId === 'bodenplatten') {
+    // Bilder 3, 4, 5
+    return [3, 4, 5].map((i) => ({
+      name: 'Bodenplatte',
+      description: tuffBodenplattenDescriptions[i],
+      meta: 'Natürlich, dezent, vielseitig',
+      image: {
+        id: `tuff-boden-${i}`,
+        description: 'Grauer Gneis Bodenplatte',
+        imageUrl: `/images/UNSERE-PRODUKTE/Natursteine/Tuff/${i}.jpg`,
+        imageHint: 'grey gneiss floor plate',
+      },
+    }));
+  }
+
+  return null;
 };
 
 const porphyrDescriptions: Record<number, string> = {
