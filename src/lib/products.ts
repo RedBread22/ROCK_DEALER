@@ -1246,14 +1246,14 @@ export const getBetonsteineProducts = (subCategoryId: string): Product[] | null 
 };
 
 const stainzerGneisDescriptions: Record<number, string> = {
-  1: 'Stainzer Gneis als Mauersteinformat – die grün-graue, lebendige Oberfläche verleiht Trockenmauern und Hangbefestigungen einen regionaltypischen Charakter.',
-  2: 'Polygonale Stainzer-Gneis-Platte mit unregelmäßiger Bruchkante – erzeugt natürliche Verlegemuster auf Terrassen und Sitzplätzen.',
-  3: 'Stainzer Gneis als Trittstein oder Bodenplatte – die spaltraue Oberfläche bietet sicheren Halt und eine authentische Naturstein-Optik.',
-  4: 'Stainzer-Gneis-Bruchstein in rustikaler Form – vielseitig einsetzbar für Mauerbau, Beetumrandungen und individuelle Gartenakzente.',
-  5: 'Großformatiger Stainzer Gneis als dekoratives Solitärelement – ein markanter Blickfang mit lebhafter Maserung und regionaler Herkunft.',
-  11: 'Stainzer Gneis als Stufenplatte – die natürliche Schieferung sorgt für Trittsicherheit und passt zu traditionellen wie modernen Gartenkonzepten.',
-  12: 'Verarbeiteter Stainzer Gneis als Wandverkleidung oder Terrassenbelag – die wechselnden Grau- und Grüntöne schaffen ein lebendiges Flächenbild.',
-  13: 'Stainzer Gneis in Quaderform – eignet sich besonders für exakte Mauerwerke, Pfeiler und architektonisch anspruchsvolle Gestaltungen im Garten.',
+  1: 'Stainzer Gneis Polygonalplatten verlegt – naturbelassene Oberfläche, ideal für Gartenwege und Terrassen.',
+  2: 'Stainzer Gneis Polygonalplatten am Eingangsbereich – robust, rutschhemmend und regionaler Naturstein.',
+  3: 'Stainzer Gneis Polygonalplatten großflächig verlegt – natürliches Erscheinungsbild mit charakteristischer Farbgebung.',
+  4: 'Stainzer Gneis Polygonalplatten auf Terrasse – wetterfest, frostbeständig und langlebig.',
+  5: 'Stainzer Gneis Polygonalplatten als Wegbelag – unregelmäßige Formen für ein natürliches Gesamtbild.',
+  11: 'Stainzer Gneis Bodenplatten – gleichmäßig gesägte Platten mit charakteristischer grau-grüner Färbung. Ideal für Terrassen und Eingangsbereiche.',
+  12: 'Stainzer Gneis Mauersteine – naturbelassene Bruchsteine für Trockenmauern, Beetbegrenzungen und Gartenanlagen.',
+  13: 'Stainzer Gneis Pflasterwürfel – kleinformatig, robust und ideal für Einfahrten, Höfe und Gartenwege.',
 };
 
 export const getStainzerGneisProducts = (productGroupId?: string): Product[] | null => {
@@ -1503,13 +1503,12 @@ export const getTuffProducts = (productGroupId?: string): Product[] | null => {
 };
 
 const porphyrDescriptions: Record<number, string> = {
-  1: 'Porphyr-Pflasterstein in klassischer Würfelform – die rotbraune Färbung und extreme Abriebfestigkeit machen ihn zum Favoriten für Einfahrten und historische Platzgestaltungen.',
-  2: 'Porphyr-Platte mit spaltrauer Oberfläche – rutschfest auch bei Nässe und Frost, ideal für Gartenwege und Treppenanlagen.',
-  3: 'Porphyr als Mauerstein mit lebendiger, rötlich-violetter Färbung – verleiht Gartenmauern und Einfassungen einen markanten, alpinen Charakter.',
-  4: 'Porphyr in großformatiger Plattenausführung – vereint natürliche Rutschsicherheit mit einer warmen, erdigen Farbpalette für Terrassen und Sitzplätze.',
-  5: 'Porphyr-Bruchstein für Trockenmauern und Hangbefestigungen – die unregelmäßige Bruchkante erzeugt ein authentisches, naturnahes Erscheinungsbild.',
-  6: 'Porphyr als Randstein oder Beeteinfassung – widersteht Tausalz, mechanischer Belastung und extremen Temperaturschwankungen ohne sichtbare Abnutzung.',
-  7: 'Porphyr in Stelen- oder Quaderform – ein vielseitiger Gestaltungsstein für Pfeiler, Sichtschutz und architektonische Akzente im Garten.',
+  1: 'Porphyr Polygonalplatten verlegt – dunkel-violette Färbung mit natürlicher Struktur, ideal für Terrassen und Wege.',
+  2: 'Porphyr Bodenplatten geschnitten – gleichmäßige Oberfläche, extrem witterungsbeständig und rutschhemmend.',
+  3: 'Porphyr Mauersteine – naturbelassene Bruchsteine mit typischer dunkelgrauer Färbung. Robust und langlebig für Stütz- und Trockenmauern.',
+  5: 'Porphyr Polygonalplatten – unregelmäßige Formen mit charakteristischer Porphyr-Maserung für naturnahe Gartengestaltung.',
+  6: 'Porphyr Pflasterwürfel kleinformatig – gleichmäßig gesetzt für Einfahrten, Plätze und Gartenwege.',
+  7: 'Porphyr Pflasterwürfel im Rundbogen verlegt – zeitloses Erscheinungsbild für repräsentative Außenanlagen.',
 };
 
 export const getPorphyrProducts = (productGroupId?: string): Product[] | null => {
@@ -1536,7 +1535,7 @@ export const getPorphyrProducts = (productGroupId?: string): Product[] | null =>
     return [3].map((i) => makeProduct(i, 'Mauerstein'));
   }
   if (productGroupId === 'pflasterwuerfel') {
-    return [4, 6, 7].map((i) => makeProduct(i, 'Pflasterwürfel'));
+    return [6, 7].map((i) => makeProduct(i, 'Pflasterwürfel'));
   }
   return null;
 };
