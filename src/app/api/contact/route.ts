@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
     const { error } = await resend.emails.send({
       from: 'Rock Dealer Website <onboarding@resend.dev>',
-      to: 'office@rock-dealer.com',
+      to: 'netnomic@gmail.com',
       subject: `Neue Anfrage von ${name} – Rock Dealer Website`,
       html: `
         <h2>Neue Kontaktanfrage über die Website</h2>
