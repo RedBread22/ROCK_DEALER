@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
+import { Volume2, VolumeX } from 'lucide-react';
 import { HeroSection } from '@/components/hero-section';
 import { HeroSliderSection } from '@/components/hero-slider-section';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -9,6 +10,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 const PhilosophySection = dynamic(() => import('@/components/philosophy-section').then(m => ({ default: m.PhilosophySection })));
 const VisualSection = dynamic(() => import('@/components/visual-section').then(m => ({ default: m.VisualSection })));
 const ExperimentalSection = dynamic(() => import('@/components/experimental-section').then(m => ({ default: m.ExperimentalSection })));
+const SortimentNotice = dynamic(() => import('@/components/sortiment-notice').then(m => ({ default: m.SortimentNotice })));
 const CTASection = dynamic(() => import('@/components/cta-section').then(m => ({ default: m.CTASection })));
 const ContactFormSection = dynamic(() => import('@/components/contact-form-section').then(m => ({ default: m.ContactFormSection })));
 
@@ -25,6 +27,18 @@ const heroSliderImageIds = [
 export default function Home() {
   const [videoDone, setVideoDone] = useState(false);
   const [firstSlideReady, setFirstSlideReady] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const bgVideoRef = useRef<HTMLVideoElement>(null);
+  const mainVideoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleMute = () => {
+    setIsMuted((prev) => {
+      const next = !prev;
+      if (bgVideoRef.current) bgVideoRef.current.muted = next;
+      if (mainVideoRef.current) mainVideoRef.current.muted = next;
+      return next;
+    });
+  };
 
   const sliderImages = useMemo(
     () =>
@@ -79,6 +93,7 @@ export default function Home() {
       {!videoDone ? (
         <section className="relative w-full h-screen overflow-hidden bg-black">
           <video
+            ref={bgVideoRef}
             autoPlay
             muted
             loop
@@ -90,6 +105,7 @@ export default function Home() {
           </video>
           <div className="relative z-10 h-full w-full flex items-center justify-center pt-24">
             <video
+              ref={mainVideoRef}
               autoPlay
               muted
               playsInline
@@ -100,6 +116,13 @@ export default function Home() {
               Your browser does not support the video tag.
             </video>
           </div>
+          <button
+            onClick={toggleMute}
+            className="absolute bottom-6 left-6 z-20 flex items-center justify-center rounded-full bg-black/50 p-3 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
+            aria-label={isMuted ? 'Ton einschalten' : 'Ton ausschalten'}
+          >
+            {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+          </button>
         </section>
       ) : !slideshowActive ? (
         <section className="relative w-full h-screen overflow-hidden bg-black" aria-label="Slideshow loading" />
@@ -110,6 +133,7 @@ export default function Home() {
       <PhilosophySection />
       <VisualSection />
       <ExperimentalSection />
+      <SortimentNotice />
       <CTASection />
       <ContactFormSection />
     </main>
