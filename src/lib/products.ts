@@ -893,7 +893,7 @@ const granitwuerfelDescriptions: Record<number, string> = {
   1: 'Granit-Pflasterwürfel gespalten – natürliche raue Oberfläche, ideal für rustikale Einfahrten, Wege und Hofpflasterungen.',
   2: 'Granit-Pflasterwürfel geschnitten und gestrahlt – gleichmäßige Oberfläche, rutschhemmend und pflegeleicht. Für moderne Außenanlagen.',
   3: 'Granit-Pflasterwürfel in gespaltener Form – massiv und langlebig, klassischer Naturstein für Garten und Einfahrt.',
-  4: 'Granit-Pflasterwürfel in verschiedenen Ausführungen erhältlich – frostbeständig, salzbeständig und für alle Außenbereiche geeignet.',
+  4: 'Granit-Pflasterwürfel – frostbeständig, salzbeständig und für alle Außenbereiche geeignet.',
 };
 
 const granitRandleistenDescriptions: Record<number, string> = {
