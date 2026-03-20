@@ -4,7 +4,7 @@ import { useToast } from '@/hooks/use-toast';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { useEffect, Suspense } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {
   Form,
@@ -27,9 +27,12 @@ const ContactFormInner = () => {
   const searchParams = useSearchParams();
   const productParam = searchParams.get('product');
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const formSchema = z.object({
     name: z.string().min(2, { message: 'Name muss mindestens 2 Zeichen lang sein.' }),
     email: z.string().email({ message: 'Bitte gib eine gültige E-Mail-Adresse ein.' }),
+    phone: z.string().optional(),
     categories: z.array(z.string()).optional(),
     message: z.string().min(10, { message: 'Nachricht muss mindestens 10 Zeichen lang sein.' }),
   });
@@ -39,6 +42,7 @@ const ContactFormInner = () => {
     defaultValues: {
       name: '',
       email: '',
+      phone: '',
       message: '',
       categories: [],
     },
@@ -55,13 +59,34 @@ const ContactFormInner = () => {
     }
   }, [productParam, form]);
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: 'Anfrage gesendet!',
-      description: 'Vielen Dank! Wir werden uns in Kürze bei Ihnen melden.',
-    });
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Fehler beim Senden.');
+      }
+
+      toast({
+        title: 'Anfrage gesendet!',
+        description: 'Vielen Dank! Wir werden uns in Kürze bei Ihnen melden.',
+      });
+      form.reset();
+    } catch (err) {
+      toast({
+        variant: 'destructive',
+        title: 'Fehler',
+        description: err instanceof Error ? err.message : 'E-Mail konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -88,6 +113,19 @@ const ContactFormInner = () => {
               <FormLabel>Ihre E-Mail-Adresse</FormLabel>
               <FormControl>
                 <Input placeholder="ihre@email.com" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Telefonnummer (optional)</FormLabel>
+              <FormControl>
+                <Input placeholder="+43 664 ..." {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -159,8 +197,8 @@ const ContactFormInner = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" size="lg" className="w-full">
-          Anfrage senden
+        <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+          {isSubmitting ? 'Wird gesendet...' : 'Anfrage senden'}
         </Button>
       </form>
     </Form>
