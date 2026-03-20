@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       : 'Keine ausgewählt';
 
     const { error } = await resend.emails.send({
-      from: 'Rock Dealer Website <onboarding@resend.dev>',
+      from: 'Rock Dealer Website <noreply@rock-dealer.com>',
       to: 'office@rock-dealer.com',
       subject: `Neue Anfrage von ${name} – Rock Dealer Website`,
       html: `
