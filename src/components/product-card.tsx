@@ -43,7 +43,8 @@ export const ProductCard = ({
         {product.meta && (
           <p className="mt-1 text-xs text-white/60 line-clamp-1">{product.meta}</p>
         )}
-        <div className="mt-auto pt-6">
+        <p className="mt-2 text-sm text-white/70 line-clamp-2">{product.description}</p>
+        <div className="mt-auto pt-4">
           <Button
             variant="outline"
             onClick={onDetailsClick}
