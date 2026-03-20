@@ -1347,19 +1347,19 @@ export const getTravertinProducts = (): Product[] => {
 const tuffPolygonalDescriptions: Record<number, string> = {
   1: 'Grauer Gneis als Mauerstein mit silbrig-grauer Oberfläche – verleiht Gartenmauern und Einfassungen eine ruhige, natürliche Ausstrahlung.',
   2: 'Grauer Gneis in Plattenform mit dezenter Schichtung – gut geeignet als Wegebelag oder Terrassenplatte in zurückhaltend-elegantem Design.',
+  5: 'Grauer Gneis in Quaderform – eignet sich für präzise Mauerwerke und architektonisch klare Gartenstrukturen mit regionalem Charakter.',
   6: 'Grauer Gneis als dekorativer Solitärstein – die wechselnden Grautöne und die natürliche Patina machen ihn zum Blickfang in jeder Gartenanlage.',
 };
 
 const tuffBodenplattenDescriptions: Record<number, string> = {
   3: 'Grauer Gneis als Bruchstein mit lebendiger Textur – vielseitig verwendbar für Trockenmauern, Steingärten und rustikale Gestaltungselemente.',
   4: 'Grauer Gneis als Stufenplatte – die spaltraue Oberfläche bietet natürlichen Halt und fügt sich harmonisch in naturnahe Gartenkonzepte ein.',
-  5: 'Grauer Gneis in Quaderform – eignet sich für präzise Mauerwerke und architektonisch klare Gartenstrukturen mit regionalem Charakter.',
 };
 
 export const getTuffProducts = (productGroupId?: string): Product[] | null => {
   if (productGroupId === 'polygonalplatten') {
-    // Bilder 1, 2, 6
-    return [1, 2, 6].map((i) => ({
+    // Bilder 1, 2, 5, 6
+    return [1, 2, 5, 6].map((i) => ({
       name: 'Polygonalplatte',
       description: tuffPolygonalDescriptions[i],
       meta: 'Natürlich, dezent, vielseitig',
@@ -1373,8 +1373,8 @@ export const getTuffProducts = (productGroupId?: string): Product[] | null => {
   }
 
   if (productGroupId === 'bodenplatten') {
-    // Bilder 3, 4, 5
-    return [3, 4, 5].map((i) => ({
+    // Bilder 3, 4
+    return [3, 4].map((i) => ({
       name: 'Bodenplatte',
       description: tuffBodenplattenDescriptions[i],
       meta: 'Natürlich, dezent, vielseitig',
