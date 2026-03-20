@@ -886,13 +886,19 @@ export const getGranitProducts = (productGroupId: string): Product[] | null => {
       });
     }
   } else {
-    // Standard logic for granitplatte
-    const desc = granitDescriptions[productGroupId] || 'Granit-Naturstein für den Außenbereich – frostfest und vielseitig einsetzbar.';
+    // Per-image descriptions for Granitplatte
+    const granitplatteDescriptions: Record<number, string> = {
+      1: 'Granitplatte geschliffen und gestrahlt – gleichmäßige Oberfläche, ideal für Terrassen und Eingangsbereiche. Frostbeständig und pflegeleicht.',
+      2: 'Granitplatte im kleineren Format – vielseitig einsetzbar als Terrassenplatte oder Wegbelag. Derselbe hochwertige Granit, frostbeständig und langlebig.',
+      3: 'Granitplatten auf Palette – lieferbereit in großer Stückzahl. Ideal für größere Flächen wie Einfahrten, Terrassen oder Gartenwege.',
+      4: 'Granitplatte in verschiedenen Formaten erhältlich – derselbe Stein, angepasst an jeden Einsatzbereich. Rutschhemmend, witterungsbeständig und zeitlos schön.',
+    };
+    const fallbackDesc = granitDescriptions[productGroupId] || 'Granit-Naturstein für den Außenbereich – frostfest und vielseitig einsetzbar.';
     for (let i = 1; i <= imageInfo.count; i++) {
       const imageUrl = `${imageInfo.path}/${i}.jpg`;
       products.push({
         name: imageInfo.name,
-        description: desc,
+        description: granitplatteDescriptions[i] || fallbackDesc,
         meta: 'Granit, frostfest & witterungsbeständig',
         image: {
           id: `${productGroupId}-${i}`,
