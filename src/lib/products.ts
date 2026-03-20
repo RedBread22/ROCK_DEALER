@@ -1227,11 +1227,30 @@ export const getBluestoneProducts = (): Product[] => {
 };
 
 export const getTravertinProducts = (): Product[] => {
+  const travertinNoceDescriptions: Record<number, string> = {
+    1: 'Travertin Noce – satte, nussbraune Färbung mit natürlicher Textur. Ideal für Terrassen und Eingangsbereiche die Wärme und Stil ausstrahlen sollen.',
+    2: 'Travertin Noce – offenporige Oberfläche mit warmem Braunton. Klassiker für mediterrane Außengestaltungen.',
+    3: 'Travertin Noce im verlegten Zustand – harmonisches Erscheinungsbild durch natürliche Farbvariationen im Braunton.',
+    4: 'Travertin Noce – zeitloser Naturstein mit charakteristischer Maserung. Frostbeständig und für Innen- und Außenbereiche geeignet.',
+  };
+  const travertinVanillaDescriptions: Record<number, string> = {
+    1: 'Travertin Vanilla – heller, cremefarbener Naturstein mit feiner Maserung. Bringt Leichtigkeit und Eleganz in jeden Außenbereich.',
+    2: 'Travertin Vanilla – gleichmäßige, helle Oberfläche mit subtilen Farbverläufen. Perfekt für moderne und mediterrane Terrassen.',
+    3: 'Travertin Vanilla – in verschiedenen Formaten erhältlich. Zeitlos schön, witterungsbeständig und pflegeleicht.',
+  };
+  const travertinMixDescriptions: Record<number, string> = {
+    1: 'Travertin Mix – lebhafte Mischung aus warmen Rot-, Orange- und Beigetönen. Jede Platte ein Unikat.',
+    2: 'Travertin Mix – ausgeprägte Farbvielfalt durch natürliche Mineraleinschlüsse. Verlegt entsteht ein einzigartiges, lebendiges Bodenbild.',
+    3: 'Travertin Mix – kontrastreiche Farbgebung von cremeweiß bis kräftigem Rot. Ideal für Akzentflächen und repräsentative Bereiche.',
+    4: 'Travertin Mix – warme Erdtöne mit intensiver Maserung. Jede Fläche erhält dadurch ein individuelles, natürliches Erscheinungsbild.',
+    5: 'Travertin Mix – naturbelassene Oberfläche mit charakteristischer Poren- und Farbstruktur. Robust, frostbeständig und langlebig.',
+  };
+
   return [
     // Travertin Flamingo
     {
       name: 'Travertin Flamingo',
-      description: 'Travertin Flamingo mit zartem Rosa-Schimmer und charakteristischer Porenstruktur – verleiht Terrassen und Außenflächen einen unverwechselbar warmen, südländischen Akzent.',
+      description: 'Travertin Flamingo – warme Rosétöne mit lebhafter Maserung. Verleiht Terrassen und Außenbereichen einen mediterranen, eleganten Charakter.',
       meta: 'Frostfest & witterungsbeständig',
       image: {
         id: 'travertin-flamingo-1',
@@ -1243,7 +1262,7 @@ export const getTravertinProducts = (): Product[] => {
     // Travertin Noce (4 images)
     ...Array.from({ length: 4 }, (_, i) => ({
       name: 'Travertin Noce',
-      description: 'Travertin Noce mit satter, nussbrauner Färbung und markanter Porenstruktur – bringt Wärme und mediterranen Charakter auf Terrassen, in Eingangsbereiche und rund um Poolanlagen.',
+      description: travertinNoceDescriptions[i + 1],
       meta: 'Frostfest & witterungsbeständig',
       image: {
         id: `travertin-noce-${i + 1}`,
@@ -1255,7 +1274,7 @@ export const getTravertinProducts = (): Product[] => {
     // Travertin Vanilla (3 images)
     ...Array.from({ length: 3 }, (_, i) => ({
       name: 'Travertin Vanilla',
-      description: 'Travertin Vanilla in hellem Cremeton mit feiner, gleichmäßiger Struktur – wirkt zurückhaltend elegant und passt zu klassischen wie modernen Gartenarchitekturen.',
+      description: travertinVanillaDescriptions[i + 1],
       meta: 'Frostfest & witterungsbeständig',
       image: {
         id: `travertin-vanilla-${i + 1}`,
@@ -1267,7 +1286,7 @@ export const getTravertinProducts = (): Product[] => {
     // Travertin Mix (5 images)
     ...Array.from({ length: 5 }, (_, i) => ({
       name: 'Travertin Mix',
-      description: 'Travertin Mix aus verschiedenen Farbnuancen von Beige über Creme bis Braun – die natürliche Farbvielfalt erzeugt ein lebendiges, abwechslungsreiches Flächenbild.',
+      description: travertinMixDescriptions[i + 1],
       meta: 'Frostfest & witterungsbeständig',
       image: {
         id: `travertin-mix-${i + 1}`,
