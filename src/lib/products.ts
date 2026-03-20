@@ -780,10 +780,10 @@ const granitDescriptions: Record<string, string> = {
 };
 
 const granitwuerfelDescriptions: Record<number, string> = {
-  1: 'Granitwürfel in gespaltener Ausführung – die naturbelassene, raue Oberfläche verleiht Einfahrten, Wegen und Plätzen einen rustikalen, traditionellen Charakter. Extrem druckfest und frostbeständig.',
-  2: 'Granitwürfel geschnitten und gestrahlt – die maschinell bearbeitete Oberfläche bietet eine gleichmäßige, leicht raue Struktur mit moderner Optik. Ideal für repräsentative Flächen und zeitgemäße Pflasterungen.',
-  3: 'Granitwürfel geschnitten und gestrahlt – durch das Strahlen erhält die geschnittene Fläche eine feine Rauheit, die Rutschfestigkeit und elegantes Erscheinungsbild vereint. Perfekt für Höfe und Eingangsbereiche.',
-  4: 'Granitwürfel in gespaltener Form – die unregelmäßige Bruchkante erzeugt ein lebendiges, authentisches Pflasterbild. Bewährt seit Jahrhunderten für langlebige und belastbare Außenflächen.',
+  1: 'Granit-Pflasterwürfel gespalten – natürliche raue Oberfläche, ideal für rustikale Einfahrten, Wege und Hofpflasterungen.',
+  2: 'Granit-Pflasterwürfel geschnitten und gestrahlt – gleichmäßige Oberfläche, rutschhemmend und pflegeleicht. Für moderne Außenanlagen.',
+  3: 'Granit-Pflasterwürfel in gespaltener Form – massiv und langlebig, klassischer Naturstein für Garten und Einfahrt.',
+  4: 'Granit-Pflasterwürfel in verschiedenen Ausführungen erhältlich – frostbeständig, salzbeständig und für alle Außenbereiche geeignet.',
 };
 
 const granitRandleistenDescriptions: Record<number, string> = {
