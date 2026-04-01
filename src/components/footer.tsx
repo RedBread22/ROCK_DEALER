@@ -102,7 +102,7 @@ export const Footer = () => {
 
         {/* Bottom: Copyright */}
         <div className="mt-16 border-t border-border pt-8 text-center">
-          <p className="text-sm text-muted-foreground">&copy; Rock-Dealer 2025.</p>
+          <p className="text-sm text-muted-foreground">&copy; Rock-Dealer 2026.</p>
         </div>
       </div>
     </footer>
