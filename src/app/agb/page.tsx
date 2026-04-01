@@ -23,7 +23,7 @@ export default function AGBPage() {
       <section className="py-24 sm:py-32">
         <div className="container mx-auto px-4 max-w-3xl space-y-8 text-muted-foreground">
           <h3 className='text-xl text-foreground font-bold'>Allgemeine Geschäftsbedingungen (AGB) – Rock-Dealer e.U.</h3>
-          <p className="font-bold text-foreground">Stand: [Datum eintragen]</p>
+          <p className="font-bold text-foreground">Stand: 01.04.2026</p>
           
           <div>
             <h2 className="text-2xl font-bold text-foreground mb-4">1. Geltungsbereich</h2>

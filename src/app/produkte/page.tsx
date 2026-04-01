@@ -5,6 +5,7 @@ import { ContactFormSection } from '@/components/contact-form-section';
 import { ContentCard } from '@/components/content-card';
 import { HighlightCard } from '@/components/highlight-card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { ProductNoticeBanner } from '@/components/product-notice-banner';
 
 export const metadata: Metadata = {
   title: 'Unsere Produkte | ROCK DEALER',
@@ -35,6 +36,7 @@ export default function ProduktePage() {
 
   return (
     <>
+      <ProductNoticeBanner />
       <section className="py-16 sm:py-24">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

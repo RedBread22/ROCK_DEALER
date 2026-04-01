@@ -6,6 +6,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { ContactFormSection } from '@/components/contact-form-section';
 import { ContentCard } from '@/components/content-card';
 import { ProductGridWithModal } from '@/components/product-grid-with-modal';
+import { ProductNoticeBanner } from '@/components/product-notice-banner';
 
 export async function generateStaticParams() {
   return productCategories.map((category) => ({
@@ -85,6 +86,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
                 </div>
             </section>
             
+            <ProductNoticeBanner />
             <ContactFormSection />
         </>
     );
