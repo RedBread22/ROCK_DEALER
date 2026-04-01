@@ -1212,7 +1212,7 @@ const betonsteineImageCounts: Record<string, { count: number, path: string, name
   betonplatten: { count: 9, path: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten', name: 'Betonplatte' },
   mauersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine', name: 'Beton-Mauerstein' },
   palisaden: { count: 3, path: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden', name: 'Beton-Palisade' },
-  pflastersteine: { count: 52, path: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine', name: 'Beton-Pflasterstein' },
+  pflastersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine', name: 'Beton-Pflasterstein' },
   randleisten: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Randleisten', name: 'Beton-Randleiste' },
 };
 
@@ -1237,8 +1237,7 @@ export const getBetonsteineProducts = (subCategoryId: string): Product[] | null 
     // Skip index 4 for Betonplatten
     if (subCategoryId === 'betonplatten' && i === 4) continue;
 
-    const ext = (subCategoryId === 'pflastersteine' && i >= 5) ? 'avif' : 'jpg';
-    const imageUrl = `${imageInfo.path}/${i}.${ext}`;
+    const imageUrl = `${imageInfo.path}/${i}.jpg`;
     products.push({
       name: imageInfo.name,
       description: betonsteineDescriptions[subCategoryId] || 'Betonstein für den Außenbereich – frostfest und vielseitig einsetzbar.',
