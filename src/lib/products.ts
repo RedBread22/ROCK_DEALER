@@ -91,6 +91,7 @@ export const productCategories: ProductCategory[] = [
       { id: 'tische-baenke', name: 'Tische / Bänke' },
       { id: 'blumentrog', name: 'Blumentrog' },
       { id: 'vasen', name: 'Vasen' },
+      { id: 'stelen', name: 'Stelen' },
     ],
   },
 ];
@@ -129,6 +130,7 @@ const subCategoryDescriptions: Record<string, Record<string, string>> = {
       'tische-baenke': 'Robuste und wetterfeste Tische und Bänke aus massivem Naturstein.',
       blumentrog: 'Massive Blumentröge aus Naturstein – langlebig, stilvoll und für jede Pflanze geeignet.',
       vasen: 'Elegante Steinvasen als zeitlose Dekoration für Eingangsbereiche, Terrassen und Gärten.',
+      stelen: 'Moderne und schlanke Elemente zur Gartengestaltung und als Sichtschutz.',
   }
 };
 
@@ -166,6 +168,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
     'tische-baenke': '/images/5. Gartendeko/6. TischeBanke/3.jpg',
     blumentrog: '/images/UNSERE-PRODUKTE/Gartendeko/Blumentrog.jpg',
     vasen: '/images/UNSERE-PRODUKTE/Gartendeko/Vasen.jpg',
+    stelen: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen/9.jpg',
   }
 };
 
@@ -276,17 +279,6 @@ export const schieferSubCategoriesData: SubCategory[] = [
           imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Polygonalplatten/4.jpg',
           description: 'Schiefer Polygonalplatten',
           imageHint: 'slate polygonal',
-        },
-    },
-    {
-        id: 'stelen',
-        name: 'Stelen',
-        description: 'Moderne und schlanke Elemente zur Gartengestaltung und als Sichtschutz.',
-        image: {
-          id: 'schiefer-stelen',
-          imageUrl: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen/9.jpg',
-          description: 'Schiefer Stelen',
-          imageHint: 'slate steles',
         },
     },
     {
@@ -740,6 +732,7 @@ const gartendekoImageCounts: Record<string, { count: number, path: string, name:
   'tische-baenke': { count: 3, path: '/images/5. Gartendeko/6. TischeBanke', name: 'Tisch / Bank' },
   blumentrog: { count: 8, path: '/images/5. Gartendeko/7. Blumentrog', name: 'Blumentrog' }, // image 6 moved to Brunnen
   vasen: { count: 4, path: '/images/5. Gartendeko/8. Vasen', name: 'Vase' },
+  stelen: { count: 9, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen', name: 'Stele' },
 };
 
 const gartendekoDescriptions: Record<string, Record<number, string>> = {
@@ -795,6 +788,17 @@ const gartendekoDescriptions: Record<string, Record<number, string>> = {
     2: 'Hohe Naturstein-Vase mit filigranem Blattrelief – eleganter Blickfang für jeden Außenbereich.',
     3: 'Naturstein-Krug mit geschwungenem Henkel – stilvolles Gartenaccessoire in klassischer Form.',
     4: 'Naturstein-Pflanzkübel mit Ornamentrelief – robust, frostbeständig und dekorativ zugleich.',
+  },
+  stelen: {
+    1: 'Schlanke Schiefer-Stele mit natürlicher Spaltung – ein markanter Blickfang als Sichtschutz, Wegbegrenzung oder skulpturales Element im Garten.',
+    2: 'Schlanke Schiefer-Stele mit natürlicher Spaltung – ein markanter Blickfang als Sichtschutz, Wegbegrenzung oder skulpturales Element im Garten.',
+    3: 'Schlanke Schiefer-Stele mit natürlicher Spaltung – ein markanter Blickfang als Sichtschutz, Wegbegrenzung oder skulpturales Element im Garten.',
+    4: 'Schlanke Schiefer-Stele mit natürlicher Spaltung – ein markanter Blickfang als Sichtschutz, Wegbegrenzung oder skulpturales Element im Garten.',
+    5: 'Schlanke Schiefer-Stele mit natürlicher Spaltung – ein markanter Blickfang als Sichtschutz, Wegbegrenzung oder skulpturales Element im Garten.',
+    6: 'Schlanke Schiefer-Stele mit natürlicher Spaltung – ein markanter Blickfang als Sichtschutz, Wegbegrenzung oder skulpturales Element im Garten.',
+    7: 'Schlanke Schiefer-Stele mit natürlicher Spaltung – ein markanter Blickfang als Sichtschutz, Wegbegrenzung oder skulpturales Element im Garten.',
+    8: 'Schlanke Schiefer-Stele mit natürlicher Spaltung – ein markanter Blickfang als Sichtschutz, Wegbegrenzung oder skulpturales Element im Garten.',
+    9: 'Schlanke Schiefer-Stele mit natürlicher Spaltung – ein markanter Blickfang als Sichtschutz, Wegbegrenzung oder skulpturales Element im Garten.',
   },
 };
 
@@ -1026,7 +1030,6 @@ const schieferImageCounts: Record<string, { count: number, path: string, name: s
   blockstufen: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Blockstufen', name: 'Schiefer Blockstufe' },
   mauersteine: { count: 28, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Mauersteine', name: 'Schiefer Mauerstein' },
   polygonalplatten: { count: 4, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Polygonalplatten', name: 'Schiefer Polygonalplatte' },
-  stelen: { count: 9, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Stelen', name: 'Schiefer Stele' },
   bodenplatten: { count: 5, path: '/images/UNSERE-PRODUKTE/Natursteine/Schiefer/Bodenplatten', name: 'Schiefer Bodenplatte' },
 };
 
@@ -1034,7 +1037,6 @@ const schieferDescriptions: Record<string, string> = {
   blockstufen: 'Schiefer-Blockstufe mit markanter Schichtstruktur und natürlich spaltrauer Oberfläche – trittsicher bei Nässe und ein gestalterisches Highlight für Gartentreppen und Hanglagen.',
   mauersteine: 'Schiefer-Mauerstein mit unregelmäßiger, lebendiger Oberfläche – eignet sich hervorragend für Trockenmauern, Hangstützungen und als dekoratives Gestaltungselement.',
   polygonalplatten: 'Polygonalplatte aus Schiefer mit natürlich gebrochenen Kanten – schafft einzigartige, individuelle Verlegemuster für Terrassen, Gartenwege und Sitzplätze.',
-  stelen: 'Schlanke Schiefer-Stele mit natürlicher Spaltung – ein markanter Blickfang als Sichtschutz, Wegbegrenzung oder skulpturales Element im Garten.',
   bodenplatten: 'Schiefer-Bodenplatte mit natürlicher Schieferung und spaltrauer Oberfläche – ideal für Terrassen, Gartenwege und Eingangsbereiche mit rutschfester Trittsicherheit.',
 };
 

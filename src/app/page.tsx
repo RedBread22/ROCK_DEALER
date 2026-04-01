@@ -7,6 +7,7 @@ import { HeroSection } from '@/components/hero-section';
 import { HeroSliderSection } from '@/components/hero-slider-section';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
+const ProductNoticeBanner = dynamic(() => import('@/components/product-notice-banner').then(m => ({ default: m.ProductNoticeBanner })));
 const PhilosophySection = dynamic(() => import('@/components/philosophy-section').then(m => ({ default: m.PhilosophySection })));
 const VisualSection = dynamic(() => import('@/components/visual-section').then(m => ({ default: m.VisualSection })));
 const ExperimentalSection = dynamic(() => import('@/components/experimental-section').then(m => ({ default: m.ExperimentalSection })));
@@ -130,6 +131,7 @@ export default function Home() {
         <HeroSliderSection isActive={slideshowActive} />
       )}
       <HeroSection />
+      <ProductNoticeBanner />
       <PhilosophySection />
       <VisualSection />
       <ExperimentalSection />
