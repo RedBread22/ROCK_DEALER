@@ -30,6 +30,7 @@ import { AnimatedText } from '@/components/animated-text';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { ContactFormSection } from '@/components/contact-form-section';
 import { ProductGridWithModal } from '@/components/product-grid-with-modal';
+import { ProductNoticeBanner } from '@/components/product-notice-banner';
 
 type PageProps = {
     params: {
@@ -182,7 +183,8 @@ export default function ProductGroupPage({ params }: PageProps) {
                         Für diese Kategorie sind derzeit keine Produkte verfügbar.
                     </div>
                 </section>
-                <ContactFormSection />
+                <ProductNoticeBanner />
+            <ContactFormSection />
             </>
         );
     }
@@ -209,6 +211,7 @@ export default function ProductGroupPage({ params }: PageProps) {
                 </div>
             </section>
             
+            <ProductNoticeBanner />
             <ContactFormSection />
         </>
     );

@@ -26,6 +26,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { ContactFormSection } from '@/components/contact-form-section';
 import { ProductGridWithModal } from '@/components/product-grid-with-modal';
 import { ContentCard } from '@/components/content-card';
+import { ProductNoticeBanner } from '@/components/product-notice-banner';
 
 export async function generateStaticParams() {
   const params: { category: string; subcategory: string }[] = [];
@@ -113,6 +114,7 @@ export default function SubCategoryPage({ params }: { params: { category: string
                     </div>
                 </section>
                 
+                <ProductNoticeBanner />
                 <ContactFormSection />
             </>
         );
@@ -151,6 +153,7 @@ export default function SubCategoryPage({ params }: { params: { category: string
                     </div>
                 </section>
                 
+                <ProductNoticeBanner />
                 <ContactFormSection />
             </>
         );
@@ -189,6 +192,7 @@ export default function SubCategoryPage({ params }: { params: { category: string
                     </div>
                 </section>
                 
+                <ProductNoticeBanner />
                 <ContactFormSection />
             </>
         );
@@ -227,6 +231,7 @@ export default function SubCategoryPage({ params }: { params: { category: string
                     </div>
                 </section>
 
+                <ProductNoticeBanner />
                 <ContactFormSection />
             </>
         );
@@ -265,6 +270,7 @@ export default function SubCategoryPage({ params }: { params: { category: string
                     </div>
                 </section>
 
+                <ProductNoticeBanner />
                 <ContactFormSection />
             </>
         );
@@ -303,6 +309,7 @@ export default function SubCategoryPage({ params }: { params: { category: string
                     </div>
                 </section>
 
+                <ProductNoticeBanner />
                 <ContactFormSection />
             </>
         );
@@ -341,6 +348,7 @@ export default function SubCategoryPage({ params }: { params: { category: string
                     </div>
                 </section>
 
+                <ProductNoticeBanner />
                 <ContactFormSection />
             </>
         );
@@ -371,6 +379,7 @@ export default function SubCategoryPage({ params }: { params: { category: string
                     </div>
                 </section>
 
+                <ProductNoticeBanner />
                 <ContactFormSection />
             </>
         );
