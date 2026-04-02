@@ -23,8 +23,15 @@ export const Footer = () => {
             </h3>
             <div className="mt-6 space-y-2 text-muted-foreground">
               <p>Mo - Fr: 07:00 - 17:00 Uhr</p>
-              <p>Kerschbaum 49</p>
-              <p>8542 St. Peter im Sulmtal</p>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Kerschbaum+49,+8542+St.+Peter+im+Sulmtal"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <p>Kerschbaum 49</p>
+                <p>8542 St. Peter im Sulmtal</p>
+              </a>
               <InteractiveElement cursorType="link">
                 <a href="mailto:office@rock-dealer.com" className="mt-4 block text-primary underline transition-colors hover:text-primary/80">
                   office@rock-dealer.com
