@@ -103,6 +103,11 @@ export const Footer = () => {
                   AGB
                 </Link>
               </InteractiveElement>
+              <InteractiveElement cursorType="link">
+                <Link href="/datenschutz" className="block text-primary underline transition-colors hover:text-primary/80">
+                  Datenschutz
+                </Link>
+              </InteractiveElement>
             </nav>
           </div>
         </div>

@@ -36,6 +36,7 @@ const ContactFormInner = () => {
     address: z.string().min(1, { message: 'Bitte gib eine Adresse ein.' }),
     categories: z.array(z.string()).optional(),
     message: z.string().min(10, { message: 'Nachricht muss mindestens 10 Zeichen lang sein.' }),
+    privacy: z.literal(true, { errorMap: () => ({ message: 'Bitte stimmen Sie der Datenschutzerklärung zu.' }) }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -47,6 +48,7 @@ const ContactFormInner = () => {
       address: '',
       message: '',
       categories: [],
+      privacy: false as unknown as true,
     },
   });
 
@@ -209,6 +211,35 @@ const ContactFormInner = () => {
                 <Textarea placeholder="Beschreiben Sie kurz Ihr Vorhaben (z. B. Garten, Terrasse, Weg, Fläche)." rows={5} {...field} />
               </FormControl>
               <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="privacy"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel className="font-normal">
+                  Ich stimme der Verarbeitung meiner Daten gemäß{' '}
+                  <a
+                    href="/datenschutz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary underline hover:text-primary/80"
+                  >
+                    Datenschutzerklärung
+                  </a>{' '}
+                  zu.
+                </FormLabel>
+                <FormMessage />
+              </div>
             </FormItem>
           )}
         />
