@@ -23,107 +23,109 @@ export default function AGBPage() {
       <section className="py-24 sm:py-32">
         <div className="container mx-auto px-4 max-w-3xl space-y-8 text-muted-foreground">
           <h3 className='text-xl text-foreground font-bold'>Allgemeine Geschäftsbedingungen (AGB)</h3>
-          <p className="text-foreground">Rock Dealer – Handel mit Naturstein, Betonpflaster und Zierkies</p>
+          <p className="text-foreground">Rock Dealer</p>
+          <p className="font-bold text-foreground">Stand: 10.04.2026</p>
 
           <div>
             <h2 className="text-2xl font-bold text-foreground mb-4">1. Geltungsbereich</h2>
             <p>
-              Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge, Lieferungen und Leistungen der Firma Rock Dealer gegenüber Unternehmern (B2B) und Verbrauchern (B2C).
+              Diese AGB gelten für alle Verträge zwischen Rock Dealer und Kunden (B2C &amp; B2B).
             </p>
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">2. Angebot und Vertragsabschluss</h2>
-            <div className="space-y-4">
-              <p>Unsere Angebote sind freibleibend und unverbindlich.</p>
-              <p>Ein Vertrag kommt erst durch schriftliche Auftragsbestätigung oder Lieferung zustande.</p>
-            </div>
+            <h2 className="text-2xl font-bold text-foreground mb-4">2. Angebot &amp; Vertragsabschluss</h2>
+            <p>
+              Angebote sind unverbindlich. Vertrag entsteht durch Auftragsbestätigung oder Lieferung der Ware.
+            </p>
           </div>
 
           <div>
             <h2 className="text-2xl font-bold text-foreground mb-4">3. Preise</h2>
-            <div className="space-y-4">
-              <p>Alle Preise verstehen sich in Euro.</p>
-              <p>Für Verbraucher inkl. USt, für Unternehmer zzgl. USt.</p>
-              <p>Lieferkosten werden gesondert verrechnet.</p>
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">4. Lieferung</h2>
-            <div className="space-y-4">
-              <p>Liefertermine sind unverbindlich.</p>
-              <p>Bei höherer Gewalt kein Schadenersatz.</p>
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">5. Beschaffenheit / Abweichungen</h2>
-            <div className="space-y-4">
-              <p>Farb-, Struktur- und Größenabweichungen sind materialtypisch und kein Mangel.</p>
-              <p>Muster sind unverbindlich.</p>
-              <p>Reklamationen nach Verlegung ausgeschlossen.</p>
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">6. Widerrufsrecht</h2>
-            <div className="space-y-4">
-              <p>Verbraucher haben 14 Tage Widerrufsrecht.</p>
-              <p>Ausgenommen sind Sonderanfertigungen und bereits verarbeitete Ware.</p>
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">7. Gefahrenübergang</h2>
-            <div className="space-y-4">
-              <p>Unternehmer: bei Übergabe an Transporteur</p>
-              <p>Verbraucher: bei Übergabe an Kunden</p>
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">8. Zahlung</h2>
-            <div className="space-y-4">
-              <p>Sofort fällig.</p>
-              <p>Bei Verzug: Zinsen und Mahnkosten.</p>
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">9. Eigentumsvorbehalt</h2>
             <p>
-              Ware bleibt bis zur vollständigen Zahlung Eigentum von Rock Dealer.
+              Alle Preise in Euro. Verbraucher: inkl. USt. Unternehmer: zzgl. USt. Lieferkosten werden gesondert ausgewiesen.
             </p>
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">10. Gewährleistung</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-4">4. Zahlung</h2>
+            <p>
+              Rechnungen sind sofort fällig. Bei Verzug: gesetzliche Verzugszinsen und Mahnkosten. Rock Dealer behält sich vor, Lieferungen bis zur Zahlung zurückzuhalten.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-foreground mb-4">5. Lieferung</h2>
+            <p>
+              Liefertermine unverbindlich. Teillieferungen zulässig. Höhere Gewalt schließt Schadenersatz aus.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-foreground mb-4">6. Gefahrenübergang</h2>
             <div className="space-y-4">
-              <p>Verbraucher: gesetzlich</p>
-              <p>Unternehmer: 12 Monate</p>
+              <p>Unternehmer: bei Übergabe an Transporteur.</p>
+              <p>Verbraucher: bei Übergabe an Kunden.</p>
             </div>
           </div>
 
           <div>
+            <h2 className="text-2xl font-bold text-foreground mb-4">7. Eigentumsvorbehalt</h2>
+            <p>
+              Die Ware bleibt bis zur vollständigen Bezahlung Eigentum von Rock Dealer.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-foreground mb-4">8. Beschaffenheit &amp; Materialeigenschaften</h2>
+            <p>
+              Naturprodukte weisen typische Eigenschaften auf: Farbabweichungen, Strukturunterschiede, Maßtoleranzen. Diese stellen keinen Mangel dar. Muster dienen nur als Orientierung. Reklamationen nach Verlegung oder Verarbeitung sind ausgeschlossen.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-foreground mb-4">9. Gewährleistung</h2>
+            <p>
+              Verbraucher: gesetzlich (2 Jahre). Unternehmer: 12 Monate. Offensichtliche Mängel müssen vor Verarbeitung gemeldet werden.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-foreground mb-4">10. Widerrufsrecht (nur Verbraucher)</h2>
+            <p>
+              Verbraucher haben 14 Tage Widerrufsrecht. Ausnahmen: Sonderanfertigungen, bereits verarbeitete/verlegte Ware.
+            </p>
+          </div>
+
+          <div>
             <h2 className="text-2xl font-bold text-foreground mb-4">11. Rückgabe</h2>
-            <p>Nur nach Vereinbarung.</p>
+            <p>Rückgaben nur nach vorheriger Vereinbarung.</p>
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">12. Gerichtsstand</h2>
-            <p>Österreichisches Recht.</p>
+            <h2 className="text-2xl font-bold text-foreground mb-4">12. Haftung</h2>
+            <p>
+              Rock Dealer haftet nur für Vorsatz und grobe Fahrlässigkeit. Keine Haftung für Folgeschäden oder unsachgemäße Verarbeitung durch Kunden.
+            </p>
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">13. Salvatorische Klausel</h2>
-            <p>Unwirksamkeit einzelner Punkte berührt nicht den Rest.</p>
+            <h2 className="text-2xl font-bold text-foreground mb-4">13. Datenschutz</h2>
+            <p>Es gilt die Datenschutzerklärung der Website.</p>
           </div>
 
-          <p className="font-bold text-foreground">Stand: 01.04.2026</p>
+          <div>
+            <h2 className="text-2xl font-bold text-foreground mb-4">14. Gerichtsstand &amp; Recht</h2>
+            <p>Österreichisches Recht. Gerichtsstand: zuständiges Gericht am Unternehmenssitz.</p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-foreground mb-4">15. Schlussbestimmungen</h2>
+            <p>Sollte eine Bestimmung unwirksam sein, bleibt der Rest gültig.</p>
+          </div>
         </div>
       </section>
-      
+
       <ContactFormSection />
     </main>
   );
