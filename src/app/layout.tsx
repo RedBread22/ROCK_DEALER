@@ -6,6 +6,8 @@ import { Header } from '@/components/header';
 import { CustomCursor } from '@/components/custom-cursor';
 import { Footer } from '@/components/footer';
 import { FloatingCTA } from '@/components/floating-cta';
+import { CookieBanner } from '@/components/cookie-banner';
+import { GoogleAnalytics } from '@/components/google-analytics';
 
 export const metadata: Metadata = {
   title: 'ROCK DEALER',
@@ -32,6 +34,8 @@ export default function RootLayout({
           <Footer />
           <FloatingCTA />
           <Toaster />
+          <CookieBanner />
+          <GoogleAnalytics />
         </CursorProvider>
       </body>
     </html>
