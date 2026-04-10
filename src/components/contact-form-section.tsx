@@ -32,7 +32,8 @@ const ContactFormInner = () => {
   const formSchema = z.object({
     name: z.string().min(2, { message: 'Name muss mindestens 2 Zeichen lang sein.' }),
     email: z.string().email({ message: 'Bitte gib eine gültige E-Mail-Adresse ein.' }),
-    phone: z.string().optional(),
+    phone: z.string().min(1, { message: 'Bitte gib eine Telefonnummer ein.' }),
+    address: z.string().min(1, { message: 'Bitte gib eine Adresse ein.' }),
     categories: z.array(z.string()).optional(),
     message: z.string().min(10, { message: 'Nachricht muss mindestens 10 Zeichen lang sein.' }),
   });
@@ -43,6 +44,7 @@ const ContactFormInner = () => {
       name: '',
       email: '',
       phone: '',
+      address: '',
       message: '',
       categories: [],
     },
@@ -123,9 +125,22 @@ const ContactFormInner = () => {
           name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Telefonnummer (optional)</FormLabel>
+              <FormLabel>Telefonnummer</FormLabel>
               <FormControl>
                 <Input placeholder="+43 664 ..." {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="address"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Adresse</FormLabel>
+              <FormControl>
+                <Input placeholder="Straße, PLZ Ort" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

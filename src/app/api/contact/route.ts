@@ -5,11 +5,11 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { name, email, phone, categories, message } = await request.json();
+    const { name, email, phone, address, categories, message } = await request.json();
 
-    if (!name || !email || !message) {
+    if (!name || !email || !phone || !address || !message) {
       return NextResponse.json(
-        { error: 'Name, E-Mail und Nachricht sind Pflichtfelder.' },
+        { error: 'Name, E-Mail, Telefonnummer, Adresse und Nachricht sind Pflichtfelder.' },
         { status: 400 }
       );
     }
@@ -35,7 +35,11 @@ export async function POST(request: Request) {
           </tr>
           <tr>
             <td style="padding: 8px 16px; font-weight: bold; vertical-align: top;">Telefon:</td>
-            <td style="padding: 8px 16px;">${phone || '–'}</td>
+            <td style="padding: 8px 16px;">${phone}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 16px; font-weight: bold; vertical-align: top;">Adresse:</td>
+            <td style="padding: 8px 16px;">${address}</td>
           </tr>
           <tr>
             <td style="padding: 8px 16px; font-weight: bold; vertical-align: top;">Kategorien:</td>
