@@ -57,7 +57,7 @@ export default function DatenschutzPage() {
           <div>
             <h2 className="text-2xl font-bold text-foreground mb-4">4. Anfrageformular</h2>
             <p>
-              Über das Anfrageformular werden folgende Daten verarbeitet: Name, E-Mail-Adresse, Telefonnummer, Adresse, gewählte Kategorien, Nachricht. Zweck: Bearbeitung Ihrer Anfrage, Angebotserstellung, Kundenkommunikation. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO. Die Daten werden nicht ohne Ihre Einwilligung weitergegeben.
+              Über das Anfrageformular werden folgende Daten verarbeitet: Name, E-Mail-Adresse, Telefonnummer, Adresse, gewählte Kategorien, Nachricht. Zweck: Bearbeitung Ihrer Anfrage, Angebotserstellung, Kundenkommunikation. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO. Die Daten werden nicht ohne Ihre Einwilligung weitergegeben. Zur technischen Zustellung von Formularanfragen per E-Mail nutzen wir den Dienst Resend (Resend Inc., San Francisco, USA). Resend agiert als Auftragsverarbeiter gemäß Art. 28 DSGVO und verarbeitet die übermittelten Daten ausschließlich zum Zweck der E-Mail-Zustellung. Eine Datenübertragung in die USA ist möglich; Resend unterstützt das EU-U.S. Data Privacy Framework. Weitere Informationen: https://resend.com/privacy
             </p>
           </div>
 
