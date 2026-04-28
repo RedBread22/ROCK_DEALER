@@ -34,6 +34,9 @@ const ContactFormInner = () => {
     email: z.string().email({ message: 'Bitte gib eine gültige E-Mail-Adresse ein.' }),
     phone: z.string().min(1, { message: 'Bitte gib eine Telefonnummer ein.' }),
     address: z.string().min(1, { message: 'Bitte gib eine Adresse ein.' }),
+    plz: z
+      .string()
+      .regex(/^\d{4}$/, { message: 'Bitte gib eine gültige österreichische PLZ ein (4 Ziffern).' }),
     categories: z.array(z.string()).optional(),
     message: z.string().min(10, { message: 'Nachricht muss mindestens 10 Zeichen lang sein.' }),
     privacy: z.literal(true, { errorMap: () => ({ message: 'Bitte stimmen Sie der Datenschutzerklärung zu.' }) }),
@@ -46,6 +49,7 @@ const ContactFormInner = () => {
       email: '',
       phone: '',
       address: '',
+      plz: '',
       message: '',
       categories: [],
       privacy: false as unknown as true,
@@ -142,7 +146,27 @@ const ContactFormInner = () => {
             <FormItem>
               <FormLabel>Adresse</FormLabel>
               <FormControl>
-                <Input placeholder="Straße, PLZ Ort" {...field} />
+                <Input placeholder="Straße, Hausnummer, Ort" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="plz"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Postleitzahl</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="z. B. 1010"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  maxLength={4}
+                  autoComplete="postal-code"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
