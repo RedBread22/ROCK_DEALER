@@ -61,6 +61,7 @@ export const productCategories: ProductCategory[] = [
     image: findImage('category-betonsteine'),
     subCategories: [
       { id: 'betonplatten', name: 'Betonplatten' },
+      { id: 'betonpflaster', name: 'Betonpflaster' },
       { id: 'mauersteine', name: 'Mauersteine' },
       { id: 'palisaden', name: 'Palisaden' },
       { id: 'pflastersteine', name: 'Pflastersteine' },
@@ -112,6 +113,7 @@ const subCategoryDescriptions: Record<string, Record<string, string>> = {
   },
   betonsteine: {
       betonplatten: 'Großformatige Betonplatten für moderne, ruhige Terrassen- und Weggestaltungen.',
+      betonpflaster: 'Klassisches Betonpflaster für Einfahrten, Wege und Plätze – belastbar, frostfest und vielseitig kombinierbar.',
       mauersteine: 'System-Mauersteine aus Beton für stabile und ästhetische Gartenmauern und Abgrenzungen.',
       palisaden: 'Beton-Palisaden zum Abfangen von Hängen, als Einfassung oder zur dekorativen Gliederung.',
       pflastersteine: 'Vielseitige Pflastersteine aus Beton für moderne Wege, Einfahrten und Plätze.',
@@ -150,6 +152,7 @@ const subCategoryImages: Record<string, Record<string, string>> = {
   },
   betonsteine: {
     betonplatten: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten/3.jpg',
+    betonpflaster: '/images/UNSERE-PRODUKTE/Betonsteine/Betonpflaster/Betonpflaster_1.avif',
     mauersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine/4.jpg',
     palisaden: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden/3.jpg',
     pflastersteine: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine/4.jpg',
@@ -1210,6 +1213,7 @@ export const getLusernaGneisProducts = (productGroupId: string): Product[] | nul
 
 const betonsteineImageCounts: Record<string, { count: number, path: string, name: string }> = {
   betonplatten: { count: 9, path: '/images/UNSERE-PRODUKTE/Betonsteine/Betonplatten', name: 'Betonplatte' },
+  betonpflaster: { count: 7, path: '/images/UNSERE-PRODUKTE/Betonsteine/Betonpflaster', name: 'Betonpflaster' },
   mauersteine: { count: 4, path: '/images/UNSERE-PRODUKTE/Betonsteine/Mauersteine', name: 'Beton-Mauerstein' },
   palisaden: { count: 3, path: '/images/UNSERE-PRODUKTE/Betonsteine/Palisaden', name: 'Beton-Palisade' },
   pflastersteine: { count: 52, path: '/images/UNSERE-PRODUKTE/Betonsteine/Pflastersteine', name: 'Beton-Pflasterstein' },
@@ -1218,6 +1222,7 @@ const betonsteineImageCounts: Record<string, { count: number, path: string, name
 
 const betonsteineDescriptions: Record<string, string> = {
   betonplatten: 'Großformatige Betonplatte mit glatter oder strukturierter Oberfläche – ideal für moderne Terrassen, Gartenwege und minimalistische Außengestaltungen.',
+  betonpflaster: 'Robustes Betonpflaster für Einfahrten, Hofflächen und Gehwege – frostfest, langlebig und in bewährter Verbundform.',
   mauersteine: 'Beton-Mauerstein im Systemformat für den einfachen Aufbau von Gartenmauern, Hochbeeten und dekorativen Raumteilern – formstabil und witterungsbeständig.',
   palisaden: 'Beton-Palisade zur Hangabstützung, Beeteinfassung oder als gestalterisches Gliederungselement – in verschiedenen Höhen verfügbar und einfach zu setzen.',
   pflastersteine: 'Beton-Pflasterstein in bewährter Verbundform – belastbar, rutschfest und prädestiniert für Einfahrten, Gehwege und Parkplatzflächen.',
@@ -1237,8 +1242,13 @@ export const getBetonsteineProducts = (subCategoryId: string): Product[] | null 
     // Skip index 4 for Betonplatten
     if (subCategoryId === 'betonplatten' && i === 4) continue;
 
-    const ext = (subCategoryId === 'pflastersteine' && i >= 5) ? 'avif' : 'jpg';
-    const imageUrl = `${imageInfo.path}/${i}.${ext}`;
+    let imageUrl: string;
+    if (subCategoryId === 'betonpflaster') {
+      imageUrl = `${imageInfo.path}/Betonpflaster_${i}.avif`;
+    } else {
+      const ext = (subCategoryId === 'pflastersteine' && i >= 5) ? 'avif' : 'jpg';
+      imageUrl = `${imageInfo.path}/${i}.${ext}`;
+    }
     products.push({
       name: imageInfo.name,
       description: betonsteineDescriptions[subCategoryId] || 'Betonstein für den Außenbereich – frostfest und vielseitig einsetzbar.',
