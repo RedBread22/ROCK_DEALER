@@ -42,6 +42,7 @@ export const Footer = () => {
                   +43 664 1000290
                 </a>
               </InteractiveElement>
+              <p className="mt-4">FN: 677840z</p>
             </div>
           </div>
 

@@ -29,7 +29,8 @@ export default function ImpressumPage() {
                     </p>
                     <p className="mt-4">
                         <strong>Unternehmensgegenstand:</strong> Handel (Steinhandel)<br/>
-                        <strong>UID-Nr.:</strong> ATU67902166
+                        <strong>UID-Nr.:</strong> ATU67902166<br/>
+                        <strong>Firmenbuchnummer (FN):</strong> 677840z
                     </p>
                 </div>
                 
